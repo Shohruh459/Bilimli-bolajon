@@ -72,6 +72,27 @@ export const PHRASES = {
     tone: 'bayramona',
   },
 
+  // --- Oʻyin: Shakllarni topish (3–4 yosh) ---
+  'shakllar.intro': { text: 'Qani, shakllarni topamiz!', tone: 'quvnoq' },
+  'shakllar.top.doira': { text: 'Doirani top!', tone: 'aniq, shakl nomini urgʻu bilan' },
+  'shakllar.top.kvadrat': { text: 'Kvadratni top!', tone: 'aniq, shakl nomini urgʻu bilan' },
+  'shakllar.top.uchburchak': { text: 'Uchburchakni top!', tone: 'aniq, shakl nomini urgʻu bilan' },
+  'shakllar.top.yulduz': { text: 'Yulduzni top!', tone: 'aniq, shakl nomini urgʻu bilan' },
+  'shakllar.top.yurak': { text: 'Yurakni top!', tone: 'aniq, shakl nomini urgʻu bilan' },
+  'shakllar.top.togri-tortburchak': {
+    text: 'Toʻgʻri toʻrtburchakni top!',
+    tone: 'aniq, sekinroq, shakl nomini urgʻu bilan',
+  },
+  'shakllar.top.oval': { text: 'Ovalni top!', tone: 'aniq, shakl nomini urgʻu bilan' },
+  'shakllar.top.yarim-doira': {
+    text: 'Yarim doirani top!',
+    tone: 'aniq, shakl nomini urgʻu bilan',
+  },
+  'shakllar.daraja-ochildi': {
+    text: 'Yangi daraja ochildi! Yangi shakllar seni kutmoqda!',
+    tone: 'bayramona',
+  },
+
   // --- Tafakkur (yumshoq kuzatuv iboralari) ---
   'tafakkur.olma': { text: 'Qara, olma qanday chiroyli qizil!', tone: 'hayratli' },
   'tafakkur.qulupnay': { text: 'Qulupnay qizil va shirin!', tone: 'iliq' },
@@ -93,6 +114,27 @@ export const PHRASES = {
   'tafakkur.bulut': { text: 'Oppoq bulut osmonda suzadi!', tone: 'mayin' },
   'tafakkur.qarga': { text: 'Qargʻa qop-qora: qag-qag!', tone: 'oʻyinqaroq' },
   'tafakkur.mushuk': { text: 'Qora mushukcha: miyov!', tone: 'oʻyinqaroq' },
+  // --- Tafakkur: shakllar ---
+  'tafakkur.gildirak': {
+    text: 'Gʻildirak dumaloq — shuning uchun aylanadi!',
+    tone: 'qiziqtiruvchi',
+  },
+  'tafakkur.soat': { text: 'Soat ham doira: millari aylanib yuradi!', tone: 'mayin' },
+  'tafakkur.sovga': { text: 'Sovgʻa qutisi kvadrat — hamma tomoni teng!', tone: 'quvnoq' },
+  'tafakkur.deraza': { text: 'Kvadrat derazadan quyosh nuri kiradi!', tone: 'iliq' },
+  'tafakkur.tog': { text: 'Togʻ uchburchak — tepasi oʻtkir!', tone: 'hayratli' },
+  'tafakkur.chodir': { text: 'Chodir uchburchak — ichida issiq va shinam!', tone: 'iliq' },
+  'tafakkur.dengiz-yulduzi': { text: 'Dengiz yulduzining beshta uchi bor!', tone: 'qiziqtiruvchi' },
+  'tafakkur.pechenye': { text: 'Yulduzcha pechenye — mazali va chiroyli!', tone: 'quvnoq' },
+  'tafakkur.yurak-shar': { text: 'Yurakcha — muhabbat belgisi!', tone: 'iliq, mehrli' },
+  'tafakkur.yostiq': { text: 'Yurakcha yostiq — yumshoq va mayin!', tone: 'mayin' },
+  'tafakkur.eshik': { text: 'Eshik toʻgʻri toʻrtburchak — baland va uzun!', tone: 'qiziqtiruvchi' },
+  'tafakkur.kitob': { text: 'Kitob ichida qiziq hikoyalar bor!', tone: 'iliq' },
+  'tafakkur.tuxum': { text: 'Tuxum oval — choʻzinchoq doiraga oʻxshaydi!', tone: 'qiziqtiruvchi' },
+  'tafakkur.qovun': { text: 'Qovun oval va shirin!', tone: 'quvnoq' },
+  'tafakkur.kamalak': { text: 'Kamalak yarim doira — rang-barang va chiroyli!', tone: 'hayratli' },
+  'tafakkur.soyabon': { text: 'Soyabon yarim doira — bizni yomgʻirdan asraydi!', tone: 'mayin' },
+  'tafakkur.tarvuz': { text: 'Tarvuz boʻlagi yarim doira — qizil va shirali!', tone: 'quvnoq' },
 } as const satisfies Record<string, Phrase>;
 
 export type PhraseKey = keyof typeof PHRASES;
