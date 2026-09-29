@@ -83,3 +83,32 @@ test('offline: SW oʻrnatilgach internet yoʻq holda ishlaydi', async ({ page, c
   await expect(page.getByTestId('colors-game')).toHaveAttribute('data-target', /.+/);
   await context.setOffline(false);
 });
+
+test('production build: dev yozuvi ("🔇 kalit — matn") hech qachon chiqmaydi', async ({ page }) => {
+  // Butun sessiya davomida .dev-caption paydo bo'lsa — qayd qilamiz.
+  await page.addInitScript(() => {
+    const w = window as unknown as { __devCaptions: number };
+    w.__devCaptions = 0;
+    new MutationObserver((records) => {
+      for (const r of records)
+        for (const n of r.addedNodes)
+          if (n instanceof HTMLElement && n.classList.contains('dev-caption')) w.__devCaptions++;
+    }).observe(document, { childList: true, subtree: true });
+  });
+
+  await start(page); // salomlashish + "Yoshingni tanla" aytiladi
+  await page.getByTestId('age-3-4').click();
+  await page.getByTestId('game-ranglar').click();
+  const game = page.getByTestId('colors-game');
+  await expect(game).toHaveAttribute('data-target', /.+/);
+  const target = (await game.getAttribute('data-target'))!;
+  await page.locator(`.cf-option:not([data-color="${target}"])`).first().click(); // ragʻbat
+  await page.locator(`.cf-option[data-color="${target}"]`).click(); // maqtov + tafakkur
+  await page.waitForTimeout(1500);
+
+  expect(
+    await page.evaluate(() => (window as unknown as { __devCaptions: number }).__devCaptions),
+  ).toBe(0);
+  await expect(page.locator('.dev-caption')).toHaveCount(0);
+  await expect(page.getByText('🔇')).toHaveCount(0);
+});
