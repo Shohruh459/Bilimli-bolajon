@@ -1,0 +1,59 @@
+/* Dizayn tokenlari — barcha ranglar/o'lchamlar shu yerda. CLAUDE.md dagi jadval bilan bir xil. */
+:root {
+  /* Asosiy palitra */
+  --c-sky: #4fb0e8;
+  --c-sun: #ffd23f;
+  --c-grass: #6bcb77;
+  --c-coral: #ff6b6b;
+  --c-cream: #fff8e7;
+  --c-navy: #1e2a47;
+  --c-white: #ffffff;
+  /* Diniy bo'lim */
+  --c-emerald: #2e7d5b;
+  --c-gold: #c9a227;
+
+  /* "Pastki qirra" (3D tugma) uchun to'qroq tuslar — blur'siz soya, arzon */
+  --c-sky-deep: #2d8cc4;
+  --c-sun-deep: #e0ad00;
+  --c-grass-deep: #45a352;
+  --c-coral-deep: #e04848;
+  --c-emerald-deep: #1f5c42;
+  --c-navy-soft: #5a6583;
+  --c-line: #f0e6cc;
+
+  /* Yosh urg'ulari */
+  --age-3-4: var(--c-coral);
+  --age-3-4-deep: var(--c-coral-deep);
+  --age-5: var(--c-sky);
+  --age-5-deep: var(--c-sky-deep);
+  --age-6-7: var(--c-grass);
+  --age-6-7-deep: var(--c-grass-deep);
+  --age-diniy: var(--c-emerald);
+  --age-diniy-deep: var(--c-emerald-deep);
+
+  /* O'rgatiladigan "haqiqiy" ranglar (content/colors.ts bilan mos) */
+  --learn-red: #e53935;
+  --learn-yellow: #ffd23f;
+  --learn-blue: #1e88e5;
+  --learn-green: #43a047;
+
+  /* Shakl va o'lcham */
+  --radius: 20px;
+  --radius-lg: 28px;
+  --tap-min: 96px; /* qoida: >= 90px */
+  --gap: 16px;
+  --pad: 20px;
+  --edge: 6px; /* 3D tugma qirrasi */
+  --maxw: 520px;
+
+  /* Tipografiya */
+  --font: 'Nunito', 'Nunito Fallback', system-ui, sans-serif;
+  --fs-sm: 1rem;
+  --fs-md: 1.35rem;
+  --fs-lg: 1.9rem;
+  --fs-xl: 2.6rem;
+
+  /* Harakat */
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur: 180ms;
+}

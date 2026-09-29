@@ -1,15 +1,27 @@
 <!doctype html>
-<html lang="uz">
+<html lang="uz" data-audio="locked">
   <head>
     <meta charset="UTF-8" />
+    <!-- CSP -->
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
     />
+    <meta
+      name="description"
+      content="3–7 yoshli bolalar uchun ta'limiy o'yinlar. Reklamasiz, offline."
+    />
+    <meta name="theme-color" content="#4FB0E8" />
+    <meta name="referrer" content="no-referrer" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <link rel="icon" href="/icons/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
     <title>%APP_NAME%</title>
   </head>
   <body>
     <main id="app"></main>
+    <canvas id="fx" aria-hidden="true"></canvas>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
