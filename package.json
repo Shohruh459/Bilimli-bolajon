@@ -13,7 +13,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "e2e": "playwright test",
-    "icons": "node scripts/gen-icons.mjs"
+    "icons": "node scripts/gen-icons.mjs",
+    "ovozlar": "node scripts/gen-ovozlar.ts && prettier --write docs/OVOZLAR.md"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
