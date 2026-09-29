@@ -20,7 +20,7 @@
 
 ## 1-bosqich — 3–4 yosh
 
-- [ ] Shakllarni topish (doira, kvadrat, uchburchak, yulduz)
+- [x] Shakllarni topish: 3 daraja (doira, kvadrat, uchburchak → + yulduz, yurak → + toʻgʻri toʻrtburchak, oval, yarim doira), 17 ta predmet
 - [ ] Hayvonlar va ularning ovozlari
 - [ ] Katta — kichik
 - [ ] 1–5 gacha sanash
@@ -39,6 +39,7 @@
 - [ ] Bo'g'inlab o'qish
 - [ ] Qo'shish / ayirish (10 gacha)
 - [ ] Mantiqiy topishmoqlar
+- [ ] Murakkab shakllar: olti burchak (asal katagi, qalam kesimi), romb, trapetsiya — "Shakllarni topish" 4-darajasi yoki alohida o'yin
 - [ ] Soat
 
 ## 4-bosqich — Diniy bo'lim (ota-ona bilan)
