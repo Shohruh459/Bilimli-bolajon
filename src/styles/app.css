@@ -1,0 +1,432 @@
+/* Ekranlar */
+.screen {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: var(--tap-min);
+}
+
+.topbar__center {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.topbar__spacer {
+  width: var(--tap-min);
+  flex: none;
+}
+
+.screen-title {
+  margin: 0;
+  font-size: var(--fs-lg);
+  font-weight: 1000;
+  text-align: center;
+}
+
+/* --- Start --- */
+.start {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 0;
+}
+
+.start__maskot svg {
+  width: min(56vw, 230px);
+  height: auto;
+}
+
+.start__title {
+  margin: 8px 0 0;
+  font-size: 2.7rem;
+  font-weight: 1000;
+  letter-spacing: -1px;
+}
+
+.start__sub {
+  margin: 4px 0 32px;
+  color: var(--c-navy-soft);
+  font-size: var(--fs-md);
+}
+
+.btn--start {
+  width: min(100%, 320px);
+  min-height: 120px;
+  border-radius: var(--radius-lg);
+  font-size: 2.1rem;
+  font-weight: 1000;
+}
+
+.btn--start svg {
+  width: 46px;
+  height: 46px;
+}
+
+/* --- Brend (bosh sahifa) --- */
+.home__bar {
+  padding-left: 4px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.brand__logo {
+  width: 64px;
+  height: 64px;
+  flex: none;
+}
+
+.brand__title {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 1000;
+  letter-spacing: -0.5px;
+  white-space: nowrap;
+}
+
+/* --- Yosh kartalari --- */
+.age-grid {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 1fr;
+  gap: var(--gap);
+  padding-bottom: var(--edge);
+}
+
+.age-card {
+  --btn-bg: var(--age);
+  --btn-edge: var(--age-deep);
+  flex-direction: column;
+  gap: 2px;
+  padding: 12px;
+  color: var(--c-navy);
+  min-height: 150px;
+}
+
+.age-card__art svg {
+  width: clamp(64px, 20vw, 96px);
+  height: clamp(64px, 20vw, 96px);
+}
+
+.age-card__title {
+  font-size: 2.3rem;
+  font-weight: 1000;
+  line-height: 1;
+}
+
+.age-card__sub {
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+[data-age='3-4'] {
+  --age: var(--age-3-4);
+  --age-deep: var(--age-3-4-deep);
+}
+
+[data-age='5'] {
+  --age: var(--age-5);
+  --age-deep: var(--age-5-deep);
+}
+
+[data-age='6-7'] {
+  --age: var(--age-6-7);
+  --age-deep: var(--age-6-7-deep);
+}
+
+[data-age='diniy'] {
+  --age: var(--age-diniy);
+  --age-deep: var(--age-diniy-deep);
+}
+
+.age-card[data-age='diniy'] {
+  color: var(--c-white);
+  box-shadow:
+    inset 0 0 0 4px var(--c-gold),
+    0 var(--edge) 0 var(--btn-edge);
+}
+
+.age-card[data-age='diniy'] .age-card__title {
+  font-size: 1.9rem;
+}
+
+/* --- O'yinlar ro'yxati --- */
+.age .screen-title {
+  display: inline-block;
+  white-space: nowrap;
+  padding: 6px 18px;
+  border-radius: 999px;
+  background: var(--age);
+  color: var(--c-navy);
+}
+
+.age[data-age='diniy'] .screen-title {
+  color: var(--c-white);
+}
+
+.game-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap);
+  align-content: start;
+}
+
+.game-card {
+  flex-direction: column;
+  gap: 4px;
+  min-height: 190px;
+  padding: 12px;
+  border: 5px solid var(--age);
+  --btn-edge: var(--age-deep);
+}
+
+.game-card svg {
+  width: 88px;
+  height: 88px;
+}
+
+.game-card__title {
+  font-size: var(--fs-md);
+  font-weight: 1000;
+}
+
+.game-card__stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--c-navy-soft);
+  font-size: 1.1rem;
+}
+
+.game-card__stars svg {
+  width: 24px;
+  height: 24px;
+  color: var(--c-sun-deep);
+}
+
+.game-card--soon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius);
+  border: 4px dashed var(--c-line);
+  color: var(--c-navy-soft);
+  font-weight: 800;
+}
+
+.game-card--soon svg {
+  width: 72px;
+  height: 72px;
+  opacity: 0.7;
+}
+
+/* --- Tez orada --- */
+.soon {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.soon__art svg {
+  width: min(50vw, 200px);
+  height: auto;
+}
+
+.soon__text {
+  margin: 12px 0 0;
+  font-size: var(--fs-xl);
+  font-weight: 1000;
+}
+
+.soon__note {
+  max-width: 300px;
+  margin: 8px 0 0;
+  color: var(--c-navy-soft);
+  font-size: var(--fs-sm);
+}
+
+/* --- Yuklanmoqda --- */
+.loading {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading svg {
+  width: 120px;
+  height: 120px;
+}
+
+/* --- Yakun --- */
+.finish {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.finish__star svg {
+  width: min(55vw, 220px);
+  height: auto;
+  color: var(--c-sun);
+}
+
+.finish__text {
+  margin: 0;
+  font-size: var(--fs-xl);
+  font-weight: 1000;
+}
+
+.finish__count {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 16px;
+  color: var(--c-navy-soft);
+}
+
+.finish__count svg {
+  width: 28px;
+  height: 28px;
+  color: var(--c-sun-deep);
+}
+
+.finish__actions {
+  display: flex;
+  gap: 24px;
+}
+
+.finish__btn {
+  width: 120px;
+  height: 120px;
+}
+
+.finish__btn svg {
+  width: 60px;
+  height: 60px;
+}
+
+/* --- Ota-ona darvozasi --- */
+.gate__wrap {
+  position: relative;
+}
+
+.gate {
+  position: relative;
+  color: var(--c-navy-soft);
+  background: transparent;
+  box-shadow: none;
+}
+
+.gate:active {
+  transform: none;
+  box-shadow: none;
+}
+
+.gate svg {
+  width: 44px;
+  height: 44px;
+}
+
+.gate .gate__ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  stroke: var(--c-coral);
+  opacity: 0;
+}
+
+.is-holding .gate__ring {
+  opacity: 1;
+}
+
+.gate__tip {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 4px);
+  z-index: 5;
+  width: 190px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  background: var(--c-navy);
+  color: var(--c-white);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms ease;
+}
+
+.show-tip .gate__tip {
+  opacity: 1;
+}
+
+/* --- Sozlamalar (ota-ona uchun) --- */
+.settings__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  overflow-y: auto;
+}
+
+.setting {
+  justify-content: flex-start;
+  width: 100%;
+  font-size: var(--fs-md);
+  text-align: left;
+}
+
+.setting svg {
+  width: 44px;
+  height: 44px;
+  flex: none;
+}
+
+.setting--danger {
+  color: var(--c-coral-deep);
+}
+
+.settings__info {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8px 16px;
+  margin: 8px 0 0;
+  font-size: var(--fs-sm);
+}
+
+.settings__info dt {
+  color: var(--c-navy-soft);
+}
+
+.settings__info dd {
+  margin: 0;
+}
+
+.settings__promise {
+  margin: 8px 0 0;
+  color: var(--c-grass-deep);
+  font-size: var(--fs-sm);
+}
