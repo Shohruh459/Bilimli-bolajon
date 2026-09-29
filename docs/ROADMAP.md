@@ -24,7 +24,8 @@
 - [ ] Hayvonlar va ularning ovozlari
 - [ ] Katta — kichik
 - [ ] 1–5 gacha sanash
-- [ ] Ranglarni topish: to'q sariq, binafsha; "rangini bo'ya" rejimi
+- [x] Ranglarni topish: 3 daraja (4 → 6 → 10 rang), yulduz bilan ochiladi, 12 ta yangi predmet
+- [ ] Ranglarni topish: "rangini bo'ya" rejimi; ovozlar tayyor bo'lgach "qiyin rejim" (namunasiz)
 
 ## 2-bosqich — 5 yosh
 
@@ -52,6 +53,18 @@
 - [ ] Progress (yulduzlar) ko'rinishi
 - [ ] "Dam olish vaqti" eslatmasi (vaqt limiti)
 - [ ] Ovozlarni yosh bo'yicha offline saqlash (CLAUDE.md → keshlash rejasi)
+
+## Dizayn sayqali (alohida bosqich)
+
+Hozircha dizayn ataylab katta o'zgartirilmayapti — funksionallik birinchi. Bu bosqichda:
+
+- [ ] Umumiy vizual til: tipografiya shkalasi, bo'shliqlar, kartalar, soyalar bir xil tizimga
+- [ ] Ekranlar o'rtasida o'tish animatsiyalari (arzon telefonda 60fps saqlagan holda)
+- [ ] Maskot (quyosh) harakatlari va reaksiyalari: kutish, xursandchilik, dalda
+- [ ] Daraja tanlash ekrani: daraja ochilganda bayramona animatsiya
+- [ ] SVG rasmlarni bir uslubga keltirish (kontur qalinligi, soyalar, ko'zlar)
+- [ ] Rang kontrasti va kar-ko'rlik (color-blind) tekshiruvi
+- [ ] Haqiqiy qurilmada ko'rib chiqish va skrinshotlar bilan tasdiqlash
 
 ## 6-bosqich — Sayqal va reliz
 

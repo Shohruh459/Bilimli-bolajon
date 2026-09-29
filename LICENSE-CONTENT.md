@@ -6,14 +6,14 @@ Loyiha **kodi** MIT litsenziyasi ostida (`LICENSE`). Lekin quyidagi **kontent MI
 Uni egasining yozma ruxsatisiz nusxalash, tarqatish, o'zgartirish yoki boshqa loyihalarda
 (jumladan tijoriy) ishlatish mumkin emas.
 
-| Kontent                 | Qayerda                                                                         |
-| ----------------------- | ------------------------------------------------------------------------------- |
-| Ovoz yozuvlari          | `src/assets/audio/**`                                                           |
-| Rasmlar (SVG chizmalar) | `src/ui/art.ts` ichidagi SVG belgilashlar, `src/ui/icons.ts`, `public/icons/**` |
-| Kontent matnlari        | `src/content/**` (iboralar, rang/yosh nomlari, UI matnlari), `docs/OVOZLAR.md`  |
-| Nom va brend            | "Ilmli Bolajon" nomi, maskot (tabassumli quyosh)                                |
+| Kontent                 | Qayerda                                                                                                |
+| ----------------------- | ------------------------------------------------------------------------------------------------------ |
+| Ovoz yozuvlari          | `src/assets/audio/**`                                                                                  |
+| Rasmlar (SVG chizmalar) | `src/ui/art.ts`, `src/games/**/art.ts` ichidagi SVG belgilashlar, `src/ui/icons.ts`, `public/icons/**` |
+| Kontent matnlari        | `src/content/**` (iboralar, rang/yosh nomlari, UI matnlari), `docs/OVOZLAR.md`                         |
+| Nom va brend            | "Ilmli Bolajon" nomi, maskot (tabassumli quyosh)                                                       |
 
-`src/ui/art.ts` va `src/ui/icons.ts` fayllaridagi **dasturiy qism** (funksiyalar, tiplar) MIT
+`src/ui/art.ts`, `src/games/**/art.ts` va `src/ui/icons.ts` fayllaridagi **dasturiy qism** (funksiyalar, tiplar) MIT
 ostida. Ulardagi **SVG chizmalarning o'zi** esa himoyalangan.
 
 ## Istisnolar

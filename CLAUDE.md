@@ -68,8 +68,9 @@ src/
   app/screens/          # start, home, age, game (lazy host + yakun), settings
   engine/               # audio, voice, sfx, animate, confetti, feedback, scope, storage, random, guard, pwa, game
   games/<id>/           # har o'yin — alohida lazy chunk; logic.ts (sof, test qilinadi) + index.ts (UI)
+                        #   + art.ts (o'yinga xos SVG'lar — bosh bundle'ga kirmaydi)
   games/registry.ts     # o'yinlar ro'yxati (meta + lazy import)
-  content/              # BARCHA matnlar: phrases.ts (ovoz kalitlari), colors.ts, ages.ts, diniy.ts
+  content/              # BARCHA matnlar: phrases.ts (ovoz kalitlari), colors.ts (ranglar + darajalar), ages.ts, diniy.ts
   ui/                   # dom (h, svg), art (SVG rasmlar), icons, button, topbar, parent-gate
   styles/               # tokens.css, fonts.css, base.css, app.css (o'yin CSS — o'yin papkasida)
   assets/audio/uz/      # ovoz yozuvlari: <kalit>.mp3 (docs/OVOZLAR.md)
@@ -100,7 +101,10 @@ docs/                   # ROADMAP, DINIY-MATNLAR, OVOZLAR
 - **Service worker** — `registerType: 'prompt'` lekin prompt ko'rsatilmaydi: yangi versiya bola
   o'ynab turganda sahifani qayta yuklamaydi; faqat start ekranida (unlock'dan oldin) jim yangilanadi.
 - **Maqtov/rag'bat iboralari** — hammasi `src/content/phrases.ts` da, bitta ro'yxatda.
-- **Rasmlar** — o'zimiz chizgan inline SVG (`src/ui/art.ts`). Stock rasm yo'q.
+- **Rasmlar** — o'zimiz chizgan inline SVG. Umumiy (maskot, kartalar) — `src/ui/art.ts`;
+  o'yinga xos — `src/games/<id>/art.ts` (lazy chunk). Stock rasm yo'q.
+  Oq predmetlar to'q kontur (`--c-navy`) bilan, qora predmetlar yorug' detallar bilan chiziladi —
+  oq kartada ham, krem fonda ham ko'rinsin. Oq rang namunasi: `LearnColor.light` → kontur.
 - **Animatsiya nishoni:** tugmaning o'zi emas, ichidagi `.art` — aks holda `fill: forwards`
   tugmaning `:active` bosilish effektini bosib qoladi.
 - **CSP `style-src 'self'`:** HTML/SVG satrlarida `style="..."` atributi YOZILMAYDI (bloklanadi).
@@ -110,6 +114,14 @@ docs/                   # ROADMAP, DINIY-MATNLAR, OVOZLAR
 - **Ranglar o'yinida rang namunasi (blob) ko'rsatiladi** — ovoz yozuvlari yo'q paytda ham bola
   topshiriqni tushunsin. Ovozlar tayyor bo'lgach "qiyin rejim" (namunasiz, faqat ovoz) qo'shish mumkin.
 - **Deploy:** `deploy.yml` `BASE_PATH` ni repo nomidan oladi → repo nomi o'zgarsa deploy buzilmaydi.
+- **O'yin darajalari** (namuna: ranglar): route `#/oyin/<id>` — daraja tanlash, `#/oyin/<id>/<n>` — o'yin.
+  `GameApi.level/play(n)/exit()`; "orqaga" darajadan daraja tanlashga qaytadi. Yulduzlar daraja
+  kalitida: `ranglar.1`, `ranglar.2`… (`finish({ starKey })`). Yosh menyusidagi karta jami yulduzni
+  ko'rsatadi (`getStarsTotal`). Keyingi daraja oldingisida `STARS_TO_UNLOCK` (=3) yulduzda ochiladi;
+  ochilish mantiqi sof funksiyalar (`unlockedUpTo`, `unlocksNext`) — unit test qilinadi.
+  Yopiq darajaga to'g'ridan-to'g'ri havola → daraja tanlashga qaytaradi. 0-bosqichdagi eski
+  `ranglar` yulduzlari 1-darajaga hisoblanadi.
+- **Dizayn sayqali** alohida bosqich (ROADMAP). Hozircha funksional o'zgarishlarda dizaynni katta o'zgartirmaymiz.
 
 ## Ovozlarni keshlash rejasi (keyinroq)
 
@@ -179,3 +191,11 @@ Pipe (`| grep`, `| tail`) ishlatilsa, exit kodi pipe'ning oxirgi buyrug'iniki bo
   - Repo public: git tarixi maxfiy ma'lumotlarga tekshirildi (toza). LICENSE (MIT, kod) +
     LICENSE-CONTENT.md (kontent — barcha huquqlar himoyalangan), README.
     Sayt: https://shohruh459.github.io/Bilimli-bolajon/
+
+- **0.2.0 — Ranglar: darajalar, 2026-09-29**
+  - 3 daraja: 1) qizil, sariq, koʻk, yashil; 2) + toʻq sariq, binafsha; 3) + pushti, jigarrang, oq, qora.
+    3-darajada 4 ta predmet va 6 raund. Har darajaning yangi ranglari albatta chiqadi.
+  - Daraja tanlash ekrani (qulf + yig'ilgan yulduzlar), yakunda "N-daraja ochildi!".
+  - 12 ta yangi SVG predmet; o'yin rasmlari o'yin chunk'iga ko'chirildi (bosh bundle yengillashdi).
+  - 21 ta yangi ibora (jami 51), OVOZLAR.md avtomatik.
+  - Router: `#/oyin/<id>/<daraja>`; `GameApi.level/play`, `finish({ starKey, note })`.
