@@ -138,6 +138,20 @@ Node ≥ 22.18 (`gen-ovozlar.ts` TS'ni to'g'ridan-to'g'ri ishga tushiradi).
 
 Lokal sandboxda Playwright `/opt/pw-browsers/chromium` ni avtomatik ishlatadi; CI'da o'zi o'rnatadi.
 
+### Natijani tekshirish qoidasi
+
+Test/build/lint natijasi **faqat exit kodi bilan** baholanadi — `grep "passed"` bilan emas.
+Sabab: Vitest "56 passed" deb yozib, unhandled rejection tufayli exit 1 bilan yiqilgan edi;
+grep buni yashirgan va CI'da qizil bo'lgan.
+
+```bash
+npx vitest run > vt.log 2>&1; echo "exit=$?"   # 0 bo'lmasa — log'ni to'liq o'qi
+npm run build && npm run e2e                     # && zanjiri: birinchi xatoda to'xtaydi
+```
+
+Pipe (`| grep`, `| tail`) ishlatilsa, exit kodi pipe'ning oxirgi buyrug'iniki bo'ladi —
+`${PIPESTATUS[0]}` yoki `set -o pipefail` bilan asl kodni tekshir.
+
 ## Yangi o'yin qo'shish
 
 1. `src/games/<id>/logic.ts` — sof mantiq + `logic.test.ts`.
