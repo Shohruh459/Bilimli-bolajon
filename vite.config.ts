@@ -22,7 +22,7 @@ const CSP = [
 ].join('; ');
 
 export default defineConfig(({ command }) => ({
-  base: command === 'build' ? BASE_PATH : '/',
+  base: BASE_PATH,
   build: {
     target: 'es2020',
     modulePreload: { polyfill: false },
