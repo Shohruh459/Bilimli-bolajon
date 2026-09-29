@@ -3,6 +3,7 @@ import {
   addStar,
   getSettings,
   getStars,
+  getStarsTotal,
   onSettingsChange,
   resetProgress,
   updateSettings,
@@ -36,5 +37,20 @@ describe('storage', () => {
     expect(getStars('boshqa')).toBe(0);
     resetProgress();
     expect(getStars('ranglar')).toBe(0);
+  });
+});
+
+describe('getStarsTotal', () => {
+  beforeEach(() => localStorage.clear());
+
+  it('eski kalit va daraja kalitlarini jamlaydi, boshqa oʻyinlarni emas', () => {
+    addStar('ranglar');
+    addStar('ranglar.1');
+    addStar('ranglar.2');
+    addStar('ranglarx');
+    addStar('shakllar.1');
+    expect(getStarsTotal('ranglar')).toBe(3);
+    expect(getStarsTotal('shakllar')).toBe(1);
+    expect(getStarsTotal('yoq')).toBe(0);
   });
 });

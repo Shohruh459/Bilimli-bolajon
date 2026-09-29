@@ -1,14 +1,27 @@
 import type { AgeId } from '../content/ages';
+import type { PhraseKey } from '../content/phrases';
 import type { ArtId } from '../ui/art';
 import type { Scope } from './scope';
+
+/** O'yin yakunidagi qo'shimcha ma'lumot. */
+export interface FinishInfo {
+  /** Yulduz qaysi kalitga yoziladi (masalan "ranglar.2"). Default — o'yin id'si. */
+  readonly starKey?: string;
+  /** Yakuniy ekranda ko'rsatiladigan va aytiladigan xabar (masalan, yangi daraja ochildi). */
+  readonly note?: { readonly text: string; readonly phrase: PhraseKey };
+}
 
 /** O'yinga ilova beradigan imkoniyatlar. */
 export interface GameApi {
   readonly root: HTMLElement;
   readonly scope: Scope;
+  /** Route'dagi daraja (#/oyin/<id>/<daraja>); daraja tanlanmagan bo'lsa null. */
+  readonly level: number | null;
+  /** Darajani boshlash (route o'zgaradi → "orqaga" daraja tanlashga qaytaradi). */
+  play(level: number): void;
   /** O'yin tugadi → yulduz beriladi va yakuniy ekran ko'rsatiladi. */
-  finish(): void;
-  /** O'yindan chiqish (yosh menyusiga). */
+  finish(info?: FinishInfo): void;
+  /** O'yindan chiqish: darajadan — daraja tanlashga, aks holda yosh menyusiga. */
   exit(): void;
 }
 

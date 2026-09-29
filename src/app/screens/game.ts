@@ -1,6 +1,6 @@
 import { anim } from '../../engine/animate';
 import { finale } from '../../engine/feedback';
-import type { GameApi } from '../../engine/game';
+import type { FinishInfo, GameApi } from '../../engine/game';
 import { sfx } from '../../engine/sfx';
 import { addStar } from '../../engine/storage';
 import { sayAll } from '../../engine/voice';
@@ -11,10 +11,15 @@ import { ICONS } from '../../ui/icons';
 import type { ScreenCtx } from '../screen';
 
 /** O'yinni lazy yuklaydi va unga GameApi beradi. */
-export async function gameScreen({ root, scope, app }: ScreenCtx, id: string): Promise<void> {
+export async function gameScreen(
+  { root, scope, app }: ScreenCtx,
+  id: string,
+  level: number | null = null,
+): Promise<void> {
   const meta = findGame(id);
   if (!meta) return app.go({ name: 'home' });
-  const back = () => app.go({ name: 'age', age: meta.age });
+  const back = () =>
+    level === null ? app.go({ name: 'age', age: meta.age }) : app.go({ name: 'game', id });
 
   const loading = h('div', { class: 'loading', role: 'status' }, svg(ART.maskot));
   root.append(loading);
@@ -25,7 +30,7 @@ export async function gameScreen({ root, scope, app }: ScreenCtx, id: string): P
     factory = (await meta.load()).default;
   } catch (err) {
     console.error(err);
-    if (!scope.disposed) back();
+    if (!scope.disposed) app.go({ name: 'age', age: meta.age });
     return;
   }
   if (scope.disposed) return;
@@ -34,13 +39,16 @@ export async function gameScreen({ root, scope, app }: ScreenCtx, id: string): P
   const api: GameApi = {
     root,
     scope,
+    level,
     exit: back,
-    finish() {
-      const stars = addStar(meta.id);
+    play: (n) => app.go({ name: 'game', id, level: n }),
+    finish(info) {
+      const stars = addStar(info?.starKey ?? meta.id);
       root.replaceChildren();
       showFinish(
         root,
         stars,
+        info?.note,
         () => app.rerender(),
         back,
         (el, type, fn) => scope.on(el, type, fn),
@@ -53,6 +61,7 @@ export async function gameScreen({ root, scope, app }: ScreenCtx, id: string): P
 function showFinish(
   root: HTMLElement,
   stars: number,
+  note: FinishInfo['note'],
   replay: () => void,
   menu: () => void,
   on: (el: HTMLElement, type: 'click', fn: () => void) => void,
@@ -85,12 +94,13 @@ function showFinish(
       star,
       h('p', { class: 'finish__text' }, 'Barakalla!'),
       h('p', { class: 'finish__count' }, svg(ICONS.star), `× ${stars}`),
+      note ? h('p', { class: 'finish__note', 'data-testid': 'finish-note' }, note.text) : null,
       h('div', { class: 'finish__actions' }, toMenu, again),
     ),
   );
   anim.appear(star);
   finale();
-  void sayAll(['finish.hammasi', 'finish.yulduz']);
+  void sayAll(['finish.hammasi', 'finish.yulduz', ...(note ? [note.phrase] : [])]);
   on(again, 'click', () => {
     sfx.tap();
     replay();

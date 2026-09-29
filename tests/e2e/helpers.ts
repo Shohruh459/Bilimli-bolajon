@@ -47,3 +47,45 @@ export async function expectNoOverflow(page: Page): Promise<void> {
   expect(o.sw).toBeLessThanOrEqual(o.cw);
   expect(o.appBottom).toBeLessThanOrEqual(o.vh + 1);
 }
+
+/** Yulduzlarni oldindan yozib qo'yish (darajalarni ochish uchun). Har navigatsiyada qayta yoziladi. */
+export async function seedStars(page: Page, stars: Record<string, number>): Promise<void> {
+  await page.addInitScript((s) => {
+    localStorage.setItem('ilmli:v1:stars', JSON.stringify(s));
+  }, stars);
+}
+
+/** Ranglar o'yinida `rounds` ta raundni to'g'ri javob bilan o'tadi. */
+export async function playColorRounds(page: Page, rounds: number): Promise<void> {
+  const game = page.getByTestId('colors-game');
+  for (let round = 0; round < rounds; round++) {
+    await expect(game).toHaveAttribute('data-target', /.+/, { timeout: 10_000 });
+    const target = (await game.getAttribute('data-target'))!;
+    await page.locator(`.cf-option[data-color="${target}"]`).click();
+    await expect(page.locator('.cf-option.is-correct')).toHaveCount(1);
+    if (round < rounds - 1) {
+      // Keyingi raund: maqsad rang ketma-ket takrorlanmaydi.
+      await expect(game).not.toHaveAttribute('data-target', target, { timeout: 10_000 });
+    }
+  }
+  await expect(page.getByTestId('finish')).toBeVisible({ timeout: 10_000 });
+}
+
+/** Top bar markazidagi element (masalan, progress nuqtalari) tugmalar ustiga chiqmaydi. */
+export async function expectTopbarFits(page: Page): Promise<void> {
+  const r = await page
+    .locator('.topbar')
+    .first()
+    .evaluate((bar) => {
+      const [left, center, right] = [...bar.children].map((c) => c.getBoundingClientRect());
+      const inner = bar.querySelector('.topbar__center > *')?.getBoundingClientRect();
+      return {
+        l: left!.right,
+        r: right!.left,
+        a: inner?.left ?? center!.left,
+        b: inner?.right ?? center!.right,
+      };
+    });
+  expect(r.a).toBeGreaterThanOrEqual(r.l);
+  expect(r.b).toBeLessThanOrEqual(r.r);
+}

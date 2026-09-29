@@ -312,6 +312,16 @@
   color: var(--c-sun-deep);
 }
 
+.finish__note {
+  margin: -4px 0 20px;
+  padding: 10px 18px;
+  border-radius: var(--radius);
+  background: var(--c-grass);
+  color: var(--c-navy);
+  font-size: var(--fs-md);
+  font-weight: 900;
+}
+
 .finish__actions {
   display: flex;
   gap: 24px;

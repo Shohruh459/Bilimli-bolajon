@@ -1,7 +1,7 @@
 import { AGES, type AgeId } from '../../content/ages';
 import { anim } from '../../engine/animate';
 import { sfx } from '../../engine/sfx';
-import { getStars } from '../../engine/storage';
+import { getStarsTotal } from '../../engine/storage';
 import { say } from '../../engine/voice';
 import { gamesFor } from '../../games/registry';
 import { ART } from '../../ui/art';
@@ -56,7 +56,7 @@ export function ageScreen({ root, scope, app }: ScreenCtx, ageId: AgeId): void {
 
   const list = h('nav', { class: 'game-list', 'aria-label': 'Oʻyinlar' });
   for (const g of games) {
-    const stars = getStars(g.id);
+    const stars = getStarsTotal(g.id);
     const card = h(
       'button',
       { type: 'button', class: 'btn game-card', 'data-testid': `game-${g.id}` },

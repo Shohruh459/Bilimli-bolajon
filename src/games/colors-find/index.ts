@@ -1,32 +1,147 @@
 /**
- * 3–4 yosh: "Ranglarni topish".
- * Ovoz: "Qizil rangni top!" → 3 ta katta predmet → to'g'ri: maqtov + tafakkur, xato: "Yana urinib koʻr".
+ * 3–4 yosh: "Ranglarni topish" — 3 daraja.
+ *  #/oyin/ranglar      → daraja tanlash (yopiq darajalar qulf bilan)
+ *  #/oyin/ranglar/<n>  → o'yin: "Qizil rangni top!" → katta predmetlar → maqtov + tafakkur / "Yana urinib koʻr"
+ * Keyingi daraja oldingi darajada STARS_TO_UNLOCK ta yulduz yig'ilganda ochiladi (localStorage).
  * Namunaviy o'yin: yangi o'yinlar shu tuzilishni takrorlaydi.
  */
 import './colors.css';
-import { LEARN_COLORS } from '../../content/colors';
+import { COLOR_LEVELS, LEARN_COLORS, type ColorId } from '../../content/colors';
 import { anim } from '../../engine/animate';
 import { confetti } from '../../engine/confetti';
 import { celebrate, encourage } from '../../engine/feedback';
-import type { GameFactory } from '../../engine/game';
+import type { GameApi, GameFactory } from '../../engine/game';
 import { sfx } from '../../engine/sfx';
+import { getStars } from '../../engine/storage';
 import { preloadVoice, say, sayAll } from '../../engine/voice';
 import { iconButton } from '../../ui/button';
 import { h, svg } from '../../ui/dom';
-import { ART } from '../../ui/art';
+import { ICONS } from '../../ui/icons';
 import { topBar } from '../../ui/topbar';
-import { HINT_AFTER, isCorrect, makeRounds, type Item, type Round } from './logic';
+import { ITEM_ART } from './art';
+import {
+  GAME_ID,
+  getLevel,
+  HINT_AFTER,
+  isCorrect,
+  isUnlocked,
+  makeRounds,
+  STARS_TO_UNLOCK,
+  starKey,
+  starsNeeded,
+  unlocksNext,
+  type Item,
+  type Round,
+} from './logic';
 
 const BLOB =
   '<svg viewBox="0 0 64 64"><path d="M32 4c10 0 14 8 22 10s8 14 4 22-2 16-12 20-16 4-24 0S6 46 6 36s-4-18 4-24S22 4 32 4z" fill="currentColor"/></svg>';
 
-const colorsFind: GameFactory = async ({ root, scope, finish, exit }) => {
-  const rounds = makeRounds(Math.random);
+/** Har darajadagi yulduzlar. 0-bosqichdagi eski "ranglar" yulduzlari 1-darajaga qo'shiladi. */
+function readLevelStars(): number[] {
+  return COLOR_LEVELS.map(
+    (l) => getStars(starKey(l.level)) + (l.level === 1 ? getStars(GAME_ID) : 0),
+  );
+}
+
+function colorDot(c: ColorId): HTMLElement {
+  const dot = h('span', { class: `cf-dot${LEARN_COLORS[c].light ? ' is-light' : ''}` });
+  dot.style.background = LEARN_COLORS[c].hex;
+  return dot;
+}
+
+const colorsFind: GameFactory = (api) => {
+  if (api.level === null) return showLevels(api);
+  if (!isUnlocked(api.level, readLevelStars())) return api.exit(); // yopiq → daraja tanlashga
+  return play(api, api.level);
+};
+
+// --- Daraja tanlash ---
+function showLevels({ root, scope, exit, play: start }: GameApi): void {
+  const stars = readLevelStars();
+  const back = iconButton('back', 'Orqaga');
+  scope.on(back, 'click', () => {
+    sfx.tap();
+    exit();
+  });
+
+  const list = h('nav', { class: 'cf-levels', 'aria-label': 'Darajalar' });
+  for (const lvl of COLOR_LEVELS) {
+    const open = isUnlocked(lvl.level, stars);
+    const status = open
+      ? h(
+          'span',
+          { class: 'cf-level__stars', 'aria-label': `${stars[lvl.level - 1]} ta yulduzcha` },
+          svg(ICONS.star),
+          String(stars[lvl.level - 1] ?? 0),
+        )
+      : h(
+          'span',
+          {
+            class: 'cf-level__lock',
+            'aria-label': `Yopiq: yana ${starsNeeded(lvl.level, stars)} ta yulduzcha`,
+          },
+          svg(ICONS.lock),
+          h(
+            'span',
+            { class: 'cf-level__need' },
+            ...Array.from({ length: STARS_TO_UNLOCK }, (_, i) =>
+              svg(
+                ICONS.star,
+                i < STARS_TO_UNLOCK - starsNeeded(lvl.level, stars) ? 'is-got' : 'is-empty',
+              ),
+            ),
+          ),
+        );
+    const card = h(
+      'button',
+      {
+        type: 'button',
+        class: `btn cf-level${open ? '' : ' is-locked'}`,
+        'data-testid': `level-${lvl.level}`,
+        'data-open': String(open),
+        'aria-label': `${lvl.level}-daraja${open ? '' : ' (yopiq)'}`,
+      },
+      h('span', { class: 'cf-level__num' }, String(lvl.level)),
+      h('span', { class: 'cf-level__dots' }, ...lvl.fresh.map(colorDot)),
+      status,
+    );
+    scope.on(card, 'click', () => {
+      if (open) {
+        sfx.tap();
+        start(lvl.level);
+        return;
+      }
+      // Yopiq daraja: urishmaymiz — qancha yulduz kerakligini ko'rsatamiz.
+      sfx.wrong();
+      anim.shake(card.firstElementChild as Element);
+      const need = card.querySelector('.cf-level__need');
+      if (need) anim.pop(need);
+      void say('ranglar.daraja-yopiq');
+    });
+    list.append(card);
+  }
+
+  root.append(
+    h(
+      'section',
+      { class: 'screen cf-pick', 'data-testid': 'colors-levels' },
+      topBar(back, h('h1', { class: 'screen-title' }, 'Ranglar'), null),
+      list,
+    ),
+  );
+  [...list.children].forEach((el, i) => anim.appear(el.firstElementChild as Element, 90 * i));
+  void say('ranglar.daraja-tanla');
+}
+
+// --- O'yin ---
+async function play({ root, scope, finish, exit }: GameApi, levelNo: number): Promise<void> {
+  const level = getLevel(levelNo);
+  const rounds = makeRounds(level, Math.random);
   let index = 0;
   let wrong = 0;
   let locked = true;
 
-  // --- Karkas ---
   const exitBtn = iconButton('back', 'Orqaga');
   const repeatBtn = iconButton('speaker', 'Yana eshitish', 'cf-repeat');
   const dots = h('div', {
@@ -40,10 +155,10 @@ const colorsFind: GameFactory = async ({ root, scope, finish, exit }) => {
   const blob = h('span', { class: 'cf-blob moves' }, svg(BLOB));
   const word = h('span', { class: 'cf-word' });
   const ask = h('div', { class: 'cf-ask', 'aria-live': 'polite' }, blob, word);
-  const options = h('div', { class: 'cf-options' });
+  const options = h('div', { class: `cf-options cf-options--${level.options}` });
   const stage = h(
     'section',
-    { class: 'screen cf', 'data-testid': 'colors-game' },
+    { class: 'screen cf', 'data-testid': 'colors-game', 'data-level': levelNo },
     topBar(exitBtn, dots, repeatBtn),
     ask,
     options,
@@ -60,13 +175,13 @@ const colorsFind: GameFactory = async ({ root, scope, finish, exit }) => {
     if (r) void say(LEARN_COLORS[r.target].ask);
   });
 
-  // --- Raund ---
   function showRound(r: Round): void {
     confetti().clear(); // eski zarrachalar yangi raundga o'tmasin
     wrong = 0;
     const color = LEARN_COLORS[r.target];
     stage.dataset.target = r.target;
     blob.style.color = color.hex;
+    blob.classList.toggle('is-light', !!color.light);
     word.textContent = color.name;
     anim.pop(blob);
 
@@ -78,7 +193,7 @@ const colorsFind: GameFactory = async ({ root, scope, finish, exit }) => {
 
     options.replaceChildren(
       ...r.options.map((item, i) => {
-        const art = h('span', { class: 'art moves' }, svg(ART[item.art]));
+        const art = h('span', { class: 'art moves' }, svg(ITEM_ART[item.art]));
         const btn = h(
           'button',
           {
@@ -106,6 +221,21 @@ const colorsFind: GameFactory = async ({ root, scope, finish, exit }) => {
     void say(color.ask);
   }
 
+  function done(): void {
+    const unlocked = unlocksNext(levelNo, readLevelStars());
+    finish({
+      starKey: starKey(levelNo),
+      ...(unlocked
+        ? {
+            note: {
+              text: `${levelNo + 1}-daraja ochildi!`,
+              phrase: 'ranglar.daraja-ochildi' as const,
+            },
+          }
+        : {}),
+    });
+  }
+
   async function choose(r: Round, item: Item, btn: HTMLElement, art: Element): Promise<void> {
     if (locked || btn.classList.contains('is-busy')) return;
 
@@ -116,7 +246,7 @@ const colorsFind: GameFactory = async ({ root, scope, finish, exit }) => {
       await celebrate(art, [item.tafakkur]);
       if (scope.disposed) return;
       index++;
-      if (index >= rounds.length) return finish();
+      if (index >= rounds.length) return done();
       await scope.sleep(250);
       if (!scope.disposed) showRound(rounds[index] as Round);
       return;
@@ -139,6 +269,6 @@ const colorsFind: GameFactory = async ({ root, scope, finish, exit }) => {
 
   await sayAll(['ranglar.intro']);
   if (!scope.disposed) showRound(rounds[0] as Round);
-};
+}
 
 export default colorsFind;

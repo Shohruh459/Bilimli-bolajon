@@ -46,6 +46,29 @@ export const PHRASES = {
   'ranglar.top.sariq': { text: 'Sariq rangni top!', tone: 'aniq, rang soʻzini urgʻu bilan' },
   'ranglar.top.kok': { text: 'Koʻk rangni top!', tone: 'aniq, rang soʻzini urgʻu bilan' },
   'ranglar.top.yashil': { text: 'Yashil rangni top!', tone: 'aniq, rang soʻzini urgʻu bilan' },
+  'ranglar.top.toq-sariq': {
+    text: 'Toʻq sariq rangni top!',
+    tone: 'aniq, rang soʻzini urgʻu bilan',
+  },
+  'ranglar.top.binafsha': { text: 'Binafsha rangni top!', tone: 'aniq, rang soʻzini urgʻu bilan' },
+  'ranglar.top.pushti': { text: 'Pushti rangni top!', tone: 'aniq, rang soʻzini urgʻu bilan' },
+  'ranglar.top.jigarrang': {
+    text: 'Jigarrang rangni top!',
+    tone: 'aniq, rang soʻzini urgʻu bilan',
+  },
+  'ranglar.top.oq': { text: 'Oq rangni top!', tone: 'aniq, rang soʻzini urgʻu bilan' },
+  'ranglar.top.qora': { text: 'Qora rangni top!', tone: 'aniq, rang soʻzini urgʻu bilan' },
+
+  // --- Ranglar: darajalar ---
+  'ranglar.daraja-tanla': { text: 'Qaysi darajani oʻynaymiz?', tone: 'qiziqtiruvchi' },
+  'ranglar.daraja-yopiq': {
+    text: 'Bu daraja hali yopiq. Yana yulduzcha yigʻ, keyin ochiladi!',
+    tone: 'mayin, dalda',
+  },
+  'ranglar.daraja-ochildi': {
+    text: 'Yangi daraja ochildi! Yangi ranglar seni kutmoqda!',
+    tone: 'bayramona',
+  },
 
   // --- Tafakkur (yumshoq kuzatuv iboralari) ---
   'tafakkur.olma': { text: 'Qara, olma qanday chiroyli qizil!', tone: 'hayratli' },
@@ -56,6 +79,18 @@ export const PHRASES = {
   'tafakkur.shar': { text: 'Koʻk shar osmonga uchadi!', tone: 'quvnoq' },
   'tafakkur.barg': { text: 'Yashil barg — daraxtning kiyimi!', tone: 'mayin' },
   'tafakkur.qurbaqa': { text: 'Yashil qurbaqa sakraydi: vaq-vaq!', tone: 'oʻyinqaroq' },
+  'tafakkur.apelsin': { text: 'Apelsin toʻq sariq va shirali!', tone: 'iliq' },
+  'tafakkur.sabzi': { text: 'Sabzi toʻq sariq, uni quyoncha yaxshi koʻradi!', tone: 'quvnoq' },
+  'tafakkur.uzum': { text: 'Qara, uzum qanday binafsha!', tone: 'hayratli' },
+  'tafakkur.baqlajon': { text: 'Baqlajon binafsha rangda!', tone: 'iliq' },
+  'tafakkur.gul': { text: 'Pushti gul qanday chiroyli!', tone: 'hayratli' },
+  'tafakkur.muzqaymoq': { text: 'Pushti muzqaymoq — sovuq va mazali!', tone: 'quvnoq' },
+  'tafakkur.ayiqcha': { text: 'Jigarrang ayiqcha — yumshoq doʻstimiz!', tone: 'mayin' },
+  'tafakkur.qoziqorin': { text: 'Qoʻziqorinning qalpoqchasi jigarrang!', tone: 'qiziqtiruvchi' },
+  'tafakkur.qorodam': { text: 'Qor odam oppoq! Uni qishda yasaymiz.', tone: 'quvnoq' },
+  'tafakkur.bulut': { text: 'Oppoq bulut osmonda suzadi!', tone: 'mayin' },
+  'tafakkur.qarga': { text: 'Qargʻa qop-qora: qag-qag!', tone: 'oʻyinqaroq' },
+  'tafakkur.mushuk': { text: 'Qora mushukcha: miyov!', tone: 'oʻyinqaroq' },
 } as const satisfies Record<string, Phrase>;
 
 export type PhraseKey = keyof typeof PHRASES;
