@@ -4,7 +4,7 @@ import { existsSync, readdirSync, readFileSync } from 'node:fs';
 
 const dir = 'screenshots';
 const files = readdirSync(dir).filter((f) => f.endsWith('.png') && !f.startsWith('_'));
-const devices = [...new Set(files.map((f) => f.split('-0')[0]))];
+const devices = [...new Set(files.map((f) => f.replace(/-\d\d.*$/, '')))];
 const local = '/opt/pw-browsers/chromium';
 const browser = await chromium.launch(existsSync(local) ? { executablePath: local } : {});
 const page = await browser.newPage({ viewport: { width: 1800, height: 900 } });

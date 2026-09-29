@@ -21,6 +21,7 @@ test('tashqi soʻrov va CSP buzilishi yoʻq', async ({ page, baseURL }) => {
   await start(page);
   await page.getByTestId('age-3-4').click();
   await page.getByTestId('game-ranglar').click();
+  await page.getByTestId('level-1').click();
   await expect(page.getByTestId('colors-game')).toHaveAttribute('data-target', /.+/);
 
   expect(external).toEqual([]);
@@ -80,6 +81,7 @@ test('offline: SW oʻrnatilgach internet yoʻq holda ishlaydi', async ({ page, c
   await page.getByTestId('start').click();
   await page.getByTestId('age-3-4').click();
   await page.getByTestId('game-ranglar').click(); // lazy chunk ham keshdan
+  await page.getByTestId('level-1').click();
   await expect(page.getByTestId('colors-game')).toHaveAttribute('data-target', /.+/);
   await context.setOffline(false);
 });
@@ -99,6 +101,7 @@ test('production build: dev yozuvi ("🔇 kalit — matn") hech qachon chiqmaydi
   await start(page); // salomlashish + "Yoshingni tanla" aytiladi
   await page.getByTestId('age-3-4').click();
   await page.getByTestId('game-ranglar').click();
+  await page.getByTestId('level-1').click();
   const game = page.getByTestId('colors-game');
   await expect(game).toHaveAttribute('data-target', /.+/);
   const target = (await game.getAttribute('data-target'))!;
