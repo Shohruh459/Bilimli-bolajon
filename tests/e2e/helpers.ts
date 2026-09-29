@@ -55,20 +55,33 @@ export async function seedStars(page: Page, stars: Record<string, number>): Prom
   }, stars);
 }
 
-/** Ranglar o'yinida `rounds` ta raundni to'g'ri javob bilan o'tadi. */
-export async function playColorRounds(page: Page, rounds: number): Promise<void> {
-  const game = page.getByTestId('colors-game');
+/** "Topish" o'yinida `rounds` ta raundni to'g'ri javob bilan o'tadi. */
+export async function playFindRounds(
+  page: Page,
+  rounds: number,
+  game = 'colors-game',
+  attr = 'color',
+): Promise<string[]> {
+  const stage = page.getByTestId(game);
+  const targets: string[] = [];
   for (let round = 0; round < rounds; round++) {
-    await expect(game).toHaveAttribute('data-target', /.+/, { timeout: 10_000 });
-    const target = (await game.getAttribute('data-target'))!;
-    await page.locator(`.find-option[data-color="${target}"]`).click();
+    await expect(stage).toHaveAttribute('data-target', /.+/, { timeout: 10_000 });
+    const target = (await stage.getAttribute('data-target'))!;
+    targets.push(target);
+    await page.locator(`.find-option[data-${attr}="${target}"]`).click();
     await expect(page.locator('.find-option.is-correct')).toHaveCount(1);
     if (round < rounds - 1) {
-      // Keyingi raund: maqsad rang ketma-ket takrorlanmaydi.
-      await expect(game).not.toHaveAttribute('data-target', target, { timeout: 10_000 });
+      // Keyingi raund: maqsad ketma-ket takrorlanmaydi.
+      await expect(stage).not.toHaveAttribute('data-target', target, { timeout: 10_000 });
     }
   }
   await expect(page.getByTestId('finish')).toBeVisible({ timeout: 10_000 });
+  return targets;
+}
+
+/** Ranglar o'yinida `rounds` ta raundni to'g'ri javob bilan o'tadi. */
+export async function playColorRounds(page: Page, rounds: number): Promise<void> {
+  await playFindRounds(page, rounds);
 }
 
 /** Top bar markazidagi element (masalan, progress nuqtalari) tugmalar ustiga chiqmaydi. */
