@@ -6,3 +6,5 @@ import { installChildGuard } from './engine/guard';
 installChildGuard();
 const root = document.getElementById('app');
 if (root) root.textContent = 'Ilmli Bolajon — oʻyin, gʻoya';
+import { initPwa } from './engine/pwa';
+initPwa();
