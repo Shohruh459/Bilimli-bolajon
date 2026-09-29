@@ -33,6 +33,13 @@ export const PHRASES = {
   'encourage.uddalaysan': { text: 'Sen albatta uddalaysan!', tone: 'ishonch bilan' },
   'encourage.diqqat': { text: 'Diqqat bilan qara!', tone: 'mayin, sekin' },
 
+  // --- Darajalar (hamma darajali o'yinlar uchun umumiy) ---
+  'daraja.tanla': { text: 'Qaysi darajani oʻynaymiz?', tone: 'qiziqtiruvchi' },
+  'daraja.yopiq': {
+    text: 'Bu daraja hali yopiq. Yana yulduzcha yigʻ, keyin ochiladi!',
+    tone: 'mayin, dalda',
+  },
+
   // --- Yordam (2 marta xato boʻlsa) ---
   'hint.mana': { text: 'Qara, u mana shu yerda!', tone: 'mayin, sirli' },
 
@@ -60,11 +67,6 @@ export const PHRASES = {
   'ranglar.top.qora': { text: 'Qora rangni top!', tone: 'aniq, rang soʻzini urgʻu bilan' },
 
   // --- Ranglar: darajalar ---
-  'ranglar.daraja-tanla': { text: 'Qaysi darajani oʻynaymiz?', tone: 'qiziqtiruvchi' },
-  'ranglar.daraja-yopiq': {
-    text: 'Bu daraja hali yopiq. Yana yulduzcha yigʻ, keyin ochiladi!',
-    tone: 'mayin, dalda',
-  },
   'ranglar.daraja-ochildi': {
     text: 'Yangi daraja ochildi! Yangi ranglar seni kutmoqda!',
     tone: 'bayramona',

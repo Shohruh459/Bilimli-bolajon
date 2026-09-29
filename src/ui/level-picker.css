@@ -1,0 +1,101 @@
+/* Umumiy daraja tanlash ekrani (ui/level-picker.ts) */
+.lp-levels {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--gap);
+  padding-bottom: var(--edge);
+}
+
+.lp-level {
+  --btn-edge: var(--age-3-4-deep);
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  min-height: 116px;
+  padding: 12px 16px;
+  border: 5px solid var(--age-3-4);
+}
+
+.lp-level__num {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--age-3-4);
+  font-size: 2.4rem;
+  font-weight: 1000;
+  line-height: 1;
+}
+
+.lp-level__preview {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+}
+
+.lp-level__preview svg {
+  width: 24px;
+  height: 24px;
+}
+
+.lp-level__stars,
+.lp-level__lock {
+  flex: none;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  min-width: 64px;
+  color: var(--c-navy-soft);
+  font-size: 1.2rem;
+}
+
+.lp-level__stars svg {
+  width: 34px;
+  height: 34px;
+  color: var(--c-sun-deep);
+}
+
+.lp-level__lock > svg {
+  width: 34px;
+  height: 34px;
+}
+
+.lp-level__need {
+  display: flex;
+  gap: 1px;
+}
+
+.lp-level__need svg {
+  width: 20px;
+  height: 20px;
+}
+
+.lp-level__need .is-got {
+  color: var(--c-sun-deep);
+}
+
+.lp-level__need .is-empty {
+  color: var(--c-line);
+}
+
+.lp-level.is-locked {
+  --btn-edge: var(--c-line);
+  border-color: var(--c-line);
+  background: #fbf6ea;
+}
+
+.lp-level.is-locked .lp-level__num {
+  background: var(--c-line);
+  color: var(--c-navy-soft);
+}
+
+.lp-level.is-locked .lp-level__preview {
+  opacity: 0.45;
+}

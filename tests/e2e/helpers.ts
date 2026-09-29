@@ -61,8 +61,8 @@ export async function playColorRounds(page: Page, rounds: number): Promise<void>
   for (let round = 0; round < rounds; round++) {
     await expect(game).toHaveAttribute('data-target', /.+/, { timeout: 10_000 });
     const target = (await game.getAttribute('data-target'))!;
-    await page.locator(`.cf-option[data-color="${target}"]`).click();
-    await expect(page.locator('.cf-option.is-correct')).toHaveCount(1);
+    await page.locator(`.find-option[data-color="${target}"]`).click();
+    await expect(page.locator('.find-option.is-correct')).toHaveCount(1);
     if (round < rounds - 1) {
       // Keyingi raund: maqsad rang ketma-ket takrorlanmaydi.
       await expect(game).not.toHaveAttribute('data-target', target, { timeout: 10_000 });

@@ -38,6 +38,9 @@
 | `encourage.hechqisi.mp3`     | Hechqisi yoʻq, yana bir bor!                               | mayin                          | ⬜    |
 | `encourage.uddalaysan.mp3`   | Sen albatta uddalaysan!                                    | ishonch bilan                  | ⬜    |
 | `encourage.diqqat.mp3`       | Diqqat bilan qara!                                         | mayin, sekin                   | ⬜    |
+| **daraja**                   |                                                            |                                |       |
+| `daraja.tanla.mp3`           | Qaysi darajani oʻynaymiz?                                  | qiziqtiruvchi                  | ⬜    |
+| `daraja.yopiq.mp3`           | Bu daraja hali yopiq. Yana yulduzcha yigʻ, keyin ochiladi! | mayin, dalda                   | ⬜    |
 | **hint**                     |                                                            |                                |       |
 | `hint.mana.mp3`              | Qara, u mana shu yerda!                                    | mayin, sirli                   | ⬜    |
 | **finish**                   |                                                            |                                |       |
@@ -55,8 +58,6 @@
 | `ranglar.top.jigarrang.mp3`  | Jigarrang rangni top!                                      | aniq, rang soʻzini urgʻu bilan | ⬜    |
 | `ranglar.top.oq.mp3`         | Oq rangni top!                                             | aniq, rang soʻzini urgʻu bilan | ⬜    |
 | `ranglar.top.qora.mp3`       | Qora rangni top!                                           | aniq, rang soʻzini urgʻu bilan | ⬜    |
-| `ranglar.daraja-tanla.mp3`   | Qaysi darajani oʻynaymiz?                                  | qiziqtiruvchi                  | ⬜    |
-| `ranglar.daraja-yopiq.mp3`   | Bu daraja hali yopiq. Yana yulduzcha yigʻ, keyin ochiladi! | mayin, dalda                   | ⬜    |
 | `ranglar.daraja-ochildi.mp3` | Yangi daraja ochildi! Yangi ranglar seni kutmoqda!         | bayramona                      | ⬜    |
 | **tafakkur**                 |                                                            |                                |       |
 | `tafakkur.olma.mp3`          | Qara, olma qanday chiroyli qizil!                          | hayratli                       | ⬜    |
