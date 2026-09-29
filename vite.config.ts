@@ -1,5 +1,5 @@
 import { defineConfig } from 'vitest/config';
-import { APP_NAME, BASE_PATH } from './site.config';
+import { APP_NAME, BASE_PATH } from './site.config.ts';
 
 export default defineConfig(({ command }) => ({
   base: command === 'build' ? BASE_PATH : '/',
