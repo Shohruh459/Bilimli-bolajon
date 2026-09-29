@@ -25,6 +25,9 @@ Yosh guruhlari: **3–4**, **5**, **6–7** va **Diniy bo'lim** (ota-ona bilan b
 8. Umumiy o'yinlarda diniy matn yo'q — faqat tafakkurga undovchi yumshoq iboralar.
 9. Bola himoyasi: pinch-zoom, long-press menyu, matn belgilash, pull-to-refresh o'chirilgan;
    `orientation: portrait`. Sozlamalar faqat **ota-ona darvozasi** (3 soniya bosib turish) orqali.
+10. **Litsenziya:** kod — MIT (`LICENSE`). Ovozlar, SVG rasmlar/ikonalar, kontent matnlari, nom va
+    maskot — barcha huquqlar himoyalangan (`LICENSE-CONTENT.md`). Yangi kontent turi qo'shilsa,
+    `LICENSE-CONTENT.md` jadvalini yangila. Repo **public** — hech qachon token/kalit/.env commit qilinmaydi.
 
 ## Dizayn tokenlari (`src/styles/tokens.css`)
 
@@ -173,3 +176,6 @@ Pipe (`| grep`, `| tail`) ishlatilsa, exit kodi pipe'ning oxirgi buyrug'iniki bo
   - O'yin: 3–4 yosh "Ranglarni topish" (5 raund, 4 rang, 8 SVG predmet, tafakkur iboralari).
   - 56 unit test, 12×2 e2e test (Pixel 5, 360×640). Bosh JS 11 KB gzip.
   - CI (lint, typecheck, unit, OVOZLAR sinxron, build, e2e) + GitHub Pages deploy.
+  - Repo public: git tarixi maxfiy ma'lumotlarga tekshirildi (toza). LICENSE (MIT, kod) +
+    LICENSE-CONTENT.md (kontent — barcha huquqlar himoyalangan), README.
+    Sayt: https://shohruh459.github.io/Bilimli-bolajon/
