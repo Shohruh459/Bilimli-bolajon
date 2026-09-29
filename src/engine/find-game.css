@@ -22,6 +22,11 @@
   letter-spacing: -0.5px;
 }
 
+.find-word.is-long {
+  font-size: var(--fs-lg);
+  line-height: 1.1;
+}
+
 .find-options {
   flex: 1;
   min-height: 0;

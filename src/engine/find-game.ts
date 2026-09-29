@@ -141,6 +141,8 @@ export function createFindGame<C extends string, A extends string>(
       stage.dataset.target = r.target;
       swatch.replaceChildren(svg(cat.swatch));
       word.textContent = cat.name;
+      // Uzun nomlar ("Toʻgʻri toʻrtburchak") kichik ekranga sig'sin.
+      word.classList.toggle('is-long', cat.name.length > 8);
       anim.pop(swatch);
 
       [...dots.children].forEach((d, i) => {
