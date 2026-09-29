@@ -2,6 +2,7 @@
  * Ota-ona darvozasi: tugmani 3 soniya bosib turish kerak. Bola tasodifan bosib qo'ysa — hech narsa bo'lmaydi.
  * Bosib turilganda halqa to'ladi; qo'yib yuborilsa — qaytadan.
  */
+import { run } from '../engine/animate';
 import type { Scope } from '../engine/scope';
 import { h, svg } from './dom';
 import { ICONS } from './icons';
@@ -47,13 +48,10 @@ export function parentGateButton(scope: Scope, onPass: () => void, holdMs = HOLD
     e.preventDefault();
     cancel();
     wrap.classList.add('is-holding');
-    fill =
-      typeof circle.animate === 'function'
-        ? circle.animate([{ strokeDashoffset: C }, { strokeDashoffset: 0 }], {
-            duration: holdMs,
-            fill: 'forwards',
-          })
-        : null;
+    fill = run(circle, [{ strokeDashoffset: C }, { strokeDashoffset: 0 }], {
+      duration: holdMs,
+      easing: 'linear',
+    });
     timer = window.setTimeout(() => {
       timer = 0;
       wrap.classList.remove('is-holding');

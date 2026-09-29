@@ -19,7 +19,10 @@ export function run(
 ): Animation | null {
   if (typeof el.animate !== 'function') return null;
   for (const a of el.getAnimations()) a.cancel();
-  return el.animate(keyframes, { fill: 'forwards', easing: 'ease-out', ...options });
+  const a = el.animate(keyframes, { fill: 'forwards', easing: 'ease-out', ...options });
+  // cancel() `finished` ni AbortError bilan reject qiladi — bu kutilgan holat, unhandled bo'lmasin.
+  a.finished.catch(() => undefined);
+  return a;
 }
 
 export function finished(a: Animation | null): Promise<void> {
