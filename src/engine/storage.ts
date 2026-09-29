@@ -66,6 +66,14 @@ export function getStars(gameId: string): number {
   return read<Stars>('stars', {})[gameId] ?? 0;
 }
 
+/** O'yinning barcha yulduzlari: "ranglar" va "ranglar.1", "ranglar.2", ... kalitlari yig'indisi. */
+export function getStarsTotal(gameId: string): number {
+  const all = read<Stars>('stars', {});
+  return Object.entries(all)
+    .filter(([k]) => k === gameId || k.startsWith(`${gameId}.`))
+    .reduce((sum, [, v]) => sum + (Number(v) || 0), 0);
+}
+
 export function addStar(gameId: string): number {
   const all = read<Stars>('stars', {});
   all[gameId] = (all[gameId] ?? 0) + 1;

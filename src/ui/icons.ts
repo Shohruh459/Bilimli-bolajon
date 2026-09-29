@@ -14,6 +14,9 @@ export const ICONS = {
   play: '<svg viewBox="0 0 48 48"><path d="M16 9.5v29a2 2 0 0 0 3 1.7l23-14.5a2 2 0 0 0 0-3.4L19 7.8a2 2 0 0 0-3 1.7z" fill="currentColor"/></svg>',
   star: '<svg viewBox="0 0 48 48"><path d="M24 4.5l5.9 12 13.2 1.9-9.6 9.3 2.3 13.1L24 34.6l-11.8 6.2 2.3-13.1-9.6-9.3 13.2-1.9z" fill="currentColor" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/></svg>',
   refresh: wrap('<path d="M38 24a14 14 0 1 1-4.1-9.9"/><path d="M36 6v9h-9"/>'),
+  lock: wrap(
+    '<rect x="10" y="21" width="28" height="21" rx="5" fill="currentColor"/><path d="M16 21v-6a8 8 0 0 1 16 0v6"/>',
+  ),
   soundOn: wrap(
     '<path d="M8 19v10h8l10 8V11l-10 8z" fill="currentColor"/><path d="M33 17a10 10 0 0 1 0 14"/>',
   ),
