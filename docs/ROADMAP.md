@@ -4,14 +4,19 @@
 
 - [x] Vite + TypeScript skeleti, ESLint, Prettier
 - [x] CLAUDE.md, ROADMAP, DINIY-MATNLAR
-- [ ] OVOZLAR.md (phrases.ts dan avtomatik)
-- [ ] Dizayn tokenlari, Nunito (self-host), bola himoyasi (zoom/long-press/scroll)
-- [ ] PWA: manifest (portrait), service worker, ikonalar, CSP `<meta>`
-- [ ] Engine: audio unlock, voice (fayl → uz TTS → jim), sfx, animate, confetti, feedback, storage
-- [ ] Router, "Boshlash ▶" ekrani, yosh tanlash, ota-ona darvozasi + sozlamalar
-- [ ] O'yin: 3–4 yosh "Ranglarni topish"
-- [ ] Unit testlar (Vitest) + e2e (Playwright, mobil) + skrinshotlar
-- [ ] GitHub Actions: lint + test + build + e2e; GitHub Pages deploy
+- [x] OVOZLAR.md (phrases.ts dan avtomatik)
+- [x] Dizayn tokenlari, Nunito (self-host), bola himoyasi (zoom/long-press/scroll)
+- [x] PWA: manifest (portrait), service worker, ikonalar, CSP `<meta>`
+- [x] Engine: audio unlock, voice (fayl → uz TTS → jim), sfx, animate, confetti, feedback, storage
+- [x] Router, "Boshlash ▶" ekrani, yosh tanlash, ota-ona darvozasi + sozlamalar
+- [x] O'yin: 3–4 yosh "Ranglarni topish"
+- [x] Unit testlar (Vitest) + e2e (Playwright, mobil) + skrinshotlar
+- [x] GitHub Actions: lint + test + build + e2e; GitHub Pages deploy
+
+**Keyingi qadamlar (0-bosqichdan qolgan):**
+
+- [ ] Haqiqiy arzon Android telefonda sinash (FPS, ovoz unlock, o'rnatish)
+- [ ] Birinchi ovoz yozuvlari (docs/OVOZLAR.md, 30 ta)
 
 ## 1-bosqich — 3–4 yosh
 
