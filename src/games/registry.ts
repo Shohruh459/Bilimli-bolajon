@@ -16,6 +16,13 @@ export const GAMES: readonly GameMeta[] = [
     art: 'shakllar',
     load: () => import('./shapes-find/index'),
   },
+  {
+    id: 'hayvonlar',
+    age: '3-4',
+    title: 'Hayvonlar',
+    art: 'hayvonlar',
+    load: () => import('./animals/index'),
+  },
 ];
 
 export function gamesFor(age: AgeId): GameMeta[] {

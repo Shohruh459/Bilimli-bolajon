@@ -7,3 +7,5 @@ playwright-report/
 screenshots/
 *.log
 .DS_Store
+sounds/raw/
+__pycache__/

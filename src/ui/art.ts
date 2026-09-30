@@ -44,6 +44,18 @@ export const ART = {
      <rect x="42" y="62" width="48" height="48" rx="4" fill="#6BCB77"/>`,
   ),
 
+  /** O'yin kartasi: Hayvonlar (sigir boshi) */
+  hayvonlar: svg(
+    `<path d="M26 34q-10-14-4-24M94 34q10-14 4-24" stroke="#D7CCC8" stroke-width="7" fill="none" stroke-linecap="round"/>
+     <ellipse cx="22" cy="46" rx="14" ry="8" fill="#fff" stroke="${NAVY}" stroke-width="4" transform="rotate(-20 22 46)"/>
+     <ellipse cx="98" cy="46" rx="14" ry="8" fill="#fff" stroke="${NAVY}" stroke-width="4" transform="rotate(20 98 46)"/>
+     <rect x="28" y="24" width="64" height="74" rx="30" fill="#fff" stroke="${NAVY}" stroke-width="4"/>
+     <path d="M40 30c10 0 14 12 6 18s-16-2-14-10c1-4 4-8 8-8z" fill="${NAVY}"/>
+     <ellipse cx="60" cy="82" rx="28" ry="18" fill="#F8A5B5" stroke="${NAVY}" stroke-width="4"/>
+     <circle cx="50" cy="82" r="4" fill="${NAVY}"/><circle cx="70" cy="82" r="4" fill="${NAVY}"/>
+     <circle cx="46" cy="54" r="5" fill="${NAVY}"/><circle cx="74" cy="54" r="5" fill="${NAVY}"/>`,
+  ),
+
   /** Yosh kartalari uchun */
   koptok: svg(
     `<circle cx="60" cy="60" r="42" fill="#fff"/>
