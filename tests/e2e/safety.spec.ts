@@ -105,8 +105,8 @@ test('production build: dev yozuvi ("🔇 kalit — matn") hech qachon chiqmaydi
   const game = page.getByTestId('colors-game');
   await expect(game).toHaveAttribute('data-target', /.+/);
   const target = (await game.getAttribute('data-target'))!;
-  await page.locator(`.cf-option:not([data-color="${target}"])`).first().click(); // ragʻbat
-  await page.locator(`.cf-option[data-color="${target}"]`).click(); // maqtov + tafakkur
+  await page.locator(`.find-option:not([data-color="${target}"])`).first().click(); // ragʻbat
+  await page.locator(`.find-option[data-color="${target}"]`).click(); // maqtov + tafakkur
   await page.waitForTimeout(1500);
 
   expect(

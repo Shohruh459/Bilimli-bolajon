@@ -93,12 +93,12 @@ test.describe('Ranglarni topish', () => {
 
     // Xato: shu raundda qolamiz, variantlar yo'qolmaydi.
     const target = (await game.getAttribute('data-target'))!;
-    await page.locator(`.cf-option:not([data-color="${target}"])`).first().click();
+    await page.locator(`.find-option:not([data-color="${target}"])`).first().click();
     await page.waitForTimeout(300);
     await expect(game).toHaveAttribute('data-target', target);
-    await expect(page.locator('.cf-option')).toHaveCount(3);
+    await expect(page.locator('.find-option')).toHaveCount(3);
     for (const color of await page
-      .locator('.cf-option')
+      .locator('.find-option')
       .evaluateAll((els) => els.map((e) => e.getAttribute('data-color')))) {
       expect(['qizil', 'sariq', 'kok', 'yashil']).toContain(color);
     }
@@ -143,7 +143,7 @@ test.describe('Ranglarni topish', () => {
     await start(page, '#/oyin/ranglar/2');
     const game = page.getByTestId('colors-game');
     await expect(game).toHaveAttribute('data-level', '2');
-    await expect(page.locator('.cf-option')).toHaveCount(3);
+    await expect(page.locator('.find-option')).toHaveCount(3);
     await shot(page, info, '10-level-2');
     await playColorRounds(page, 5);
   });
@@ -156,7 +156,7 @@ test.describe('Ranglarni topish', () => {
     await page.getByTestId('level-3').click();
     const game = page.getByTestId('colors-game');
     await expect(game).toHaveAttribute('data-level', '3');
-    await expect(page.locator('.cf-option')).toHaveCount(4);
+    await expect(page.locator('.find-option')).toHaveCount(4);
     await expectBigButtons(page);
     await expectNoOverflow(page);
     await expectTopbarFits(page); // 6 ta progress nuqtasi
@@ -168,7 +168,7 @@ test.describe('Ranglarni topish', () => {
       await expect(game).toHaveAttribute('data-target', /.+/);
       const t = (await game.getAttribute('data-target'))!;
       targets.push(t);
-      await page.locator(`.cf-option[data-color="${t}"]`).click();
+      await page.locator(`.find-option[data-color="${t}"]`).click();
       if (round < 5) await expect(game).not.toHaveAttribute('data-target', t, { timeout: 10_000 });
     }
     for (const c of ['pushti', 'jigarrang', 'oq', 'qora']) expect(targets).toContain(c);

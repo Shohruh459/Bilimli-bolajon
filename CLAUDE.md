@@ -67,11 +67,12 @@ src/
   app/router.ts         # #/ | #/yosh/<id> | #/oyin/<id> | #/sozlamalar
   app/screens/          # start, home, age, game (lazy host + yakun), settings
   engine/               # audio, voice, sfx, animate, confetti, feedback, scope, storage, random, guard, pwa, game
+                        #   levels (daraja ochilishi), find-logic + find-game (umumiy "topish" o'yini)
   games/<id>/           # har o'yin — alohida lazy chunk; logic.ts (sof, test qilinadi) + index.ts (UI)
                         #   + art.ts (o'yinga xos SVG'lar — bosh bundle'ga kirmaydi)
   games/registry.ts     # o'yinlar ro'yxati (meta + lazy import)
-  content/              # BARCHA matnlar: phrases.ts (ovoz kalitlari), colors.ts (ranglar + darajalar), ages.ts, diniy.ts
-  ui/                   # dom (h, svg), art (SVG rasmlar), icons, button, topbar, parent-gate
+  content/              # BARCHA matnlar: phrases.ts (ovoz kalitlari), colors.ts, shapes.ts (+ darajalar), ages.ts, diniy.ts
+  ui/                   # dom (h, svg), art (SVG rasmlar), icons, button, topbar, parent-gate, level-picker
   styles/               # tokens.css, fonts.css, base.css, app.css (o'yin CSS — o'yin papkasida)
   assets/audio/uz/      # ovoz yozuvlari: <kalit>.mp3 (docs/OVOZLAR.md)
 tests/e2e/              # Playwright (mobil viewport), skrinshotlar → screenshots/
@@ -114,7 +115,16 @@ docs/                   # ROADMAP, DINIY-MATNLAR, OVOZLAR
 - **Ranglar o'yinida rang namunasi (blob) ko'rsatiladi** — ovoz yozuvlari yo'q paytda ham bola
   topshiriqni tushunsin. Ovozlar tayyor bo'lgach "qiyin rejim" (namunasiz, faqat ovoz) qo'shish mumkin.
 - **Deploy:** `deploy.yml` `BASE_PATH` ni repo nomidan oladi → repo nomi o'zgarsa deploy buzilmaydi.
-- **O'yin darajalari** (namuna: ranglar): route `#/oyin/<id>` — daraja tanlash, `#/oyin/<id>/<n>` — o'yin.
+- **Umumiy "topish" o'yini** (`engine/find-game.ts`): ranglar va shakllar bitta mexanika —
+  o'yin faqat konfiguratsiya (`createFindGame({ levels, categories, items, art, exclusive, ... })`).
+  Toifa (`FindCategory`): nom, "…ni top!" iborasi, topshiriq namunasi (`swatch`) va daraja ikonkasi (`icon`).
+  `exclusive` — bir raundda HECH QACHON birga chiqmaydigan toifalar (masalan kvadrat ↔ to'g'ri
+  to'rtburchak: ikkalasi ham to'rtburchak). Mantiq sof (`engine/find-logic.ts`), unit test qilinadi.
+  Uzun toifa nomi (> 8 harf) kichikroq shriftda — 360px ekranga sig'adi (e2e tekshiradi).
+- **Shakllar predmetlari:** har siluet o'z shaklini aniq bildiradi (qora siluet bilan tekshiriladi);
+  to'g'ri to'rtburchak predmetlari aniq cho'ziq (nisbat ≥ 1.7), kvadratlar — eni = bo'yi.
+  Predmetlar tabiiy rangda, topshiriq namunasi och sariq + to'q kontur — bola shaklga qaraydi.
+- **O'yin darajalari** (ranglar, shakllar): route `#/oyin/<id>` — daraja tanlash, `#/oyin/<id>/<n>` — o'yin.
   `GameApi.level/play(n)/exit()`; "orqaga" darajadan daraja tanlashga qaytadi. Yulduzlar daraja
   kalitida: `ranglar.1`, `ranglar.2`… (`finish({ starKey })`). Yosh menyusidagi karta jami yulduzni
   ko'rsatadi (`getStarsTotal`). Keyingi daraja oldingisida `STARS_TO_UNLOCK` (=3) yulduzda ochiladi;
@@ -169,6 +179,12 @@ Pipe (`| grep`, `| tail`) ishlatilsa, exit kodi pipe'ning oxirgi buyrug'iniki bo
 
 ## Yangi o'yin qo'shish
 
+**"Topish" turidagi o'yin** (X ni top!): `content/<mavzu>.ts` (toifalar + darajalar),
+`games/<id>/art.ts` (SVG), `games/<id>/logic.ts` (predmetlar), `games/<id>/index.ts` —
+`createFindGame(...)` (namuna: `games/shapes-find/`). Kod yozish deyarli kerak emas.
+
+**Boshqa turdagi o'yin:**
+
 1. `src/games/<id>/logic.ts` — sof mantiq + `logic.test.ts`.
 2. `src/games/<id>/index.ts` — `export default` `GameFactory` (namuna: `games/colors-find/`).
    `celebrate()/encourage()` (`engine/feedback`), raund boshida `confetti().clear()`, oxirida `api.finish()`.
@@ -199,3 +215,11 @@ Pipe (`| grep`, `| tail`) ishlatilsa, exit kodi pipe'ning oxirgi buyrug'iniki bo
   - 12 ta yangi SVG predmet; o'yin rasmlari o'yin chunk'iga ko'chirildi (bosh bundle yengillashdi).
   - 21 ta yangi ibora (jami 51), OVOZLAR.md avtomatik.
   - Router: `#/oyin/<id>/<daraja>`; `GameApi.level/play`, `finish({ starKey, note })`.
+
+- **0.3.0 — Shakllarni topish + umumiy "topish" engine, 2026-09-29**
+  - Refaktor: `engine/levels.ts`, `engine/find-logic.ts`, `engine/find-game.ts`, `ui/level-picker.ts`.
+    Ranglar o'yini endi faqat kontent + konfiguratsiya; xulqi o'zgarmadi (e2e isbotladi).
+  - "Shakllarni topish": 1) doira, kvadrat, uchburchak; 2) + yulduz, yurak; 3) + to'g'ri to'rtburchak, oval, yarim doira. 17 ta SVG predmet. Olti burchak → 6–7 yosh (ROADMAP).
+  - Kvadrat va to'g'ri to'rtburchak bir raundda chiqmaydi (`SHAPE_EXCLUSIVE`, unit test 2000 seed).
+  - Daraja iboralari umumiy (`daraja.tanla`, `daraja.yopiq`); 27 ta yangi ibora (jami 78).
+  - 106 unit test, 24×2 e2e test.

@@ -37,6 +37,13 @@ export const ART = {
   /** Maskot — tabassumli quyosh */
   maskot: svg(sunBody(true)),
 
+  /** O'yin kartasi: Shakllar */
+  shakllar: svg(
+    `<circle cx="38" cy="40" r="26" fill="${CORAL}"/>
+     <path d="M86 12l28 48H58z" fill="#4FB0E8" stroke="#4FB0E8" stroke-width="4" stroke-linejoin="round"/>
+     <rect x="42" y="62" width="48" height="48" rx="4" fill="#6BCB77"/>`,
+  ),
+
   /** Yosh kartalari uchun */
   koptok: svg(
     `<circle cx="60" cy="60" r="42" fill="#fff"/>
