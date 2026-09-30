@@ -17,11 +17,15 @@ export interface GameApi {
   readonly scope: Scope;
   /** Route'dagi daraja (#/oyin/<id>/<daraja>); daraja tanlanmagan bo'lsa null. */
   readonly level: number | null;
+  /** Route'dagi rejim (#/oyin/<id>/<rejim>, masalan "tanishuv"); bo'lmasa null. */
+  readonly mode: string | null;
   /** Darajani boshlash (route o'zgaradi → "orqaga" daraja tanlashga qaytaradi). */
   play(level: number): void;
+  /** Rejimni ochish (masalan Tanishuv) — "orqaga" daraja tanlashga qaytaradi. */
+  open(mode: string): void;
   /** O'yin tugadi → yulduz beriladi va yakuniy ekran ko'rsatiladi. */
   finish(info?: FinishInfo): void;
-  /** O'yindan chiqish: darajadan — daraja tanlashga, aks holda yosh menyusiga. */
+  /** O'yindan chiqish: darajadan/rejimdan — daraja tanlashga, aks holda yosh menyusiga. */
   exit(): void;
 }
 

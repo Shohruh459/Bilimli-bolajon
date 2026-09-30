@@ -84,3 +84,14 @@ export function addStar(gameId: string): number {
 export function resetProgress(): void {
   write('stars', {});
 }
+
+// --- Bir martalik belgilar (masalan "Tanishuv ochildi") ---
+export function getFlag(name: string): boolean {
+  return read<Record<string, boolean>>('flags', {})[name] === true;
+}
+
+export function setFlag(name: string): void {
+  const all = read<Record<string, boolean>>('flags', {});
+  all[name] = true;
+  write('flags', all);
+}

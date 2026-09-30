@@ -4,7 +4,7 @@
  * Har o'yin darajaning "ko'rinish"ini beradi (rang nuqtalari, shakl ikonkalari, ...).
  */
 import './level-picker.css';
-import { anim } from '../engine/animate';
+import { anim, run } from '../engine/animate';
 import { STARS_TO_UNLOCK } from '../engine/levels';
 import type { Scope } from '../engine/scope';
 import { sfx } from '../engine/sfx';
@@ -23,12 +23,26 @@ export interface PickerLevel {
   readonly need: number;
   /** Darajaning yangi toifalari (kichik belgilar) */
   readonly preview: readonly Node[];
+  /** Ochiq, lekin hali o'ynab bo'lmaydi (masalan, ovoz fayllari tayyor emas) */
+  readonly soon?: boolean;
+}
+
+/** Darajalar ustidagi qo'shimcha karta (masalan "Tanishuv") — yulduzsiz, doim ochiq. */
+export interface PickerExtra {
+  readonly title: string;
+  readonly testId: string;
+  /** SVG belgi */
+  readonly icon: string;
+  /** Birinchi kirishda ajralib tursin (yengil pulsatsiya) — ochilgach false bo'ladi */
+  readonly highlight: boolean;
+  onOpen(): void;
 }
 
 export interface PickerOptions {
   readonly title: string;
   readonly testId: string;
   readonly levels: readonly PickerLevel[];
+  readonly extra?: PickerExtra;
   onPlay(level: number): void;
   onBack(): void;
 }
@@ -42,32 +56,35 @@ export function showLevelPicker(root: HTMLElement, scope: Scope, o: PickerOption
 
   const list = h('nav', { class: 'lp-levels', 'aria-label': 'Darajalar' });
   for (const lvl of o.levels) {
-    const status = lvl.open
-      ? h(
-          'span',
-          { class: 'lp-level__stars', 'aria-label': `${lvl.stars} ta yulduzcha` },
-          svg(ICONS.star),
-          String(lvl.stars),
-        )
-      : h(
-          'span',
-          { class: 'lp-level__lock', 'aria-label': `Yopiq: yana ${lvl.need} ta yulduzcha` },
-          svg(ICONS.lock),
-          h(
+    const status = lvl.soon
+      ? h('span', { class: 'lp-level__soon', 'aria-label': 'Tayyorlanmoqda' }, svg(ICONS.soundOff))
+      : lvl.open
+        ? h(
             'span',
-            { class: 'lp-level__need' },
-            ...Array.from({ length: STARS_TO_UNLOCK }, (_, i) =>
-              svg(ICONS.star, i < STARS_TO_UNLOCK - lvl.need ? 'is-got' : 'is-empty'),
+            { class: 'lp-level__stars', 'aria-label': `${lvl.stars} ta yulduzcha` },
+            svg(ICONS.star),
+            String(lvl.stars),
+          )
+        : h(
+            'span',
+            { class: 'lp-level__lock', 'aria-label': `Yopiq: yana ${lvl.need} ta yulduzcha` },
+            svg(ICONS.lock),
+            h(
+              'span',
+              { class: 'lp-level__need' },
+              ...Array.from({ length: STARS_TO_UNLOCK }, (_, i) =>
+                svg(ICONS.star, i < STARS_TO_UNLOCK - lvl.need ? 'is-got' : 'is-empty'),
+              ),
             ),
-          ),
-        );
+          );
     const card = h(
       'button',
       {
         type: 'button',
-        class: `btn lp-level${lvl.open ? '' : ' is-locked'}`,
+        class: `btn lp-level${lvl.open ? '' : ' is-locked'}${lvl.soon ? ' is-soon' : ''}`,
         'data-testid': `level-${lvl.level}`,
         'data-open': String(lvl.open),
+        'data-soon': String(!!lvl.soon),
         'aria-label': `${lvl.level}-daraja${lvl.open ? '' : ' (yopiq)'}`,
       },
       h('span', { class: 'lp-level__num' }, String(lvl.level)),
@@ -75,6 +92,12 @@ export function showLevelPicker(root: HTMLElement, scope: Scope, o: PickerOption
       status,
     );
     scope.on(card, 'click', () => {
+      if (lvl.soon) {
+        sfx.wrong();
+        anim.shake(card.firstElementChild as Element);
+        void say('daraja.tayyorlanmoqda');
+        return;
+      }
       if (lvl.open) {
         sfx.tap();
         o.onPlay(lvl.level);
@@ -89,6 +112,8 @@ export function showLevelPicker(root: HTMLElement, scope: Scope, o: PickerOption
     list.append(card);
   }
 
+  if (o.extra) list.prepend(extraCard(scope, o.extra));
+
   root.append(
     h(
       'section',
@@ -97,6 +122,43 @@ export function showLevelPicker(root: HTMLElement, scope: Scope, o: PickerOption
       list,
     ),
   );
-  [...list.children].forEach((el, i) => anim.appear(el.firstElementChild as Element, 90 * i));
+  // Faqat daraja kartalari: extra kartaning "nafas olish" animatsiyasini appear bekor qilmasin.
+  [...list.querySelectorAll('.lp-level')].forEach((el, i) =>
+    anim.appear(el.firstElementChild as Element, 90 * i),
+  );
   void say('daraja.tanla');
+}
+
+function extraCard(scope: Scope, x: PickerExtra): HTMLElement {
+  const icon = h('span', { class: 'lp-extra__icon moves' }, svg(x.icon));
+  const card = h(
+    'button',
+    {
+      type: 'button',
+      class: `btn lp-extra${x.highlight ? ' is-new' : ''}`,
+      'data-testid': x.testId,
+      'data-highlight': String(x.highlight),
+    },
+    icon,
+    h('span', { class: 'lp-extra__title' }, x.title),
+  );
+  // Birinchi kirishda — yengil "nafas olish" (transform, arzon). Ochilgach ko'rsatilmaydi.
+  if (x.highlight) {
+    const a = run(
+      icon,
+      [{ transform: 'scale(1)' }, { transform: 'scale(1.14)' }, { transform: 'scale(1)' }],
+      {
+        duration: 1400,
+        iterations: Infinity,
+        easing: 'ease-in-out',
+        fill: 'none',
+      },
+    );
+    scope.add(() => a?.cancel());
+  }
+  scope.on(card, 'click', () => {
+    sfx.tap();
+    x.onOpen();
+  });
+  return card;
 }

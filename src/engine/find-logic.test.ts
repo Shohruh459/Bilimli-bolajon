@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import {
   conflicts,
   getLevel,
+  isPlayable,
   isCorrect,
   levelCats,
   makeRounds,
@@ -78,5 +79,30 @@ describe('find-logic', () => {
     expect(() =>
       makeRounds({ ...lvl, options: 9 }, ['a', 'b', 'c'], ITEMS, mulberry32(1)),
     ).toThrow();
+  });
+});
+
+describe('find-logic — canTarget (masalan, ovozi bor hayvonlar)', () => {
+  const all = levelCats(LEVELS, 2);
+
+  it('maqsad faqat canTarget toifalardan; chalgʻituvchilar esa hammasidan', () => {
+    const ok = (c: C) => c === 'a' || c === 'b' || c === 'd';
+    const seenDistractors = new Set<C>();
+    for (let seed = 0; seed < 200; seed++) {
+      for (const r of makeRounds(LEVELS[1]!, all, ITEMS, mulberry32(seed), [], ok)) {
+        expect(ok(r.target), r.target).toBe(true);
+        for (const o of r.options) if (o.cat !== r.target) seenDistractors.add(o.cat);
+      }
+    }
+    expect(seenDistractors.has('c')).toBe(true);
+    expect(seenDistractors.has('e')).toBe(true);
+  });
+
+  it('isPlayable: kamida 3 ta maqsad kerak (daraja kichik boʻlsa — hammasi)', () => {
+    expect(isPlayable(all)).toBe(true);
+    expect(isPlayable(all, (c) => c === 'a' || c === 'b')).toBe(false);
+    expect(isPlayable(all, (c) => c !== 'e')).toBe(true);
+    expect(isPlayable(['a', 'b'] as C[], () => true)).toBe(true);
+    expect(isPlayable(all, () => false)).toBe(false);
   });
 });

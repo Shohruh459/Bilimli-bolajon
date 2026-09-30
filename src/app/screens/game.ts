@@ -15,11 +15,14 @@ export async function gameScreen(
   { root, scope, app }: ScreenCtx,
   id: string,
   level: number | null = null,
+  mode: string | null = null,
 ): Promise<void> {
   const meta = findGame(id);
   if (!meta) return app.go({ name: 'home' });
   const back = () =>
-    level === null ? app.go({ name: 'age', age: meta.age }) : app.go({ name: 'game', id });
+    level === null && mode === null
+      ? app.go({ name: 'age', age: meta.age })
+      : app.go({ name: 'game', id });
 
   const loading = h('div', { class: 'loading', role: 'status' }, svg(ART.maskot));
   root.append(loading);
@@ -40,8 +43,10 @@ export async function gameScreen(
     root,
     scope,
     level,
+    mode,
     exit: back,
     play: (n) => app.go({ name: 'game', id, level: n }),
+    open: (m) => app.go({ name: 'game', id, mode: m }),
     finish(info) {
       const stars = addStar(info?.starKey ?? meta.id);
       root.replaceChildren();
