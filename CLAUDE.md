@@ -198,11 +198,13 @@ Pipe (`| grep`, `| tail`) ishlatilsa, exit kodi pipe'ning oxirgi buyrug'iniki bo
 ### Branch, PR va kuzatish qoidasi (egasi belgilagan)
 
 - Har yangi vazifa — `main` dan **yangi, mazmunli nomli branch** (masalan `claude/shakllar-oyini`).
-- PR ochilgach uni **faqat CI yashil bo'lguncha** kuzat: qizil bo'lsa — sababini top, tuzat,
-  exit kodi bilan tekshirib push qil. CI yashil bo'lishi bilan egasiga bir marta xabar ber va
-  **kuzatishni to'xtat** — soatlik tekshiruv eslatmalari qo'yilmaydi.
-- **Merge'ni egasi o'zi qiladi** va natijani o'zi aytadi. Merge qilish yoki merge'ni kutib
-  PR'ni kuzatib turish kerak emas.
+- PR ochilgach uni CI yashil bo'lguncha kuzat: qizil bo'lsa — sababini top, tuzat,
+  exit kodi bilan tekshirib push qil. Soatlik tekshiruv eslatmalari qo'yilmaydi.
+- **CI yashil bo'lgach PR'ni o'zing merge qil (squash)**, keyin `deploy.yml` tugashini
+  (muvaffaqiyatli) tekshir va egasiga **bitta** xabar ber (nima merge bo'ldi, deploy holati).
+- **Istisno — diniy matnlar:** `docs/DINIY-MATNLAR.md`, `src/content/diniy.ts` yoki diniy bo'limga
+  tegadigan PR'ni **faqat egasi merge qiladi**. Bunday PR'da CI yashil bo'lgach egasiga xabar ber,
+  merge qilma va merge'ni kutib kuzatib turma.
 
 ## Yangi o'yin qo'shish
 
