@@ -177,6 +177,15 @@ npm run build && npm run e2e                     # && zanjiri: birinchi xatoda t
 Pipe (`| grep`, `| tail`) ishlatilsa, exit kodi pipe'ning oxirgi buyrug'iniki bo'ladi —
 `${PIPESTATUS[0]}` yoki `set -o pipefail` bilan asl kodni tekshir.
 
+### Branch, PR va kuzatish qoidasi (egasi belgilagan)
+
+- Har yangi vazifa — `main` dan **yangi, mazmunli nomli branch** (masalan `claude/shakllar-oyini`).
+- PR ochilgach uni **faqat CI yashil bo'lguncha** kuzat: qizil bo'lsa — sababini top, tuzat,
+  exit kodi bilan tekshirib push qil. CI yashil bo'lishi bilan egasiga bir marta xabar ber va
+  **kuzatishni to'xtat** — soatlik tekshiruv eslatmalari qo'yilmaydi.
+- **Merge'ni egasi o'zi qiladi** va natijani o'zi aytadi. Merge qilish yoki merge'ni kutib
+  PR'ni kuzatib turish kerak emas.
+
 ## Yangi o'yin qo'shish
 
 **"Topish" turidagi o'yin** (X ni top!): `content/<mavzu>.ts` (toifalar + darajalar),
