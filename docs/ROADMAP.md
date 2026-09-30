@@ -21,7 +21,9 @@
 ## 1-bosqich — 3–4 yosh
 
 - [x] Shakllarni topish: 3 daraja (doira, kvadrat, uchburchak → + yulduz, yurak → + toʻgʻri toʻrtburchak, oval, yarim doira), 17 ta predmet
-- [ ] Hayvonlar va ularning ovozlari
+- [x] Hayvon ovozlari: Tanishuv + 3 daraja (4 → 8 → 12 hayvon), qoʻy↔echki va xoʻroz↔tovuq bir raundda emas, 12 ta SVG
+- [ ] Hayvon ovozlari: CC0/PD ovoz fayllarini tanlash va ulash (egasi tasdiqlagach) — shungacha darajalar "tayyorlanmoqda"
+- [ ] Hayvon ovozlari: yangi hayvonlar (tuya, sher, fil, qush...) — 4-daraja yoki 5 yosh
 - [ ] Katta — kichik
 - [ ] 1–5 gacha sanash
 - [x] Ranglarni topish: 3 daraja (4 → 6 → 10 rang), yulduz bilan ochiladi, 12 ta yangi predmet

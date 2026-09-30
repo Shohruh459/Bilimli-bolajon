@@ -35,6 +35,10 @@
   text-align: center;
 }
 
+.screen-title.is-long {
+  font-size: var(--fs-md);
+}
+
 /* --- Start --- */
 .start {
   justify-content: center;

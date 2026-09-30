@@ -21,6 +21,11 @@ ostida. Ulardagi **SVG chizmalarning o'zi** esa himoyalangan.
 - **Diniy matnlar** (`src/content/diniy.ts`, `docs/DINIY-MATNLAR.md`): arabcha matnlar,
   tarjimalar va ularning manbalari o'z mualliflari/nashriyotlariga tegishli. Bu fayl ularga
   huquq da'vo qilmaydi. Har bir matnning manbasi jadvalda ko'rsatiladi.
+- **Uchinchi tomon ovozlari** (`src/assets/sounds/**`, masalan hayvon ovozlari): faqat
+  **CC0-1.0** yoki **Public domain** manbalardan (Wikimedia Commons, Freesound CC0). Bu fayl
+  ularga huquq da'vo qilmaydi. Har bir faylning manbasi, muallifi va litsenziyasi
+  `docs/ATTRIBUTIONS.md` da (unit test tekshiradi). Loyiha egasining o'z ovoz yozuvlari
+  (`src/assets/audio/**`) bu istisnoga kirmaydi.
 - **Nunito shrifti** (`src/assets/fonts/**`): SIL Open Font License 1.1 (`Nunito-OFL.txt`).
   `nunito-okina-wght-normal.woff2` ham shu litsenziya ostidagi o'zgartirilgan versiya.
 - **npm paketlari**: har biri o'z litsenziyasi ostida.
@@ -35,4 +40,5 @@ Kontentdan foydalanish uchun GitHub orqali murojaat qiling:
 _English summary:_ The source code is MIT-licensed (see `LICENSE`). Audio recordings, SVG
 illustrations and icons, content texts, and the "Ilmli Bolajon" name and mascot are
 © 2026 Shohruh459, **all rights reserved**, and may not be used without written permission.
-Religious texts belong to their respective sources. The Nunito font is under SIL OFL 1.1.
+Religious texts belong to their respective sources. Third-party sounds in
+`src/assets/sounds/**` are CC0 / public domain (see `docs/ATTRIBUTIONS.md`). The Nunito font is under SIL OFL 1.1.

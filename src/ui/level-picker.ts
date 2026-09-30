@@ -118,7 +118,12 @@ export function showLevelPicker(root: HTMLElement, scope: Scope, o: PickerOption
     h(
       'section',
       { class: 'screen lp', 'data-testid': o.testId },
-      topBar(back, h('h1', { class: 'screen-title' }, o.title), null),
+      topBar(
+        back,
+        // Uzun nom ("Hayvonlar") 360px ekranda tugmalar orasiga sig'sin.
+        h('h1', { class: `screen-title${o.title.length > 8 ? ' is-long' : ''}` }, o.title),
+        null,
+      ),
       list,
     ),
   );
