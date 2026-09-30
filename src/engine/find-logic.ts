@@ -58,7 +58,10 @@ export function makeTargets<C extends string>(
   all: readonly C[],
   rng: Rng,
   count = level.rounds,
+  canTarget: (c: C) => boolean = () => true,
 ): C[] {
+  const fresh = level.fresh.filter(canTarget);
+  const pool = all.filter(canTarget);
   const out: C[] = [];
   const push = (bag: C[]) => {
     for (const c of bag) {
@@ -67,9 +70,9 @@ export function makeTargets<C extends string>(
       out.push(c);
     }
   };
-  push(shuffle(level.fresh, rng));
+  push(shuffle(fresh, rng));
   let guard = 0;
-  while (out.length < count && guard++ < 100) push(shuffle(all, rng));
+  while (out.length < count && guard++ < 100) push(shuffle(pool, rng));
   // Yangi toifalar raundlar orasida aralashib chiqsin, lekin ketma-ket takrorlanmasin.
   for (let i = 0; i < 20; i++) {
     const mixed = shuffle(out, rng);
@@ -84,12 +87,13 @@ export function makeRounds<C extends string, I extends FindItem<C>>(
   items: readonly I[],
   rng: Rng,
   exclusive: Exclusive<C> = [],
+  canTarget: (c: C) => boolean = () => true,
 ): FindRound<C, I>[] {
   if (level.options < 2 || level.options > all.length) {
     throw new Error('options: 2..daraja toifalari soni');
   }
   const used = new Set<string>();
-  return makeTargets(level, all, rng).map((target) => {
+  return makeTargets(level, all, rng, level.rounds, canTarget).map((target) => {
     // Imkon bo'lsa, oldin chiqmagan predmetni tanlaymiz (xilma-xillik).
     const pickItem = (c: C): I => {
       const pool = shuffle(
@@ -114,6 +118,17 @@ export function makeRounds<C extends string, I extends FindItem<C>>(
     if (chosen.length < level.options) throw new Error('Chalgʻituvchi toifalar yetmaydi');
     return { target, options: shuffle(chosen.map(pickItem), rng) };
   });
+}
+
+/** Maqsad bo'la oladigan toifalar kamida shuncha bo'lsa, daraja o'ynaladi (ovozli o'yinlar uchun). */
+export const MIN_TARGETS = 3;
+
+/** Darajada maqsad bo'la oladigan toifalar yetarlimi (masalan, ovoz fayllari bormi). */
+export function isPlayable<C extends string>(
+  all: readonly C[],
+  canTarget: (c: C) => boolean = () => true,
+): boolean {
+  return all.filter(canTarget).length >= Math.min(MIN_TARGETS, all.length);
 }
 
 export function isCorrect<C extends string>(round: FindRound<C, FindItem<C>>, item: FindItem<C>) {

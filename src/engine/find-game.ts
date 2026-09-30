@@ -17,6 +17,7 @@ import {
   getLevel,
   HINT_AFTER,
   isCorrect,
+  isPlayable,
   levelCats,
   makeRounds,
   type Exclusive,
@@ -27,6 +28,7 @@ import {
 import type { GameApi, GameFactory } from './game';
 import { isUnlocked, levelStarKey, readLevelStars, starsNeeded, unlocksNext } from './levels';
 import { sfx } from './sfx';
+import { getFlag } from './storage';
 import { preloadVoice, say, sayAll } from './voice';
 
 export interface FindCategory {
@@ -38,6 +40,19 @@ export interface FindCategory {
   readonly swatch: string;
   /** Daraja kartasidagi kichik belgi (SVG) */
   readonly icon: string;
+  /** Topshiriq iborasidan keyin chalinadigan "ishora" (masalan, hayvon ovozi) */
+  readonly cue?: () => Promise<void>;
+}
+
+/** Darajalar ustidagi qo'shimcha rejim kartasi (masalan "Tanishuv"). */
+export interface FindExtra {
+  readonly title: string;
+  readonly testId: string;
+  readonly icon: string;
+  /** Route rejimi: #/oyin/<id>/<mode> */
+  readonly mode: string;
+  /** Birinchi ochilishgacha karta ajralib turadi */
+  readonly seenFlag: string;
 }
 
 export interface FindConfig<C extends string, A extends string> {
@@ -56,6 +71,16 @@ export interface FindConfig<C extends string, A extends string> {
   readonly exclusive?: Exclusive<C>;
   /** Darajalardan oldingi eski "<gameId>" yulduzlari 1-darajaga hisoblansinmi */
   readonly legacyStars?: boolean;
+  /**
+   * Topshiriq ko'rinmaydi, eshitiladi (ibora + `cue`). Ekranda nom o'rniga "?" — javob ochilmasin.
+   * Topshiriq qutisi bosilsa qayta eshittiradi.
+   */
+  readonly audioAsk?: boolean;
+  /** Qaysi toifa maqsad bo'la oladi (masalan, ovoz fayli bor). Yetarli bo'lmasa daraja "tayyorlanmoqda". */
+  readonly canTarget?: (c: C) => boolean;
+  readonly extra?: FindExtra;
+  /** Darajasiz rejimlar (masalan Tanishuv): #/oyin/<id>/<mode> */
+  readonly modes?: Record<string, (api: GameApi) => void | Promise<void>>;
 }
 
 export function createFindGame<C extends string, A extends string>(
@@ -64,26 +89,48 @@ export function createFindGame<C extends string, A extends string>(
   const maxLevel = cfg.levels.length;
   const stars = () => readLevelStars(cfg.gameId, maxLevel, cfg.legacyStars);
 
+  const canTarget = cfg.canTarget ?? (() => true);
+  const playable = (n: number) => isPlayable(levelCats(cfg.levels, n), canTarget);
+
   return (api) => {
+    const mode = api.mode ? cfg.modes?.[api.mode] : undefined;
+    if (mode) return mode(api);
     if (api.level === null) return showLevels(api);
-    if (!isUnlocked(api.level, stars(), maxLevel)) return api.exit(); // yopiq → daraja tanlashga
+    // Yopiq yoki hali tayyor emas → daraja tanlashga.
+    if (!isUnlocked(api.level, stars(), maxLevel) || !playable(api.level)) return api.exit();
     return play(api, api.level);
   };
 
-  function showLevels({ root, scope, exit, play: start }: GameApi): void {
+  function showLevels({ root, scope, exit, play: start, open }: GameApi): void {
     const s = stars();
+    const x = cfg.extra;
     showLevelPicker(root, scope, {
       title: cfg.title,
       testId: cfg.testIds.levels,
       onBack: exit,
       onPlay: start,
-      levels: cfg.levels.map((l) => ({
-        level: l.level,
-        open: isUnlocked(l.level, s, maxLevel),
-        stars: s[l.level - 1] ?? 0,
-        need: starsNeeded(l.level, s),
-        preview: l.fresh.map((c) => svg(cfg.categories[c].icon)),
-      })),
+      ...(x
+        ? {
+            extra: {
+              title: x.title,
+              testId: x.testId,
+              icon: x.icon,
+              highlight: !getFlag(x.seenFlag),
+              onOpen: () => open(x.mode),
+            },
+          }
+        : {}),
+      levels: cfg.levels.map((l) => {
+        const isOpen = isUnlocked(l.level, s, maxLevel);
+        return {
+          level: l.level,
+          open: isOpen,
+          soon: isOpen && !playable(l.level),
+          stars: s[l.level - 1] ?? 0,
+          need: starsNeeded(l.level, s),
+          preview: l.fresh.map((c) => svg(cfg.categories[c].icon)),
+        };
+      }),
     });
   }
 
@@ -96,6 +143,7 @@ export function createFindGame<C extends string, A extends string>(
       cfg.items,
       Math.random,
       cfg.exclusive,
+      canTarget,
     );
     let index = 0;
     let wrong = 0;
@@ -113,7 +161,26 @@ export function createFindGame<C extends string, A extends string>(
 
     const swatch = h('span', { class: 'find-swatch moves' });
     const word = h('span', { class: 'find-word' });
-    const ask = h('div', { class: 'find-ask', 'aria-live': 'polite' }, swatch, word);
+    const ask = cfg.audioAsk
+      ? h(
+          'button',
+          {
+            type: 'button',
+            class: 'btn find-ask',
+            'aria-label': 'Yana eshitish',
+            'data-testid': 'ask',
+          },
+          swatch,
+          word,
+        )
+      : h('div', { class: 'find-ask', 'aria-live': 'polite' }, swatch, word);
+
+    /** Topshiriq: ibora, keyin ishora (masalan, hayvon ovozi). */
+    async function sayAsk(c: C): Promise<void> {
+      const cat = cfg.categories[c];
+      await say(cat.ask);
+      if (cat.cue && !scope.disposed) await cat.cue();
+    }
     const options = h('div', { class: `find-options find-options--${level.options}` });
     const stage = h(
       'section',
@@ -128,11 +195,13 @@ export function createFindGame<C extends string, A extends string>(
       sfx.tap();
       exit();
     });
-    scope.on(repeatBtn, 'click', () => {
+    const repeat = () => {
       sfx.tap();
       const r = rounds[index];
-      if (r) void say(cfg.categories[r.target].ask);
-    });
+      if (r) void sayAsk(r.target);
+    };
+    scope.on(repeatBtn, 'click', repeat);
+    if (cfg.audioAsk) scope.on(ask, 'click', repeat);
 
     function showRound(r: Round): void {
       confetti().clear(); // eski zarrachalar yangi raundga o'tmasin
@@ -140,7 +209,7 @@ export function createFindGame<C extends string, A extends string>(
       const cat = cfg.categories[r.target];
       stage.dataset.target = r.target;
       swatch.replaceChildren(svg(cat.swatch));
-      word.textContent = cat.name;
+      word.textContent = cfg.audioAsk ? '?' : cat.name;
       // Uzun nomlar ("Toʻgʻri toʻrtburchak") kichik ekranga sig'sin.
       word.classList.toggle('is-long', cat.name.length > 8);
       anim.pop(swatch);
@@ -178,7 +247,7 @@ export function createFindGame<C extends string, A extends string>(
         ...(next ? [cfg.categories[next.target].ask] : []),
       ]);
       locked = false;
-      void say(cat.ask);
+      void sayAsk(r.target);
     }
 
     function done(): void {
@@ -218,16 +287,14 @@ export function createFindGame<C extends string, A extends string>(
       await encourage(art);
       btn.classList.remove('is-busy');
       if (scope.disposed || locked) return;
-      const askPhrase = cfg.categories[r.target].ask;
       if (wrong >= HINT_AFTER) {
         const correct = options.querySelector<HTMLElement>(
           `[data-${cfg.catAttr}="${r.target}"] .art`,
         );
         if (correct) anim.hint(correct);
-        await sayAll(['hint.mana', askPhrase]);
-      } else {
-        await say(askPhrase);
+        await sayAll(['hint.mana']);
       }
+      if (!scope.disposed && !locked) await sayAsk(r.target);
     }
 
     await sayAll([cfg.intro]);

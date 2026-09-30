@@ -3,7 +3,7 @@
 > Bu fayl avtomatik yaratiladi: `npm run ovozlar` (manba — `src/content/phrases.ts`).
 > Qo'lda tahrirlamang — matnni phrases.ts da o'zgartiring.
 
-**Holat:** 0 / 78 yozilgan.
+**Holat:** 0 / 118 yozilgan.
 
 ## Talablar
 
@@ -40,6 +40,7 @@
 | `encourage.diqqat.mp3`               | Diqqat bilan qara!                                         | mayin, sekin                             | ⬜    |
 | **daraja**                           |                                                            |                                          |       |
 | `daraja.tanla.mp3`                   | Qaysi darajani oʻynaymiz?                                  | qiziqtiruvchi                            | ⬜    |
+| `daraja.tayyorlanmoqda.mp3`          | Bu daraja hali tayyorlanmoqda. Tez orada!                  | mayin                                    | ⬜    |
 | `daraja.yopiq.mp3`                   | Bu daraja hali yopiq. Yana yulduzcha yigʻ, keyin ochiladi! | mayin, dalda                             | ⬜    |
 | **hint**                             |                                                            |                                          |       |
 | `hint.mana.mp3`                      | Qara, u mana shu yerda!                                    | mayin, sirli                             | ⬜    |
@@ -70,6 +71,47 @@
 | `shakllar.top.oval.mp3`              | Ovalni top!                                                | aniq, shakl nomini urgʻu bilan           | ⬜    |
 | `shakllar.top.yarim-doira.mp3`       | Yarim doirani top!                                         | aniq, shakl nomini urgʻu bilan           | ⬜    |
 | `shakllar.daraja-ochildi.mp3`        | Yangi daraja ochildi! Yangi shakllar seni kutmoqda!        | bayramona                                | ⬜    |
+| **hayvonlar**                        |                                                            |                                          |       |
+| `hayvonlar.intro.mp3`                | Kim bunday ovoz chiqaradi?                                 | qiziqtiruvchi, sirli                     | ⬜    |
+| `hayvonlar.tanishuv.mp3`             | Hayvonlar bilan tanishamiz! Birini bos.                    | quvnoq                                   | ⬜    |
+| `hayvonlar.daraja-ochildi.mp3`       | Yangi daraja ochildi! Yangi hayvonlar seni kutmoqda!       | bayramona                                | ⬜    |
+| **hayvon**                           |                                                            |                                          |       |
+| `hayvon.mushuk.nom.mp3`              | Bu — mushuk!                                               | quvnoq                                   | ⬜    |
+| `hayvon.mushuk.ovoz.mp3`             | Mushuk: miyov-miyov!                                       | hayvonga taqlid qilib, oʻyinqaroq        | ⬜    |
+| `hayvon.mushuk.tafakkur.mp3`         | Mushuk uyimizni sichqonlardan asraydi.                     | iliq                                     | ⬜    |
+| `hayvon.it.nom.mp3`                  | Bu — it!                                                   | quvnoq                                   | ⬜    |
+| `hayvon.it.ovoz.mp3`                 | It: vov-vov!                                               | hayvonga taqlid qilib, oʻyinqaroq        | ⬜    |
+| `hayvon.it.tafakkur.mp3`             | It uyimizni qoʻriqlaydi.                                   | iliq                                     | ⬜    |
+| `hayvon.sigir.nom.mp3`               | Bu — sigir!                                                | quvnoq                                   | ⬜    |
+| `hayvon.sigir.ovoz.mp3`              | Sigir: moʻ-oʻ!                                             | hayvonga taqlid qilib, oʻyinqaroq        | ⬜    |
+| `hayvon.sigir.tafakkur.mp3`          | Sigir bizga sut beradi.                                    | iliq                                     | ⬜    |
+| `hayvon.xoroz.nom.mp3`               | Bu — xoʻroz!                                               | quvnoq                                   | ⬜    |
+| `hayvon.xoroz.ovoz.mp3`              | Xoʻroz: qu-qu-qu-qu!                                       | hayvonga taqlid qilib, oʻyinqaroq        | ⬜    |
+| `hayvon.xoroz.tafakkur.mp3`          | Xoʻroz ertalab hammani uygʻotadi.                          | iliq                                     | ⬜    |
+| `hayvon.qoy.nom.mp3`                 | Bu — qoʻy!                                                 | quvnoq                                   | ⬜    |
+| `hayvon.qoy.ovoz.mp3`                | Qoʻy: ma-a-a!                                              | hayvonga taqlid qilib, oʻyinqaroq        | ⬜    |
+| `hayvon.qoy.tafakkur.mp3`            | Qoʻy bizga jun beradi.                                     | iliq                                     | ⬜    |
+| `hayvon.ot.nom.mp3`                  | Bu — ot!                                                   | quvnoq                                   | ⬜    |
+| `hayvon.ot.ovoz.mp3`                 | Ot: i-go-go!                                               | hayvonga taqlid qilib, oʻyinqaroq        | ⬜    |
+| `hayvon.ot.tafakkur.mp3`             | Ot tez yuguradi va odamlarga yordam beradi.                | iliq                                     | ⬜    |
+| `hayvon.ordak.nom.mp3`               | Bu — oʻrdak!                                               | quvnoq                                   | ⬜    |
+| `hayvon.ordak.ovoz.mp3`              | Oʻrdak: gʻa-gʻa!                                           | hayvonga taqlid qilib, oʻyinqaroq        | ⬜    |
+| `hayvon.ordak.tafakkur.mp3`          | Oʻrdak suvda chiroyli suzadi.                              | iliq                                     | ⬜    |
+| `hayvon.qurbaqa.nom.mp3`             | Bu — qurbaqa!                                              | quvnoq                                   | ⬜    |
+| `hayvon.qurbaqa.ovoz.mp3`            | Qurbaqa: vaq-vaq!                                          | hayvonga taqlid qilib, oʻyinqaroq        | ⬜    |
+| `hayvon.qurbaqa.tafakkur.mp3`        | Qurbaqa pashshalarni tutadi.                               | iliq                                     | ⬜    |
+| `hayvon.echki.nom.mp3`               | Bu — echki!                                                | quvnoq                                   | ⬜    |
+| `hayvon.echki.ovoz.mp3`              | Echki: me-e-e!                                             | hayvonga taqlid qilib, oʻyinqaroq        | ⬜    |
+| `hayvon.echki.tafakkur.mp3`          | Echki bizga sut beradi.                                    | iliq                                     | ⬜    |
+| `hayvon.eshak.nom.mp3`               | Bu — eshak!                                                | quvnoq                                   | ⬜    |
+| `hayvon.eshak.ovoz.mp3`              | Eshak: i-a, i-a!                                           | hayvonga taqlid qilib, oʻyinqaroq        | ⬜    |
+| `hayvon.eshak.tafakkur.mp3`          | Eshak ogʻir yuk tashiydi.                                  | iliq                                     | ⬜    |
+| `hayvon.tovuq.nom.mp3`               | Bu — tovuq!                                                | quvnoq                                   | ⬜    |
+| `hayvon.tovuq.ovoz.mp3`              | Tovuq: qa-qa-qa!                                           | hayvonga taqlid qilib, oʻyinqaroq        | ⬜    |
+| `hayvon.tovuq.tafakkur.mp3`          | Tovuq bizga tuxum beradi.                                  | iliq                                     | ⬜    |
+| `hayvon.asalari.nom.mp3`             | Bu — asalari!                                              | quvnoq                                   | ⬜    |
+| `hayvon.asalari.ovoz.mp3`            | Asalari: viz-viz!                                          | hayvonga taqlid qilib, oʻyinqaroq        | ⬜    |
+| `hayvon.asalari.tafakkur.mp3`        | Asalari bizga asal beradi.                                 | iliq                                     | ⬜    |
 | **tafakkur**                         |                                                            |                                          |       |
 | `tafakkur.olma.mp3`                  | Qara, olma qanday chiroyli qizil!                          | hayratli                                 | ⬜    |
 | `tafakkur.qulupnay.mp3`              | Qulupnay qizil va shirin!                                  | iliq                                     | ⬜    |

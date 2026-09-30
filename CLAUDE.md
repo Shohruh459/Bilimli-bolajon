@@ -71,13 +71,15 @@ src/
   games/<id>/           # har o'yin — alohida lazy chunk; logic.ts (sof, test qilinadi) + index.ts (UI)
                         #   + art.ts (o'yinga xos SVG'lar — bosh bundle'ga kirmaydi)
   games/registry.ts     # o'yinlar ro'yxati (meta + lazy import)
-  content/              # BARCHA matnlar: phrases.ts (ovoz kalitlari), colors.ts, shapes.ts (+ darajalar), ages.ts, diniy.ts
+  content/              # BARCHA matnlar: phrases.ts (ovoz kalitlari), colors.ts, shapes.ts, animals.ts (+ darajalar), ages.ts, diniy.ts
   ui/                   # dom (h, svg), art (SVG rasmlar), icons, button, topbar, parent-gate, level-picker
   styles/               # tokens.css, fonts.css, base.css, app.css (o'yin CSS — o'yin papkasida)
   assets/audio/uz/      # ovoz yozuvlari: <kalit>.mp3 (docs/OVOZLAR.md)
+  assets/sounds/        # uchinchi tomon CC0/PD ovozlar: animals/<id>.mp3 (docs/ATTRIBUTIONS.md)
+sounds/animals.json     # tasdiqlangan ovozlar manifesti; xom fayllar sounds/raw/ (gitignore)
 tests/e2e/              # Playwright (mobil viewport), skrinshotlar → screenshots/
-scripts/                # check-budget, gen-icons, gen-ovozlar, build-okina-font, contact-sheet
-docs/                   # ROADMAP, DINIY-MATNLAR, OVOZLAR
+scripts/                # check-budget, gen-icons, gen-ovozlar, build-okina-font, contact-sheet, process-sounds.py
+docs/                   # ROADMAP, DINIY-MATNLAR, OVOZLAR, ATTRIBUTIONS
 ```
 
 ## Arxitektura qarorlari
@@ -131,6 +133,22 @@ docs/                   # ROADMAP, DINIY-MATNLAR, OVOZLAR
   ochilish mantiqi sof funksiyalar (`unlockedUpTo`, `unlocksNext`) — unit test qilinadi.
   Yopiq darajaga to'g'ridan-to'g'ri havola → daraja tanlashga qaytaradi. 0-bosqichdagi eski
   `ranglar` yulduzlari 1-darajaga hisoblanadi.
+- **Ovozli "topish" o'yini** (hayvonlar): `audioAsk` — topshiriq ko'rinmaydi, eshitiladi
+  (ibora + toifa `cue()`), ekranda "?"; topshiriq qutisi bosilsa qayta eshittiradi.
+  `canTarget` — faqat ovozi bor toifa maqsad bo'ladi; yetarli bo'lmasa (`isPlayable`, < 3)
+  daraja "tayyorlanmoqda" (`data-soon`), to'g'ridan-to'g'ri havola daraja tanlashga qaytaradi.
+  `extra` + `modes` — daraja ekranidagi qo'shimcha karta (Tanishuv, `#/oyin/<id>/<mode>`),
+  birinchi ochilgunicha pulsatsiya qiladi (`getFlag/setFlag`).
+- **Klip ovozlar** (`voice.ts` → `hasClip/playClip/preloadClips`): `src/assets/sounds/**/*.mp3`,
+  kalit `animals/<id>`. Klip yo'q bo'lsa `playClip` taqlid iborasini aytadi ("Sigir: moʻ-oʻ!").
+  E2E build'i (`VITE_E2E=1`, playwright webServer) va `localStorage['ilmli:e2e-fake-clips']='1'`
+  bo'lsa — soxta klip (qisqa signal); prod build'da bu kod ishlamaydi.
+- **Uchinchi tomon ovozlari:** faqat **CC0-1.0 / Public domain** (Wikimedia Commons, Freesound CC0);
+  Pixabay va cheklovli litsenziyalar YO'Q. Har hayvon uchun 2–3 nomzodni egasiga eshittirib,
+  **tasdiqlagandan keyingina** repoga qo'shiladi. Har fayl `docs/ATTRIBUTIONS.md` da (manba,
+  muallif, litsenziya, sana) — `content/attributions.test.ts` tekshiradi. Qayta ishlash:
+  `python3 scripts/process-sounds.py` (1–3 s, −16 LUFS, MP3 mono 64 kbps 44.1 kHz).
+- **Uzun sarlavha** (> 8 harf) daraja ekranida kichikroq (`.screen-title.is-long`) — 360px ga sig'adi.
 - **Dizayn sayqali** alohida bosqich (ROADMAP). Hozircha funksional o'zgarishlarda dizaynni katta o'zgartirmaymiz.
 
 ## Ovozlarni keshlash rejasi (keyinroq)
@@ -232,3 +250,13 @@ Pipe (`| grep`, `| tail`) ishlatilsa, exit kodi pipe'ning oxirgi buyrug'iniki bo
   - Kvadrat va to'g'ri to'rtburchak bir raundda chiqmaydi (`SHAPE_EXCLUSIVE`, unit test 2000 seed).
   - Daraja iboralari umumiy (`daraja.tanla`, `daraja.yopiq`); 27 ta yangi ibora (jami 78).
   - 106 unit test, 24×2 e2e test.
+
+- **0.4.0 — Hayvon ovozlari, 2026-09-30**
+  - 3–4 yosh "Hayvonlar": Tanishuv (hayvonni bos → ovoz, nom, tafakkur) + 3 daraja:
+    1. mushuk, it, sigir, xoʻroz; 2) + qoʻy, ot, oʻrdak, qurbaqa; 3) + echki, eshak, tovuq, asalari (4 variant, 6 raund).
+  - Qoʻy↔echki, xoʻroz↔tovuq bir raundda chiqmaydi (unit test 2000 seed + e2e).
+  - 12 ta SVG hayvon; tafakkur iboralari "Sigir bizga sut beradi" shaklida (hayvonga rahmat yo'q).
+  - Engine: `audioAsk`, `cue`, `canTarget`/`isPlayable`, `extra`/`modes`, klip ovozlar, "tayyorlanmoqda".
+  - Ovoz fayllari hali yo'q (Commons tarmoqdan yopiq) — o'yin buzilmaydi: Tanishuv taqlid iborasi bilan,
+    darajalar "tayyorlanmoqda". `docs/ATTRIBUTIONS.md` + test, `scripts/process-sounds.py`.
+  - 40 ta yangi ibora (jami 118).

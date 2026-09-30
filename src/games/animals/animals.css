@@ -1,0 +1,44 @@
+/* "Hayvon ovozlari" — Tanishuv ekrani (o'yin chunk'i bilan yuklanadi) */
+.tn-grid {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  align-content: center;
+  padding-bottom: var(--edge);
+}
+
+/* 5+ hayvon — 3 ustun, 12 tasi ham 360×640 ekranga sig'adi */
+.tn-grid[data-count='5'],
+.tn-grid[data-count='6'],
+.tn-grid[data-count='7'],
+.tn-grid[data-count='8'],
+.tn-grid[data-count='9'],
+.tn-grid[data-count='10'],
+.tn-grid[data-count='11'],
+.tn-grid[data-count='12'] {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.tn-card {
+  width: 100%;
+  aspect-ratio: 1;
+  padding: 4px;
+}
+
+.tn-card .art {
+  width: 88%;
+  height: 88%;
+}
+
+.tn-card .art svg {
+  width: 100%;
+  height: 100%;
+}
+
+.tn-card.is-playing {
+  --btn-bg: #fff7d6;
+  outline: 5px solid var(--c-sun);
+  outline-offset: -5px;
+}
