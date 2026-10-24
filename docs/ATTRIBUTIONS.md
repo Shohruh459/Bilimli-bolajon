@@ -22,6 +22,16 @@ uning 1.b.i bandi talab qilgan yozuv (o'zgartirilmagan holda):
 
 > Built with Higgs Materials licensed from Boson AI USA, Inc., Copyright Boson AI USA, Inc., All Rights Reserved and Meta Llama 3 licensed under the Meta Llama 3 Community License, Copyright Meta Platforms, Inc., All Right Reserved
 
+Notice (1.b.iii):
+
+> Meta Llama 3 is licensed under the Meta Llama 3 Community License, Copyright © Meta Platforms, Inc. All Rights Reserved.
+> Boson Higgs Audio 2 is licensed under the Boson Community License, Copyright © Boson AI USA, Inc. All Rights Reserved.
+
+Model kartasi (2026-10-24 da o'qildi): _"Our code is released under the Apache 2.0 License. The
+pre-trained model is licensed under the CC-BY-NC due to constraints from its training data
+(e.g., Emilia)."_ Karta ruxsatsiz ovoz klonlash va boshqa shaxs ovozini taqlid qilishni taqiqlaydi —
+bizning namuna ovoz sun'iy.
+
 Shartlar: Boson AI Higgs Audio 2 litsenziyasi va Meta Llama 3 Community License
 (https://www.llama.com/llama3/license/). Manba: VoiceStudio `docs/model-credits.md`.
 

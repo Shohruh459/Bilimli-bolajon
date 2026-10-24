@@ -28,6 +28,11 @@ Manba: `shohruh459/Video_montaj` (`config/voice.json`, `config/voice_ref/`,
    Backend har sessiyada o'chadi — har safar qayta ishga tushiriladi.
 5. Model (bir marta): `POST http://localhost:3900/models/install {"repo_id":"k2-fsa/OmniVoice"}`,
    holat: `GET /models/install/status`.
+6. Litsenziyalarni qabul qilish (egasi 2026-10-24 da rozi bo'ldi; har yangi o'rnatishda qayta):
+   `POST /models/licenses/accept {"repo_id": ..., "fingerprint": ..., "accepted": true}` —
+   `k2-fsa/OmniVoice` va `eustlb/higgs-audio-v2-tokenizer` uchun. Fingerprint:
+   `GET /models/licenses/details/<repo_id>` → `acceptance.fingerprint`. Fingerprint o'zgarsa
+   (shartlar yangilangan) — avval egasidan so'raladi.
 
 ## Ishlatish
 
@@ -69,6 +74,9 @@ Bitta iborani qayta yaratish: `npm run tts:reja -- --only praise.zor --force`.
   **notijoriy** foydalanish, mualliflarni (Han Zhu va hammualliflar) ko'rsatish shart.
 - **Audio tokenizer** — Boson AI Higgs Audio 2 + Meta Llama 3 litsenziyasi: "Built with…" yozuvi
   aynan ko'rsatilishi shart (Sozlamalar ekrani va `docs/ATTRIBUTIONS.md`).
+- **Tokenizer litsenziyasi, 2-band:** yillik faol foydalanuvchilar **100 000 dan oshsa**, Boson AI'dan
+  kengaytirilgan litsenziya so'rash shart. Shunga yaqinlashsak — TTS fayllarni almashtiramiz.
+- Model kartasi: CC-BY-NC sababi — o'qitish ma'lumotlari (Emilia). Ruxsatsiz klonlash/taqlid taqiqlangan.
 - VoiceStudio reestri (2026-10-09): `commercial_inference: restricted`, `commercial_outputs: unknown`,
   `voice_rights: unknown` — ya'ni tijoriy foydalanish yopiq, yaratilgan audio huquqlari aniq emas.
 - Ilova bepul, reklamasiz va xaridsiz — notijoriy. Agar ilova **tijoriy** bo'lsa (pullik, reklama,

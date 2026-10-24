@@ -150,7 +150,7 @@ docs/                   # ROADMAP, DINIY-MATNLAR, OVOZLAR, TTS, ATTRIBUTIONS
   qilinadi (soni + mualliflar + audio tokenizer talab qilgan "Built with Higgs Materials…" yozuvi —
   matni o'zgartirilmaydi). **Egasi qarori (2026-10-24): ilova pullik bo'lmaydi** — notijoriy
   qoladi, shuning uchun sun'iy ovoz ishlatiladi. Agar bu qaror o'zgarsa (pullik, reklama, homiylik) —
-  avval TTS fayllar olib tashlanadi.
+  avval TTS fayllar olib tashlanadi. Tokenizer litsenziyasi: yillik foydalanuvchilar > 100 000 bo'lsa — Boson AI ruxsati kerak.
   Claude audioni eshita olmaydi — talaffuzni egasi tekshiradi.
 - **Uzun sarlavha** (> 8 harf) daraja ekranida kichikroq (`.screen-title.is-long`) — 360px ga sig'adi.
 - **Dizayn sayqali** alohida bosqich (ROADMAP). Hozircha funksional o'zgarishlarda dizaynni katta o'zgartirmaymiz.
