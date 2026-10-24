@@ -1,12 +1,19 @@
 // docs/OVOZLAR.md ni src/content/phrases.ts dan yaratadi. Ishga tushirish: npm run ovozlar
-import { existsSync, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { PHRASES } from '../src/content/phrases.ts';
 
 const AUDIO_DIR = 'src/assets/audio/uz';
 const entries = Object.entries(PHRASES) as [string, { text: string; tone?: string }][];
 const groupOf = (key: string) => key.split('.')[0] ?? key;
+// Manifestdagi fayllar — vaqtinchalik sun'iy ovoz (TTS), qolganlari qo'lda yozilgan.
+const ttsFiles = (
+  JSON.parse(readFileSync(`${AUDIO_DIR}/tts.json`, 'utf8')) as {
+    files: Record<string, unknown>;
+  }
+).files;
 
 let done = 0;
+let tts = 0;
 const rows: string[] = [];
 let lastGroup = '';
 for (const [key, p] of entries) {
@@ -16,8 +23,12 @@ for (const [key, p] of entries) {
     lastGroup = group;
   }
   const has = existsSync(`${AUDIO_DIR}/${key}.mp3`);
-  if (has) done++;
-  rows.push(`| \`${key}.mp3\` | ${p.text} | ${p.tone ?? ''} | ${has ? '✅' : '⬜'} |`);
+  const isTts = has && key in ttsFiles;
+  if (has && !isTts) done++;
+  if (isTts) tts++;
+  rows.push(
+    `| \`${key}.mp3\` | ${p.text} | ${p.tone ?? ''} | ${isTts ? '🤖' : has ? '✅' : '⬜'} |`,
+  );
 }
 
 const md = `# Ovoz yozuvlari ro'yxati
@@ -25,7 +36,10 @@ const md = `# Ovoz yozuvlari ro'yxati
 > Bu fayl avtomatik yaratiladi: \`npm run ovozlar\` (manba — \`src/content/phrases.ts\`).
 > Qo'lda tahrirlamang — matnni phrases.ts da o'zgartiring.
 
-**Holat:** ${done} / ${entries.length} yozilgan.
+**Holat:** ${done} / ${entries.length} qoʻlda yozilgan, ${tts} ta vaqtinchalik sunʼiy ovoz (🤖 TTS).
+
+🤖 — sunʼiy ovoz (\`docs/TTS.md\`). Qoʻlda yozilgan fayl qoʻyilsa, uni manifestdan
+(\`src/assets/audio/uz/tts.json\`) olib tashlang — keyin TTS unga hech qachon tegmaydi.
 
 ## Talablar
 

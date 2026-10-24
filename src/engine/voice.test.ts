@@ -1,5 +1,13 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { say, sayAll, silentDuration, stopVoice, voiceSourceFor } from './voice';
+import {
+  hasRecording,
+  pickSource,
+  say,
+  sayAll,
+  silentDuration,
+  stopVoice,
+  voiceSourceFor,
+} from './voice';
 
 function mockVoices(langs: string[] | null) {
   if (langs === null) {
@@ -18,19 +26,22 @@ describe('voice', () => {
     vi.useRealTimers();
   });
 
-  it('fayl ham, TTS ham yoʻq boʻlsa — jim', () => {
+  it('zanjir: fayl → uz ovozi → jim', () => {
+    expect(pickSource(true, true)).toBe('file');
+    expect(pickSource(true, false)).toBe('file');
+    expect(pickSource(false, true)).toBe('tts');
+    expect(pickSource(false, false)).toBe('silent');
+  });
+
+  it('fayl boʻlsa — fayl; yoʻq boʻlsa faqat uz ovozi ishlatiladi (rus/turk emas)', () => {
+    const key = 'praise.barakalla';
+    const file = hasRecording(key);
     mockVoices(null);
-    expect(voiceSourceFor('praise.barakalla')).toBe('silent');
-  });
-
-  it('faqat boshqa til ovozi boʻlsa ham — jim (rus/turk ishlatilmaydi)', () => {
+    expect(voiceSourceFor(key)).toBe(file ? 'file' : 'silent');
     mockVoices(['ru-RU', 'tr-TR', 'en-US']);
-    expect(voiceSourceFor('praise.barakalla')).toBe('silent');
-  });
-
-  it('uz ovozi boʻlsa — TTS', () => {
+    expect(voiceSourceFor(key)).toBe(file ? 'file' : 'silent');
     mockVoices(['en-US', 'uz_UZ']);
-    expect(voiceSourceFor('praise.barakalla')).toBe('tts');
+    expect(voiceSourceFor(key)).toBe(file ? 'file' : 'tts');
   });
 
   it('jim pauza chegaralangan', () => {

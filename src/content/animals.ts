@@ -20,8 +20,8 @@ export interface LearnAnimal {
   readonly name: string;
   /** "Bu — mushuk!" */
   readonly nameSay: PhraseKey;
-  /** Ovoz fayli yo'q bo'lsa aytiladigan taqlid: "Mushuk: miyov-miyov!" */
-  readonly mimic: PhraseKey;
+  /** O'yin topshirig'i: "Mushukni top!" */
+  readonly find: PhraseKey;
   /** Tafakkur: "Sigir bizga sut beradi." (diniy matn yo'q) */
   readonly tafakkur: PhraseKey;
 }
@@ -30,7 +30,7 @@ const animal = (id: AnimalId, name: string): LearnAnimal => ({
   id,
   name,
   nameSay: `hayvon.${id}.nom` as PhraseKey,
-  mimic: `hayvon.${id}.ovoz` as PhraseKey,
+  find: `hayvon.${id}.top` as PhraseKey,
   tafakkur: `hayvon.${id}.tafakkur` as PhraseKey,
 });
 
@@ -59,13 +59,13 @@ export interface AnimalLevel {
 }
 
 export const ANIMAL_LEVELS: readonly AnimalLevel[] = [
-  // Ovozlari eng farqli hayvonlar
+  // Bola eng koʻp koʻradigan, bir-biridan aniq farqli hayvonlar
   { level: 1, fresh: ['mushuk', 'it', 'sigir', 'xoroz'], options: 3, rounds: 5 },
   { level: 2, fresh: ['qoy', 'ot', 'ordak', 'qurbaqa'], options: 3, rounds: 5 },
   { level: 3, fresh: ['echki', 'eshak', 'tovuq', 'asalari'], options: 4, rounds: 6 },
 ];
 
-/** Bir raundda HECH QACHON birga chiqmaydi: ovozi (va ko'rinishi) o'xshash juftlar. */
+/** Bir raundda HECH QACHON birga chiqmaydi: koʻrinishi oʻxshash juftlar. */
 export const ANIMAL_EXCLUSIVE = [
   ['qoy', 'echki'],
   ['xoroz', 'tovuq'],

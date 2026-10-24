@@ -28,6 +28,28 @@ describe('installChildGuard', () => {
     expect(plain.defaultPrevented).toBe(false);
   });
 
+  it('touchmove: pinch hamma joyda toʻxtaydi; bir barmoq scroll faqat [data-scroll] ichida', () => {
+    dispose = installChildGuard();
+    const box = document.createElement('div');
+    box.dataset.scroll = '';
+    const inner = document.createElement('p');
+    box.append(inner);
+    document.body.append(box);
+    const move = (el: Element, fingers: number) => {
+      const e = Object.defineProperty(
+        new Event('touchmove', { cancelable: true, bubbles: true }),
+        'touches',
+        { value: { length: fingers } },
+      );
+      el.dispatchEvent(e);
+      return e.defaultPrevented;
+    };
+    expect(move(document.body, 1), 'oddiy joyda scroll').toBe(true);
+    expect(move(inner, 1), '[data-scroll] ichida scroll').toBe(false);
+    expect(move(inner, 2), '[data-scroll] ichida pinch').toBe(true);
+    box.remove();
+  });
+
   it('dispose dan keyin himoya o‘chadi', () => {
     installChildGuard()();
     const e = new Event('contextmenu', { cancelable: true, bubbles: true });

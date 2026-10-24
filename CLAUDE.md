@@ -25,6 +25,7 @@ Yosh guruhlari: **3–4**, **5**, **6–7** va **Diniy bo'lim** (ota-ona bilan b
 8. Umumiy o'yinlarda diniy matn yo'q — faqat tafakkurga undovchi yumshoq iboralar.
 9. Bola himoyasi: pinch-zoom, long-press menyu, matn belgilash, pull-to-refresh o'chirilgan;
    `orientation: portrait`. Sozlamalar faqat **ota-ona darvozasi** (3 soniya bosib turish) orqali.
+   Bir barmoq scroll faqat `[data-scroll]` ichida (faqat ota-ona Sozlamalari); pinch hamma joyda yopiq.
 10. **Litsenziya:** kod — MIT (`LICENSE`). Ovozlar, SVG rasmlar/ikonalar, kontent matnlari, nom va
     maskot — barcha huquqlar himoyalangan (`LICENSE-CONTENT.md`). Yangi kontent turi qo'shilsa,
     `LICENSE-CONTENT.md` jadvalini yangila. Repo **public** — hech qachon token/kalit/.env commit qilinmaydi.
@@ -75,11 +76,12 @@ src/
   ui/                   # dom (h, svg), art (SVG rasmlar), icons, button, topbar, parent-gate, level-picker
   styles/               # tokens.css, fonts.css, base.css, app.css (o'yin CSS — o'yin papkasida)
   assets/audio/uz/      # ovoz yozuvlari: <kalit>.mp3 (docs/OVOZLAR.md)
-  assets/sounds/        # uchinchi tomon CC0/PD ovozlar: animals/<id>.mp3 (docs/ATTRIBUTIONS.md)
-sounds/animals.json     # tasdiqlangan ovozlar manifesti; xom fayllar sounds/raw/ (gitignore)
+                        #   + tts.json — qaysi fayllar vaqtinchalik sun'iy ovoz (docs/TTS.md)
+tools/tts/              # TTS sozlamasi (voice.json, seed 42) va sun'iy namuna ovoz (voice_ref/)
 tests/e2e/              # Playwright (mobil viewport), skrinshotlar → screenshots/
-scripts/                # check-budget, gen-icons, gen-ovozlar, build-okina-font, contact-sheet, process-sounds.py
-docs/                   # ROADMAP, DINIY-MATNLAR, OVOZLAR, ATTRIBUTIONS
+scripts/                # check-budget, gen-icons, gen-ovozlar, build-okina-font, contact-sheet,
+                        #   TTS: tts-plan.ts (sof, test), tts-reja.ts, gen-tts.py, tts_vs.py, start_voice.sh
+docs/                   # ROADMAP, DINIY-MATNLAR, OVOZLAR, TTS, ATTRIBUTIONS
 ```
 
 ## Arxitektura qarorlari
@@ -133,21 +135,23 @@ docs/                   # ROADMAP, DINIY-MATNLAR, OVOZLAR, ATTRIBUTIONS
   ochilish mantiqi sof funksiyalar (`unlockedUpTo`, `unlocksNext`) — unit test qilinadi.
   Yopiq darajaga to'g'ridan-to'g'ri havola → daraja tanlashga qaytaradi. 0-bosqichdagi eski
   `ranglar` yulduzlari 1-darajaga hisoblanadi.
-- **Ovozli "topish" o'yini** (hayvonlar): `audioAsk` — topshiriq ko'rinmaydi, eshitiladi
-  (ibora + toifa `cue()`), ekranda "?"; topshiriq qutisi bosilsa qayta eshittiradi.
-  `canTarget` — faqat ovozi bor toifa maqsad bo'ladi; yetarli bo'lmasa (`isPlayable`, < 3)
-  daraja "tayyorlanmoqda" (`data-soon`), to'g'ridan-to'g'ri havola daraja tanlashga qaytaradi.
+- **Hayvonlar o'yini** — nom bilan: "Sigirni top!", Tanishuvda "Bu — sigir!" + tafakkur.
+  Hayvon ovozlari (moʻ-oʻ) ishlatilmaydi — egasi qarori (CC0 ovozlar rejasi bekor qilindi).
   `extra` + `modes` — daraja ekranidagi qo'shimcha karta (Tanishuv, `#/oyin/<id>/<mode>`),
   birinchi ochilgunicha pulsatsiya qiladi (`getFlag/setFlag`).
-- **Klip ovozlar** (`voice.ts` → `hasClip/playClip/preloadClips`): `src/assets/sounds/**/*.mp3`,
-  kalit `animals/<id>`. Klip yo'q bo'lsa `playClip` taqlid iborasini aytadi ("Sigir: moʻ-oʻ!").
-  E2E build'i (`VITE_E2E=1`, playwright webServer) va `localStorage['ilmli:e2e-fake-clips']='1'`
-  bo'lsa — soxta klip (qisqa signal); prod build'da bu kod ishlamaydi.
-- **Uchinchi tomon ovozlari:** faqat **CC0-1.0 / Public domain** (Wikimedia Commons, Freesound CC0);
-  Pixabay va cheklovli litsenziyalar YO'Q. Har hayvon uchun 2–3 nomzodni egasiga eshittirib,
-  **tasdiqlagandan keyingina** repoga qo'shiladi. Har fayl `docs/ATTRIBUTIONS.md` da (manba,
-  muallif, litsenziya, sana) — `content/attributions.test.ts` tekshiradi. Qayta ishlash:
-  `python3 scripts/process-sounds.py` (1–3 s, −16 LUFS, MP3 mono 64 kbps 44.1 kHz).
+  Engine'da hozircha ishlatilmayotgan imkoniyatlar ham bor: `audioAsk` (topshiriq faqat eshitiladi,
+  ekranda "?"), `cue`, `canTarget`/`isPlayable` (maqsad bo'la olmasa daraja "tayyorlanmoqda").
+- **Vaqtinchalik sun'iy ovoz (TTS)** — `docs/TTS.md`. VoiceStudio/OmniVoice (lokal backend),
+  `ASOSIY-ayol-past` profili, **seed 42 o'zgartirilmaydi**. Manifest `src/assets/audio/uz/tts.json`:
+  unda yo'q fayl = qo'lda yozilgan → **TTS unga hech qachon tegmaydi**. **Diniy matn TTS bilan
+  yaratilmaydi** (ikki qavat himoya). Matn o'zgarsa unit test yiqiladi (fayl eskirgan).
+  TTS'ga oddiy `'` yuboriladi (ekranda U+02BB); raqam/qisqartma/uzun gap `tts:reja` da rad etiladi,
+  talaffuz uchun `phrases.ts` → `say`. **Model CC BY-NC** — faqat notijoriy; Sozlamalarda oshkor
+  qilinadi (soni + mualliflar + audio tokenizer talab qilgan "Built with Higgs Materials…" yozuvi —
+  matni o'zgartirilmaydi). **Egasi qarori (2026-10-24): ilova pullik bo'lmaydi** — notijoriy
+  qoladi, shuning uchun sun'iy ovoz ishlatiladi. Agar bu qaror o'zgarsa (pullik, reklama, homiylik) —
+  avval TTS fayllar olib tashlanadi. Tokenizer litsenziyasi: yillik foydalanuvchilar > 100 000 bo'lsa — Boson AI ruxsati kerak.
+  Claude audioni eshita olmaydi — talaffuzni egasi tekshiradi.
 - **Uzun sarlavha** (> 8 harf) daraja ekranida kichikroq (`.screen-title.is-long`) — 360px ga sig'adi.
 - **Dizayn sayqali** alohida bosqich (ROADMAP). Hozircha funksional o'zgarishlarda dizaynni katta o'zgartirmaymiz.
 
@@ -172,7 +176,8 @@ npm run typecheck
 npm test           # vitest (unit)
 npm run build      # typecheck + build + bundle byudjeti
 npm run e2e        # playwright: build + preview + mobil testlar + screenshots/
-npm run ovozlar    # docs/OVOZLAR.md ni phrases.ts dan qayta yaratadi
+npm run ovozlar    # docs/OVOZLAR.md ni phrases.ts dan qayta yaratadi (✅ qo'lda, 🤖 TTS)
+npm run tts:reja   # TTS rejasi + matn qoidalari; npm run tts — reja + generatsiya + ovozlar (docs/TTS.md)
 npm run icons      # public/icons/*.png ni icon.svg dan yaratadi
 node scripts/contact-sheet.mjs   # e2e dan keyin: screenshots/_sheet-<qurilma>.png
 ```
@@ -260,3 +265,12 @@ Pipe (`| grep`, `| tail`) ishlatilsa, exit kodi pipe'ning oxirgi buyrug'iniki bo
   - Ovoz fayllari hali yo'q (Commons tarmoqdan yopiq) — o'yin buzilmaydi: Tanishuv taqlid iborasi bilan,
     darajalar "tayyorlanmoqda". `docs/ATTRIBUTIONS.md` + test, `scripts/process-sounds.py`.
   - 40 ta yangi ibora (jami 118).
+
+- **0.5.0 — Vaqtinchalik sun'iy ovoz + hayvonlar nom bilan, 2026-10-24**
+  - TTS quvuri `shohruh459/Video_montaj` dan ko'chirildi: VoiceStudio/OmniVoice, `ASOSIY-ayol-past`,
+    seed 42. `tts-plan.ts` (qo'lda yozilganni himoya, diniy rad, eskirgan matn, matn qoidalari),
+    `gen-tts.py` (WAV → MP3 mono 64 kbps, −16 LUFS), manifest `tts.json`. Soxta backend bilan
+    boshidan oxirigacha sinaldi; haqiqiy model hali ishga tushirilmagan (tarmoq yopiq).
+  - Sozlamalarda sun'iy ovoz oshkor qilinadi; OVOZLAR.md da 🤖 belgisi.
+  - Hayvonlar: "Sigirni top!" / "Bu — sigir!"; taqlid iboralari, klip kodi, Commons rejasi
+    (`process-sounds.py`, `src/assets/sounds/`, ATTRIBUTIONS testi) olib tashlandi.

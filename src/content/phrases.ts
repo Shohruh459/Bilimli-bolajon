@@ -10,6 +10,11 @@ export interface Phrase {
   readonly text: string;
   /** Yozib olayotganda ohang bo'yicha maslahat */
   readonly tone?: string;
+  /**
+   * Faqat sun'iy ovoz (TTS) uchun: talaffuz boshqacha yozilishi kerak bo'lsa
+   * (raqam → so'z, chet so'z → eshitilganicha). Ekranda baribir `text`.
+   */
+  readonly say?: string;
 }
 
 export const PHRASES = {
@@ -97,48 +102,48 @@ export const PHRASES = {
     tone: 'bayramona',
   },
 
-  // --- Oʻyin: Hayvon ovozlari (3–4 yosh) ---
-  'hayvonlar.intro': { text: 'Kim bunday ovoz chiqaradi?', tone: 'qiziqtiruvchi, sirli' },
+  // --- Oʻyin: Hayvonlar (3–4 yosh) ---
+  'hayvonlar.intro': { text: 'Kel, hayvonlarni topamiz!', tone: 'quvnoq' },
   'hayvonlar.tanishuv': { text: 'Hayvonlar bilan tanishamiz! Birini bos.', tone: 'quvnoq' },
   'hayvonlar.daraja-ochildi': {
     text: 'Yangi daraja ochildi! Yangi hayvonlar seni kutmoqda!',
     tone: 'bayramona',
   },
   'hayvon.mushuk.nom': { text: 'Bu — mushuk!', tone: 'quvnoq' },
-  'hayvon.mushuk.ovoz': { text: 'Mushuk: miyov-miyov!', tone: 'hayvonga taqlid qilib, oʻyinqaroq' },
+  'hayvon.mushuk.top': { text: 'Mushukni top!', tone: 'qiziqtiruvchi' },
   'hayvon.mushuk.tafakkur': { text: 'Mushuk uyimizni sichqonlardan asraydi.', tone: 'iliq' },
   'hayvon.it.nom': { text: 'Bu — it!', tone: 'quvnoq' },
-  'hayvon.it.ovoz': { text: 'It: vov-vov!', tone: 'hayvonga taqlid qilib, oʻyinqaroq' },
+  'hayvon.it.top': { text: 'Itni top!', tone: 'qiziqtiruvchi' },
   'hayvon.it.tafakkur': { text: 'It uyimizni qoʻriqlaydi.', tone: 'iliq' },
   'hayvon.sigir.nom': { text: 'Bu — sigir!', tone: 'quvnoq' },
-  'hayvon.sigir.ovoz': { text: 'Sigir: moʻ-oʻ!', tone: 'hayvonga taqlid qilib, oʻyinqaroq' },
+  'hayvon.sigir.top': { text: 'Sigirni top!', tone: 'qiziqtiruvchi' },
   'hayvon.sigir.tafakkur': { text: 'Sigir bizga sut beradi.', tone: 'iliq' },
   'hayvon.xoroz.nom': { text: 'Bu — xoʻroz!', tone: 'quvnoq' },
-  'hayvon.xoroz.ovoz': { text: 'Xoʻroz: qu-qu-qu-qu!', tone: 'hayvonga taqlid qilib, oʻyinqaroq' },
+  'hayvon.xoroz.top': { text: 'Xoʻrozni top!', tone: 'qiziqtiruvchi' },
   'hayvon.xoroz.tafakkur': { text: 'Xoʻroz ertalab hammani uygʻotadi.', tone: 'iliq' },
   'hayvon.qoy.nom': { text: 'Bu — qoʻy!', tone: 'quvnoq' },
-  'hayvon.qoy.ovoz': { text: 'Qoʻy: ma-a-a!', tone: 'hayvonga taqlid qilib, oʻyinqaroq' },
+  'hayvon.qoy.top': { text: 'Qoʻyni top!', tone: 'qiziqtiruvchi' },
   'hayvon.qoy.tafakkur': { text: 'Qoʻy bizga jun beradi.', tone: 'iliq' },
   'hayvon.ot.nom': { text: 'Bu — ot!', tone: 'quvnoq' },
-  'hayvon.ot.ovoz': { text: 'Ot: i-go-go!', tone: 'hayvonga taqlid qilib, oʻyinqaroq' },
+  'hayvon.ot.top': { text: 'Otni top!', tone: 'qiziqtiruvchi' },
   'hayvon.ot.tafakkur': { text: 'Ot tez yuguradi va odamlarga yordam beradi.', tone: 'iliq' },
   'hayvon.ordak.nom': { text: 'Bu — oʻrdak!', tone: 'quvnoq' },
-  'hayvon.ordak.ovoz': { text: 'Oʻrdak: gʻa-gʻa!', tone: 'hayvonga taqlid qilib, oʻyinqaroq' },
+  'hayvon.ordak.top': { text: 'Oʻrdakni top!', tone: 'qiziqtiruvchi' },
   'hayvon.ordak.tafakkur': { text: 'Oʻrdak suvda chiroyli suzadi.', tone: 'iliq' },
   'hayvon.qurbaqa.nom': { text: 'Bu — qurbaqa!', tone: 'quvnoq' },
-  'hayvon.qurbaqa.ovoz': { text: 'Qurbaqa: vaq-vaq!', tone: 'hayvonga taqlid qilib, oʻyinqaroq' },
+  'hayvon.qurbaqa.top': { text: 'Qurbaqani top!', tone: 'qiziqtiruvchi' },
   'hayvon.qurbaqa.tafakkur': { text: 'Qurbaqa pashshalarni tutadi.', tone: 'iliq' },
   'hayvon.echki.nom': { text: 'Bu — echki!', tone: 'quvnoq' },
-  'hayvon.echki.ovoz': { text: 'Echki: me-e-e!', tone: 'hayvonga taqlid qilib, oʻyinqaroq' },
+  'hayvon.echki.top': { text: 'Echkini top!', tone: 'qiziqtiruvchi' },
   'hayvon.echki.tafakkur': { text: 'Echki bizga sut beradi.', tone: 'iliq' },
   'hayvon.eshak.nom': { text: 'Bu — eshak!', tone: 'quvnoq' },
-  'hayvon.eshak.ovoz': { text: 'Eshak: i-a, i-a!', tone: 'hayvonga taqlid qilib, oʻyinqaroq' },
+  'hayvon.eshak.top': { text: 'Eshakni top!', tone: 'qiziqtiruvchi' },
   'hayvon.eshak.tafakkur': { text: 'Eshak ogʻir yuk tashiydi.', tone: 'iliq' },
   'hayvon.tovuq.nom': { text: 'Bu — tovuq!', tone: 'quvnoq' },
-  'hayvon.tovuq.ovoz': { text: 'Tovuq: qa-qa-qa!', tone: 'hayvonga taqlid qilib, oʻyinqaroq' },
+  'hayvon.tovuq.top': { text: 'Tovuqni top!', tone: 'qiziqtiruvchi' },
   'hayvon.tovuq.tafakkur': { text: 'Tovuq bizga tuxum beradi.', tone: 'iliq' },
   'hayvon.asalari.nom': { text: 'Bu — asalari!', tone: 'quvnoq' },
-  'hayvon.asalari.ovoz': { text: 'Asalari: viz-viz!', tone: 'hayvonga taqlid qilib, oʻyinqaroq' },
+  'hayvon.asalari.top': { text: 'Asalarini top!', tone: 'qiziqtiruvchi' },
   'hayvon.asalari.tafakkur': { text: 'Asalari bizga asal beradi.', tone: 'iliq' },
 
   // --- Tafakkur (yumshoq kuzatuv iboralari) ---

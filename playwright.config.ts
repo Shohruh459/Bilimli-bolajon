@@ -25,8 +25,7 @@ export default defineConfig({
     { name: 'small-android', use: { ...devices['Galaxy S5'] } },
   ],
   webServer: {
-    // VITE_E2E=1: testlar localStorage orqali soxta ovoz kliplarini yoqa oladi (prod build'da bu kod yo'q).
-    command: `VITE_E2E=1 npm run build && npx vite preview --port ${PORT} --strictPort`,
+    command: `npm run build && npx vite preview --port ${PORT} --strictPort`,
     url: `http://localhost:${PORT}${BASE_PATH}`,
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,
