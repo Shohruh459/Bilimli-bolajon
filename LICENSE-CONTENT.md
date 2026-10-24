@@ -23,7 +23,8 @@ ostida. Ulardagi **SVG chizmalarning o'zi** esa himoyalangan.
   huquq da'vo qilmaydi. Har bir matnning manbasi jadvalda ko'rsatiladi.
 - **Sun'iy ovoz (TTS) fayllari** — `src/assets/audio/uz/` dagi, `src/assets/audio/uz/tts.json`
   manifestida ro'yxatlangan fayllar. Ular **OmniVoice** modeli (`k2-fsa/OmniVoice`, **CC BY-NC**)
-  bilan yaratilgan **vaqtinchalik** ovozlar: faqat notijoriy foydalaniladi, model muallifi
+  bilan yaratilgan **vaqtinchalik** ovozlar (audio tokenizer: Boson AI Higgs Audio 2 + Meta Llama 3
+  litsenziyasi, "Built with…" yozuvi bilan): faqat notijoriy foydalaniladi, model muallifi
   ko'rsatiladi (`docs/ATTRIBUTIONS.md`, ilova Sozlamalari). Bu fayllarga "barcha huquqlar
   himoyalangan" bandi to'liq tatbiq etilmaydi — model litsenziyasi shartlari ustun. Matnlari
   (`src/content/**`) esa himoyalangan. Qo'lda yozilgan ovoz yozuvlari bu istisnoga kirmaydi.

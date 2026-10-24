@@ -13,11 +13,15 @@ export function installChildGuard(target: Document = document): () => void {
   // iOS Safari: user-scalable=no ni e'tiborsiz qoldiradi, gesture* hodisalari orqali to'xtatamiz.
   target.addEventListener('gesturestart', prevent, opts);
   target.addEventListener('gesturechange', prevent, opts);
-  // Ikki barmoq — pinch. Bitta barmoq scroll ham kerak emas (sahifa scroll qilmaydi).
+  // Ikki barmoq — pinch: hamma joyda to'xtatiladi. Bitta barmoq scroll ham kerak emas (sahifa
+  // scroll qilmaydi) — faqat `[data-scroll]` ichida ruxsat (ota-ona Sozlamalari, darvoza ortida).
   target.addEventListener(
     'touchmove',
     (e) => {
-      if ((e as TouchEvent).touches.length > 1 || e.cancelable) e.preventDefault();
+      const t = e as TouchEvent;
+      if (t.touches.length > 1) return e.preventDefault();
+      if (t.target instanceof Element && t.target.closest('[data-scroll]')) return;
+      if (e.cancelable) e.preventDefault();
     },
     opts,
   );

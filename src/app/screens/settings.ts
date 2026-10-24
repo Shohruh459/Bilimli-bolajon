@@ -12,6 +12,10 @@ import { gate } from '../../ui/parent-gate';
 import { topBar } from '../../ui/topbar';
 import type { ScreenCtx } from '../screen';
 
+/** OmniVoice audio tokenizer (Higgs Audio 2 / Meta Llama 3) litsenziyasi, 1.b.i — matn o'zgartirilmaydi. */
+const TOKENIZER_NOTICE =
+  'Built with Higgs Materials licensed from Boson AI USA, Inc., Copyright Boson AI USA, Inc., All Rights Reserved and Meta Llama 3 licensed under the Meta Llama 3 Community License, Copyright Meta Platforms, Inc., All Right Reserved';
+
 /** Ota-ona sozlamalari (faqat darvoza orqali). */
 export function settingsScreen({ root, scope, app }: ScreenCtx): void {
   if (!gate.valid()) return app.go({ name: 'home' });
@@ -78,7 +82,8 @@ export function settingsScreen({ root, scope, app }: ScreenCtx): void {
       topBar(back, h('h1', { class: 'screen-title' }, 'Sozlamalar'), null),
       h(
         'div',
-        { class: 'settings__list' },
+        // Ota-ona ekrani uzun bo'lishi mumkin — bola himoyasi faqat shu yerda scroll'ga ruxsat beradi.
+        { class: 'settings__list', 'data-scroll': '' },
         soundBtn,
         resetBtn,
         h(
@@ -104,7 +109,11 @@ export function settingsScreen({ root, scope, app }: ScreenCtx): void {
           ? h(
               'p',
               { class: 'settings__credit', 'data-testid': 'synthetic-credit' },
-              'Ovozlar sunʼiy (kompyuter ovozi), vaqtinchalik. Model: OmniVoice (k2-fsa), CC BY-NC.',
+              'Ovozlar sunʼiy (kompyuter ovozi), vaqtinchalik. Model: OmniVoice ' +
+                '(Han Zhu va hammualliflar, k2-fsa), CC BY-NC.',
+              h('br'),
+              // Audio tokenizer litsenziyasi talab qilgan yozuv — aynan shunday (asl imlosi bilan).
+              h('small', { 'data-testid': 'tokenizer-notice' }, TOKENIZER_NOTICE),
             )
           : null,
         h(

@@ -15,5 +15,15 @@ ro'yxatlanganlari sun'iy ovoz** (TTS) bilan yaratilgan. Qolgan fayllar — qo'ld
 | Fayllar    | har biri manifestda: ekran matni, TTS matni, yaratilgan sana                                              |
 | Holati     | **Vaqtinchalik** — diktor yozuvlari tayyor bo'lgach almashtiriladi                                        |
 
-Ilova ichida ham oshkor qilinadi: Sozlamalar (ota-ona) → "Sunʼiy ovoz: N ta" va model muallifi.
+Model kartasi: https://huggingface.co/k2-fsa/OmniVoice (reviziya `c5fdb5c`): kod Apache-2.0,
+og'irliklar CC-BY-NC (versiyasi ko'rsatilmagan). Mualliflar: Han Zhu va hammualliflar.
+Audio tokenizer — alohida litsenziya (`audio_tokenizer/LICENSE`, Boson AI Higgs Audio 2 + Meta Llama 3);
+uning 1.b.i bandi talab qilgan yozuv (o'zgartirilmagan holda):
+
+> Built with Higgs Materials licensed from Boson AI USA, Inc., Copyright Boson AI USA, Inc., All Rights Reserved and Meta Llama 3 licensed under the Meta Llama 3 Community License, Copyright Meta Platforms, Inc., All Right Reserved
+
+Shartlar: Boson AI Higgs Audio 2 litsenziyasi va Meta Llama 3 Community License
+(https://www.llama.com/llama3/license/). Manba: VoiceStudio `docs/model-credits.md`.
+
+Ilova ichida ham oshkor qilinadi: Sozlamalar (ota-ona) → "Sunʼiy ovoz: N ta", model mualliflari va yuqoridagi yozuv.
 Tafsilot va qoidalar: [docs/TTS.md](TTS.md).

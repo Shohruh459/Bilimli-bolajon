@@ -65,9 +65,12 @@ Bitta iborani qayta yaratish: `npm run tts:reja -- --only praise.zor --force`.
 
 ## Litsenziya — diqqat
 
-- **OmniVoice model og'irliklari — CC BY-NC**: faqat **notijoriy** foydalanish, muallifni ko'rsatish
-  shart (Sozlamalar ekrani va `docs/ATTRIBUTIONS.md`). Audio tokenizer — Boson Higgs Audio community
-  license. Aniq versiya/shartlarni HF model kartasida tekshiring (bu sessiyada `hf.co` yopiq edi).
+- **OmniVoice model og'irliklari — CC-BY-NC** (versiyasi ko'rsatilmagan; kod Apache-2.0): faqat
+  **notijoriy** foydalanish, mualliflarni (Han Zhu va hammualliflar) ko'rsatish shart.
+- **Audio tokenizer** — Boson AI Higgs Audio 2 + Meta Llama 3 litsenziyasi: "Built with…" yozuvi
+  aynan ko'rsatilishi shart (Sozlamalar ekrani va `docs/ATTRIBUTIONS.md`).
+- VoiceStudio reestri (2026-10-09): `commercial_inference: restricted`, `commercial_outputs: unknown`,
+  `voice_rights: unknown` — ya'ni tijoriy foydalanish yopiq, yaratilgan audio huquqlari aniq emas.
 - Ilova bepul, reklamasiz va xaridsiz — notijoriy. Agar ilova **tijoriy** bo'lsa (pullik, reklama,
   homiylik, do'kon orqali sotuv) — TTS fayllar **olib tashlanadi**, jonli diktor yoki tijoriy
   ruxsatli ovoz ishlatiladi.

@@ -25,6 +25,7 @@ Yosh guruhlari: **3–4**, **5**, **6–7** va **Diniy bo'lim** (ota-ona bilan b
 8. Umumiy o'yinlarda diniy matn yo'q — faqat tafakkurga undovchi yumshoq iboralar.
 9. Bola himoyasi: pinch-zoom, long-press menyu, matn belgilash, pull-to-refresh o'chirilgan;
    `orientation: portrait`. Sozlamalar faqat **ota-ona darvozasi** (3 soniya bosib turish) orqali.
+   Bir barmoq scroll faqat `[data-scroll]` ichida (faqat ota-ona Sozlamalari); pinch hamma joyda yopiq.
 10. **Litsenziya:** kod — MIT (`LICENSE`). Ovozlar, SVG rasmlar/ikonalar, kontent matnlari, nom va
     maskot — barcha huquqlar himoyalangan (`LICENSE-CONTENT.md`). Yangi kontent turi qo'shilsa,
     `LICENSE-CONTENT.md` jadvalini yangila. Repo **public** — hech qachon token/kalit/.env commit qilinmaydi.
@@ -146,7 +147,8 @@ docs/                   # ROADMAP, DINIY-MATNLAR, OVOZLAR, TTS, ATTRIBUTIONS
   yaratilmaydi** (ikki qavat himoya). Matn o'zgarsa unit test yiqiladi (fayl eskirgan).
   TTS'ga oddiy `'` yuboriladi (ekranda U+02BB); raqam/qisqartma/uzun gap `tts:reja` da rad etiladi,
   talaffuz uchun `phrases.ts` → `say`. **Model CC BY-NC** — faqat notijoriy; Sozlamalarda oshkor
-  qilinadi (soni + muallif). **Egasi qarori (2026-10-24): ilova pullik bo'lmaydi** — notijoriy
+  qilinadi (soni + mualliflar + audio tokenizer talab qilgan "Built with Higgs Materials…" yozuvi —
+  matni o'zgartirilmaydi). **Egasi qarori (2026-10-24): ilova pullik bo'lmaydi** — notijoriy
   qoladi, shuning uchun sun'iy ovoz ishlatiladi. Agar bu qaror o'zgarsa (pullik, reklama, homiylik) —
   avval TTS fayllar olib tashlanadi.
   Claude audioni eshita olmaydi — talaffuzni egasi tekshiradi.

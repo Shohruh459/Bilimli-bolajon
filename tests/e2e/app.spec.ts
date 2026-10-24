@@ -206,7 +206,12 @@ test.describe('Ota-ona darvozasi', () => {
     // Sunʼiy ovoz fayllari boʻlsa — ota-onaga oshkor qilinadi (soni + model muallifi).
     const synthetic = (await page.getByTestId('synthetic-count').textContent())!;
     if (synthetic === 'yoʻq') await expect(page.getByTestId('synthetic-credit')).toHaveCount(0);
-    else await expect(page.getByTestId('synthetic-credit')).toContainText('sunʼiy');
+    else {
+      await expect(page.getByTestId('synthetic-credit')).toContainText('sunʼiy');
+      await expect(page.getByTestId('tokenizer-notice')).toContainText(
+        'Built with Higgs Materials',
+      );
+    }
 
     const toggle = page.getByTestId('sound-toggle');
     await expect(toggle).toHaveAttribute('aria-pressed', 'true');
