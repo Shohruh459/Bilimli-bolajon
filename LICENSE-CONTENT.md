@@ -21,11 +21,14 @@ ostida. Ulardagi **SVG chizmalarning o'zi** esa himoyalangan.
 - **Diniy matnlar** (`src/content/diniy.ts`, `docs/DINIY-MATNLAR.md`): arabcha matnlar,
   tarjimalar va ularning manbalari o'z mualliflari/nashriyotlariga tegishli. Bu fayl ularga
   huquq da'vo qilmaydi. Har bir matnning manbasi jadvalda ko'rsatiladi.
-- **Uchinchi tomon ovozlari** (`src/assets/sounds/**`, masalan hayvon ovozlari): faqat
-  **CC0-1.0** yoki **Public domain** manbalardan (Wikimedia Commons, Freesound CC0). Bu fayl
-  ularga huquq da'vo qilmaydi. Har bir faylning manbasi, muallifi va litsenziyasi
-  `docs/ATTRIBUTIONS.md` da (unit test tekshiradi). Loyiha egasining o'z ovoz yozuvlari
-  (`src/assets/audio/**`) bu istisnoga kirmaydi.
+- **Sun'iy ovoz (TTS) fayllari** — `src/assets/audio/uz/` dagi, `src/assets/audio/uz/tts.json`
+  manifestida ro'yxatlangan fayllar. Ular **OmniVoice** modeli (`k2-fsa/OmniVoice`, **CC BY-NC**)
+  bilan yaratilgan **vaqtinchalik** ovozlar: faqat notijoriy foydalaniladi, model muallifi
+  ko'rsatiladi (`docs/ATTRIBUTIONS.md`, ilova Sozlamalari). Bu fayllarga "barcha huquqlar
+  himoyalangan" bandi to'liq tatbiq etilmaydi — model litsenziyasi shartlari ustun. Matnlari
+  (`src/content/**`) esa himoyalangan. Qo'lda yozilgan ovoz yozuvlari bu istisnoga kirmaydi.
+- **TTS namuna ovozi** (`tools/tts/voice_ref/**`): o'sha model bilan yaratilgan sun'iy ovoz
+  (haqiqiy shaxs emas), shu shartlar ostida.
 - **Nunito shrifti** (`src/assets/fonts/**`): SIL Open Font License 1.1 (`Nunito-OFL.txt`).
   `nunito-okina-wght-normal.woff2` ham shu litsenziya ostidagi o'zgartirilgan versiya.
 - **npm paketlari**: har biri o'z litsenziyasi ostida.
@@ -40,5 +43,6 @@ Kontentdan foydalanish uchun GitHub orqali murojaat qiling:
 _English summary:_ The source code is MIT-licensed (see `LICENSE`). Audio recordings, SVG
 illustrations and icons, content texts, and the "Ilmli Bolajon" name and mascot are
 © 2026 Shohruh459, **all rights reserved**, and may not be used without written permission.
-Religious texts belong to their respective sources. Third-party sounds in
-`src/assets/sounds/**` are CC0 / public domain (see `docs/ATTRIBUTIONS.md`). The Nunito font is under SIL OFL 1.1.
+Religious texts belong to their respective sources. Temporary synthetic voice files listed in
+`src/assets/audio/uz/tts.json` were generated with the OmniVoice model (CC BY-NC, non-commercial
+use only; see `docs/ATTRIBUTIONS.md`). The Nunito font is under SIL OFL 1.1.

@@ -1,7 +1,6 @@
 /**
- * "Hayvon ovozlari" — kontent va umumiy "topish" mantiqining hayvonlarga moslangani.
- * Har hayvon — bitta toifa va bitta predmet (o'zi). Maqsad faqat OVOZI BOR hayvonlardan:
- * `src/assets/sounds/animals/<id>.mp3` (CC0/PD) yoki egasi yozgan taqlid iborasi.
+ * "Hayvonlar" — kontent va umumiy "topish" mantiqining hayvonlarga moslangani.
+ * Har hayvon — bitta toifa va bitta predmet (o'zi). Topshiriq nom bilan: "Sigirni top!".
  */
 import {
   ANIMAL_EXCLUSIVE,
@@ -27,25 +26,17 @@ export const ITEMS: readonly Item[] = Object.values(LEARN_ANIMALS).map((a) => ({
   tafakkur: a.tafakkur,
 }));
 
-/** Klip kaliti: src/assets/sounds/animals/<id>.mp3 */
-export const clipKey = (id: AnimalId) => `animals/${id}`;
-
 export function getLevel(n: number): AnimalLevel {
   return find.getLevel(ANIMAL_LEVELS, n);
 }
 
-export function makeRounds(
-  level: AnimalLevel,
-  rng: Rng,
-  canTarget: (c: AnimalId) => boolean = () => true,
-): Round[] {
+export function makeRounds(level: AnimalLevel, rng: Rng): Round[] {
   return find.makeRounds(
     level,
     find.levelCats(ANIMAL_LEVELS, level.level),
     ITEMS,
     rng,
     ANIMAL_EXCLUSIVE,
-    canTarget,
   );
 }
 

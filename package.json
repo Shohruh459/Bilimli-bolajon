@@ -1,7 +1,7 @@
 {
   "name": "ilmli-bolajon",
   "private": true,
-  "version": "0.4.0",
+  "version": "0.5.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -14,7 +14,9 @@
     "test:watch": "vitest",
     "e2e": "playwright test",
     "icons": "node scripts/gen-icons.mjs",
-    "ovozlar": "node scripts/gen-ovozlar.ts && prettier --write docs/OVOZLAR.md"
+    "ovozlar": "node scripts/gen-ovozlar.ts && prettier --write docs/OVOZLAR.md",
+    "tts:reja": "node scripts/tts-reja.ts",
+    "tts": "node scripts/tts-reja.ts && python3 scripts/gen-tts.py && npm run ovozlar"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

@@ -439,6 +439,11 @@
   margin: 0;
 }
 
+.settings__credit {
+  margin: 8px 0 0;
+  font-size: var(--fs-sm);
+}
+
 .settings__promise {
   margin: 8px 0 0;
   color: var(--c-grass-deep);

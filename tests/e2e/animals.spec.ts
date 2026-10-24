@@ -1,4 +1,4 @@
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 import {
   expectBigButtons,
   expectNoOverflow,
@@ -12,12 +12,7 @@ import {
 const GAME = 'animals-game';
 const ATTR = 'animal';
 
-/** Haqiqiy ovoz fayllari hali yo'q — e2e build'ida soxta klip (qisqa signal) yoqiladi. */
-async function fakeClips(page: Page): Promise<void> {
-  await page.addInitScript(() => localStorage.setItem('ilmli:e2e-fake-clips', '1'));
-}
-
-test.describe('Hayvon ovozlari — ovoz fayllarisiz', () => {
+test.describe('Hayvonlar — Tanishuv', () => {
   test('menyuda karta; Tanishuv ajralib turadi, ochilgach toʻxtaydi', async ({ page }, info) => {
     await start(page);
     await page.getByTestId('age-3-4').click();
@@ -72,47 +67,32 @@ test.describe('Hayvon ovozlari — ovoz fayllarisiz', () => {
     await expectNoOverflow(page);
     await shot(page, info, '23-tanishuv-12');
   });
-
-  test('darajalar "tayyorlanmoqda": oʻyin boshlanmaydi, toʻgʻridan-toʻgʻri havola ham', async ({
-    page,
-  }, info) => {
-    await start(page, '#/oyin/hayvonlar');
-    const l1 = page.getByTestId('level-1');
-    await expect(l1).toHaveAttribute('data-open', 'true');
-    await expect(l1).toHaveAttribute('data-soon', 'true');
-    await expect(page.getByTestId('level-2')).toHaveAttribute('data-soon', 'false');
-    await shot(page, info, '24-animals-levels-soon');
-    await l1.click();
-    await page.waitForTimeout(400);
-    await expect(page.getByTestId(GAME)).toHaveCount(0);
-
-    await page.goto('#/oyin/hayvonlar/1');
-    await expect(page.getByTestId('animals-levels')).toBeVisible();
-    await expect(page.getByTestId(GAME)).toHaveCount(0);
-  });
 });
 
-test.describe('Hayvon ovozlari — soxta kliplar bilan', () => {
-  test('1-daraja: topshiriq eshitiladi, "?" koʻrinadi; xato urishmaydi; yulduz', async ({
-    page,
-  }, info) => {
-    await fakeClips(page);
+test.describe('Hayvonlar — oʻyin ("Sigirni top!")', () => {
+  test('1-daraja: topshiriqda hayvon nomi; xato urishmaydi; yulduz', async ({ page }, info) => {
     await start(page, '#/oyin/hayvonlar');
-    await expect(page.getByTestId('level-1')).toHaveAttribute('data-soon', 'false');
     await page.getByTestId('level-1').click();
     const game = page.getByTestId(GAME);
     await expect(game).toHaveAttribute('data-level', '1');
     await expect(game).toHaveAttribute('data-target', /.+/, { timeout: 10_000 });
     await expect(page.locator('.find-option')).toHaveCount(3);
-    // Javob ekranda yozilmaydi — faqat eshitiladi.
-    await expect(page.locator('.find-word')).toHaveText('?');
+    // Topshiriq: nomi ekranda va ovozda ("Sigirni top!"); rasm koʻrsatilmaydi.
+    const names: Record<string, string> = {
+      mushuk: 'Mushuk',
+      it: 'It',
+      sigir: 'Sigir',
+      xoroz: 'Xoʻroz',
+    };
+    const first = (await game.getAttribute('data-target'))!;
+    await expect(page.locator('.find-word')).toHaveText(names[first]!);
     await expectBigButtons(page);
     await expectNoOverflow(page);
     await expectTopbarFits(page);
     await shot(page, info, '25-animals-game');
 
-    // Topshiriq qutisi bosilsa — qayta eshittiradi (o'yin buzilmaydi).
-    await page.getByTestId('ask').click();
+    // "Yana eshitish" tugmasi oʻyinni buzmaydi.
+    await page.getByRole('button', { name: 'Yana eshitish' }).click();
     const target = (await game.getAttribute('data-target'))!;
     await page.locator(`.find-option:not([data-animal="${target}"])`).first().click();
     await page.waitForTimeout(300);
@@ -125,7 +105,6 @@ test.describe('Hayvon ovozlari — soxta kliplar bilan', () => {
   test('3-daraja: 4 variant, qoʻy↔echki va xoʻroz↔tovuq hech qachon birga emas', async ({
     page,
   }) => {
-    await fakeClips(page);
     await seedStars(page, { 'hayvonlar.1': 3, 'hayvonlar.2': 3 });
     await start(page, '#/oyin/hayvonlar');
     await expect(page.getByTestId('level-3')).toHaveAttribute('data-open', 'true');
@@ -154,7 +133,6 @@ test.describe('Hayvon ovozlari — soxta kliplar bilan', () => {
   });
 
   test('3 yulduz 2-darajani ochadi', async ({ page }) => {
-    await fakeClips(page);
     await seedStars(page, { 'hayvonlar.1': 2 });
     await start(page, '#/oyin/hayvonlar');
     await page.getByTestId('level-1').click();

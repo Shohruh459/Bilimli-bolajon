@@ -1,3 +1,4 @@
+import { files as ttsFiles } from '../../assets/audio/uz/tts.json';
 import { PHRASES, type PhraseKey } from '../../content/phrases';
 import { APP_VERSION } from '../../content/ui';
 import { getAudioState } from '../../engine/audio';
@@ -65,7 +66,9 @@ export function settingsScreen({ root, scope, app }: ScreenCtx): void {
   });
 
   const keys = Object.keys(PHRASES) as PhraseKey[];
-  const recorded = keys.filter(hasRecording).length;
+  // Manifestdagi fayllar — vaqtinchalik sun'iy ovoz; qolgan fayllar qo'lda yozilgan.
+  const synthetic = keys.filter((k) => hasRecording(k) && k in ttsFiles).length;
+  const recorded = keys.filter(hasRecording).length - synthetic;
   const tts = keys.some((k) => voiceSourceFor(k) === 'tts');
 
   root.append(
@@ -83,13 +86,27 @@ export function settingsScreen({ root, scope, app }: ScreenCtx): void {
           { class: 'settings__info' },
           h('dt', null, 'Ovoz yozuvlari'),
           h('dd', null, `${recorded} / ${keys.length}`),
-          h('dt', null, 'Oʻzbek TTS'),
+          h('dt', null, 'Sunʼiy ovoz'),
+          h(
+            'dd',
+            { 'data-testid': 'synthetic-count' },
+            synthetic ? `${synthetic} ta (vaqtinchalik)` : 'yoʻq',
+          ),
+          h('dt', null, 'Qurilma ovozi (uz)'),
           h('dd', null, tts ? 'bor' : 'yoʻq (yozuv boʻlmasa — jim)'),
           h('dt', null, 'Audio'),
           h('dd', null, getAudioState()),
           h('dt', null, 'Versiya'),
           h('dd', null, APP_VERSION),
         ),
+        // Sun'iy ovoz oshkor qilinadi (bola/ota-ona haqiqiy odam deb o'ylamasin) + model muallifi (CC BY-NC).
+        synthetic
+          ? h(
+              'p',
+              { class: 'settings__credit', 'data-testid': 'synthetic-credit' },
+              'Ovozlar sunʼiy (kompyuter ovozi), vaqtinchalik. Model: OmniVoice (k2-fsa), CC BY-NC.',
+            )
+          : null,
         h(
           'p',
           { class: 'settings__promise' },

@@ -1,18 +1,18 @@
 import { describe, expect, it } from 'vitest';
 import { ANIMAL_EXCLUSIVE, ANIMAL_IDS, ANIMAL_LEVELS, LEARN_ANIMALS } from '../../content/animals';
 import { PHRASES } from '../../content/phrases';
-import { isPlayable, levelCats } from '../../engine/find-logic';
+import { levelCats } from '../../engine/find-logic';
 import { mulberry32 } from '../../engine/random';
 import { ANIMAL_ART } from './art';
-import { clipKey, getLevel, isCorrect, ITEMS, makeRounds } from './logic';
+import { getLevel, isCorrect, ITEMS, makeRounds } from './logic';
 
 describe('Hayvonlar — kontent', () => {
-  it('12 ta hayvon: rasmi, nomi, taqlidi va tafakkur iborasi bor', () => {
+  it('12 ta hayvon: rasmi, nomi, topshirigʻi va tafakkur iborasi bor', () => {
     expect(ANIMAL_IDS).toHaveLength(12);
     for (const id of ANIMAL_IDS) {
       const a = LEARN_ANIMALS[id];
       expect(ANIMAL_ART[id], id).toMatch(/^<svg /);
-      for (const k of [a.nameSay, a.mimic, a.tafakkur]) expect(PHRASES[k], k).toBeTruthy();
+      for (const k of [a.nameSay, a.find, a.tafakkur]) expect(PHRASES[k], k).toBeTruthy();
     }
     expect(ITEMS.map((i) => i.cat).sort()).toEqual([...ANIMAL_IDS].sort());
   });
@@ -30,8 +30,13 @@ describe('Hayvonlar — kontent', () => {
     expect(ANIMAL_LEVELS[2]!.fresh).toEqual(['echki', 'eshak', 'tovuq', 'asalari']);
   });
 
-  it('klip kaliti', () => {
-    expect(clipKey('sigir')).toBe('animals/sigir');
+  it('topshiriq va tanishtirish nom bilan: "Sigirni top!", "Bu — sigir!"', () => {
+    for (const id of ANIMAL_IDS) {
+      const a = LEARN_ANIMALS[id];
+      const name = a.name.toLowerCase();
+      expect(PHRASES[a.find].text.toLowerCase(), id).toMatch(new RegExp(`^${name}ni top!$`));
+      expect(PHRASES[a.nameSay].text.toLowerCase(), id).toBe(`bu — ${name}!`);
+    }
   });
 });
 
@@ -65,18 +70,5 @@ describe('Hayvonlar — raundlar', () => {
       }
       for (const c of lvl.fresh) expect(rounds.map((r) => r.target)).toContain(c);
     }
-  });
-
-  it('ovozsiz holat: maqsad faqat ovozi bor hayvon; yetmasa daraja oʻynalmaydi', () => {
-    const withSound = new Set(['mushuk', 'it', 'sigir']);
-    const ok = (id: string) => withSound.has(id);
-    for (let seed = 0; seed < 100; seed++) {
-      for (const r of makeRounds(getLevel(1), mulberry32(seed), ok)) {
-        expect(withSound.has(r.target), r.target).toBe(true);
-      }
-    }
-    expect(isPlayable(levelCats(ANIMAL_LEVELS, 1), ok)).toBe(true);
-    expect(isPlayable(levelCats(ANIMAL_LEVELS, 1), (id) => id === 'it')).toBe(false);
-    expect(isPlayable(levelCats(ANIMAL_LEVELS, 1), () => false)).toBe(false);
   });
 });

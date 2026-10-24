@@ -203,6 +203,10 @@ test.describe('Ota-ona darvozasi', () => {
     await expect(page.getByTestId('settings')).toBeVisible({ timeout: 5000 });
     await expectBigButtons(page);
     await shot(page, info, '07-settings');
+    // Sunʼiy ovoz fayllari boʻlsa — ota-onaga oshkor qilinadi (soni + model muallifi).
+    const synthetic = (await page.getByTestId('synthetic-count').textContent())!;
+    if (synthetic === 'yoʻq') await expect(page.getByTestId('synthetic-credit')).toHaveCount(0);
+    else await expect(page.getByTestId('synthetic-credit')).toContainText('sunʼiy');
 
     const toggle = page.getByTestId('sound-toggle');
     await expect(toggle).toHaveAttribute('aria-pressed', 'true');

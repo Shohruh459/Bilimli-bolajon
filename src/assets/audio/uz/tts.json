@@ -1,0 +1,9 @@
+{
+  "engine": "VoiceStudio (debpalash/voicestudio) — lokal vosita, ilovaga kirmaydi",
+  "model": "k2-fsa/OmniVoice",
+  "license": "CC-BY-NC (model og'irliklari) — faqat notijoriy",
+  "profile": "ASOSIY-ayol-past (sun'iy namuna, haqiqiy shaxs emas)",
+  "seed": 42,
+  "speed": 1,
+  "files": {}
+}

@@ -35,6 +35,7 @@ npm run dev        # http://localhost:5173/Bilimli-bolajon/
 | `npm run lint`    | ESLint + Prettier                                      |
 | `npm run build`   | production build → `dist/` (+ bundle hajmi tekshiruvi) |
 | `npm run ovozlar` | `docs/OVOZLAR.md` ni yangilash                         |
+| `npm run tts`     | vaqtinchalik sunʼiy ovoz (docs/TTS.md)                 |
 
 `main` branchiga push bo'lganda GitHub Actions saytni GitHub Pages'ga avtomatik joylaydi.
 
@@ -43,6 +44,7 @@ npm run dev        # http://localhost:5173/Bilimli-bolajon/
 - [CLAUDE.md](CLAUDE.md) — qoidalar, arxitektura, qarorlar
 - [docs/ROADMAP.md](docs/ROADMAP.md) — reja
 - [docs/OVOZLAR.md](docs/OVOZLAR.md) — yozib olinadigan ovozlar ro'yxati
+- [docs/TTS.md](docs/TTS.md) — vaqtinchalik sun'iy ovoz (OmniVoice, CC BY-NC)
 - [docs/DINIY-MATNLAR.md](docs/DINIY-MATNLAR.md) — diniy matnlarni tasdiqlash jadvali
 
 ## Litsenziya

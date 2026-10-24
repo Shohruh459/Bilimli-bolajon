@@ -1,0 +1,14 @@
+{
+  "_izoh": "Vaqtinchalik sun'iy ovoz. Manba: shohruh459/Video_montaj (config/voice.json). Namuna voice_ref/ da — sun'iy yaratilgan ovoz (haqiqiy shaxs emas). Ovoz har safar bir xil chiqishi uchun seed O'ZGARTIRILMAYDI. LITSENZIYA: OmniVoice model og'irliklari CC-BY-NC — faqat notijoriy foydalanish.",
+  "engine": "voicestudio-omnivoice",
+  "model_repo": "k2-fsa/OmniVoice",
+  "api": "http://localhost:3900/v1/audio/speech",
+  "model": "omnivoice",
+  "language": "uz",
+  "profile_name": "ASOSIY-ayol-past",
+  "ref_audio": "voice_ref/asosiy_ayol_past.wav",
+  "ref_text_file": "voice_ref/asosiy_ayol_past.txt",
+  "seed": 42,
+  "response_format": "wav",
+  "speed": 1.0
+}
