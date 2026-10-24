@@ -146,7 +146,9 @@ docs/                   # ROADMAP, DINIY-MATNLAR, OVOZLAR, TTS, ATTRIBUTIONS
   yaratilmaydi** (ikki qavat himoya). Matn o'zgarsa unit test yiqiladi (fayl eskirgan).
   TTS'ga oddiy `'` yuboriladi (ekranda U+02BB); raqam/qisqartma/uzun gap `tts:reja` da rad etiladi,
   talaffuz uchun `phrases.ts` → `say`. **Model CC BY-NC** — faqat notijoriy; Sozlamalarda oshkor
-  qilinadi (soni + muallif). Ilova tijoriy bo'lsa — TTS fayllar olib tashlanadi.
+  qilinadi (soni + muallif). **Egasi qarori (2026-10-24): ilova pullik bo'lmaydi** — notijoriy
+  qoladi, shuning uchun sun'iy ovoz ishlatiladi. Agar bu qaror o'zgarsa (pullik, reklama, homiylik) —
+  avval TTS fayllar olib tashlanadi.
   Claude audioni eshita olmaydi — talaffuzni egasi tekshiradi.
 - **Uzun sarlavha** (> 8 harf) daraja ekranida kichikroq (`.screen-title.is-long`) — 360px ga sig'adi.
 - **Dizayn sayqali** alohida bosqich (ROADMAP). Hozircha funksional o'zgarishlarda dizaynni katta o'zgartirmaymiz.
