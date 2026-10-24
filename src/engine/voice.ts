@@ -36,10 +36,15 @@ function uzVoice(): SpeechSynthesisVoice | undefined {
     .find((v) => v.lang.toLowerCase().replace('_', '-').startsWith('uz'));
 }
 
-export function voiceSourceFor(key: PhraseKey): VoiceSource {
-  if (hasRecording(key)) return 'file';
-  if (uzVoice()) return 'tts';
+/** Zanjir tartibi (sof): fayl → qurilmaning uz ovozi → jim. */
+export function pickSource(hasFile: boolean, hasUzVoice: boolean): VoiceSource {
+  if (hasFile) return 'file';
+  if (hasUzVoice) return 'tts';
   return 'silent';
+}
+
+export function voiceSourceFor(key: PhraseKey): VoiceSource {
+  return pickSource(hasRecording(key), !!uzVoice());
 }
 
 function loadBuffer(key: string): Promise<AudioBuffer | null> {

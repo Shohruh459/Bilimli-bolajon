@@ -5,5 +5,596 @@
   "profile": "ASOSIY-ayol-past (sun'iy namuna, haqiqiy shaxs emas)",
   "seed": 42,
   "speed": 1,
-  "files": {}
+  "files": {
+    "daraja.tanla": {
+      "text": "Qaysi darajani oʻynaymiz?",
+      "say": "Qaysi darajani o'ynaymiz?",
+      "date": "2026-10-24"
+    },
+    "daraja.tayyorlanmoqda": {
+      "text": "Bu daraja hali tayyorlanmoqda. Tez orada!",
+      "say": "Bu daraja hali tayyorlanmoqda. Tez orada!",
+      "date": "2026-10-24"
+    },
+    "daraja.yopiq": {
+      "text": "Bu daraja hali yopiq. Yana yulduzcha yigʻ, keyin ochiladi!",
+      "say": "Bu daraja hali yopiq. Yana yulduzcha yig', keyin ochiladi!",
+      "date": "2026-10-24"
+    },
+    "encourage.diqqat": {
+      "text": "Diqqat bilan qara!",
+      "say": "Diqqat bilan qara!",
+      "date": "2026-10-24"
+    },
+    "encourage.hechqisi": {
+      "text": "Hechqisi yoʻq, yana bir bor!",
+      "say": "Hechqisi yo'q, yana bir bor!",
+      "date": "2026-10-24"
+    },
+    "encourage.uddalaysan": {
+      "text": "Sen albatta uddalaysan!",
+      "say": "Sen albatta uddalaysan!",
+      "date": "2026-10-24"
+    },
+    "encourage.yana": {
+      "text": "Yana urinib koʻr!",
+      "say": "Yana urinib ko'r!",
+      "date": "2026-10-24"
+    },
+    "finish.hammasi": {
+      "text": "Hammasini topding! Sen haqiqiy aqlli bolajonsan!",
+      "say": "Hammasini topding! Sen haqiqiy aqlli bolajonsan!",
+      "date": "2026-10-24"
+    },
+    "finish.yulduz": {
+      "text": "Mana senga yulduzcha!",
+      "say": "Mana senga yulduzcha!",
+      "date": "2026-10-24"
+    },
+    "hayvon.asalari.nom": {
+      "text": "Bu — asalari!",
+      "say": "Bu, asalari!",
+      "date": "2026-10-24"
+    },
+    "hayvon.asalari.tafakkur": {
+      "text": "Asalari bizga asal beradi.",
+      "say": "Asalari bizga asal beradi.",
+      "date": "2026-10-24"
+    },
+    "hayvon.asalari.top": {
+      "text": "Asalarini top!",
+      "say": "Asalarini top!",
+      "date": "2026-10-24"
+    },
+    "hayvon.echki.nom": {
+      "text": "Bu — echki!",
+      "say": "Bu, echki!",
+      "date": "2026-10-24"
+    },
+    "hayvon.echki.tafakkur": {
+      "text": "Echki bizga sut beradi.",
+      "say": "Echki bizga sut beradi.",
+      "date": "2026-10-24"
+    },
+    "hayvon.echki.top": {
+      "text": "Echkini top!",
+      "say": "Echkini top!",
+      "date": "2026-10-24"
+    },
+    "hayvon.eshak.nom": {
+      "text": "Bu — eshak!",
+      "say": "Bu, eshak!",
+      "date": "2026-10-24"
+    },
+    "hayvon.eshak.tafakkur": {
+      "text": "Eshak ogʻir yuk tashiydi.",
+      "say": "Eshak og'ir yuk tashiydi.",
+      "date": "2026-10-24"
+    },
+    "hayvon.eshak.top": {
+      "text": "Eshakni top!",
+      "say": "Eshakni top!",
+      "date": "2026-10-24"
+    },
+    "hayvon.it.nom": {
+      "text": "Bu — it!",
+      "say": "Bu, it!",
+      "date": "2026-10-24"
+    },
+    "hayvon.it.tafakkur": {
+      "text": "It uyimizni qoʻriqlaydi.",
+      "say": "It uyimizni qo'riqlaydi.",
+      "date": "2026-10-24"
+    },
+    "hayvon.it.top": {
+      "text": "Itni top!",
+      "say": "Itni top!",
+      "date": "2026-10-24"
+    },
+    "hayvon.mushuk.nom": {
+      "text": "Bu — mushuk!",
+      "say": "Bu, mushuk!",
+      "date": "2026-10-24"
+    },
+    "hayvon.mushuk.tafakkur": {
+      "text": "Mushuk uyimizni sichqonlardan asraydi.",
+      "say": "Mushuk uyimizni sichqonlardan asraydi.",
+      "date": "2026-10-24"
+    },
+    "hayvon.mushuk.top": {
+      "text": "Mushukni top!",
+      "say": "Mushukni top!",
+      "date": "2026-10-24"
+    },
+    "hayvon.ordak.nom": {
+      "text": "Bu — oʻrdak!",
+      "say": "Bu, o'rdak!",
+      "date": "2026-10-24"
+    },
+    "hayvon.ordak.tafakkur": {
+      "text": "Oʻrdak suvda chiroyli suzadi.",
+      "say": "O'rdak suvda chiroyli suzadi.",
+      "date": "2026-10-24"
+    },
+    "hayvon.ordak.top": {
+      "text": "Oʻrdakni top!",
+      "say": "O'rdakni top!",
+      "date": "2026-10-24"
+    },
+    "hayvon.ot.nom": {
+      "text": "Bu — ot!",
+      "say": "Bu, ot!",
+      "date": "2026-10-24"
+    },
+    "hayvon.ot.tafakkur": {
+      "text": "Ot tez yuguradi va odamlarga yordam beradi.",
+      "say": "Ot tez yuguradi va odamlarga yordam beradi.",
+      "date": "2026-10-24"
+    },
+    "hayvon.ot.top": {
+      "text": "Otni top!",
+      "say": "Otni top!",
+      "date": "2026-10-24"
+    },
+    "hayvon.qoy.nom": {
+      "text": "Bu — qoʻy!",
+      "say": "Bu, qo'y!",
+      "date": "2026-10-24"
+    },
+    "hayvon.qoy.tafakkur": {
+      "text": "Qoʻy bizga jun beradi.",
+      "say": "Qo'y bizga jun beradi.",
+      "date": "2026-10-24"
+    },
+    "hayvon.qoy.top": {
+      "text": "Qoʻyni top!",
+      "say": "Qo'yni top!",
+      "date": "2026-10-24"
+    },
+    "hayvon.qurbaqa.nom": {
+      "text": "Bu — qurbaqa!",
+      "say": "Bu, qurbaqa!",
+      "date": "2026-10-24"
+    },
+    "hayvon.qurbaqa.tafakkur": {
+      "text": "Qurbaqa pashshalarni tutadi.",
+      "say": "Qurbaqa pashshalarni tutadi.",
+      "date": "2026-10-24"
+    },
+    "hayvon.qurbaqa.top": {
+      "text": "Qurbaqani top!",
+      "say": "Qurbaqani top!",
+      "date": "2026-10-24"
+    },
+    "hayvon.sigir.nom": {
+      "text": "Bu — sigir!",
+      "say": "Bu, sigir!",
+      "date": "2026-10-24"
+    },
+    "hayvon.sigir.tafakkur": {
+      "text": "Sigir bizga sut beradi.",
+      "say": "Sigir bizga sut beradi.",
+      "date": "2026-10-24"
+    },
+    "hayvon.sigir.top": {
+      "text": "Sigirni top!",
+      "say": "Sigirni top!",
+      "date": "2026-10-24"
+    },
+    "hayvon.tovuq.nom": {
+      "text": "Bu — tovuq!",
+      "say": "Bu, tovuq!",
+      "date": "2026-10-24"
+    },
+    "hayvon.tovuq.tafakkur": {
+      "text": "Tovuq bizga tuxum beradi.",
+      "say": "Tovuq bizga tuxum beradi.",
+      "date": "2026-10-24"
+    },
+    "hayvon.tovuq.top": {
+      "text": "Tovuqni top!",
+      "say": "Tovuqni top!",
+      "date": "2026-10-24"
+    },
+    "hayvon.xoroz.nom": {
+      "text": "Bu — xoʻroz!",
+      "say": "Bu, xo'roz!",
+      "date": "2026-10-24"
+    },
+    "hayvon.xoroz.tafakkur": {
+      "text": "Xoʻroz ertalab hammani uygʻotadi.",
+      "say": "Xo'roz ertalab hammani uyg'otadi.",
+      "date": "2026-10-24"
+    },
+    "hayvon.xoroz.top": {
+      "text": "Xoʻrozni top!",
+      "say": "Xo'rozni top!",
+      "date": "2026-10-24"
+    },
+    "hayvonlar.daraja-ochildi": {
+      "text": "Yangi daraja ochildi! Yangi hayvonlar seni kutmoqda!",
+      "say": "Yangi daraja ochildi! Yangi hayvonlar seni kutmoqda!",
+      "date": "2026-10-24"
+    },
+    "hayvonlar.intro": {
+      "text": "Kel, hayvonlarni topamiz!",
+      "say": "Kel, hayvonlarni topamiz!",
+      "date": "2026-10-24"
+    },
+    "hayvonlar.tanishuv": {
+      "text": "Hayvonlar bilan tanishamiz! Birini bos.",
+      "say": "Hayvonlar bilan tanishamiz! Birini bos.",
+      "date": "2026-10-24"
+    },
+    "hint.mana": {
+      "text": "Qara, u mana shu yerda!",
+      "say": "Qara, u mana shu yerda!",
+      "date": "2026-10-24"
+    },
+    "home.tanla": {
+      "text": "Yoshingni tanla!",
+      "say": "Yoshingni tanla!",
+      "date": "2026-10-24"
+    },
+    "menu.tanla": {
+      "text": "Qaysi oʻyinni oʻynaymiz?",
+      "say": "Qaysi o'yinni o'ynaymiz?",
+      "date": "2026-10-24"
+    },
+    "praise.barakalla": {
+      "text": "Barakalla!",
+      "say": "Barakalla!",
+      "date": "2026-10-24"
+    },
+    "praise.juda-yaxshi": {
+      "text": "Juda yaxshi!",
+      "say": "Juda yaxshi!",
+      "date": "2026-10-24"
+    },
+    "praise.ofarin": {
+      "text": "Ofarin!",
+      "say": "Ofarin!",
+      "date": "2026-10-24"
+    },
+    "praise.qoyil": {
+      "text": "Qoyil!",
+      "say": "Qoyil!",
+      "date": "2026-10-24"
+    },
+    "praise.topding": {
+      "text": "Toʻgʻri topding!",
+      "say": "To'g'ri topding!",
+      "date": "2026-10-24"
+    },
+    "praise.zor": {
+      "text": "Zoʻr!",
+      "say": "Zo'r!",
+      "date": "2026-10-24"
+    },
+    "ranglar.daraja-ochildi": {
+      "text": "Yangi daraja ochildi! Yangi ranglar seni kutmoqda!",
+      "say": "Yangi daraja ochildi! Yangi ranglar seni kutmoqda!",
+      "date": "2026-10-24"
+    },
+    "ranglar.intro": {
+      "text": "Qani, ranglarni topamiz!",
+      "say": "Qani, ranglarni topamiz!",
+      "date": "2026-10-24"
+    },
+    "ranglar.top.binafsha": {
+      "text": "Binafsha rangni top!",
+      "say": "Binafsha rangni top!",
+      "date": "2026-10-24"
+    },
+    "ranglar.top.jigarrang": {
+      "text": "Jigarrang rangni top!",
+      "say": "Jigarrang rangni top!",
+      "date": "2026-10-24"
+    },
+    "ranglar.top.kok": {
+      "text": "Koʻk rangni top!",
+      "say": "Ko'k rangni top!",
+      "date": "2026-10-24"
+    },
+    "ranglar.top.oq": {
+      "text": "Oq rangni top!",
+      "say": "Oq rangni top!",
+      "date": "2026-10-24"
+    },
+    "ranglar.top.pushti": {
+      "text": "Pushti rangni top!",
+      "say": "Pushti rangni top!",
+      "date": "2026-10-24"
+    },
+    "ranglar.top.qizil": {
+      "text": "Qizil rangni top!",
+      "say": "Qizil rangni top!",
+      "date": "2026-10-24"
+    },
+    "ranglar.top.qora": {
+      "text": "Qora rangni top!",
+      "say": "Qora rangni top!",
+      "date": "2026-10-24"
+    },
+    "ranglar.top.sariq": {
+      "text": "Sariq rangni top!",
+      "say": "Sariq rangni top!",
+      "date": "2026-10-24"
+    },
+    "ranglar.top.toq-sariq": {
+      "text": "Toʻq sariq rangni top!",
+      "say": "To'q sariq rangni top!",
+      "date": "2026-10-24"
+    },
+    "ranglar.top.yashil": {
+      "text": "Yashil rangni top!",
+      "say": "Yashil rangni top!",
+      "date": "2026-10-24"
+    },
+    "shakllar.daraja-ochildi": {
+      "text": "Yangi daraja ochildi! Yangi shakllar seni kutmoqda!",
+      "say": "Yangi daraja ochildi! Yangi shakllar seni kutmoqda!",
+      "date": "2026-10-24"
+    },
+    "shakllar.intro": {
+      "text": "Qani, shakllarni topamiz!",
+      "say": "Qani, shakllarni topamiz!",
+      "date": "2026-10-24"
+    },
+    "shakllar.top.doira": {
+      "text": "Doirani top!",
+      "say": "Doirani top!",
+      "date": "2026-10-24"
+    },
+    "shakllar.top.kvadrat": {
+      "text": "Kvadratni top!",
+      "say": "Kvadratni top!",
+      "date": "2026-10-24"
+    },
+    "shakllar.top.oval": {
+      "text": "Ovalni top!",
+      "say": "Ovalni top!",
+      "date": "2026-10-24"
+    },
+    "shakllar.top.togri-tortburchak": {
+      "text": "Toʻgʻri toʻrtburchakni top!",
+      "say": "To'g'ri to'rtburchakni top!",
+      "date": "2026-10-24"
+    },
+    "shakllar.top.uchburchak": {
+      "text": "Uchburchakni top!",
+      "say": "Uchburchakni top!",
+      "date": "2026-10-24"
+    },
+    "shakllar.top.yarim-doira": {
+      "text": "Yarim doirani top!",
+      "say": "Yarim doirani top!",
+      "date": "2026-10-24"
+    },
+    "shakllar.top.yulduz": {
+      "text": "Yulduzni top!",
+      "say": "Yulduzni top!",
+      "date": "2026-10-24"
+    },
+    "shakllar.top.yurak": {
+      "text": "Yurakni top!",
+      "say": "Yurakni top!",
+      "date": "2026-10-24"
+    },
+    "soon.tez-orada": {
+      "text": "Bu yerda tez orada yangi oʻyinlar boʻladi!",
+      "say": "Bu yerda tez orada yangi o'yinlar bo'ladi!",
+      "date": "2026-10-24"
+    },
+    "start.salom": {
+      "text": "Salom, bolajon! Kel, birga oʻynaymiz!",
+      "say": "Salom, bolajon! Kel, birga o'ynaymiz!",
+      "date": "2026-10-24"
+    },
+    "tafakkur.apelsin": {
+      "text": "Apelsin toʻq sariq va shirali!",
+      "say": "Apelsin to'q sariq va shirali!",
+      "date": "2026-10-24"
+    },
+    "tafakkur.ayiqcha": {
+      "text": "Jigarrang ayiqcha — yumshoq doʻstimiz!",
+      "say": "Jigarrang ayiqcha, yumshoq do'stimiz!",
+      "date": "2026-10-24"
+    },
+    "tafakkur.baliq": {
+      "text": "Koʻk baliqcha suvda suzadi!",
+      "say": "Ko'k baliqcha suvda suzadi!",
+      "date": "2026-10-24"
+    },
+    "tafakkur.banan": {
+      "text": "Qara, banan qanday sariq!",
+      "say": "Qara, banan qanday sariq!",
+      "date": "2026-10-24"
+    },
+    "tafakkur.baqlajon": {
+      "text": "Baqlajon binafsha rangda!",
+      "say": "Baqlajon binafsha rangda!",
+      "date": "2026-10-24"
+    },
+    "tafakkur.barg": {
+      "text": "Yashil barg — daraxtning kiyimi!",
+      "say": "Yashil barg, daraxtning kiyimi!",
+      "date": "2026-10-24"
+    },
+    "tafakkur.bulut": {
+      "text": "Oppoq bulut osmonda suzadi!",
+      "say": "Oppoq bulut osmonda suzadi!",
+      "date": "2026-10-24"
+    },
+    "tafakkur.chodir": {
+      "text": "Chodir uchburchak — ichida issiq va shinam!",
+      "say": "Chodir uchburchak, ichida issiq va shinam!",
+      "date": "2026-10-24"
+    },
+    "tafakkur.dengiz-yulduzi": {
+      "text": "Dengiz yulduzining beshta uchi bor!",
+      "say": "Dengiz yulduzining beshta uchi bor!",
+      "date": "2026-10-24"
+    },
+    "tafakkur.deraza": {
+      "text": "Kvadrat derazadan quyosh nuri kiradi!",
+      "say": "Kvadrat derazadan quyosh nuri kiradi!",
+      "date": "2026-10-24"
+    },
+    "tafakkur.eshik": {
+      "text": "Eshik toʻgʻri toʻrtburchak — baland va uzun!",
+      "say": "Eshik to'g'ri to'rtburchak, baland va uzun!",
+      "date": "2026-10-24"
+    },
+    "tafakkur.gildirak": {
+      "text": "Gʻildirak dumaloq — shuning uchun aylanadi!",
+      "say": "G'ildirak dumaloq, shuning uchun aylanadi!",
+      "date": "2026-10-24"
+    },
+    "tafakkur.gul": {
+      "text": "Pushti gul qanday chiroyli!",
+      "say": "Pushti gul qanday chiroyli!",
+      "date": "2026-10-24"
+    },
+    "tafakkur.kamalak": {
+      "text": "Kamalak yarim doira — rang-barang va chiroyli!",
+      "say": "Kamalak yarim doira, rang-barang va chiroyli!",
+      "date": "2026-10-24"
+    },
+    "tafakkur.kitob": {
+      "text": "Kitob ichida qiziq hikoyalar bor!",
+      "say": "Kitob ichida qiziq hikoyalar bor!",
+      "date": "2026-10-24"
+    },
+    "tafakkur.mushuk": {
+      "text": "Qora mushukcha: miyov!",
+      "say": "Qora mushukcha: miyov!",
+      "date": "2026-10-24"
+    },
+    "tafakkur.muzqaymoq": {
+      "text": "Pushti muzqaymoq — sovuq va mazali!",
+      "say": "Pushti muzqaymoq, sovuq va mazali!",
+      "date": "2026-10-24"
+    },
+    "tafakkur.olma": {
+      "text": "Qara, olma qanday chiroyli qizil!",
+      "say": "Qara, olma qanday chiroyli qizil!",
+      "date": "2026-10-24"
+    },
+    "tafakkur.pechenye": {
+      "text": "Yulduzcha pechenye — mazali va chiroyli!",
+      "say": "Yulduzcha pechenye, mazali va chiroyli!",
+      "date": "2026-10-24"
+    },
+    "tafakkur.qarga": {
+      "text": "Qargʻa qop-qora: qag-qag!",
+      "say": "Qarg'a qop-qora: qag-qag!",
+      "date": "2026-10-24"
+    },
+    "tafakkur.qorodam": {
+      "text": "Qor odam oppoq! Uni qishda yasaymiz.",
+      "say": "Qor odam oppoq! Uni qishda yasaymiz.",
+      "date": "2026-10-24"
+    },
+    "tafakkur.qovun": {
+      "text": "Qovun oval va shirin!",
+      "say": "Qovun oval va shirin!",
+      "date": "2026-10-24"
+    },
+    "tafakkur.qoziqorin": {
+      "text": "Qoʻziqorinning qalpoqchasi jigarrang!",
+      "say": "Qo'ziqorinning qalpoqchasi jigarrang!",
+      "date": "2026-10-24"
+    },
+    "tafakkur.qulupnay": {
+      "text": "Qulupnay qizil va shirin!",
+      "say": "Qulupnay qizil va shirin!",
+      "date": "2026-10-24"
+    },
+    "tafakkur.qurbaqa": {
+      "text": "Yashil qurbaqa sakraydi: vaq-vaq!",
+      "say": "Yashil qurbaqa sakraydi: vaq-vaq!",
+      "date": "2026-10-24"
+    },
+    "tafakkur.quyosh": {
+      "text": "Quyosh sariq, u bizni isitadi!",
+      "say": "Quyosh sariq, u bizni isitadi!",
+      "date": "2026-10-24"
+    },
+    "tafakkur.sabzi": {
+      "text": "Sabzi toʻq sariq, uni quyoncha yaxshi koʻradi!",
+      "say": "Sabzi to'q sariq, uni quyoncha yaxshi ko'radi!",
+      "date": "2026-10-24"
+    },
+    "tafakkur.shar": {
+      "text": "Koʻk shar osmonga uchadi!",
+      "say": "Ko'k shar osmonga uchadi!",
+      "date": "2026-10-24"
+    },
+    "tafakkur.soat": {
+      "text": "Soat ham doira: millari aylanib yuradi!",
+      "say": "Soat ham doira: millari aylanib yuradi!",
+      "date": "2026-10-24"
+    },
+    "tafakkur.sovga": {
+      "text": "Sovgʻa qutisi kvadrat — hamma tomoni teng!",
+      "say": "Sovg'a qutisi kvadrat, hamma tomoni teng!",
+      "date": "2026-10-24"
+    },
+    "tafakkur.soyabon": {
+      "text": "Soyabon yarim doira — bizni yomgʻirdan asraydi!",
+      "say": "Soyabon yarim doira, bizni yomg'irdan asraydi!",
+      "date": "2026-10-24"
+    },
+    "tafakkur.tarvuz": {
+      "text": "Tarvuz boʻlagi yarim doira — qizil va shirali!",
+      "say": "Tarvuz bo'lagi yarim doira, qizil va shirali!",
+      "date": "2026-10-24"
+    },
+    "tafakkur.tog": {
+      "text": "Togʻ uchburchak — tepasi oʻtkir!",
+      "say": "Tog' uchburchak, tepasi o'tkir!",
+      "date": "2026-10-24"
+    },
+    "tafakkur.tuxum": {
+      "text": "Tuxum oval — choʻzinchoq doiraga oʻxshaydi!",
+      "say": "Tuxum oval, cho'zinchoq doiraga o'xshaydi!",
+      "date": "2026-10-24"
+    },
+    "tafakkur.uzum": {
+      "text": "Qara, uzum qanday binafsha!",
+      "say": "Qara, uzum qanday binafsha!",
+      "date": "2026-10-24"
+    },
+    "tafakkur.yostiq": {
+      "text": "Yurakcha yostiq — yumshoq va mayin!",
+      "say": "Yurakcha yostiq, yumshoq va mayin!",
+      "date": "2026-10-24"
+    },
+    "tafakkur.yurak-shar": {
+      "text": "Yurakcha — muhabbat belgisi!",
+      "say": "Yurakcha, muhabbat belgisi!",
+      "date": "2026-10-24"
+    }
+  }
 }
