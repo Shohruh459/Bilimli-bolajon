@@ -72,7 +72,8 @@ export async function playFindRounds(
     await expect(page.locator('.find-option.is-correct')).toHaveCount(1);
     if (round < rounds - 1) {
       // Keyingi raund: maqsad ketma-ket takrorlanmaydi.
-      await expect(stage).not.toHaveAttribute('data-target', target, { timeout: 10_000 });
+      // Sanashda to'g'ri javobdan keyin ovoz 6 s gacha sanaydi.
+      await expect(stage).not.toHaveAttribute('data-target', target, { timeout: 15_000 });
     }
   }
   await expect(page.getByTestId('finish')).toBeVisible({ timeout: 10_000 });

@@ -73,6 +73,20 @@ export const ART = {
      <path d="M60 34v66" stroke="${GREEN_DEEP}" stroke-width="5"/>
      <path d="M24 44c10-2 20 0 28 4M24 58c10-2 20 0 28 4M68 48c8-4 18-6 28-4M68 62c8-4 18-6 28-4" stroke="${GREEN}" stroke-width="4" stroke-linecap="round"/>`,
   ),
+  /** "Katta — kichik" o'yini kartasi: katta va kichik koptok */
+  kattaKichik: svg(
+    `<circle cx="44" cy="70" r="34" fill="#4FB0E8"/><path d="M10 70h68" stroke="#fff" stroke-width="7"/>
+     <circle cx="44" cy="70" r="34" fill="none" stroke="${NAVY}" stroke-width="5"/>
+     <circle cx="96" cy="88" r="16" fill="#FF6B6B"/><path d="M80 88h32" stroke="#fff" stroke-width="4"/>
+     <circle cx="96" cy="88" r="16" fill="none" stroke="${NAVY}" stroke-width="4"/>`,
+  ),
+  /** "Sanash" o'yini kartasi: 1 2 3 va nuqtalar */
+  sanash: svg(
+    `<text x="60" y="64" text-anchor="middle" font-size="46" font-weight="1000" fill="${NAVY}" font-family="Nunito, sans-serif">123</text>
+     <g fill="#FF6B6B"><circle cx="30" cy="88" r="7"/></g>
+     <g fill="#FFD23F"><circle cx="52" cy="84" r="7"/><circle cx="52" cy="100" r="7"/></g>
+     <g fill="#6BCB77"><circle cx="78" cy="80" r="7"/><circle cx="78" cy="94" r="7"/><circle cx="92" cy="94" r="7"/></g>`,
+  ),
   /** Diniy bo'lim — oltin yarim oy va yulduzlar (tungi osmon, tafakkur) */
   tun: svg(
     `<path d="M74 16a46 46 0 1 0 30 70A38 38 0 1 1 74 16z" fill="#C9A227" stroke="#fff" stroke-width="6" stroke-linejoin="round"/>

@@ -3,7 +3,7 @@
 > Bu fayl avtomatik yaratiladi: `npm run ovozlar` (manba — `src/content/phrases.ts`).
 > Qo'lda tahrirlamang — matnni phrases.ts da o'zgartiring.
 
-**Holat:** 0 / 121 qoʻlda yozilgan, 121 ta vaqtinchalik sunʼiy ovoz (🤖 TTS).
+**Holat:** 0 / 139 qoʻlda yozilgan, 139 ta vaqtinchalik sunʼiy ovoz (🤖 TTS).
 
 🤖 — sunʼiy ovoz (`docs/TTS.md`). Qoʻlda yozilgan fayl qoʻyilsa, uni manifestdan
 (`src/assets/audio/uz/tts.json`) olib tashlang — keyin TTS unga hech qachon tegmaydi.
@@ -116,6 +116,26 @@
 | `hayvon.asalari.nom.mp3`             | Bu — asalari!                                              | quvnoq                                   | 🤖    |
 | `hayvon.asalari.top.mp3`             | Asalarini top!                                             | qiziqtiruvchi                            | 🤖    |
 | `hayvon.asalari.tafakkur.mp3`        | Asalari bizga asal beradi.                                 | iliq                                     | 🤖    |
+| **kattakichik**                      |                                                            |                                          |       |
+| `kattakichik.intro.mp3`              | Kel, kattasini va kichigini topamiz!                       | quvnoq                                   | 🤖    |
+| `kattakichik.top.katta.mp3`          | Eng kattasini top!                                         | aniq, "katta" ni urgʻu bilan             | 🤖    |
+| `kattakichik.top.kichik.mp3`         | Eng kichigini top!                                         | aniq, "kichik" ni mayin, ingichka ovozda | 🤖    |
+| `kattakichik.togri.katta.mp3`        | Ha, bu eng kattasi!                                        | xursand                                  | 🤖    |
+| `kattakichik.togri.kichik.mp3`       | Ha, bu eng kichigi!                                        | xursand, mayin                           | 🤖    |
+| `kattakichik.daraja-ochildi.mp3`     | Yangi daraja ochildi! Endi diqqat bilan qara.              | bayramona                                | 🤖    |
+| **sanash**                           |                                                            |                                          |       |
+| `sanash.intro.mp3`                   | Kel, birga sanaymiz!                                       | quvnoq                                   | 🤖    |
+| `sanash.qayerda.bir.mp3`             | Qayerda bitta?                                             | qiziqtiruvchi                            | 🤖    |
+| `sanash.qayerda.ikki.mp3`            | Qayerda ikkita?                                            | qiziqtiruvchi                            | 🤖    |
+| `sanash.qayerda.uch.mp3`             | Qayerda uchta?                                             | qiziqtiruvchi                            | 🤖    |
+| `sanash.qayerda.tort.mp3`            | Qayerda toʻrtta?                                           | qiziqtiruvchi                            | 🤖    |
+| `sanash.qayerda.besh.mp3`            | Qayerda beshta?                                            | qiziqtiruvchi                            | 🤖    |
+| `sanash.son.bir.mp3`                 | Bir. Bitta!                                                | sekin, har sonni aniq                    | 🤖    |
+| `sanash.son.ikki.mp3`                | Bir, ikki. Ikkita!                                         | sekin, har sonni aniq                    | 🤖    |
+| `sanash.son.uch.mp3`                 | Bir, ikki, uch. Uchta!                                     | sekin, har sonni aniq                    | 🤖    |
+| `sanash.son.tort.mp3`                | Bir, ikki, uch, toʻrt. Toʻrtta!                            | sekin, har sonni aniq                    | 🤖    |
+| `sanash.son.besh.mp3`                | Bir, ikki, uch, toʻrt, besh. Beshta!                       | sekin, har sonni aniq                    | 🤖    |
+| `sanash.daraja-ochildi.mp3`          | Yangi daraja ochildi! Endi koʻproq sanaymiz!               | bayramona                                | 🤖    |
 | **tafakkur**                         |                                                            |                                          |       |
 | `tafakkur.olma.mp3`                  | Qara, olma qanday chiroyli qizil!                          | hayratli                                 | 🤖    |
 | `tafakkur.qulupnay.mp3`              | Qulupnay qizil va shirin!                                  | iliq                                     | 🤖    |

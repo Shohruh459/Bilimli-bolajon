@@ -78,6 +78,8 @@ export interface FindConfig<C extends string, A extends string> {
   readonly audioAsk?: boolean;
   /** Qaysi toifa maqsad bo'la oladi (masalan, ovoz fayli bor). Yetarli bo'lmasa daraja "tayyorlanmoqda". */
   readonly canTarget?: (c: C) => boolean;
+  /** Daraja o'ynalishi uchun kamida nechta maqsad toifa kerak (standart MIN_TARGETS = 3) */
+  readonly minTargets?: number;
   readonly extra?: FindExtra;
   /** Darajasiz rejimlar (masalan Tanishuv): #/oyin/<id>/<mode> */
   readonly modes?: Record<string, (api: GameApi) => void | Promise<void>>;
@@ -90,7 +92,7 @@ export function createFindGame<C extends string, A extends string>(
   const stars = () => readLevelStars(cfg.gameId, maxLevel, cfg.legacyStars);
 
   const canTarget = cfg.canTarget ?? (() => true);
-  const playable = (n: number) => isPlayable(levelCats(cfg.levels, n), canTarget);
+  const playable = (n: number) => isPlayable(levelCats(cfg.levels, n), canTarget, cfg.minTargets);
 
   return (api) => {
     const mode = api.mode ? cfg.modes?.[api.mode] : undefined;

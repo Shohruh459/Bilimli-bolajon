@@ -23,6 +23,20 @@ export const GAMES: readonly GameMeta[] = [
     art: 'hayvonlar',
     load: () => import('./animals/index'),
   },
+  {
+    id: 'katta-kichik',
+    age: '3-4',
+    title: 'Katta — kichik',
+    art: 'kattaKichik',
+    load: () => import('./size-find/index'),
+  },
+  {
+    id: 'sanash',
+    age: '3-4',
+    title: 'Sanash',
+    art: 'sanash',
+    load: () => import('./count-find/index'),
+  },
 ];
 
 export function gamesFor(age: AgeId): GameMeta[] {

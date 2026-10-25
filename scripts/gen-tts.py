@@ -16,7 +16,7 @@ Qoidalar:
 Chiqish: src/assets/audio/uz/<kalit>.mp3 — mono 44.1 kHz 64 kbps, boshi/oxiridagi jimlik qirqilgan,
 −16 LUFS. Manifest: src/assets/audio/uz/tts.json.
 """
-import argparse, datetime, json, pathlib, re, subprocess, sys, tempfile
+import argparse, datetime, json, pathlib, re, subprocess, sys, tempfile, time, urllib.error
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import tts_vs  # noqa: E402
@@ -25,6 +25,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 AUDIO = ROOT / "src/assets/audio/uz"
 MANIFEST = AUDIO / "tts.json"
 PLAN = ROOT / ".tts-work/reja.json"
+PAUSE = 0.35  # ko'p qatorli `say` da qatorlar orasidagi jimlik, soniya
 ARABIC = re.compile(r"[\u0600-\u06FF\u0750-\u077F\uFB50-\uFDFF\uFE70-\uFEFF]")
 
 
@@ -40,6 +41,19 @@ def to_mp3(wav: pathlib.Path, out: pathlib.Path) -> None:
     subprocess.run([tts_vs.ffmpeg_exe(), "-v", "error", "-y", "-i", str(wav), "-af", flt,
                     "-ac", "1", "-ar", "44100", "-c:a", "libmp3lame", "-b:a", "64k",
                     "-map_metadata", "-1", str(out)], check=True)
+
+
+def synth(pid: str, say: str, seed: int, speed: float, tries: int = 3) -> bytes:
+    """Backend endigina ishga tushganda (model yuklanayotganda) birinchi so'rov 400/5xx qaytarishi mumkin."""
+    for n in range(1, tries + 1):
+        try:
+            return tts_vs.synth_line(pid, say, seed, speed)
+        except urllib.error.HTTPError as e:
+            if n == tries or e.code not in (400, 500, 502, 503):
+                raise
+            print(f"    … HTTP {e.code}, {5 * n} s dan keyin qayta urinish")
+            time.sleep(5 * n)
+    raise AssertionError("unreachable")
 
 
 def main() -> None:
@@ -73,7 +87,17 @@ def main() -> None:
             print(f"[{i}/{len(items)}] ✋ qo'lda yozilgan — tegilmadi: {key}")
             continue
         wav = tmp / f"{key}.wav"
-        wav.write_bytes(tts_vs.synth_line(pid, say, seed, speed))
+        lines = say.split("\n")
+        if len(lines) == 1:
+            wav.write_bytes(synth(pid, say, seed, speed))
+        else:
+            # Har qator alohida + orasida pauza (sanash: "Bir." … "Ikki." …)
+            parts = []
+            for j, line in enumerate(lines):
+                part = tmp / f"{key}.{j}.wav"
+                part.write_bytes(synth(pid, line, seed, speed))
+                parts.append(part)
+            tts_vs.concat_with_pauses(parts, PAUSE, wav)
         to_mp3(wav, target)
         print(f"[{i}/{len(items)}] OK {key}: {say}")
         if not a.out:

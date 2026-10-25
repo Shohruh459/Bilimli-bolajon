@@ -72,7 +72,7 @@ src/
   games/<id>/           # har o'yin — alohida lazy chunk; logic.ts (sof, test qilinadi) + index.ts (UI)
                         #   + art.ts (o'yinga xos SVG'lar — bosh bundle'ga kirmaydi)
   games/registry.ts     # o'yinlar ro'yxati (meta + lazy import)
-  content/              # BARCHA matnlar: phrases.ts (ovoz kalitlari), colors.ts, shapes.ts, animals.ts (+ darajalar), ages.ts, diniy.ts
+  content/              # BARCHA matnlar: phrases.ts (ovoz kalitlari), colors.ts, shapes.ts, animals.ts, sizes.ts, counting.ts (+ darajalar), ages.ts, diniy.ts
   ui/                   # dom (h, svg), art (SVG rasmlar), icons, button, topbar, parent-gate, level-picker
   styles/               # tokens.css, fonts.css, base.css, app.css (o'yin CSS — o'yin papkasida)
   assets/audio/uz/      # ovoz yozuvlari: <kalit>.mp3 (docs/OVOZLAR.md)
@@ -154,6 +154,12 @@ docs/                   # ROADMAP, DINIY-MATNLAR, OVOZLAR, TTS, ATTRIBUTIONS
   qoladi, shuning uchun sun'iy ovoz ishlatiladi. Agar bu qaror o'zgarsa (pullik, reklama, homiylik) —
   avval TTS fayllar olib tashlanadi. Tokenizer litsenziyasi: yillik foydalanuvchilar > 100 000 bo'lsa — Boson AI ruxsati kerak.
   Claude audioni eshita olmaydi — talaffuzni egasi tekshiradi.
+- **Predmet guruhi** (`FindItem.group`): guruhli o'yinda bir raunddagi BARCHA kartalar bitta predmet —
+  "Katta — kichik" (toifa = o'lcham, guruh = olma/baliq/…, rasm `scaled()` bilan pastki markazga tayanadi) va
+  "Sanash" (toifa = son, guruh = predmet, zar tartibida). Guruh ketma-ket takrorlanmaydi.
+  `minTargets` — daraja o'ynalishi uchun maqsad toifalar chegarasi (katta-kichik: 2 — faqat eng katta/eng kichik).
+- **Ko'p qatorli `say`**: har qator alohida TTS + orasida 0.35 s jimlik (sanash: "Bir.\nIkki.\nIkkita!" —
+  bitta qatorda model juda tez aytardi). 3–4 yosh menyusi 3 qator kartaga ham sig'adi (`grid-auto-rows`).
 - **Uzun sarlavha** (> 8 harf) daraja ekranida kichikroq (`.screen-title.is-long`) — 360px ga sig'adi.
 - **Dizayn sayqali** alohida bosqich (ROADMAP). Hozircha funksional o'zgarishlarda dizaynni katta o'zgartirmaymiz.
 
@@ -283,3 +289,11 @@ Pipe (`| grep`, `| tail`) ishlatilsa, exit kodi pipe'ning oxirgi buyrug'iniki bo
     oltin yarim oy va yulduzlar.
   - "Koʻk shar osmonga uchadi" (havo bilan to'ldirilgan shar uchmaydi) → "Koʻk shar yengil va dumaloq!".
   - "Ofarin" talaffuzi (`say`), `tts:reja --tozala` (o'chirilgan iboralarning TTS fayllari).
+
+- **0.6.0 — 3–4 yosh yakunlandi, 2026-10-25**
+  - "Katta — kichik": 1) 2 o'lcham 2) 3 3) 4 (yaqinroq), bitta predmet (olma, baliq, ayiqcha, mushuk,
+    o'rdak, koptok); faqat "Eng kattasini / eng kichigini top!".
+  - "Sanash 1–5": 1) 1–3 2) + 4 3) + 5 (4 karta); "Qayerda ikkita?" + katta raqam; to'g'ri javobdan
+    keyin "Bir. Ikki. Ikkita!" (har son ~1 s).
+  - Engine: `FindItem.group`, `minTargets`; TTS: ko'p qatorli `say`, generatsiyada qayta urinish.
+  - 18 ta yangi ibora (jami 139), 147 unit, 37×2 e2e test.

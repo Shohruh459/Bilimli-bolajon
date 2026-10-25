@@ -187,8 +187,12 @@
 }
 
 .game-list {
+  flex: 1;
+  min-height: 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  /* Kartalar ekran balandligiga sig'adi (3 qator ham, 360×640 da ham) */
+  grid-auto-rows: minmax(0, 220px);
   gap: var(--gap);
   align-content: start;
 }
@@ -196,15 +200,15 @@
 .game-card {
   flex-direction: column;
   gap: 4px;
-  min-height: 190px;
+  min-height: 0;
   padding: 12px;
   border: 5px solid var(--age);
   --btn-edge: var(--age-deep);
 }
 
 .game-card svg {
-  width: 88px;
-  height: 88px;
+  width: min(88px, 11vh);
+  height: min(88px, 11vh);
 }
 
 .game-card__title {
