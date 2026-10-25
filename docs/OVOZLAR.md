@@ -3,7 +3,7 @@
 > Bu fayl avtomatik yaratiladi: `npm run ovozlar` (manba — `src/content/phrases.ts`).
 > Qo'lda tahrirlamang — matnni phrases.ts da o'zgartiring.
 
-**Holat:** 0 / 118 qoʻlda yozilgan, 118 ta vaqtinchalik sunʼiy ovoz (🤖 TTS).
+**Holat:** 0 / 121 qoʻlda yozilgan, 121 ta vaqtinchalik sunʼiy ovoz (🤖 TTS).
 
 🤖 — sunʼiy ovoz (`docs/TTS.md`). Qoʻlda yozilgan fayl qoʻyilsa, uni manifestdan
 (`src/assets/audio/uz/tts.json`) olib tashlang — keyin TTS unga hech qachon tegmaydi.
@@ -69,7 +69,8 @@
 | `shakllar.top.kvadrat.mp3`           | Kvadratni top!                                             | aniq, shakl nomini urgʻu bilan           | 🤖    |
 | `shakllar.top.uchburchak.mp3`        | Uchburchakni top!                                          | aniq, shakl nomini urgʻu bilan           | 🤖    |
 | `shakllar.top.yulduz.mp3`            | Yulduzni top!                                              | aniq, shakl nomini urgʻu bilan           | 🤖    |
-| `shakllar.top.yurak.mp3`             | Yurakni top!                                               | aniq, shakl nomini urgʻu bilan           | 🤖    |
+| `shakllar.top.romb.mp3`              | Rombni top!                                                | aniq, shakl nomini urgʻu bilan           | 🤖    |
+| `shakllar.top.olti-burchak.mp3`      | Olti burchakni top!                                        | aniq, shakl nomini urgʻu bilan           | 🤖    |
 | `shakllar.top.togri-tortburchak.mp3` | Toʻgʻri toʻrtburchakni top!                                | aniq, sekinroq, shakl nomini urgʻu bilan | 🤖    |
 | `shakllar.top.oval.mp3`              | Ovalni top!                                                | aniq, shakl nomini urgʻu bilan           | 🤖    |
 | `shakllar.top.yarim-doira.mp3`       | Yarim doirani top!                                         | aniq, shakl nomini urgʻu bilan           | 🤖    |
@@ -121,7 +122,7 @@
 | `tafakkur.quyosh.mp3`                | Quyosh sariq, u bizni isitadi!                             | iliq                                     | 🤖    |
 | `tafakkur.banan.mp3`                 | Qara, banan qanday sariq!                                  | hayratli                                 | 🤖    |
 | `tafakkur.baliq.mp3`                 | Koʻk baliqcha suvda suzadi!                                | mayin                                    | 🤖    |
-| `tafakkur.shar.mp3`                  | Koʻk shar osmonga uchadi!                                  | quvnoq                                   | 🤖    |
+| `tafakkur.shar.mp3`                  | Koʻk shar yengil va dumaloq!                               | quvnoq                                   | 🤖    |
 | `tafakkur.barg.mp3`                  | Yashil barg — daraxtning kiyimi!                           | mayin                                    | 🤖    |
 | `tafakkur.qurbaqa.mp3`               | Yashil qurbaqa sakraydi: vaq-vaq!                          | oʻyinqaroq                               | 🤖    |
 | `tafakkur.apelsin.mp3`               | Apelsin toʻq sariq va shirali!                             | iliq                                     | 🤖    |
@@ -144,8 +145,10 @@
 | `tafakkur.chodir.mp3`                | Chodir uchburchak — ichida issiq va shinam!                | iliq                                     | 🤖    |
 | `tafakkur.dengiz-yulduzi.mp3`        | Dengiz yulduzining beshta uchi bor!                        | qiziqtiruvchi                            | 🤖    |
 | `tafakkur.pechenye.mp3`              | Yulduzcha pechenye — mazali va chiroyli!                   | quvnoq                                   | 🤖    |
-| `tafakkur.yurak-shar.mp3`            | Yurakcha — muhabbat belgisi!                               | iliq, mehrli                             | 🤖    |
-| `tafakkur.yostiq.mp3`                | Yurakcha yostiq — yumshoq va mayin!                        | mayin                                    | 🤖    |
+| `tafakkur.varrak.mp3`                | Varrak shamolda baland uchadi!                             | quvnoq                                   | 🤖    |
+| `tafakkur.pahlava.mp3`               | Pahlava romb shaklida — shirin va mazali!                  | iliq                                     | 🤖    |
+| `tafakkur.asal-katagi.mp3`           | Asalarilar asal katagini olti burchak qilib quradi!        | hayratli                                 | 🤖    |
+| `tafakkur.qalam.mp3`                 | Qalamning orqasiga qara — olti burchak!                    | qiziqtiruvchi                            | 🤖    |
 | `tafakkur.eshik.mp3`                 | Eshik toʻgʻri toʻrtburchak — baland va uzun!               | qiziqtiruvchi                            | 🤖    |
 | `tafakkur.kitob.mp3`                 | Kitob ichida qiziq hikoyalar bor!                          | iliq                                     | 🤖    |
 | `tafakkur.tuxum.mp3`                 | Tuxum oval — choʻzinchoq doiraga oʻxshaydi!                | qiziqtiruvchi                            | 🤖    |

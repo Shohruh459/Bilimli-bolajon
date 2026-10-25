@@ -47,6 +47,8 @@ npm run ovozlar                           # docs/OVOZLAR.md: ✅ qo'lda, 🤖 TT
 
 Uzilib qolsa — qayta ishga tushiring: tayyor fayllar o'tkazib yuboriladi.
 Bitta iborani qayta yaratish: `npm run tts:reja -- --only praise.zor --force`.
+Ibora `phrases.ts` dan o'chirilsa — `npm run tts:reja -- --tozala` uning TTS faylini va manifest yozuvini
+o'chiradi (faqat manifestdagilarni; qo'lda yozilgan faylga tegilmaydi). Busiz reja xato beradi.
 
 ## Qoidalar (buzilmaydi)
 

@@ -1,6 +1,6 @@
 /**
  * 3–4 yosh: "Shakllarni topish" — 3 daraja:
- *  1) doira, kvadrat, uchburchak  2) + yulduz, yurak  3) + to'g'ri to'rtburchak, oval, yarim doira.
+ *  1) doira, kvadrat, uchburchak  2) + yulduz, romb, olti burchak  3) + to'g'ri to'rtburchak, oval, yarim doira.
  * O'yin oqimi umumiy: engine/find-game.ts. Bu yerda faqat shakllar kontenti.
  */
 import { LEARN_SHAPES, SHAPE_EXCLUSIVE, SHAPE_LEVELS, type ShapeId } from '../../content/shapes';

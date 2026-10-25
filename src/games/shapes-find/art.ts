@@ -23,9 +23,9 @@ function starPath(cx: number, cy: number, outer: number, inner: number): string 
   return `M${pts.join('L')}Z`;
 }
 
-/** Yurak yo'li (120 masshtabda), `dy` — vertikal siljish. */
-const HEART =
-  'M60 104C28 84 10 64 10 42 10 25 23 14 38 14c9 0 17 5 22 13 5-8 13-13 22-13 15 0 28 11 28 28 0 22-18 42-50 62z';
+/** Olti burchak (yon tomonlari tik), markaz (60, 60). */
+const HEX = 'M112.0 60.0L86.0 105.0L34.0 105.0L8.0 60.0L34.0 15.0L86.0 15.0Z';
+const HEX_IN = 'M100.0 60.0L80.0 94.6L40.0 94.6L20.0 60.0L40.0 25.4L80.0 25.4Z';
 
 /** Yarim doira (tekis tomoni pastda), markaz (cx, base), radius r. */
 const halfDisc = (cx: number, base: number, r: number) =>
@@ -113,17 +113,36 @@ export const SHAPE_ART = {
        .join('')}</g>`,
   ),
 
-  // --- Yurak ---
-  yurakShar: svg(
-    `<path d="M60 104c-5 5 5 9 0 14" stroke="#5A6583" stroke-width="3" fill="none" stroke-linecap="round"/>
-     <g transform="translate(6 2) scale(0.9)"><path d="${HEART}" fill="#E53935"/></g>
-     <path d="M54 96h12l-6 7z" fill="#C62828"/>
-     ${shine(36, 36, -35)}`,
+  // --- Romb (cho'ziq: burilgan kvadratga o'xshamaydi) ---
+  varrak: svg(
+    `<path d="M88 104q8 4 4 10" stroke="#5A6583" stroke-width="3" fill="none" stroke-linecap="round"/>
+     <path d="M60 106q10 0 20-6t8 4" stroke="#5A6583" stroke-width="3" fill="none" stroke-linecap="round"/>
+     <path d="M60 6L96 56 60 106 24 56z" fill="#4FB0E8"/>
+     <path d="M60 6L96 56H60z" fill="#FFD23F"/><path d="M60 56H24l36 50z" fill="#FFD23F"/>
+     <path d="M60 6v100M24 56h72" stroke="#1E2A47" stroke-width="3"/>
+     <path d="M60 6L96 56 60 106 24 56z" fill="none" stroke="#1E2A47" stroke-width="3" stroke-linejoin="round"/>
+     <path d="M78 102l6-4 2 7z" fill="#FF6B6B"/><path d="M84 110l6-3 1 7z" fill="#6BCB77"/>`,
   ),
-  yostiq: svg(
-    `<path d="${HEART}" fill="#AB47BC"/>
-     <g transform="translate(12 11) scale(0.8)"><path d="${HEART}" fill="none" stroke="#fff" stroke-width="4" stroke-dasharray="6 6" opacity=".8"/></g>
-     <circle cx="60" cy="56" r="6" fill="#8E24AA"/>`,
+  pahlava: svg(
+    `<path d="M60 10L98 60 60 110 22 60z" fill="#D9963A" stroke="#B5701F" stroke-width="5" stroke-linejoin="round"/>
+     <path d="M60 24L87 60 60 96 33 60z" fill="#E8B060"/>
+     <path d="M41 48h38M33 60h54M41 72h38" stroke="#C47F2A" stroke-width="2.5" opacity=".8"/>
+     <ellipse cx="60" cy="60" rx="7" ry="5" fill="#7CB342"/><ellipse cx="60" cy="60" rx="3.5" ry="2.5" fill="#AED581"/>`,
+  ),
+
+  // --- Olti burchak ---
+  asalKatagi: svg(
+    `<path d="${HEX}" fill="#F9A825" stroke="#E08E00" stroke-width="6" stroke-linejoin="round"/>
+     <path d="${HEX_IN}" fill="#FFCA28"/>
+     <path d="M40 46q20-8 40 0" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round" opacity=".7"/>
+     <path d="M60 70c-6 8-6 14 0 16 6-2 6-8 0-16z" fill="#E08E00"/>`,
+  ),
+  qalam: svg(
+    `<path d="${HEX}" fill="#FFD23F" stroke="#E0AD00" stroke-width="5" stroke-linejoin="round"/>
+     <path d="M112.0 60.0L90.0 60.0 M86.0 105.0L75.0 86.0 M34.0 105.0L45.0 86.0 M8.0 60.0L30.0 60.0 M34.0 15.0L45.0 34.0 M86.0 15.0L75.0 34.0" stroke="#E0AD00" stroke-width="3"/>
+     <circle cx="60" cy="60" r="30" fill="#F5D7A8" stroke="#D7B07A" stroke-width="3"/>
+     <circle cx="60" cy="60" r="20" fill="none" stroke="#E6C08C" stroke-width="2"/>
+     <circle cx="60" cy="60" r="8" fill="#455A64"/>`,
   ),
 
   // --- To'g'ri to'rtburchak (aniq cho'ziq: bo'yi/eni >= 1.7) ---

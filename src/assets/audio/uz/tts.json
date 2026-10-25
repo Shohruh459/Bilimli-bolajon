@@ -371,10 +371,20 @@
       "say": "Kvadratni top!",
       "date": "2026-10-24"
     },
+    "shakllar.top.olti-burchak": {
+      "text": "Olti burchakni top!",
+      "say": "Olti burchakni top!",
+      "date": "2026-10-25"
+    },
     "shakllar.top.oval": {
       "text": "Ovalni top!",
       "say": "Ovalni top!",
       "date": "2026-10-24"
+    },
+    "shakllar.top.romb": {
+      "text": "Rombni top!",
+      "say": "Rombni top!",
+      "date": "2026-10-25"
     },
     "shakllar.top.togri-tortburchak": {
       "text": "Toʻgʻri toʻrtburchakni top!",
@@ -396,11 +406,6 @@
       "say": "Yulduzni top!",
       "date": "2026-10-24"
     },
-    "shakllar.top.yurak": {
-      "text": "Yurakni top!",
-      "say": "Yurakni top!",
-      "date": "2026-10-24"
-    },
     "soon.tez-orada": {
       "text": "Bu yerda tez orada yangi oʻyinlar boʻladi!",
       "say": "Bu yerda tez orada yangi o'yinlar bo'ladi!",
@@ -415,6 +420,11 @@
       "text": "Apelsin toʻq sariq va shirali!",
       "say": "Apelsin to'q sariq va shirali!",
       "date": "2026-10-24"
+    },
+    "tafakkur.asal-katagi": {
+      "text": "Asalarilar asal katagini olti burchak qilib quradi!",
+      "say": "Asalarilar asal katagini olti burchak qilib quradi!",
+      "date": "2026-10-25"
     },
     "tafakkur.ayiqcha": {
       "text": "Jigarrang ayiqcha — yumshoq doʻstimiz!",
@@ -501,10 +511,20 @@
       "say": "Qara, olma qanday chiroyli qizil!",
       "date": "2026-10-24"
     },
+    "tafakkur.pahlava": {
+      "text": "Pahlava romb shaklida — shirin va mazali!",
+      "say": "Pahlava romb shaklida, shirin va mazali!",
+      "date": "2026-10-25"
+    },
     "tafakkur.pechenye": {
       "text": "Yulduzcha pechenye — mazali va chiroyli!",
       "say": "Yulduzcha pechenye, mazali va chiroyli!",
       "date": "2026-10-24"
+    },
+    "tafakkur.qalam": {
+      "text": "Qalamning orqasiga qara — olti burchak!",
+      "say": "Qalamning orqasiga qara, olti burchak!",
+      "date": "2026-10-25"
     },
     "tafakkur.qarga": {
       "text": "Qargʻa qop-qora: qag-qag!",
@@ -547,9 +567,9 @@
       "date": "2026-10-24"
     },
     "tafakkur.shar": {
-      "text": "Koʻk shar osmonga uchadi!",
-      "say": "Ko'k shar osmonga uchadi!",
-      "date": "2026-10-24"
+      "text": "Koʻk shar yengil va dumaloq!",
+      "say": "Ko'k shar yengil va dumaloq!",
+      "date": "2026-10-25"
     },
     "tafakkur.soat": {
       "text": "Soat ham doira: millari aylanib yuradi!",
@@ -586,15 +606,10 @@
       "say": "Qara, uzum qanday binafsha!",
       "date": "2026-10-24"
     },
-    "tafakkur.yostiq": {
-      "text": "Yurakcha yostiq — yumshoq va mayin!",
-      "say": "Yurakcha yostiq, yumshoq va mayin!",
-      "date": "2026-10-24"
-    },
-    "tafakkur.yurak-shar": {
-      "text": "Yurakcha — muhabbat belgisi!",
-      "say": "Yurakcha, muhabbat belgisi!",
-      "date": "2026-10-24"
+    "tafakkur.varrak": {
+      "text": "Varrak shamolda baland uchadi!",
+      "say": "Varrak shamolda baland uchadi!",
+      "date": "2026-10-25"
     }
   }
 }

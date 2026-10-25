@@ -1,7 +1,7 @@
 /**
  * "Shakllarni topish" — kontent (predmetlar) va umumiy "topish" mantiqining shakllarga moslangani.
  * Umumiy mantiq: engine/find-logic.ts, darajalar: content/shapes.ts → SHAPE_LEVELS.
- * Kvadrat va to'g'ri to'rtburchak hech qachon bir raundda chiqmaydi (SHAPE_EXCLUSIVE).
+ * Kvadrat to'g'ri to'rtburchak va romb bilan hech qachon bir raundda chiqmaydi (SHAPE_EXCLUSIVE).
  */
 import { SHAPE_EXCLUSIVE, SHAPE_LEVELS, type ShapeId, type ShapeLevel } from '../../content/shapes';
 import * as find from '../../engine/find-logic';
@@ -30,8 +30,15 @@ export const ITEMS: readonly Item[] = [
     tafakkur: 'tafakkur.dengiz-yulduzi',
   },
   { art: 'pechenye', name: 'yulduzcha pechenye', cat: 'yulduz', tafakkur: 'tafakkur.pechenye' },
-  { art: 'yurakShar', name: 'yurakcha shar', cat: 'yurak', tafakkur: 'tafakkur.yurak-shar' },
-  { art: 'yostiq', name: 'yurakcha yostiq', cat: 'yurak', tafakkur: 'tafakkur.yostiq' },
+  { art: 'varrak', name: 'varrak', cat: 'romb', tafakkur: 'tafakkur.varrak' },
+  { art: 'pahlava', name: 'pahlava', cat: 'romb', tafakkur: 'tafakkur.pahlava' },
+  {
+    art: 'asalKatagi',
+    name: 'asal katagi',
+    cat: 'olti-burchak',
+    tafakkur: 'tafakkur.asal-katagi',
+  },
+  { art: 'qalam', name: 'qalamning orqa uchi', cat: 'olti-burchak', tafakkur: 'tafakkur.qalam' },
   // 3-daraja
   { art: 'eshik', name: 'eshik', cat: 'togri-tortburchak', tafakkur: 'tafakkur.eshik' },
   { art: 'kitob', name: 'kitob', cat: 'togri-tortburchak', tafakkur: 'tafakkur.kitob' },

@@ -22,7 +22,7 @@
 
 ## 1-bosqich — 3–4 yosh
 
-- [x] Shakllarni topish: 3 daraja (doira, kvadrat, uchburchak → + yulduz, yurak → + toʻgʻri toʻrtburchak, oval, yarim doira), 17 ta predmet
+- [x] Shakllarni topish: 3 daraja (doira, kvadrat, uchburchak → + yulduz, romb, olti burchak → + toʻgʻri toʻrtburchak, oval, yarim doira), 19 ta predmet; yurak olib tashlandi (egasi talabi)
 - [x] Hayvonlar: Tanishuv ("Bu — sigir!") + 3 daraja ("Sigirni top!", 4 → 8 → 12 hayvon), qoʻy↔echki va xoʻroz↔tovuq bir raundda emas, 12 ta SVG
 - [ ] Hayvonlar: yangi hayvonlar (tuya, sher, fil, qush...) — 4-daraja yoki 5 yosh
 - [ ] Katta — kichik
@@ -42,7 +42,7 @@
 - [ ] Bo'g'inlab o'qish
 - [ ] Qo'shish / ayirish (10 gacha)
 - [ ] Mantiqiy topishmoqlar
-- [ ] Murakkab shakllar: olti burchak (asal katagi, qalam kesimi), romb, trapetsiya — "Shakllarni topish" 4-darajasi yoki alohida o'yin
+- [ ] Murakkab shakllar: trapetsiya, beshburchak — "Shakllarni topish" 4-darajasi yoki alohida o'yin (romb va olti burchak 3–4 yoshga koʻchirildi)
 - [ ] Soat
 
 ## 4-bosqich — Diniy bo'lim (ota-ona bilan)

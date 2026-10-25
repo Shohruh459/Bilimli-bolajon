@@ -73,9 +73,11 @@ export const ART = {
      <path d="M60 34v66" stroke="${GREEN_DEEP}" stroke-width="5"/>
      <path d="M24 44c10-2 20 0 28 4M24 58c10-2 20 0 28 4M68 48c8-4 18-6 28-4M68 62c8-4 18-6 28-4" stroke="${GREEN}" stroke-width="4" stroke-linecap="round"/>`,
   ),
-  yurak: svg(
-    `<path d="M60 102C30 82 12 64 12 42c0-14 11-24 24-24 10 0 18 6 24 14 6-8 14-14 24-14 13 0 24 10 24 24 0 22-18 40-48 60z" fill="#C9A227" stroke="#fff" stroke-width="6" stroke-linejoin="round"/>
-     ${shine(34, 40, -30)}`,
+  /** Diniy bo'lim — oltin yarim oy va yulduzlar (tungi osmon, tafakkur) */
+  tun: svg(
+    `<path d="M74 16a46 46 0 1 0 30 70A38 38 0 1 1 74 16z" fill="#C9A227" stroke="#fff" stroke-width="6" stroke-linejoin="round"/>
+     <path d="M90 30l3 7 7 1-5 5 1 7-6-4-6 4 1-7-5-5 7-1z" fill="#C9A227" stroke="#fff" stroke-width="3" stroke-linejoin="round"/>
+     <circle cx="100" cy="62" r="4" fill="#fff"/><circle cx="78" cy="50" r="3" fill="#fff"/>`,
   ),
   /** Tez orada — uxlayotgan quyosh */
   uxlash: svg(
