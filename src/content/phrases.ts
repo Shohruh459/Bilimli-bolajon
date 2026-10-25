@@ -26,7 +26,8 @@ export const PHRASES = {
 
   // --- Maqtov (toʻgʻri javob) ---
   'praise.barakalla': { text: 'Barakalla!', tone: 'xursand' },
-  'praise.ofarin': { text: 'Ofarin!', tone: 'xursand' },
+  // TTS "ofarn" deb yutib yuborardi — choʻziq "i" bilan toʻgʻri chiqadi (egasi eshitib tanladi).
+  'praise.ofarin': { text: 'Ofarin!', tone: 'xursand', say: 'Ofariin!' },
   'praise.zor': { text: 'Zoʻr!', tone: 'hayajonli' },
   'praise.juda-yaxshi': { text: 'Juda yaxshi!', tone: 'iliq' },
   'praise.qoyil': { text: 'Qoyil!', tone: 'hayratli' },
@@ -87,7 +88,11 @@ export const PHRASES = {
   'shakllar.top.kvadrat': { text: 'Kvadratni top!', tone: 'aniq, shakl nomini urgʻu bilan' },
   'shakllar.top.uchburchak': { text: 'Uchburchakni top!', tone: 'aniq, shakl nomini urgʻu bilan' },
   'shakllar.top.yulduz': { text: 'Yulduzni top!', tone: 'aniq, shakl nomini urgʻu bilan' },
-  'shakllar.top.yurak': { text: 'Yurakni top!', tone: 'aniq, shakl nomini urgʻu bilan' },
+  'shakllar.top.romb': { text: 'Rombni top!', tone: 'aniq, shakl nomini urgʻu bilan' },
+  'shakllar.top.olti-burchak': {
+    text: 'Olti burchakni top!',
+    tone: 'aniq, shakl nomini urgʻu bilan',
+  },
   'shakllar.top.togri-tortburchak': {
     text: 'Toʻgʻri toʻrtburchakni top!',
     tone: 'aniq, sekinroq, shakl nomini urgʻu bilan',
@@ -152,7 +157,7 @@ export const PHRASES = {
   'tafakkur.quyosh': { text: 'Quyosh sariq, u bizni isitadi!', tone: 'iliq' },
   'tafakkur.banan': { text: 'Qara, banan qanday sariq!', tone: 'hayratli' },
   'tafakkur.baliq': { text: 'Koʻk baliqcha suvda suzadi!', tone: 'mayin' },
-  'tafakkur.shar': { text: 'Koʻk shar osmonga uchadi!', tone: 'quvnoq' },
+  'tafakkur.shar': { text: 'Koʻk shar yengil va dumaloq!', tone: 'quvnoq' },
   'tafakkur.barg': { text: 'Yashil barg — daraxtning kiyimi!', tone: 'mayin' },
   'tafakkur.qurbaqa': { text: 'Yashil qurbaqa sakraydi: vaq-vaq!', tone: 'oʻyinqaroq' },
   'tafakkur.apelsin': { text: 'Apelsin toʻq sariq va shirali!', tone: 'iliq' },
@@ -179,8 +184,13 @@ export const PHRASES = {
   'tafakkur.chodir': { text: 'Chodir uchburchak — ichida issiq va shinam!', tone: 'iliq' },
   'tafakkur.dengiz-yulduzi': { text: 'Dengiz yulduzining beshta uchi bor!', tone: 'qiziqtiruvchi' },
   'tafakkur.pechenye': { text: 'Yulduzcha pechenye — mazali va chiroyli!', tone: 'quvnoq' },
-  'tafakkur.yurak-shar': { text: 'Yurakcha — muhabbat belgisi!', tone: 'iliq, mehrli' },
-  'tafakkur.yostiq': { text: 'Yurakcha yostiq — yumshoq va mayin!', tone: 'mayin' },
+  'tafakkur.varrak': { text: 'Varrak shamolda baland uchadi!', tone: 'quvnoq' },
+  'tafakkur.pahlava': { text: 'Pahlava romb shaklida — shirin va mazali!', tone: 'iliq' },
+  'tafakkur.asal-katagi': {
+    text: 'Asalarilar asal katagini olti burchak qilib quradi!',
+    tone: 'hayratli',
+  },
+  'tafakkur.qalam': { text: 'Qalamning orqasiga qara — olti burchak!', tone: 'qiziqtiruvchi' },
   'tafakkur.eshik': { text: 'Eshik toʻgʻri toʻrtburchak — baland va uzun!', tone: 'qiziqtiruvchi' },
   'tafakkur.kitob': { text: 'Kitob ichida qiziq hikoyalar bor!', tone: 'iliq' },
   'tafakkur.tuxum': { text: 'Tuxum oval — choʻzinchoq doiraga oʻxshaydi!', tone: 'qiziqtiruvchi' },

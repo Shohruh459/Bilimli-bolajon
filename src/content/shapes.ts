@@ -5,7 +5,8 @@ export type ShapeId =
   | 'kvadrat'
   | 'uchburchak'
   | 'yulduz'
-  | 'yurak'
+  | 'romb'
+  | 'olti-burchak'
   | 'togri-tortburchak'
   | 'oval'
   | 'yarim-doira';
@@ -45,11 +46,18 @@ export const LEARN_SHAPES: Record<ShapeId, LearnShape> = {
     ask: 'shakllar.top.yulduz',
     el: '<path d="M32 4l8 16.6 18.2 2.6-13.2 12.9 3.1 18.1L32 45.6l-16.3 8.6 3.1-18.1L5.6 23.2l18.2-2.6z"/>',
   },
-  yurak: {
-    id: 'yurak',
-    name: 'Yurak',
-    ask: 'shakllar.top.yurak',
-    el: '<path d="M32 56C15 45 5 35 5 23 5 14 12 8 20 8c5 0 9 3 12 7 3-4 7-7 12-7 8 0 15 6 15 15 0 12-10 22-27 33z"/>',
+  romb: {
+    id: 'romb',
+    name: 'Romb',
+    ask: 'shakllar.top.romb',
+    // Cho'ziq romb — burilgan kvadratga o'xshamasin.
+    el: '<path d="M32 3L54 32 32 61 10 32z"/>',
+  },
+  'olti-burchak': {
+    id: 'olti-burchak',
+    name: 'Olti burchak',
+    ask: 'shakllar.top.olti-burchak',
+    el: '<path d="M59 32L45.5 55.4h-27L5 32 18.5 8.6h27z"/>',
   },
   'togri-tortburchak': {
     id: 'togri-tortburchak',
@@ -82,12 +90,16 @@ export interface ShapeLevel {
 
 export const SHAPE_LEVELS: readonly ShapeLevel[] = [
   { level: 1, fresh: ['doira', 'kvadrat', 'uchburchak'], options: 3, rounds: 5 },
-  { level: 2, fresh: ['yulduz', 'yurak'], options: 3, rounds: 5 },
+  { level: 2, fresh: ['yulduz', 'romb', 'olti-burchak'], options: 3, rounds: 5 },
   { level: 3, fresh: ['togri-tortburchak', 'oval', 'yarim-doira'], options: 4, rounds: 6 },
 ];
 
 /**
  * Bir raundda HECH QACHON birga chiqmaydigan shakllar (egasi talabi):
- * kvadrat ham to'rtburchak — "To'g'ri to'rtburchakni top!" da ikkala javob to'g'ri bo'lib qoladi.
+ * kvadrat ham to'rtburchak — "To'g'ri to'rtburchakni top!" da ikkala javob to'g'ri bo'lib qoladi;
+ * kvadrat ham romb (tomonlari teng) — "Rombni top!" da ham shunday.
  */
-export const SHAPE_EXCLUSIVE = [['kvadrat', 'togri-tortburchak']] as const;
+export const SHAPE_EXCLUSIVE = [
+  ['kvadrat', 'togri-tortburchak'],
+  ['kvadrat', 'romb'],
+] as const;

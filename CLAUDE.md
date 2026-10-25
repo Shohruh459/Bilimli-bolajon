@@ -125,6 +125,8 @@ docs/                   # ROADMAP, DINIY-MATNLAR, OVOZLAR, TTS, ATTRIBUTIONS
   `exclusive` — bir raundda HECH QACHON birga chiqmaydigan toifalar (masalan kvadrat ↔ to'g'ri
   to'rtburchak: ikkalasi ham to'rtburchak). Mantiq sof (`engine/find-logic.ts`), unit test qilinadi.
   Uzun toifa nomi (> 8 harf) kichikroq shriftda — 360px ekranga sig'adi (e2e tekshiradi).
+- **Shakllar:** yurak shakli ishlatilmaydi (egasi qarori: yurak aslida unday emas, "muhabbat ramzi" o'rgatilmaydi).
+  Kvadrat to'g'ri to'rtburchak va romb bilan bir raundda chiqmaydi (`SHAPE_EXCLUSIVE`); romb cho'ziq chiziladi.
 - **Shakllar predmetlari:** har siluet o'z shaklini aniq bildiradi (qora siluet bilan tekshiriladi);
   to'g'ri to'rtburchak predmetlari aniq cho'ziq (nisbat ≥ 1.7), kvadratlar — eni = bo'yi.
   Predmetlar tabiiy rangda, topshiriq namunasi och sariq + to'q kontur — bola shaklga qaraydi.
@@ -274,3 +276,10 @@ Pipe (`| grep`, `| tail`) ishlatilsa, exit kodi pipe'ning oxirgi buyrug'iniki bo
   - Sozlamalarda sun'iy ovoz oshkor qilinadi; OVOZLAR.md da 🤖 belgisi.
   - Hayvonlar: "Sigirni top!" / "Bu — sigir!"; taqlid iboralari, klip kodi, Commons rejasi
     (`process-sounds.py`, `src/assets/sounds/`, ATTRIBUTIONS testi) olib tashlandi.
+
+- **0.5.1 — Egasi tuzatishlari, 2026-10-25**
+  - Shakllar 2-daraja: yurak → **romb** (varrak, pahlava) + **olti burchak** (asal katagi, qalam);
+    kvadrat ↔ romb bir raundda emas (unit test 2000 seed, 2- va 3-daraja). Diniy kartasi: yurak →
+    oltin yarim oy va yulduzlar.
+  - "Koʻk shar osmonga uchadi" (havo bilan to'ldirilgan shar uchmaydi) → "Koʻk shar yengil va dumaloq!".
+  - "Ofarin" talaffuzi (`say`), `tts:reja --tozala` (o'chirilgan iboralarning TTS fayllari).

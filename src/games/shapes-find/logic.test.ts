@@ -21,10 +21,11 @@ describe('Shakllar — kontent', () => {
     expect(Object.keys(SHAPE_ART).sort()).toEqual(ITEMS.map((i) => i.art).sort());
   });
 
-  it('darajalar: 3 → 5 → 8 shakl; olti burchak yoʻq (6–7 yoshga qoldirildi)', () => {
-    expect(SHAPE_LEVELS.map((l) => levelCats(SHAPE_LEVELS, l.level).length)).toEqual([3, 5, 8]);
+  it('darajalar: 3 → 6 → 9 shakl; yurak yoʻq (egasi talabi)', () => {
+    expect(SHAPE_LEVELS.map((l) => levelCats(SHAPE_LEVELS, l.level).length)).toEqual([3, 6, 9]);
     expect(levelCats(SHAPE_LEVELS, 1)).toEqual(['doira', 'kvadrat', 'uchburchak']);
-    expect(SHAPE_LEVELS[1]!.fresh).toEqual(['yulduz', 'yurak']);
+    expect(SHAPE_LEVELS[1]!.fresh).toEqual(['yulduz', 'romb', 'olti-burchak']);
+    expect(SHAPE_IDS).not.toContain('yurak');
     expect(SHAPE_LEVELS[2]!.fresh).toEqual(['togri-tortburchak', 'oval', 'yarim-doira']);
     expect(new Set(levelCats(SHAPE_LEVELS, 3))).toEqual(new Set(SHAPE_IDS));
   });
@@ -80,5 +81,24 @@ describe('Shakllar — raundlar', () => {
     // Ikkala yo'nalish ham haqiqatan sinaldi: har biri maqsad sifatida ko'p marta chiqdi.
     expect(asTargetSquare).toBeGreaterThan(100);
     expect(asTargetRect).toBeGreaterThan(100);
+  });
+
+  it('KVADRAT va ROMB hech qachon bir raundda emas (2- va 3-daraja, ikkala yoʻnalishda)', () => {
+    expect(SHAPE_EXCLUSIVE).toContainEqual(['kvadrat', 'romb']);
+    for (const n of [2, 3]) {
+      const lvl = getLevel(n);
+      let asSquare = 0;
+      let asRhombus = 0;
+      for (let seed = 0; seed < 2000; seed++) {
+        for (const r of makeRounds(lvl, mulberry32(seed))) {
+          const cats = r.options.map((o) => o.cat);
+          expect(cats.includes('kvadrat') && cats.includes('romb'), `${n}/${seed}`).toBe(false);
+          if (r.target === 'kvadrat') asSquare++;
+          if (r.target === 'romb') asRhombus++;
+        }
+      }
+      expect(asSquare, `${n}-daraja kvadrat`).toBeGreaterThan(100);
+      expect(asRhombus, `${n}-daraja romb`).toBeGreaterThan(100);
+    }
   });
 });

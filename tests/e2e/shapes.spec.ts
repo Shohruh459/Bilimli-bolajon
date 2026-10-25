@@ -65,7 +65,9 @@ test.describe('Shakllarni topish', () => {
     await expect(page.getByTestId('game-shakllar')).toContainText('1');
   });
 
-  test('3 yulduz 2-darajani ochadi (yulduz, yurak qoʻshiladi)', async ({ page }, info) => {
+  test('3 yulduz 2-darajani ochadi (yulduz, romb, olti burchak qoʻshiladi)', async ({
+    page,
+  }, info) => {
     await seedStars(page, { 'shakllar.1': 2 });
     await start(page, '#/oyin/shakllar');
     await page.getByTestId('level-1').click();
@@ -77,7 +79,8 @@ test.describe('Shakllarni topish', () => {
     await page.getByTestId('level-2').click();
     const targets = await playFindRounds(page, 5, GAME, ATTR);
     expect(targets).toContain('yulduz');
-    expect(targets).toContain('yurak');
+    expect(targets).toContain('romb');
+    expect(targets).toContain('olti-burchak');
     await shot(page, info, '16-shapes-level2-finish');
   });
 
