@@ -26,7 +26,8 @@ export const PHRASES = {
 
   // --- Maqtov (toʻgʻri javob) ---
   'praise.barakalla': { text: 'Barakalla!', tone: 'xursand' },
-  'praise.ofarin': { text: 'Ofarin!', tone: 'xursand' },
+  // TTS "ofarn" deb yutib yuborardi — choʻziq "i" bilan toʻgʻri chiqadi (egasi eshitib tanladi).
+  'praise.ofarin': { text: 'Ofarin!', tone: 'xursand', say: 'Ofariin!' },
   'praise.zor': { text: 'Zoʻr!', tone: 'hayajonli' },
   'praise.juda-yaxshi': { text: 'Juda yaxshi!', tone: 'iliq' },
   'praise.qoyil': { text: 'Qoyil!', tone: 'hayratli' },
