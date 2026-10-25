@@ -21,6 +21,11 @@ export interface FindItem<C extends string, A extends string = string> {
   readonly name: string;
   readonly cat: C;
   readonly tafakkur: PhraseKey;
+  /**
+   * Predmet guruhi (masalan "olma"): guruhli o'yinlarda bir raunddagi BARCHA variantlar bitta
+   * guruhdan olinadi — katta va kichik olma, ikkita va uchta baliq. Guruhlar raunddan raundga almashadi.
+   */
+  readonly group?: string;
 }
 
 export interface FindRound<C extends string, I extends FindItem<C>> {
@@ -93,11 +98,13 @@ export function makeRounds<C extends string, I extends FindItem<C>>(
     throw new Error('options: 2..daraja toifalari soni');
   }
   const used = new Set<string>();
-  return makeTargets(level, all, rng, level.rounds, canTarget).map((target) => {
+  const groups = makeGroups(items, level.rounds, rng);
+  return makeTargets(level, all, rng, level.rounds, canTarget).map((target, round) => {
+    const group = groups[round];
     // Imkon bo'lsa, oldin chiqmagan predmetni tanlaymiz (xilma-xillik).
     const pickItem = (c: C): I => {
       const pool = shuffle(
-        items.filter((i) => i.cat === c),
+        items.filter((i) => i.cat === c && (group === undefined || i.group === group)),
         rng,
       );
       if (pool.length === 0) throw new Error(`Toifada predmet yo'q: ${c}`);
@@ -120,6 +127,25 @@ export function makeRounds<C extends string, I extends FindItem<C>>(
   });
 }
 
+/** Har raund guruhi (guruhsiz o'yinda — bo'sh): hammasi aralashib, ketma-ket takrorsiz. */
+function makeGroups<C extends string>(
+  items: readonly FindItem<C>[],
+  count: number,
+  rng: Rng,
+): (string | undefined)[] {
+  const all = [...new Set(items.map((i) => i.group).filter((g): g is string => !!g))];
+  if (all.length === 0) return [];
+  const out: string[] = [];
+  while (out.length < count) {
+    for (const g of shuffle(all, rng)) {
+      if (out.length >= count) break;
+      if (g === out[out.length - 1] && all.length > 1) continue;
+      out.push(g);
+    }
+  }
+  return out;
+}
+
 /** Maqsad bo'la oladigan toifalar kamida shuncha bo'lsa, daraja o'ynaladi (ovozli o'yinlar uchun). */
 export const MIN_TARGETS = 3;
 
@@ -127,8 +153,9 @@ export const MIN_TARGETS = 3;
 export function isPlayable<C extends string>(
   all: readonly C[],
   canTarget: (c: C) => boolean = () => true,
+  min = MIN_TARGETS,
 ): boolean {
-  return all.filter(canTarget).length >= Math.min(MIN_TARGETS, all.length);
+  return all.filter(canTarget).length >= Math.min(min, all.length);
 }
 
 export function isCorrect<C extends string>(round: FindRound<C, FindItem<C>>, item: FindItem<C>) {

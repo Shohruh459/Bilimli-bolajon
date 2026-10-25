@@ -25,8 +25,8 @@
 - [x] Shakllarni topish: 3 daraja (doira, kvadrat, uchburchak → + yulduz, romb, olti burchak → + toʻgʻri toʻrtburchak, oval, yarim doira), 19 ta predmet; yurak olib tashlandi (egasi talabi)
 - [x] Hayvonlar: Tanishuv ("Bu — sigir!") + 3 daraja ("Sigirni top!", 4 → 8 → 12 hayvon), qoʻy↔echki va xoʻroz↔tovuq bir raundda emas, 12 ta SVG
 - [ ] Hayvonlar: yangi hayvonlar (tuya, sher, fil, qush...) — 4-daraja yoki 5 yosh
-- [ ] Katta — kichik
-- [ ] 1–5 gacha sanash
+- [x] Katta — kichik: 3 daraja (2 → 3 → 4 oʻlcham, bitta predmet), faqat eng katta / eng kichik soʻraladi
+- [x] Sanash 1–5: 3 daraja (1–3 → 1–4 → 1–5), "Qayerda ikkita?", toʻgʻri javobdan keyin ovoz sanab beradi
 - [x] Ranglarni topish: 3 daraja (4 → 6 → 10 rang), yulduz bilan ochiladi, 12 ta yangi predmet
 - [ ] Ranglarni topish: "rangini bo'ya" rejimi; ovozlar tayyor bo'lgach "qiyin rejim" (namunasiz)
 

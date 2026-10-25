@@ -45,13 +45,16 @@ export function isForbidden(key: string, text: string): boolean {
 /**
  * TTS'ga yuboriladigan matn: `say` (bo'lsa) yoki `text`. Ovozda oddiy apostrof:
  * oʻ/gʻ (U+02BB) va tutuq (U+02BC) → `'`. Tire (—) → vergul (qisqa pauza).
+ * `say` dagi har QATOR alohida yaratiladi va orasiga pauza qo'yiladi (masalan, sanash: "Bir.\nIkki.").
  */
 export function ttsText(p: { readonly text: string; readonly say?: string }): string {
   return (p.say ?? p.text)
     .replace(/[\u02BB\u02BC\u2018\u2019`]/g, "'")
     .replace(/\s*—\s*/g, ', ')
-    .replace(/\s+/g, ' ')
-    .trim();
+    .split('\n')
+    .map((l) => l.replace(/\s+/g, ' ').trim())
+    .filter(Boolean)
+    .join('\n');
 }
 
 /** TTS matn qoidalari buzilishi (bo'sh ro'yxat = toza). */

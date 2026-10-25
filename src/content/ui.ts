@@ -1,3 +1,3 @@
 /** Ekrandagi (aytilmaydigan) yozuvlar. Aytiladigan iboralar — phrases.ts da. */
 export const APP_TITLE = 'Ilmli Bolajon';
-export const APP_VERSION = '0.5.1';
+export const APP_VERSION = '0.6.0';

@@ -151,6 +151,57 @@ export const PHRASES = {
   'hayvon.asalari.top': { text: 'Asalarini top!', tone: 'qiziqtiruvchi' },
   'hayvon.asalari.tafakkur': { text: 'Asalari bizga asal beradi.', tone: 'iliq' },
 
+  // --- Oʻyin: Katta — kichik (3–4 yosh) ---
+  'kattakichik.intro': { text: 'Kel, kattasini va kichigini topamiz!', tone: 'quvnoq' },
+  'kattakichik.top.katta': { text: 'Eng kattasini top!', tone: 'aniq, "katta" ni urgʻu bilan' },
+  'kattakichik.top.kichik': {
+    text: 'Eng kichigini top!',
+    tone: 'aniq, "kichik" ni mayin, ingichka ovozda',
+  },
+  'kattakichik.togri.katta': { text: 'Ha, bu eng kattasi!', tone: 'xursand' },
+  'kattakichik.togri.kichik': { text: 'Ha, bu eng kichigi!', tone: 'xursand, mayin' },
+  'kattakichik.daraja-ochildi': {
+    text: 'Yangi daraja ochildi! Endi diqqat bilan qara.',
+    tone: 'bayramona',
+  },
+
+  // --- Oʻyin: Sanash 1–5 (3–4 yosh) ---
+  'sanash.intro': { text: 'Kel, birga sanaymiz!', tone: 'quvnoq' },
+  'sanash.qayerda.bir': { text: 'Qayerda bitta?', tone: 'qiziqtiruvchi' },
+  'sanash.qayerda.ikki': { text: 'Qayerda ikkita?', tone: 'qiziqtiruvchi' },
+  'sanash.qayerda.uch': { text: 'Qayerda uchta?', tone: 'qiziqtiruvchi' },
+  'sanash.qayerda.tort': { text: 'Qayerda toʻrtta?', tone: 'qiziqtiruvchi' },
+  'sanash.qayerda.besh': { text: 'Qayerda beshta?', tone: 'qiziqtiruvchi' },
+  'sanash.son.bir': { text: 'Bir. Bitta!', tone: 'sekin, har sonni aniq' },
+  'sanash.son.ikki': {
+    text: 'Bir, ikki. Ikkita!',
+    tone: 'sekin, har sonni aniq',
+    // Sonlar orasida pauza — bola birga sanab ulgursin (TTS tez aytardi).
+    say: 'Bir.\nIkki.\nIkkita!',
+  },
+  'sanash.son.uch': {
+    text: 'Bir, ikki, uch. Uchta!',
+    tone: 'sekin, har sonni aniq',
+    // Sonlar orasida pauza — bola birga sanab ulgursin (TTS tez aytardi).
+    say: 'Bir.\nIkki.\nUch.\nUchta!',
+  },
+  'sanash.son.tort': {
+    text: 'Bir, ikki, uch, toʻrt. Toʻrtta!',
+    tone: 'sekin, har sonni aniq',
+    // Sonlar orasida pauza — bola birga sanab ulgursin (TTS tez aytardi).
+    say: 'Bir.\nIkki.\nUch.\nToʻrt.\nToʻrtta!',
+  },
+  'sanash.son.besh': {
+    text: 'Bir, ikki, uch, toʻrt, besh. Beshta!',
+    tone: 'sekin, har sonni aniq',
+    // Sonlar orasida pauza — bola birga sanab ulgursin (TTS tez aytardi).
+    say: 'Bir.\nIkki.\nUch.\nToʻrt.\nBesh.\nBeshta!',
+  },
+  'sanash.daraja-ochildi': {
+    text: 'Yangi daraja ochildi! Endi koʻproq sanaymiz!',
+    tone: 'bayramona',
+  },
+
   // --- Tafakkur (yumshoq kuzatuv iboralari) ---
   'tafakkur.olma': { text: 'Qara, olma qanday chiroyli qizil!', tone: 'hayratli' },
   'tafakkur.qulupnay': { text: 'Qulupnay qizil va shirin!', tone: 'iliq' },

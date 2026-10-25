@@ -14,6 +14,10 @@ describe('ttsText — ovoz uchun matn', () => {
   it('tire — vergul (qisqa pauza)', () => {
     expect(ttsText({ text: 'Bu — sigir!' })).toBe('Bu, sigir!');
   });
+  it('`say` qatorlari saqlanadi (har biri alohida, orasida pauza)', () => {
+    expect(ttsText({ text: 'x', say: 'Bir.\n  Ikki.  \n\nIkkita!' })).toBe('Bir.\nIkki.\nIkkita!');
+  });
+
   it('`say` boʻlsa — u ishlatiladi', () => {
     expect(ttsText({ text: '2 ta olma', say: 'ikki ta olma' })).toBe('ikki ta olma');
   });

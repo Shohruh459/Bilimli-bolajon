@@ -106,3 +106,41 @@ describe('find-logic — canTarget (masalan, ovozi bor hayvonlar)', () => {
     expect(isPlayable(all, () => false)).toBe(false);
   });
 });
+
+describe('find-logic — guruhlar (bir raundda bitta predmet turi)', () => {
+  type S = 'k' | 'o' | 'm';
+  const LV: FindLevel<S>[] = [{ level: 1, fresh: ['k', 'o', 'm'], options: 3, rounds: 6 }];
+  const GI: FindItem<S>[] = ['olma', 'baliq', 'ayiq'].flatMap((g) =>
+    (['k', 'o', 'm'] as S[]).map((c) => ({
+      art: `${g}-${c}`,
+      name: g,
+      cat: c,
+      tafakkur: 'praise.zor' as const,
+      group: g,
+    })),
+  );
+
+  it('har raundda barcha variantlar bitta guruhdan; guruh ketma-ket takrorlanmaydi', () => {
+    for (let seed = 0; seed < 300; seed++) {
+      const rounds = makeRounds(LV[0]!, ['k', 'o', 'm'], GI, mulberry32(seed));
+      const gs = rounds.map((r) => {
+        const set = new Set(r.options.map((o) => o.group));
+        expect(set.size, `seed ${seed}`).toBe(1);
+        return [...set][0];
+      });
+      for (let i = 1; i < gs.length; i++) expect(gs[i]).not.toBe(gs[i - 1]);
+      expect(new Set(gs).size).toBe(3);
+    }
+  });
+
+  it('guruhsiz predmetlar — avvalgidek (har xil predmet aralash)', () => {
+    const rounds = makeRounds(LEVELS[0]!, levelCats(LEVELS, 1), ITEMS, mulberry32(1));
+    expect(rounds.every((r) => r.options.every((o) => o.group === undefined))).toBe(true);
+  });
+
+  it('isPlayable: min chegarasi sozlanadi (katta/kichik — 2 ta maqsad yetarli)', () => {
+    const two = (c: S) => c !== 'o';
+    expect(isPlayable(['k', 'o', 'm'] as S[], two)).toBe(false);
+    expect(isPlayable(['k', 'o', 'm'] as S[], two, 2)).toBe(true);
+  });
+});

@@ -256,6 +256,36 @@
       "say": "Yoshingni tanla!",
       "date": "2026-10-24"
     },
+    "kattakichik.daraja-ochildi": {
+      "text": "Yangi daraja ochildi! Endi diqqat bilan qara.",
+      "say": "Yangi daraja ochildi! Endi diqqat bilan qara.",
+      "date": "2026-10-25"
+    },
+    "kattakichik.intro": {
+      "text": "Kel, kattasini va kichigini topamiz!",
+      "say": "Kel, kattasini va kichigini topamiz!",
+      "date": "2026-10-25"
+    },
+    "kattakichik.togri.katta": {
+      "text": "Ha, bu eng kattasi!",
+      "say": "Ha, bu eng kattasi!",
+      "date": "2026-10-25"
+    },
+    "kattakichik.togri.kichik": {
+      "text": "Ha, bu eng kichigi!",
+      "say": "Ha, bu eng kichigi!",
+      "date": "2026-10-25"
+    },
+    "kattakichik.top.katta": {
+      "text": "Eng kattasini top!",
+      "say": "Eng kattasini top!",
+      "date": "2026-10-25"
+    },
+    "kattakichik.top.kichik": {
+      "text": "Eng kichigini top!",
+      "say": "Eng kichigini top!",
+      "date": "2026-10-25"
+    },
     "menu.tanla": {
       "text": "Qaysi oʻyinni oʻynaymiz?",
       "say": "Qaysi o'yinni o'ynaymiz?",
@@ -350,6 +380,66 @@
       "text": "Yashil rangni top!",
       "say": "Yashil rangni top!",
       "date": "2026-10-24"
+    },
+    "sanash.daraja-ochildi": {
+      "text": "Yangi daraja ochildi! Endi koʻproq sanaymiz!",
+      "say": "Yangi daraja ochildi! Endi ko'proq sanaymiz!",
+      "date": "2026-10-25"
+    },
+    "sanash.intro": {
+      "text": "Kel, birga sanaymiz!",
+      "say": "Kel, birga sanaymiz!",
+      "date": "2026-10-25"
+    },
+    "sanash.qayerda.besh": {
+      "text": "Qayerda beshta?",
+      "say": "Qayerda beshta?",
+      "date": "2026-10-25"
+    },
+    "sanash.qayerda.bir": {
+      "text": "Qayerda bitta?",
+      "say": "Qayerda bitta?",
+      "date": "2026-10-25"
+    },
+    "sanash.qayerda.ikki": {
+      "text": "Qayerda ikkita?",
+      "say": "Qayerda ikkita?",
+      "date": "2026-10-25"
+    },
+    "sanash.qayerda.tort": {
+      "text": "Qayerda toʻrtta?",
+      "say": "Qayerda to'rtta?",
+      "date": "2026-10-25"
+    },
+    "sanash.qayerda.uch": {
+      "text": "Qayerda uchta?",
+      "say": "Qayerda uchta?",
+      "date": "2026-10-25"
+    },
+    "sanash.son.besh": {
+      "text": "Bir, ikki, uch, toʻrt, besh. Beshta!",
+      "say": "Bir.\nIkki.\nUch.\nTo'rt.\nBesh.\nBeshta!",
+      "date": "2026-10-25"
+    },
+    "sanash.son.bir": {
+      "text": "Bir. Bitta!",
+      "say": "Bir. Bitta!",
+      "date": "2026-10-25"
+    },
+    "sanash.son.ikki": {
+      "text": "Bir, ikki. Ikkita!",
+      "say": "Bir.\nIkki.\nIkkita!",
+      "date": "2026-10-25"
+    },
+    "sanash.son.tort": {
+      "text": "Bir, ikki, uch, toʻrt. Toʻrtta!",
+      "say": "Bir.\nIkki.\nUch.\nTo'rt.\nTo'rtta!",
+      "date": "2026-10-25"
+    },
+    "sanash.son.uch": {
+      "text": "Bir, ikki, uch. Uchta!",
+      "say": "Bir.\nIkki.\nUch.\nUchta!",
+      "date": "2026-10-25"
     },
     "shakllar.daraja-ochildi": {
       "text": "Yangi daraja ochildi! Yangi shakllar seni kutmoqda!",
