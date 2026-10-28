@@ -1,0 +1,42 @@
+/* "Harflar" — Alifbo ekrani (o'yin chunk'i bilan yuklanadi) */
+.ab-grid {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  align-content: center;
+  padding-bottom: var(--edge);
+}
+
+.ab-card {
+  width: 100%;
+  aspect-ratio: 1;
+  padding: 4px;
+}
+
+.ab-card .art,
+.ab-card .art svg {
+  width: 100%;
+  height: 100%;
+}
+
+.ab-card.is-playing {
+  --btn-bg: #fff7d6;
+  outline: 5px solid var(--c-sun);
+  outline-offset: -5px;
+}
+
+.ab-nav {
+  width: 100%;
+  aspect-ratio: 1;
+}
+
+.ab-nav svg {
+  width: 56%;
+  height: 56%;
+}
+
+.ab-nav[disabled] {
+  opacity: 0.3;
+}

@@ -45,17 +45,21 @@ Yosh guruhlari: **3–4**, **5**, **6–7** va **Diniy bo'lim** (ota-ona bilan b
 
 O'rgatiladigan "haqiqiy" ranglar (qizil, sariq, ko'k, yashil) alohida: `--learn-*` va `content/colors.ts`.
 
-**Shrift:** Nunito (variable, 200–1000), faqat **lotin** subseti — `src/assets/fonts/`,
-fontsource'dan olingan (OFL, Reserved Font Name yo'q). U+02BB glifi bor, **lekin juda keng**
-(advance 500 → "Ko ʻ k"). Shuning uchun `nunito-okina-wght-normal.woff2` (1.2 KB) — U+02BB/U+02BC ni
-`‘`/`’` glifi bilan chizadigan qo'shimcha `@font-face` (`unicode-range: U+02BB-02BC`).
-Matn baribir U+02BB. Qayta yaratish: `python3 scripts/build-okina-font.py`.
+**Shrift:** Nunito (variable, 200–1000), **lotin** subseti — `src/assets/fonts/`,
+fontsource'dan olingan (OFL, Reserved Font Name yo'q). Unda Ö ö Ç ç bor, **Ğ ğ Ş ş yo'q** →
+`nunito-yangi-harflar-wght-normal.woff2` (3 KB, latin-ext'dan, `unicode-range: U+011E-011F, U+015E-015F`;
+qayta yaratish: `scripts/build-yangi-harflar-font.py`). Tutuq ʼ (U+02BC) Nunito'da juda keng —
+`nunito-okina-wght-normal.woff2` uni `’` glifi bilan chizadi (`scripts/build-okina-font.py`).
 Kirill qo'shish: `@fontsource-variable/nunito` dan `nunito-cyrillic-wght-normal.woff2` ni
 `src/assets/fonts/` ga ko'chirib, `src/styles/fonts.css` ga ikkinchi `@font-face` (kirill `unicode-range` bilan) qo'shish kifoya.
 **Amiri** (arabcha) — 4-bosqichda, faqat diniy bo'lim chunk'ida yuklanadi.
 
-**Orfografiya:** `oʻ`, `gʻ` uchun **U+02BB** (ʻ), tutuq belgisi uchun **U+02BC** (ʼ).
-Oddiy `'` ishlatilmaydi — `content/phrases.test.ts` tekshiradi.
+**Orfografiya — YANGI ALIFBO** (O'RQ-1184, 2026-10-21 imzolangan, 2027-04-22 kuchga kiradi; egasi
+qarori: ilova hozirdan yangi alifboda): **Ö ö, Ğ ğ, Ş ş, Ç ç** (oʻ, gʻ, sh, ch o'rniga), "ng" harf emas,
+tutuq belgisi **U+02BC** (ʼ). 28 harf, tartib — eski kabi, yangilari oxirida: A B D E F G H I J K L M N O P
+Q R S T U V X Y Z Ö Ğ Ş Ç. Ilova matnlarida eski `oʻ gʻ sh ch` va oddiy `'` yo'q — `content/phrases.test.ts`.
+**Kodda** (kalit, id, CSS class, `data-*`, star key) — faqat ASCII (`hayvon.ordak.top`, `shakllar.2`).
+TTS'ga matn **eski yozuvda** yuboriladi (ö→o', ş→sh …, `tts-plan.ts` → `ttsText`) — model shuni biladi.
 
 ## Struktura
 
@@ -68,11 +72,13 @@ src/
   app/router.ts         # #/ | #/yosh/<id> | #/oyin/<id> | #/sozlamalar
   app/screens/          # start, home, age, game (lazy host + yakun), settings
   engine/               # audio, voice, sfx, animate, confetti, feedback, scope, storage, random, guard, pwa, game
-                        #   levels (daraja ochilishi), find-logic + find-game (umumiy "topish" o'yini)
+                        #   levels (daraja ochilishi), find-logic + find-game (umumiy "topish" o'yini),
+                        #   level-game (topishga tushmaydigan darajali o'yinlar qobig'i)
   games/<id>/           # har o'yin — alohida lazy chunk; logic.ts (sof, test qilinadi) + index.ts (UI)
                         #   + art.ts (o'yinga xos SVG'lar — bosh bundle'ga kirmaydi)
   games/registry.ts     # o'yinlar ro'yxati (meta + lazy import)
-  content/              # BARCHA matnlar: phrases.ts (ovoz kalitlari), colors.ts, shapes.ts, animals.ts, sizes.ts, counting.ts (+ darajalar), ages.ts, diniy.ts
+  content/              # BARCHA matnlar: phrases.ts (ovoz kalitlari), colors.ts, shapes.ts, animals.ts, sizes.ts, counting.ts,
+                        #   letters.ts (alifbo), numbers.ts (+ darajalar), ages.ts, diniy.ts
   ui/                   # dom (h, svg), art (SVG rasmlar), icons, button, topbar, parent-gate, level-picker
   styles/               # tokens.css, fonts.css, base.css, app.css (o'yin CSS — o'yin papkasida)
   assets/audio/uz/      # ovoz yozuvlari: <kalit>.mp3 (docs/OVOZLAR.md)
@@ -160,6 +166,12 @@ docs/                   # ROADMAP, DINIY-MATNLAR, OVOZLAR, TTS, ATTRIBUTIONS
   `minTargets` — daraja o'ynalishi uchun maqsad toifalar chegarasi (katta-kichik: 2 — faqat eng katta/eng kichik).
 - **Ko'p qatorli `say`**: har qator alohida TTS + orasida 0.35 s jimlik (sanash: "Bir.\nIkki.\nIkkita!" —
   bitta qatorda model juda tez aytardi). 3–4 yosh menyusi 3 qator kartaga ham sig'adi (`grid-auto-rows`).
+- **5 yosh:** "Harflar" (find-game, `audioAsk` — "Be harfini top!" eshitiladi, ekranda "?"; "Alifbo"
+  rejimi — 7 tadan sahifa + ‹ ›, 3×3 to'r; harf nomlari egasi tasdiqlagan: A, Be, De, E, Fe, Ge, He, I,
+  Je, Ke, Le, Me, Ne, O, Pe, Qe, Re, Se, Te, U, Ve, Xe, Ye, Ze, Ö, Ğe, Şe, Çe), "Raqamlar 1–10" (topshiriqda
+  o'nlik ramka nuqtalari + nom, kartada raqam), "Juftini top" (xotira, 3/4/6 juft, 3 ustun; mos kelmasa
+  1 s ko'rsatib yopiladi, jarima yo'q), "Ketma-ketlik" (AB → AAB/ABB → ABC, 8 element = shakl+rang).
+  Oxirgi ikkitasi `engine/level-game.ts` (`createLevelGame`) — daraja ekrani, qulf, yulduz, "N-daraja oçildi".
 - **Uzun sarlavha** (> 8 harf) daraja ekranida kichikroq (`.screen-title.is-long`) — 360px ga sig'adi.
 - **Dizayn sayqali** alohida bosqich (ROADMAP). Hozircha funksional o'zgarishlarda dizaynni katta o'zgartirmaymiz.
 
@@ -297,3 +309,11 @@ Pipe (`| grep`, `| tail`) ishlatilsa, exit kodi pipe'ning oxirgi buyrug'iniki bo
     keyin "Bir. Ikki. Ikkita!" (har son ~1 s).
   - Engine: `FindItem.group`, `minTargets`; TTS: ko'p qatorli `say`, generatsiyada qayta urinish.
   - 18 ta yangi ibora (jami 139), 147 unit, 37×2 e2e test.
+
+- **0.7.0 — Yangi alifbo + 5 yosh, 2026-10-28**
+  - Butun ilova yangi o'zbek alifbosida (O'RQ-1184): Ö Ğ Ş Ç; Ğ/Ş uchun 3 KB qo'shimcha shrift.
+    TTS'ga eski yozuv yuboriladi → 139 ta ovoz qayta yaratilmadi (`tts:reja` "faqat-yozuv" — manifest yangilanadi).
+  - 5 yosh: Harflar (28 harf, 4 daraja + Alifbo), Raqamlar 1–10 (3 daraja), Juftini top (3 daraja),
+    Ketma-ketlik (3 daraja). `engine/level-game.ts`.
+  - 87 ta yangi ibora (jami 226). Sozlamalardagi TTS manifesti alohida chunk (bosh JS 20.3 KB).
+  - 173 unit, 47×2 e2e test. Precache ~2.95 MB — ovozlarni yosh bo'yicha keshlash rejasi vaqti yaqin.

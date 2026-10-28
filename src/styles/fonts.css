@@ -1,4 +1,4 @@
-/* Nunito variable — faqat lotin subseti (U+02BB "oʻ gʻ" ichida). Self-host, OFL (Nunito-OFL.txt).
+/* Nunito variable — lotin subseti (Ö ö Ç ç ichida). Self-host, OFL (Nunito-OFL.txt).
    Kirill qo'shish: nunito-cyrillic-wght-normal.woff2 + ikkinchi @font-face (CLAUDE.md). */
 @font-face {
   font-family: 'Nunito';
@@ -20,6 +20,17 @@
   font-weight: 200 1000;
   src: url('../assets/fonts/nunito-okina-wght-normal.woff2') format('woff2');
   unicode-range: U+02BB-02BC;
+}
+
+/* Yangi alifbo (O'RQ-1184): Ğ ğ Ş ş — lotin subsetida yo'q, latin-ext'dan ajratilgan (3 KB).
+   Yaratish: scripts/build-yangi-harflar-font.py */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 200 1000;
+  src: url('../assets/fonts/nunito-yangi-harflar-wght-normal.woff2') format('woff2');
+  unicode-range: U+011E-011F, U+015E-015F;
 }
 
 /* Shrift yuklanguncha sakrash (layout shift) kamroq bo'lsin */

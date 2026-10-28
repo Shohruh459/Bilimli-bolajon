@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 import { start } from './helpers';
 
-test('tashqi soʻrov va CSP buzilishi yoʻq', async ({ page, baseURL }) => {
+test('taşqi sörov va CSP buzilişi yöq', async ({ page, baseURL }) => {
   const origin = new URL(baseURL!).origin;
   const external: string[] = [];
   const errors: string[] = [];
@@ -33,7 +33,7 @@ test('tashqi soʻrov va CSP buzilishi yoʻq', async ({ page, baseURL }) => {
   expect(csp).toContain("script-src 'self'");
 });
 
-test('bola himoyasi: zoom, long-press, belgilash', async ({ page }) => {
+test('bola himoyasi: zoom, long-press, belgilaş', async ({ page }) => {
   await page.goto('');
   const viewport = await page.locator('meta[name="viewport"]').getAttribute('content');
   expect(viewport).toContain('user-scalable=no');
@@ -55,7 +55,7 @@ test('bola himoyasi: zoom, long-press, belgilash', async ({ page }) => {
   expect(prevented).toBe(true);
 });
 
-test('manifest: portrait, standalone, oʻzbekcha', async ({ page, request }) => {
+test('manifest: portrait, standalone, özbekça', async ({ page, request }) => {
   await page.goto('');
   const href = await page.locator('link[rel="manifest"]').getAttribute('href');
   const res = await request.get(new URL(href!, page.url()).toString());
@@ -66,7 +66,7 @@ test('manifest: portrait, standalone, oʻzbekcha', async ({ page, request }) => 
   expect(m.lang).toBe('uz');
 });
 
-test('offline: SW oʻrnatilgach internet yoʻq holda ishlaydi', async ({ page, context }) => {
+test('offline: SW örnatilgaç internet yöq holda işlaydi', async ({ page, context }) => {
   await page.goto('');
   await page.evaluate(async () => {
     const reg = await navigator.serviceWorker.ready;
@@ -86,7 +86,7 @@ test('offline: SW oʻrnatilgach internet yoʻq holda ishlaydi', async ({ page, c
   await context.setOffline(false);
 });
 
-test('production build: dev yozuvi ("🔇 kalit — matn") hech qachon chiqmaydi', async ({ page }) => {
+test('production build: dev yozuvi ("🔇 kalit — matn") heç qaçon çiqmaydi', async ({ page }) => {
   // Butun sessiya davomida .dev-caption paydo bo'lsa — qayd qilamiz.
   await page.addInitScript(() => {
     const w = window as unknown as { __devCaptions: number };
@@ -98,7 +98,7 @@ test('production build: dev yozuvi ("🔇 kalit — matn") hech qachon chiqmaydi
     }).observe(document, { childList: true, subtree: true });
   });
 
-  await start(page); // salomlashish + "Yoshingni tanla" aytiladi
+  await start(page); // salomlashish + "Yoşingni tanla" aytiladi
   await page.getByTestId('age-3-4').click();
   await page.getByTestId('game-ranglar').click();
   await page.getByTestId('level-1').click();

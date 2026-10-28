@@ -10,9 +10,9 @@ export interface AgeGroup {
 }
 
 export const AGES: readonly AgeGroup[] = [
-  { id: '3-4', title: '3–4', subtitle: 'yosh', art: 'koptok' },
-  { id: '5', title: '5', subtitle: 'yosh', art: 'yulduz' },
-  { id: '6-7', title: '6–7', subtitle: 'yosh', art: 'kitob' },
+  { id: '3-4', title: '3–4', subtitle: 'yoş', art: 'koptok' },
+  { id: '5', title: '5', subtitle: 'yoş', art: 'yulduz' },
+  { id: '6-7', title: '6–7', subtitle: 'yoş', art: 'kitob' },
   { id: 'diniy', title: 'Diniy', subtitle: 'ota-ona bilan', art: 'tun' },
 ];
 

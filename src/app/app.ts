@@ -76,7 +76,8 @@ export function createApp(root: HTMLElement): AppApi {
         void gameScreen(ctx, route.id, route.level ?? null, route.mode ?? null);
         return;
       case 'settings':
-        return settingsScreen(ctx);
+        void settingsScreen(ctx);
+        return;
     }
   }
 

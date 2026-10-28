@@ -152,7 +152,7 @@ export function createFindGame<C extends string, A extends string>(
     let locked = true;
 
     const exitBtn = iconButton('back', 'Orqaga');
-    const repeatBtn = iconButton('speaker', 'Yana eshitish', 'find-repeat');
+    const repeatBtn = iconButton('speaker', 'Yana eşitiş', 'find-repeat');
     const dots = h('div', {
       class: 'dots',
       role: 'progressbar',
@@ -169,7 +169,7 @@ export function createFindGame<C extends string, A extends string>(
           {
             type: 'button',
             class: 'btn find-ask',
-            'aria-label': 'Yana eshitish',
+            'aria-label': 'Yana eşitiş',
             'data-testid': 'ask',
           },
           swatch,
@@ -257,7 +257,7 @@ export function createFindGame<C extends string, A extends string>(
       finish({
         starKey: levelStarKey(cfg.gameId, levelNo),
         ...(opened
-          ? { note: { text: `${levelNo + 1}-daraja ochildi!`, phrase: cfg.unlocked } }
+          ? { note: { text: `${levelNo + 1}-daraja oçildi!`, phrase: cfg.unlocked } }
           : {}),
       });
     }

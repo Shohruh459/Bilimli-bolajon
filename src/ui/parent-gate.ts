@@ -21,7 +21,7 @@ export function parentGateButton(scope: Scope, onPass: () => void, holdMs = HOLD
     {
       type: 'button',
       class: 'btn btn--icon gate',
-      'aria-label': 'Sozlamalar (kattalar uchun: 3 soniya bosib turing)',
+      'aria-label': 'Sozlamalar (kattalar uçun: 3 soniya bosib turing)',
       'data-testid': 'parent-gate',
     },
     svg(ICONS.gear),
@@ -30,7 +30,7 @@ export function parentGateButton(scope: Scope, onPass: () => void, holdMs = HOLD
   const tip = h(
     'div',
     { class: 'gate__tip', role: 'status' },
-    'Kattalar uchun: 3 soniya bosib turing',
+    'Kattalar uçun: 3 soniya bosib turing',
   );
   const wrap = h('div', { class: 'gate__wrap' }, btn, tip);
 

@@ -11,6 +11,12 @@ describe('ttsText — ovoz uchun matn', () => {
   it('oʻ, gʻ va tutuq belgisi oddiy apostrofga', () => {
     expect(ttsText({ text: 'Toʻgʻri topding! Maʼlumot' })).toBe("To'g'ri topding! Ma'lumot");
   });
+  it('yangi alifbo harflari TTS uchun eski yozuvga: ö ğ ş ç', () => {
+    expect(ttsText({ text: 'Töğri topding! Şakllar, Çodir, Ördak, Ğildirak' })).toBe(
+      "To'g'ri topding! Shakllar, Chodir, O'rdak, G'ildirak",
+    );
+  });
+
   it('tire — vergul (qisqa pauza)', () => {
     expect(ttsText({ text: 'Bu — sigir!' })).toBe('Bu, sigir!');
   });
@@ -61,9 +67,10 @@ describe('planPhrase — qaysi fayl yaratiladi', () => {
 
   it('TTS fayli: matn oʻzgarmagan → tayyor; oʻzgargan → qayta; force → qayta', () => {
     expect(planPhrase({ ...base, fileExists: true, entry: entry('Zoʻr!') }).action).toBe('skip');
-    expect(planPhrase({ ...base, fileExists: true, entry: entry('Eski matn') })).toEqual({
-      action: 'generate',
-      reason: 'matn-oʻzgargan',
+    // Yozuv o'zgargan, aytilishi bir xil (yangi alifbo) — ovoz yaroqli, faqat manifest yangilanadi.
+    expect(planPhrase({ ...base, fileExists: true, entry: entry('Eski matn', "Zo'r!") })).toEqual({
+      action: 'skip',
+      reason: 'faqat-yozuv',
     });
     expect(
       planPhrase({ ...base, fileExists: true, entry: entry('Zoʻr!', 'Zo-o-or!') }).reason,

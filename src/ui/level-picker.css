@@ -140,3 +140,36 @@
   font-size: var(--fs-lg);
   font-weight: 1000;
 }
+
+/* 4+ daraja (Harflar): ixchamroq kartalar — 360×640 ekranga sig'adi, tugma baribir ≥ 90px */
+.lp--many .lp-level {
+  min-height: 100px;
+  padding: 8px 14px;
+}
+
+.lp--many .lp-level__num {
+  width: 60px;
+  height: 60px;
+  font-size: 2rem;
+}
+
+/* Qo'shimcha karta yuqori panelda: 96×96, belgi + kichik nom */
+.lp-extra--top {
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  width: var(--tap-min);
+  height: var(--tap-min);
+  min-height: 0;
+  padding: 4px;
+  border-width: 4px;
+}
+
+.lp-extra--top .lp-extra__icon svg {
+  width: 48px;
+  height: 48px;
+}
+
+.lp-extra--top .lp-extra__title {
+  font-size: 0.85rem;
+}

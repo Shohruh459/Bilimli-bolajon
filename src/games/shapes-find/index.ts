@@ -25,7 +25,7 @@ const categories = Object.fromEntries(
 
 export default createFindGame({
   gameId: GAME_ID,
-  title: 'Shakllar',
+  title: 'Şakllar',
   testIds: { levels: 'shapes-levels', game: 'shapes-game' },
   catAttr: 'shape',
   intro: 'shakllar.intro',

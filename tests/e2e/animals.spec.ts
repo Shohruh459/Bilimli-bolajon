@@ -12,8 +12,8 @@ import {
 const GAME = 'animals-game';
 const ATTR = 'animal';
 
-test.describe('Hayvonlar — Tanishuv', () => {
-  test('menyuda karta; Tanishuv ajralib turadi, ochilgach toʻxtaydi', async ({ page }, info) => {
+test.describe('Hayvonlar — Tanişuv', () => {
+  test('menyuda karta; Tanişuv ajralib turadi, oçilgaç töxtaydi', async ({ page }, info) => {
     await start(page);
     await page.getByTestId('age-3-4').click();
     await expect(page.getByTestId('game-hayvonlar')).toBeVisible();
@@ -37,7 +37,7 @@ test.describe('Hayvonlar — Tanishuv', () => {
     await expect(page.getByTestId('extra-tanishuv')).toHaveAttribute('data-highlight', 'false');
   });
 
-  test('Tanishuv: 1-daraja hayvonlari, bosilsa ishlaydi (ovozsiz ham)', async ({ page }, info) => {
+  test('Tanişuv: 1-daraja hayvonlari, bosilsa işlaydi (ovozsiz ham)', async ({ page }, info) => {
     await start(page, '#/oyin/hayvonlar/tanishuv');
     await expect(page.getByTestId('tanishuv')).toBeVisible();
     const cards = page.locator('.tn-card');
@@ -57,9 +57,7 @@ test.describe('Hayvonlar — Tanishuv', () => {
     await expect(page.getByTestId('tanishuv-it')).toHaveClass(/is-playing/);
   });
 
-  test('Tanishuv: hamma daraja ochiq boʻlsa — 12 hayvon, ekranga sigʻadi', async ({
-    page,
-  }, info) => {
+  test('Tanişuv: hamma daraja oçiq bölsa — 12 hayvon, ekranga siğadi', async ({ page }, info) => {
     await seedStars(page, { 'hayvonlar.1': 3, 'hayvonlar.2': 3 });
     await start(page, '#/oyin/hayvonlar/tanishuv');
     await expect(page.locator('.tn-card')).toHaveCount(12);
@@ -69,8 +67,8 @@ test.describe('Hayvonlar — Tanishuv', () => {
   });
 });
 
-test.describe('Hayvonlar — oʻyin ("Sigirni top!")', () => {
-  test('1-daraja: topshiriqda hayvon nomi; xato urishmaydi; yulduz', async ({ page }, info) => {
+test.describe('Hayvonlar — öyin ("Sigirni top!")', () => {
+  test('1-daraja: topşiriqda hayvon nomi; xato urişmaydi; yulduz', async ({ page }, info) => {
     await start(page, '#/oyin/hayvonlar');
     await page.getByTestId('level-1').click();
     const game = page.getByTestId(GAME);
@@ -79,10 +77,10 @@ test.describe('Hayvonlar — oʻyin ("Sigirni top!")', () => {
     await expect(page.locator('.find-option')).toHaveCount(3);
     // Topshiriq: nomi ekranda va ovozda ("Sigirni top!"); rasm koʻrsatilmaydi.
     const names: Record<string, string> = {
-      mushuk: 'Mushuk',
+      mushuk: 'Muşuk',
       it: 'It',
       sigir: 'Sigir',
-      xoroz: 'Xoʻroz',
+      xoroz: 'Xöroz',
     };
     const first = (await game.getAttribute('data-target'))!;
     await expect(page.locator('.find-word')).toHaveText(names[first]!);
@@ -92,7 +90,7 @@ test.describe('Hayvonlar — oʻyin ("Sigirni top!")', () => {
     await shot(page, info, '25-animals-game');
 
     // "Yana eshitish" tugmasi oʻyinni buzmaydi.
-    await page.getByRole('button', { name: 'Yana eshitish' }).click();
+    await page.getByRole('button', { name: 'Yana eşitiş' }).click();
     const target = (await game.getAttribute('data-target'))!;
     await page.locator(`.find-option:not([data-animal="${target}"])`).first().click();
     await page.waitForTimeout(300);
@@ -102,9 +100,7 @@ test.describe('Hayvonlar — oʻyin ("Sigirni top!")', () => {
     await expect(page.getByTestId('finish')).toContainText('× 1');
   });
 
-  test('3-daraja: 4 variant, qoʻy↔echki va xoʻroz↔tovuq hech qachon birga emas', async ({
-    page,
-  }) => {
+  test('3-daraja: 4 variant, qöy↔eçki va xöroz↔tovuq heç qaçon birga emas', async ({ page }) => {
     await seedStars(page, { 'hayvonlar.1': 3, 'hayvonlar.2': 3 });
     await start(page, '#/oyin/hayvonlar');
     await expect(page.getByTestId('level-3')).toHaveAttribute('data-open', 'true');
@@ -137,7 +133,7 @@ test.describe('Hayvonlar — oʻyin ("Sigirni top!")', () => {
     await start(page, '#/oyin/hayvonlar');
     await page.getByTestId('level-1').click();
     await playFindRounds(page, 5, GAME, ATTR);
-    await expect(page.getByTestId('finish-note')).toHaveText('2-daraja ochildi!');
+    await expect(page.getByTestId('finish-note')).toHaveText('2-daraja oçildi!');
     await page.getByTestId('to-menu').click();
     await expect(page.getByTestId('level-2')).toHaveAttribute('data-open', 'true');
   });

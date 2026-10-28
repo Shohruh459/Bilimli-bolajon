@@ -22,9 +22,9 @@ export type SizeObject = keyof typeof SIZE_OBJECTS;
 export const SIZE_OBJECT_NAMES: Record<SizeObject, string> = {
   olma: 'olma',
   baliq: 'baliq',
-  ayiqcha: 'ayiqcha',
-  mushuk: 'mushuk',
-  ordak: 'oʻrdak',
+  ayiqcha: 'ayiqça',
+  mushuk: 'muşuk',
+  ordak: 'ördak',
   koptok: 'koptok',
 };
 

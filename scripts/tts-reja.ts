@@ -17,6 +17,8 @@ const only = args.includes('--only') && onlyArg ? new Set(onlyArg.split(',')) : 
 const todo: { key: string; text: string; say: string; reason: string }[] = [];
 const skipped: Record<string, string[]> = {};
 const problems: string[] = [];
+/** Yozuvi o'zgargan, aytilishi bir xil iboralar — manifestdagi `text` yangilanadi, ovoz qoladi. */
+const relabel = new Map<string, string>();
 
 for (const [key, p] of Object.entries(PHRASES) as [string, { text: string; say?: string }][]) {
   if (only && !only.has(key)) continue;
@@ -32,6 +34,7 @@ for (const [key, p] of Object.entries(PHRASES) as [string, { text: string; say?:
   });
   if (plan.action === 'generate') todo.push({ key, text: p.text, say, reason: plan.reason });
   else (skipped[plan.reason] ??= []).push(key);
+  if (plan.reason === 'faqat-yozuv') relabel.set(key, p.text);
 }
 
 // Yetim TTS fayllar: ibora phrases.ts dan olib tashlangan. Faqat manifestdagilar (qo'lda yozilganga tegilmaydi).
@@ -56,6 +59,12 @@ if (problems.length) {
   console.error('TTS matn qoidalari buzilgan (phrases.ts → `say` maydoni bilan tuzating):');
   for (const p of problems) console.error('  ✗ ' + p);
   process.exit(1);
+}
+
+if (relabel.size) {
+  const files = { ...manifest.files };
+  for (const [k, text] of relabel) files[k] = { ...files[k]!, text };
+  writeFileSync(`${AUDIO_DIR}/tts.json`, JSON.stringify({ ...manifest, files }, null, 2) + '\n');
 }
 
 mkdirSync('.tts-work', { recursive: true });

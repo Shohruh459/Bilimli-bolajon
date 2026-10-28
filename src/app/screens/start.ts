@@ -14,7 +14,7 @@ export function startScreen({ root, scope }: ScreenCtx, onStart: () => void): vo
   const btn = h(
     'button',
     { type: 'button', class: 'btn btn--sun btn--start', 'data-testid': 'start' },
-    h('span', null, 'Boshlash'),
+    h('span', null, 'Boşlaş'),
     svg(ICONS.play),
   );
   root.append(
@@ -23,7 +23,7 @@ export function startScreen({ root, scope }: ScreenCtx, onStart: () => void): vo
       { class: 'screen start' },
       maskot,
       h('h1', { class: 'start__title' }, APP_TITLE),
-      h('p', { class: 'start__sub' }, '3–7 yoshli bolajonlar uchun'),
+      h('p', { class: 'start__sub' }, '3–7 yoşli bolajonlar uçun'),
       btn,
     ),
   );

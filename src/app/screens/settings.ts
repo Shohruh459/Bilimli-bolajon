@@ -1,4 +1,3 @@
-import { files as ttsFiles } from '../../assets/audio/uz/tts.json';
 import { PHRASES, type PhraseKey } from '../../content/phrases';
 import { APP_VERSION } from '../../content/ui';
 import { getAudioState } from '../../engine/audio';
@@ -17,8 +16,11 @@ const TOKENIZER_NOTICE =
   'Built with Higgs Materials licensed from Boson AI USA, Inc., Copyright Boson AI USA, Inc., All Rights Reserved and Meta Llama 3 licensed under the Meta Llama 3 Community License, Copyright Meta Platforms, Inc., All Right Reserved';
 
 /** Ota-ona sozlamalari (faqat darvoza orqali). */
-export function settingsScreen({ root, scope, app }: ScreenCtx): void {
+export async function settingsScreen({ root, scope, app }: ScreenCtx): Promise<void> {
   if (!gate.valid()) return app.go({ name: 'home' });
+  // TTS manifesti (226+ ibora matni) bosh bundle'ga kirmasin — faqat shu ekranda, alohida chunk.
+  const { files: ttsFiles } = await import('../../assets/audio/uz/tts.json');
+  if (scope.disposed) return;
 
   const back = iconButton('back', 'Orqaga');
   scope.on(back, 'click', () => {
@@ -36,7 +38,7 @@ export function settingsScreen({ root, scope, app }: ScreenCtx): void {
     const on = getSettings().sound;
     soundBtn.replaceChildren(
       svg(on ? ICONS.soundOn : ICONS.soundOff),
-      h('span', null, on ? 'Ovoz: yoqilgan' : 'Ovoz: oʻchirilgan'),
+      h('span', null, on ? 'Ovoz: yoqilgan' : 'Ovoz: öçirilgan'),
     );
     soundBtn.setAttribute('aria-pressed', String(on));
   };
@@ -51,16 +53,16 @@ export function settingsScreen({ root, scope, app }: ScreenCtx): void {
   const resetBtn = h(
     'button',
     { type: 'button', class: 'btn setting setting--danger' },
-    'Yulduzchalarni tozalash',
+    'Yulduzçalarni tozalaş',
   );
   let armed = false;
   scope.on(resetBtn, 'click', () => {
     if (!armed) {
       armed = true;
-      resetBtn.textContent = 'Ishonchingiz komilmi? Yana bosing';
+      resetBtn.textContent = 'Işonçingiz komilmi? Yana bosing';
       scope.later(4000, () => {
         armed = false;
-        resetBtn.textContent = 'Yulduzchalarni tozalash';
+        resetBtn.textContent = 'Yulduzçalarni tozalaş';
       });
       return;
     }
@@ -95,10 +97,10 @@ export function settingsScreen({ root, scope, app }: ScreenCtx): void {
           h(
             'dd',
             { 'data-testid': 'synthetic-count' },
-            synthetic ? `${synthetic} ta (vaqtinchalik)` : 'yoʻq',
+            synthetic ? `${synthetic} ta (vaqtinchalik)` : 'yöq',
           ),
           h('dt', null, 'Qurilma ovozi (uz)'),
-          h('dd', null, tts ? 'bor' : 'yoʻq (yozuv boʻlmasa — jim)'),
+          h('dd', null, tts ? 'bor' : 'yöq (yozuv bölmasa — jim)'),
           h('dt', null, 'Audio'),
           h('dd', null, getAudioState()),
           h('dt', null, 'Versiya'),
@@ -109,7 +111,7 @@ export function settingsScreen({ root, scope, app }: ScreenCtx): void {
           ? h(
               'p',
               { class: 'settings__credit', 'data-testid': 'synthetic-credit' },
-              'Ovozlar sunʼiy (kompyuter ovozi), vaqtinchalik. Model: OmniVoice ' +
+              'Ovozlar sunʼiy (kompyuter ovozi), vaqtinçalik. Model: OmniVoice ' +
                 '(Han Zhu va hammualliflar, k2-fsa), CC BY-NC.',
               h('br'),
               // Audio tokenizer litsenziyasi talab qilgan yozuv — aynan shunday (asl imlosi bilan).
@@ -119,7 +121,7 @@ export function settingsScreen({ root, scope, app }: ScreenCtx): void {
         h(
           'p',
           { class: 'settings__promise' },
-          'Reklama yoʻq · Xarid yoʻq · Internet kerak emas · Maʼlumot yigʻilmaydi',
+          'Reklama yöq · Xarid yöq · Internet kerak emas · Maʼlumot yiğilmaydi',
         ),
       ),
     ),

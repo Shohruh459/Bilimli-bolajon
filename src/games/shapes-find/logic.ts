@@ -16,12 +16,12 @@ export type Round = FindRound<ShapeId, Item>;
 
 export const ITEMS: readonly Item[] = [
   // 1-daraja
-  { art: 'gildirak', name: 'gʻildirak', cat: 'doira', tafakkur: 'tafakkur.gildirak' },
+  { art: 'gildirak', name: 'ğildirak', cat: 'doira', tafakkur: 'tafakkur.gildirak' },
   { art: 'soat', name: 'soat', cat: 'doira', tafakkur: 'tafakkur.soat' },
-  { art: 'sovga', name: 'sovgʻa qutisi', cat: 'kvadrat', tafakkur: 'tafakkur.sovga' },
+  { art: 'sovga', name: 'sovğa qutisi', cat: 'kvadrat', tafakkur: 'tafakkur.sovga' },
   { art: 'deraza', name: 'deraza', cat: 'kvadrat', tafakkur: 'tafakkur.deraza' },
-  { art: 'tog', name: 'togʻ', cat: 'uchburchak', tafakkur: 'tafakkur.tog' },
-  { art: 'chodir', name: 'chodir', cat: 'uchburchak', tafakkur: 'tafakkur.chodir' },
+  { art: 'tog', name: 'toğ', cat: 'uchburchak', tafakkur: 'tafakkur.tog' },
+  { art: 'chodir', name: 'çodir', cat: 'uchburchak', tafakkur: 'tafakkur.chodir' },
   // 2-daraja
   {
     art: 'dengizYulduzi',
@@ -29,7 +29,7 @@ export const ITEMS: readonly Item[] = [
     cat: 'yulduz',
     tafakkur: 'tafakkur.dengiz-yulduzi',
   },
-  { art: 'pechenye', name: 'yulduzcha pechenye', cat: 'yulduz', tafakkur: 'tafakkur.pechenye' },
+  { art: 'pechenye', name: 'yulduzça peçenye', cat: 'yulduz', tafakkur: 'tafakkur.pechenye' },
   { art: 'varrak', name: 'varrak', cat: 'romb', tafakkur: 'tafakkur.varrak' },
   { art: 'pahlava', name: 'pahlava', cat: 'romb', tafakkur: 'tafakkur.pahlava' },
   {
@@ -40,13 +40,13 @@ export const ITEMS: readonly Item[] = [
   },
   { art: 'qalam', name: 'qalamning orqa uchi', cat: 'olti-burchak', tafakkur: 'tafakkur.qalam' },
   // 3-daraja
-  { art: 'eshik', name: 'eshik', cat: 'togri-tortburchak', tafakkur: 'tafakkur.eshik' },
+  { art: 'eshik', name: 'eşik', cat: 'togri-tortburchak', tafakkur: 'tafakkur.eshik' },
   { art: 'kitob', name: 'kitob', cat: 'togri-tortburchak', tafakkur: 'tafakkur.kitob' },
   { art: 'tuxum', name: 'tuxum', cat: 'oval', tafakkur: 'tafakkur.tuxum' },
   { art: 'qovun', name: 'qovun', cat: 'oval', tafakkur: 'tafakkur.qovun' },
   { art: 'kamalak', name: 'kamalak', cat: 'yarim-doira', tafakkur: 'tafakkur.kamalak' },
   { art: 'soyabon', name: 'soyabon', cat: 'yarim-doira', tafakkur: 'tafakkur.soyabon' },
-  { art: 'tarvuz', name: 'tarvuz boʻlagi', cat: 'yarim-doira', tafakkur: 'tafakkur.tarvuz' },
+  { art: 'tarvuz', name: 'tarvuz bölagi', cat: 'yarim-doira', tafakkur: 'tafakkur.tarvuz' },
 ];
 
 export function getLevel(n: number): ShapeLevel {

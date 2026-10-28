@@ -5,9 +5,10 @@ import { ENCOURAGE, PHRASES, PRAISE, type PhraseKey } from './phrases';
 const entries = Object.entries(PHRASES) as [PhraseKey, { text: string }][];
 
 describe('phrases', () => {
-  it('orfografiya: oddiy apostrof emas, U+02BB / U+02BC', () => {
+  it('orfografiya — yangi alifbo (O\u02BCRQ-1184): Ö Ğ Ş Ç, tutuq U+02BC; eski oʻ gʻ sh ch yoʻq', () => {
     for (const [key, { text }] of entries) {
-      expect(text, key).not.toMatch(/['`‘’]/);
+      expect(text, key).not.toMatch(/['`‘’\u02BB]/);
+      expect(text, key).not.toMatch(/sh|ch/i);
     }
   });
 

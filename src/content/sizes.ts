@@ -32,14 +32,14 @@ export const LEARN_SIZES: Record<SizeId, LearnSize> = {
   },
   kichikroq: {
     id: 'kichikroq',
-    name: 'Kichikroq',
+    name: 'Kiçikroq',
     ask: 'kattakichik.top.kichik',
     done: 'kattakichik.togri.kichik',
     scale: 0.64,
   },
   kichik: {
     id: 'kichik',
-    name: 'Eng kichigi',
+    name: 'Eng kiçigi',
     ask: 'kattakichik.top.kichik',
     done: 'kattakichik.togri.kichik',
     scale: 0.45,
