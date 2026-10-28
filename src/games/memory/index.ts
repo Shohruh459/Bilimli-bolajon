@@ -106,11 +106,15 @@ export default createLevelGame({
       if (isPair(a.card, b.card)) {
         a.btn.dataset.state = b.btn.dataset.state = 'matched';
         matched++;
+        // "Oxirgi juftmi" — maqtovdan OLDIN hisoblanadi: maqtov paytida bola keyingi juftni ham
+        // topishi mumkin, shunda oldingi juftning davomi o'yinni erta tugatib yubormasin.
+        const last = matched === level.pairs;
+        const first = matched === 1;
         // Maqtov paytida ham bola keyingi kartani ocha oladi — kutib turmaydi.
-        busy = false;
-        await celebrate(b.art, matched === 1 ? ['juft.topding'] : []);
+        busy = last;
+        await celebrate(b.art, first ? ['juft.topding'] : []);
         if (scope.disposed) return;
-        if (matched === level.pairs) done();
+        if (last) done();
         return;
       }
       // Mos kelmadi — urishmaymiz: yumshoq tovush, biroz ko'rsatib, yopamiz.

@@ -127,8 +127,15 @@ async function openPair(page: Page, pic: string): Promise<void> {
   const cards = page.locator(`.mem-card[data-pic="${pic}"]`);
   await cards.nth(0).click();
   await cards.nth(1).click();
-  await expect(cards.nth(0)).toHaveAttribute('data-state', 'matched', { timeout: 10_000 });
-  await expect(cards.nth(1)).toHaveAttribute('data-state', 'matched');
+  // Ikkalasi bir vaqtda "matched" bo'ladi; oxirgi juftdan keyin o'yin yakun ekraniga o'tadi.
+  await expect
+    .poll(
+      async () =>
+        (await page.getByTestId('finish').count()) > 0 ||
+        (await cards.evaluateAll((els) => els.every((e) => e.dataset.state === 'matched'))),
+      { timeout: 10_000 },
+    )
+    .toBe(true);
 }
 
 test.describe('Juftini top', () => {
