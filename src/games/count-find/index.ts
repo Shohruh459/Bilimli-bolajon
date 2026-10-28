@@ -16,7 +16,7 @@ const categories = Object.fromEntries(
 
 export default createFindGame({
   gameId: GAME_ID,
-  title: 'Sanash',
+  title: 'Sanaş',
   testIds: { levels: 'count-levels', game: 'count-game' },
   catAttr: 'count',
   intro: 'sanash.intro',

@@ -50,7 +50,7 @@ export default defineConfig(({ command }) => ({
       manifest: {
         name: APP_NAME,
         short_name: APP_NAME,
-        description: "3–7 yoshli bolalar uchun ta'limiy o'yinlar",
+        description: '3–7 yoşli bolalar uçun taʼlimiy öyinlar',
         lang: 'uz',
         dir: 'ltr',
         start_url: BASE_PATH,

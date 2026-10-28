@@ -12,7 +12,7 @@ export const GAMES: readonly GameMeta[] = [
   {
     id: 'shakllar',
     age: '3-4',
-    title: 'Shakllar',
+    title: 'Şakllar',
     art: 'shakllar',
     load: () => import('./shapes-find/index'),
   },
@@ -26,16 +26,44 @@ export const GAMES: readonly GameMeta[] = [
   {
     id: 'katta-kichik',
     age: '3-4',
-    title: 'Katta — kichik',
+    title: 'Katta — kiçik',
     art: 'kattaKichik',
     load: () => import('./size-find/index'),
   },
   {
     id: 'sanash',
     age: '3-4',
-    title: 'Sanash',
+    title: 'Sanaş',
     art: 'sanash',
     load: () => import('./count-find/index'),
+  },
+  {
+    id: 'harflar',
+    age: '5',
+    title: 'Harflar',
+    art: 'harflar',
+    load: () => import('./letters-find/index'),
+  },
+  {
+    id: 'raqamlar',
+    age: '5',
+    title: 'Raqamlar',
+    art: 'raqamlar',
+    load: () => import('./numbers-find/index'),
+  },
+  {
+    id: 'juftini-top',
+    age: '5',
+    title: 'Juftini top',
+    art: 'juftiniTop',
+    load: () => import('./memory/index'),
+  },
+  {
+    id: 'ketma-ketlik',
+    age: '5',
+    title: 'Ketma-ketlik',
+    art: 'ketmaKetlik',
+    load: () => import('./sequence/index'),
   },
 ];
 

@@ -12,8 +12,8 @@ import {
 const GAME = 'shapes-game';
 const ATTR = 'shape';
 
-test.describe('Shakllarni topish', () => {
-  test('3–4 yosh menyusida karta, daraja tanlash: faqat 1-daraja ochiq', async ({ page }, info) => {
+test.describe('Şakllarni topiş', () => {
+  test('3–4 yoş menyusida karta, daraja tanlaş: faqat 1-daraja oçiq', async ({ page }, info) => {
     await start(page);
     await page.getByTestId('age-3-4').click();
     await expect(page.getByTestId('game-shakllar')).toBeVisible();
@@ -35,7 +35,7 @@ test.describe('Shakllarni topish', () => {
     await expect(page.getByTestId(GAME)).toHaveCount(0);
   });
 
-  test('1-daraja: doira, kvadrat, uchburchak; xato javob urishmaydi; yulduz', async ({
+  test('1-daraja: doira, kvadrat, uçburçak; xato javob urişmaydi; yulduz', async ({
     page,
   }, info) => {
     await start(page, '#/oyin/shakllar');
@@ -65,14 +65,12 @@ test.describe('Shakllarni topish', () => {
     await expect(page.getByTestId('game-shakllar')).toContainText('1');
   });
 
-  test('3 yulduz 2-darajani ochadi (yulduz, romb, olti burchak qoʻshiladi)', async ({
-    page,
-  }, info) => {
+  test('3 yulduz 2-darajani oçadi (yulduz, romb, olti burçak qöşiladi)', async ({ page }, info) => {
     await seedStars(page, { 'shakllar.1': 2 });
     await start(page, '#/oyin/shakllar');
     await page.getByTestId('level-1').click();
     await playFindRounds(page, 5, GAME, ATTR);
-    await expect(page.getByTestId('finish-note')).toHaveText('2-daraja ochildi!');
+    await expect(page.getByTestId('finish-note')).toHaveText('2-daraja oçildi!');
     await page.getByTestId('to-menu').click();
     await expect(page.getByTestId('level-2')).toHaveAttribute('data-open', 'true');
 
@@ -84,7 +82,7 @@ test.describe('Shakllarni topish', () => {
     await shot(page, info, '16-shapes-level2-finish');
   });
 
-  test('3-daraja: 4 predmet, kvadrat va toʻgʻri toʻrtburchak bir raundda emas', async ({
+  test('3-daraja: 4 predmet, kvadrat va töğri törtburçak bir raundda emas', async ({
     page,
   }, info) => {
     await seedStars(page, { 'shakllar.1': 3, 'shakllar.2': 3 });

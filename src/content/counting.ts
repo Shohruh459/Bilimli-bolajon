@@ -25,9 +25,9 @@ const c = (id: CountId, n: LearnCount['n'], name: string): LearnCount => ({
 export const LEARN_COUNTS: Record<CountId, LearnCount> = {
   bir: c('bir', 1, 'Bitta'),
   ikki: c('ikki', 2, 'Ikkita'),
-  uch: c('uch', 3, 'Uchta'),
-  tort: c('tort', 4, 'Toʻrtta'),
-  besh: c('besh', 5, 'Beshta'),
+  uch: c('uch', 3, 'Uçta'),
+  tort: c('tort', 4, 'Törtta'),
+  besh: c('besh', 5, 'Beşta'),
 };
 
 export const COUNT_IDS = Object.keys(LEARN_COUNTS) as CountId[];

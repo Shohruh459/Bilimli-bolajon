@@ -22,7 +22,7 @@ const categories = Object.fromEntries(
 
 export default createFindGame({
   gameId: GAME_ID,
-  title: 'Katta — kichik',
+  title: 'Katta — kiçik',
   testIds: { levels: 'sizes-levels', game: 'sizes-game' },
   catAttr: 'size',
   intro: 'kattakichik.intro',

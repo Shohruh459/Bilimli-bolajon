@@ -21,7 +21,7 @@ export function homeScreen({ root, scope, app }: ScreenCtx, greet = false): void
     h('h1', { class: 'brand__title' }, APP_TITLE),
   );
 
-  const grid = h('nav', { class: 'age-grid', 'aria-label': 'Yosh guruhlari' });
+  const grid = h('nav', { class: 'age-grid', 'aria-label': 'Yoş guruhlari' });
   for (const age of AGES) {
     const card = h(
       'button',

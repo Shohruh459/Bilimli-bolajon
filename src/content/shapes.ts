@@ -36,7 +36,7 @@ export const LEARN_SHAPES: Record<ShapeId, LearnShape> = {
   },
   uchburchak: {
     id: 'uchburchak',
-    name: 'Uchburchak',
+    name: 'Uçburçak',
     ask: 'shakllar.top.uchburchak',
     el: '<path d="M32 7L58 55H6z"/>',
   },
@@ -55,13 +55,13 @@ export const LEARN_SHAPES: Record<ShapeId, LearnShape> = {
   },
   'olti-burchak': {
     id: 'olti-burchak',
-    name: 'Olti burchak',
+    name: 'Olti burçak',
     ask: 'shakllar.top.olti-burchak',
     el: '<path d="M59 32L45.5 55.4h-27L5 32 18.5 8.6h27z"/>',
   },
   'togri-tortburchak': {
     id: 'togri-tortburchak',
-    name: 'Toʻgʻri toʻrtburchak',
+    name: 'Töğri törtburçak',
     ask: 'shakllar.top.togri-tortburchak',
     el: '<rect x="4" y="17" width="56" height="30" rx="3"/>',
   },

@@ -112,17 +112,20 @@ export function showLevelPicker(root: HTMLElement, scope: Scope, o: PickerOption
     list.append(card);
   }
 
-  if (o.extra) list.prepend(extraCard(scope, o.extra));
+  // 4+ daraja: kartalar ixchamroq, qo'shimcha karta (Alifbo) yuqori panelga — 360×640 ga sig'adi.
+  const many = o.levels.length >= 4;
+  const extra = o.extra ? extraCard(scope, o.extra, many) : null;
+  if (extra && !many) list.prepend(extra);
 
   root.append(
     h(
       'section',
-      { class: 'screen lp', 'data-testid': o.testId },
+      { class: `screen lp${many ? ' lp--many' : ''}`, 'data-testid': o.testId },
       topBar(
         back,
         // Uzun nom ("Hayvonlar") 360px ekranda tugmalar orasiga sig'sin.
         h('h1', { class: `screen-title${o.title.length > 8 ? ' is-long' : ''}` }, o.title),
-        null,
+        many ? extra : null,
       ),
       list,
     ),
@@ -134,13 +137,14 @@ export function showLevelPicker(root: HTMLElement, scope: Scope, o: PickerOption
   void say('daraja.tanla');
 }
 
-function extraCard(scope: Scope, x: PickerExtra): HTMLElement {
+function extraCard(scope: Scope, x: PickerExtra, compact = false): HTMLElement {
   const icon = h('span', { class: 'lp-extra__icon moves' }, svg(x.icon));
   const card = h(
     'button',
     {
       type: 'button',
-      class: `btn lp-extra${x.highlight ? ' is-new' : ''}`,
+      class: `btn lp-extra${compact ? ' lp-extra--top' : ''}${x.highlight ? ' is-new' : ''}`,
+      'aria-label': x.title,
       'data-testid': x.testId,
       'data-highlight': String(x.highlight),
     },

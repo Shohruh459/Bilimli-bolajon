@@ -32,10 +32,11 @@
 
 ## 2-bosqich — 5 yosh
 
-- [ ] Harflar (lotin alifbosi), harf-tovush
-- [ ] Raqamlar 1–10
-- [ ] Juftini top (xotira)
-- [ ] Ketma-ketlikni davom ettir
+- [x] Harflar — yangi alifbo (OʼRQ-1184), 28 harf, 4 daraja + "Alifbo" (harf → misol soʻz)
+- [x] Raqamlar 1–10: 3 daraja, oʻnlik ramka nuqtalari
+- [x] Juftini top (xotira): 3 / 4 / 6 juft
+- [x] Ketma-ketlikni davom ettir: AB → AAB/ABB → ABC
+- [x] Butun ilova yangi alifboda (Ö Ğ Ş Ç)
 
 ## 3-bosqich — 6–7 yosh
 

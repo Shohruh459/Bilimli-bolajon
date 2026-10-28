@@ -35,16 +35,16 @@ const animal = (id: AnimalId, name: string): LearnAnimal => ({
 });
 
 export const LEARN_ANIMALS: Record<AnimalId, LearnAnimal> = {
-  mushuk: animal('mushuk', 'Mushuk'),
+  mushuk: animal('mushuk', 'Muşuk'),
   it: animal('it', 'It'),
   sigir: animal('sigir', 'Sigir'),
-  xoroz: animal('xoroz', 'Xoʻroz'),
-  qoy: animal('qoy', 'Qoʻy'),
+  xoroz: animal('xoroz', 'Xöroz'),
+  qoy: animal('qoy', 'Qöy'),
   ot: animal('ot', 'Ot'),
-  ordak: animal('ordak', 'Oʻrdak'),
+  ordak: animal('ordak', 'Ördak'),
   qurbaqa: animal('qurbaqa', 'Qurbaqa'),
-  echki: animal('echki', 'Echki'),
-  eshak: animal('eshak', 'Eshak'),
+  echki: animal('echki', 'Eçki'),
+  eshak: animal('eshak', 'Eşak'),
   tovuq: animal('tovuq', 'Tovuq'),
   asalari: animal('asalari', 'Asalari'),
 };

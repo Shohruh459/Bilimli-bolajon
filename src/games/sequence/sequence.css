@@ -1,0 +1,92 @@
+/* "Ketma-ketlik" — o'yin chunk'i bilan yuklanadi */
+.sq-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-height: var(--tap-min);
+  padding: 10px 8px;
+  background: var(--c-white);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 var(--edge) 0 var(--c-line);
+}
+
+.sq-cell {
+  width: 46px;
+  height: 46px;
+  flex: none;
+}
+
+.sq-cell svg {
+  width: 100%;
+  height: 100%;
+}
+
+.sq-cell--q {
+  display: grid;
+  place-items: center;
+  border: 3px dashed var(--c-coral);
+  border-radius: 12px;
+  font-size: var(--fs-lg);
+  font-weight: 1000;
+  color: var(--c-coral);
+}
+
+.sq-options {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap);
+  align-content: center;
+  justify-items: center;
+}
+
+.sq-option {
+  width: 100%;
+  max-width: 180px;
+  aspect-ratio: 1;
+  padding: 0;
+}
+
+.sq-option:nth-child(3):last-child {
+  grid-column: 1 / -1;
+  width: calc(50% - var(--gap) / 2);
+}
+
+.sq-option .art {
+  width: 72%;
+  height: 72%;
+}
+
+.sq-option .art svg {
+  width: 100%;
+  height: 100%;
+}
+
+.sq-option.is-correct {
+  --btn-bg: #e9f8eb;
+  --btn-edge: var(--c-grass);
+  outline: 5px solid var(--c-grass);
+  outline-offset: -5px;
+}
+
+.sq-dots {
+  display: flex;
+  gap: 5px;
+}
+
+.sq-dots .dot {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--c-line);
+}
+
+.sq-dots .dot.is-done {
+  background: var(--c-sun);
+}
+
+.sq-dots .dot.is-now {
+  background: var(--c-coral);
+}

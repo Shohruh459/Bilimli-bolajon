@@ -43,12 +43,28 @@ export function isForbidden(key: string, text: string): boolean {
 }
 
 /**
+ * Yangi alifbo (O'RQ-1184) harflari → model o'rgangan eski yozuv: ö→o', ğ→g', ş→sh, ç→ch.
+ * Ekranda yangi alifbo, TTS'ga esa eski yozuv — ovoz o'zgarmaydi, fayllarni qayta yaratish shart emas.
+ */
+const OLD_SPELLING: Record<string, string> = {
+  ö: "o'",
+  Ö: "O'",
+  ğ: "g'",
+  Ğ: "G'",
+  ş: 'sh',
+  Ş: 'Sh',
+  ç: 'ch',
+  Ç: 'Ch',
+};
+
+/**
  * TTS'ga yuboriladigan matn: `say` (bo'lsa) yoki `text`. Ovozda oddiy apostrof:
  * oʻ/gʻ (U+02BB) va tutuq (U+02BC) → `'`. Tire (—) → vergul (qisqa pauza).
  * `say` dagi har QATOR alohida yaratiladi va orasiga pauza qo'yiladi (masalan, sanash: "Bir.\nIkki.").
  */
 export function ttsText(p: { readonly text: string; readonly say?: string }): string {
   return (p.say ?? p.text)
+    .replace(/[öÖğĞşŞçÇ]/g, (c) => OLD_SPELLING[c] ?? c)
     .replace(/[\u02BB\u02BC\u2018\u2019`]/g, "'")
     .replace(/\s*—\s*/g, ', ')
     .split('\n')
@@ -71,7 +87,10 @@ export function ttsProblems(say: string): string[] {
 
 export type PlanAction =
   | { readonly action: 'generate'; readonly reason: 'yangi' | 'matn-oʻzgargan' | 'majburiy' }
-  | { readonly action: 'skip'; readonly reason: 'qoʻlda-yozilgan' | 'diniy' | 'tayyor' };
+  | {
+      readonly action: 'skip';
+      readonly reason: 'qoʻlda-yozilgan' | 'diniy' | 'tayyor' | 'faqat-yozuv';
+    };
 
 export interface PlanInput {
   readonly key: string;
@@ -92,9 +111,9 @@ export function planPhrase(p: PlanInput): PlanAction {
   if (isForbidden(p.key, p.text)) return { action: 'skip', reason: 'diniy' };
   if (p.fileExists && !p.entry) return { action: 'skip', reason: 'qoʻlda-yozilgan' };
   if (!p.fileExists || !p.entry) return { action: 'generate', reason: 'yangi' };
-  if (p.entry.text !== p.text || p.entry.say !== p.say) {
-    return { action: 'generate', reason: 'matn-oʻzgargan' };
-  }
+  if (p.entry.say !== p.say) return { action: 'generate', reason: 'matn-oʻzgargan' };
+  // Faqat yozuv o'zgargan (masalan, yangi alifboga o'tish), aytilishi bir xil — ovoz yaroqli.
+  if (p.entry.text !== p.text) return { action: 'skip', reason: 'faqat-yozuv' };
   if (p.force) return { action: 'generate', reason: 'majburiy' };
   return { action: 'skip', reason: 'tayyor' };
 }

@@ -31,7 +31,8 @@ ostida. Ulardagi **SVG chizmalarning o'zi** esa himoyalangan.
 - **TTS namuna ovozi** (`tools/tts/voice_ref/**`): o'sha model bilan yaratilgan sun'iy ovoz
   (haqiqiy shaxs emas), shu shartlar ostida.
 - **Nunito shrifti** (`src/assets/fonts/**`): SIL Open Font License 1.1 (`Nunito-OFL.txt`).
-  `nunito-okina-wght-normal.woff2` ham shu litsenziya ostidagi o'zgartirilgan versiya.
+  `nunito-okina-wght-normal.woff2` va `nunito-yangi-harflar-wght-normal.woff2` (Ğ ğ Ş ş, latin-ext dan) ham
+  shu litsenziya ostidagi qism/o'zgartirilgan versiyalar.
 - **npm paketlari**: har biri o'z litsenziyasi ostida.
 
 ## Ruxsat so'rash

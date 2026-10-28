@@ -19,10 +19,10 @@ export const ITEMS: readonly Item[] = [
   // 1-daraja
   { art: 'olma', name: 'olma', cat: 'qizil', tafakkur: 'tafakkur.olma' },
   { art: 'qulupnay', name: 'qulupnay', cat: 'qizil', tafakkur: 'tafakkur.qulupnay' },
-  { art: 'quyosh', name: 'quyosh', cat: 'sariq', tafakkur: 'tafakkur.quyosh' },
+  { art: 'quyosh', name: 'quyoş', cat: 'sariq', tafakkur: 'tafakkur.quyosh' },
   { art: 'banan', name: 'banan', cat: 'sariq', tafakkur: 'tafakkur.banan' },
   { art: 'baliq', name: 'baliq', cat: 'kok', tafakkur: 'tafakkur.baliq' },
-  { art: 'shar', name: 'shar', cat: 'kok', tafakkur: 'tafakkur.shar' },
+  { art: 'shar', name: 'şar', cat: 'kok', tafakkur: 'tafakkur.shar' },
   { art: 'barg', name: 'barg', cat: 'yashil', tafakkur: 'tafakkur.barg' },
   { art: 'qurbaqa', name: 'qurbaqa', cat: 'yashil', tafakkur: 'tafakkur.qurbaqa' },
   // 2-daraja
@@ -33,12 +33,12 @@ export const ITEMS: readonly Item[] = [
   // 3-daraja
   { art: 'gul', name: 'gul', cat: 'pushti', tafakkur: 'tafakkur.gul' },
   { art: 'muzqaymoq', name: 'muzqaymoq', cat: 'pushti', tafakkur: 'tafakkur.muzqaymoq' },
-  { art: 'ayiqcha', name: 'ayiqcha', cat: 'jigarrang', tafakkur: 'tafakkur.ayiqcha' },
-  { art: 'qoziqorin', name: 'qoʻziqorin', cat: 'jigarrang', tafakkur: 'tafakkur.qoziqorin' },
+  { art: 'ayiqcha', name: 'ayiqça', cat: 'jigarrang', tafakkur: 'tafakkur.ayiqcha' },
+  { art: 'qoziqorin', name: 'qöziqorin', cat: 'jigarrang', tafakkur: 'tafakkur.qoziqorin' },
   { art: 'qorodam', name: 'qor odam', cat: 'oq', tafakkur: 'tafakkur.qorodam' },
   { art: 'bulut', name: 'bulut', cat: 'oq', tafakkur: 'tafakkur.bulut' },
-  { art: 'qarga', name: 'qargʻa', cat: 'qora', tafakkur: 'tafakkur.qarga' },
-  { art: 'mushuk', name: 'mushukcha', cat: 'qora', tafakkur: 'tafakkur.mushuk' },
+  { art: 'qarga', name: 'qarğa', cat: 'qora', tafakkur: 'tafakkur.qarga' },
+  { art: 'mushuk', name: 'muşukça', cat: 'qora', tafakkur: 'tafakkur.mushuk' },
 ];
 
 export function getLevel(n: number): ColorLevel {

@@ -9,8 +9,8 @@ import {
   start,
 } from './helpers';
 
-test.describe('3–4 yosh menyusi — 5 ta oʻyin', () => {
-  test('hamma kartalar koʻrinadi va ekranga sigʻadi', async ({ page }, info) => {
+test.describe('3–4 yoş menyusi — 5 ta öyin', () => {
+  test('hamma kartalar körinadi va ekranga siğadi', async ({ page }, info) => {
     await start(page);
     await page.getByTestId('age-3-4').click();
     for (const id of ['ranglar', 'shakllar', 'hayvonlar', 'katta-kichik', 'sanash']) {
@@ -22,8 +22,8 @@ test.describe('3–4 yosh menyusi — 5 ta oʻyin', () => {
   });
 });
 
-test.describe('Katta — kichik', () => {
-  test('1-daraja: ikkita bir xil predmet, oʻlchami farqli; xato urishmaydi; yulduz', async ({
+test.describe('Katta — kiçik', () => {
+  test('1-daraja: ikkita bir xil predmet, ölçami farqli; xato urişmaydi; yulduz', async ({
     page,
   }, info) => {
     await start(page, '#/oyin/katta-kichik');
@@ -52,7 +52,7 @@ test.describe('Katta — kichik', () => {
     await expect(page.getByTestId('finish')).toContainText('× 1');
   });
 
-  test('3-daraja: toʻrtta oʻlcham, faqat eng katta yoki eng kichik soʻraladi', async ({
+  test('3-daraja: törtta ölçam, faqat eng katta yoki eng kiçik söraladi', async ({
     page,
   }, info) => {
     await seedStars(page, { 'katta-kichik.1': 3, 'katta-kichik.2': 3 });
@@ -77,8 +77,8 @@ test.describe('Katta — kichik', () => {
   });
 });
 
-test.describe('Sanash 1–5', () => {
-  test('1-daraja: "Qayerda ikkita?" — raqam koʻrinadi; xato urishmaydi; yulduz', async ({
+test.describe('Sanaş 1–5', () => {
+  test('1-daraja: "Qayerda ikkita?" — raqam körinadi; xato urişmaydi; yulduz', async ({
     page,
   }, info) => {
     await start(page, '#/oyin/sanash');
@@ -108,20 +108,20 @@ test.describe('Sanash 1–5', () => {
     await start(page, '#/oyin/sanash');
     await page.getByTestId('level-1').click();
     await playFindRounds(page, 5, 'count-game', 'count');
-    await expect(page.getByTestId('finish-note')).toHaveText('2-daraja ochildi!');
+    await expect(page.getByTestId('finish-note')).toHaveText('2-daraja oçildi!');
     await page.getByTestId('to-menu').click();
     await expect(page.getByTestId('level-2')).toHaveAttribute('data-open', 'true');
   });
 
   // Sanash iboralari uzun (har son ~1 s) — daraja o'yini uzoqroq davom etadi.
-  test('2-daraja: toʻrtta albatta chiqadi', async ({ page }) => {
+  test('2-daraja: törtta albatta çiqadi', async ({ page }) => {
     test.setTimeout(120_000);
     await seedStars(page, { 'sanash.1': 3 });
     await start(page, '#/oyin/sanash');
     expect(await playLevel(page, 2, 5)).toContain('tort');
   });
 
-  test('3-daraja: toʻrtta karta, beshta albatta chiqadi', async ({ page }, info) => {
+  test('3-daraja: törtta karta, beşta albatta çiqadi', async ({ page }, info) => {
     test.setTimeout(120_000);
     await seedStars(page, { 'sanash.1': 3, 'sanash.2': 3 });
     await start(page, '#/oyin/sanash');

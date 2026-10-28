@@ -91,7 +91,7 @@ function tanishuv({ root, scope, exit }: GameApi): void {
     h(
       'section',
       { class: 'screen tn', 'data-testid': 'tanishuv' },
-      topBar(back, h('h1', { class: 'screen-title' }, 'Tanishuv'), null),
+      topBar(back, h('h1', { class: 'screen-title' }, 'Tanişuv'), null),
       grid,
     ),
   );
@@ -112,7 +112,7 @@ export default createFindGame({
   art: ANIMAL_ART,
   exclusive: ANIMAL_EXCLUSIVE,
   extra: {
-    title: 'Tanishuv',
+    title: 'Tanişuv',
     testId: 'extra-tanishuv',
     icon: TANISHUV_ICON,
     mode: TANISHUV,

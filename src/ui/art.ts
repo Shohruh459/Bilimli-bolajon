@@ -87,6 +87,27 @@ export const ART = {
      <g fill="#FFD23F"><circle cx="52" cy="84" r="7"/><circle cx="52" cy="100" r="7"/></g>
      <g fill="#6BCB77"><circle cx="78" cy="80" r="7"/><circle cx="78" cy="94" r="7"/><circle cx="92" cy="94" r="7"/></g>`,
   ),
+  /** "Harflar" o'yini kartasi */
+  harflar: svg(
+    `<text x="60" y="82" text-anchor="middle" font-size="62" font-weight="1000" fill="${NAVY}" font-family="Nunito, sans-serif"><tspan fill="#E53935">A</tspan><tspan fill="#1E88E5">b</tspan><tspan fill="#2E7D32">Ş</tspan></text>`,
+  ),
+  /** "Raqamlar" o'yini kartasi */
+  raqamlar: svg(
+    `<text x="60" y="84" text-anchor="middle" font-size="64" font-weight="1000" fill="#FB8C00" stroke="${NAVY}" stroke-width="2" paint-order="stroke" font-family="Nunito, sans-serif">10</text>`,
+  ),
+  /** "Juftini top" kartasi: ikkita bir xil karta */
+  juftiniTop: svg(
+    `<rect x="10" y="26" width="46" height="62" rx="9" fill="#FFD23F" stroke="${NAVY}" stroke-width="4"/>
+     <rect x="64" y="32" width="46" height="62" rx="9" fill="#FFD23F" stroke="${NAVY}" stroke-width="4"/>
+     <circle cx="33" cy="57" r="11" fill="#FF6B6B"/><circle cx="87" cy="63" r="11" fill="#FF6B6B"/>`,
+  ),
+  /** "Ketma-ketlik" kartasi: doira, kvadrat, doira, ? */
+  ketmaKetlik: svg(
+    `<circle cx="22" cy="60" r="13" fill="#E53935" stroke="${NAVY}" stroke-width="3"/>
+     <rect x="42" y="47" width="26" height="26" rx="4" fill="#1E88E5" stroke="${NAVY}" stroke-width="3"/>
+     <circle cx="88" cy="60" r="13" fill="#E53935" stroke="${NAVY}" stroke-width="3"/>
+     <text x="112" y="70" text-anchor="middle" font-size="30" font-weight="1000" fill="#FF6B6B" font-family="Nunito, sans-serif">?</text>`,
+  ),
   /** Diniy bo'lim — oltin yarim oy va yulduzlar (tungi osmon, tafakkur) */
   tun: svg(
     `<path d="M74 16a46 46 0 1 0 30 70A38 38 0 1 1 74 16z" fill="#C9A227" stroke="#fff" stroke-width="6" stroke-linejoin="round"/>

@@ -78,7 +78,7 @@ function showFinish(
       type: 'button',
       class: 'btn btn--sun finish__btn',
       'data-testid': 'replay',
-      'aria-label': 'Yana oʻynash',
+      'aria-label': 'Yana öynaş',
     },
     svg(ICONS.refresh),
   );
@@ -88,7 +88,7 @@ function showFinish(
       type: 'button',
       class: 'btn finish__btn',
       'data-testid': 'to-menu',
-      'aria-label': 'Oʻyinlar menyusi',
+      'aria-label': 'Öyinlar menyusi',
     },
     svg(ICONS.home),
   );

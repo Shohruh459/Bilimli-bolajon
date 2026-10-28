@@ -14,7 +14,7 @@ import type { ScreenCtx } from '../screen';
 /** Yosh guruhidagi o'yinlar ro'yxati (yoki "Tez orada"). */
 export function ageScreen({ root, scope, app }: ScreenCtx, ageId: AgeId): void {
   const age = AGES.find((a) => a.id === ageId);
-  const home = iconButton('home', 'Bosh sahifa');
+  const home = iconButton('home', 'Boş sahifa');
   scope.on(home, 'click', () => {
     sfx.tap();
     app.go({ name: 'home' });
@@ -44,7 +44,7 @@ export function ageScreen({ root, scope, app }: ScreenCtx, ageId: AgeId): void {
           ? h(
               'p',
               { class: 'soon__note' },
-              'Bu boʻlim ota-ona bilan birga, tekshirilgan matnlar bilan tayyorlanmoqda.',
+              'Bu bölim ota-ona bilan birga, tekşirilgan matnlar bilan tayyorlanmoqda.',
             )
           : null,
       ),
@@ -54,7 +54,7 @@ export function ageScreen({ root, scope, app }: ScreenCtx, ageId: AgeId): void {
     return;
   }
 
-  const list = h('nav', { class: 'game-list', 'aria-label': 'Oʻyinlar' });
+  const list = h('nav', { class: 'game-list', 'aria-label': 'Öyinlar' });
   for (const g of games) {
     const stars = getStarsTotal(g.id);
     const card = h(
