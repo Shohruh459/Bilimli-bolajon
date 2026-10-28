@@ -1,4 +1,3 @@
-import { files as ttsFiles } from '../../assets/audio/uz/tts.json';
 import { PHRASES, type PhraseKey } from '../../content/phrases';
 import { APP_VERSION } from '../../content/ui';
 import { getAudioState } from '../../engine/audio';
@@ -17,8 +16,11 @@ const TOKENIZER_NOTICE =
   'Built with Higgs Materials licensed from Boson AI USA, Inc., Copyright Boson AI USA, Inc., All Rights Reserved and Meta Llama 3 licensed under the Meta Llama 3 Community License, Copyright Meta Platforms, Inc., All Right Reserved';
 
 /** Ota-ona sozlamalari (faqat darvoza orqali). */
-export function settingsScreen({ root, scope, app }: ScreenCtx): void {
+export async function settingsScreen({ root, scope, app }: ScreenCtx): Promise<void> {
   if (!gate.valid()) return app.go({ name: 'home' });
+  // TTS manifesti (226+ ibora matni) bosh bundle'ga kirmasin — faqat shu ekranda, alohida chunk.
+  const { files: ttsFiles } = await import('../../assets/audio/uz/tts.json');
+  if (scope.disposed) return;
 
   const back = iconButton('back', 'Orqaga');
   scope.on(back, 'click', () => {

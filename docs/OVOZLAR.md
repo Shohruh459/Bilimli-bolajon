@@ -3,7 +3,7 @@
 > Bu fayl avtomatik yaratiladi: `npm run ovozlar` (manba — `src/content/phrases.ts`).
 > Qo'lda tahrirlamang — matnni phrases.ts da o'zgartiring.
 
-**Holat:** 0 / 226 qoʻlda yozilgan, 149 ta vaqtinchalik sunʼiy ovoz (🤖 TTS).
+**Holat:** 0 / 226 qoʻlda yozilgan, 226 ta vaqtinchalik sunʼiy ovoz (🤖 TTS).
 
 🤖 — sunʼiy ovoz (`docs/TTS.md`). Qoʻlda yozilgan fayl qoʻyilsa, uni manifestdan
 (`src/assets/audio/uz/tts.json`) olib tashlang — keyin TTS unga hech qachon tegmaydi.
@@ -147,86 +147,86 @@
 | `harflar.soz.d.mp3`                  | De — daraxt!                                            | quvnoq, söz boşini çözib               | 🤖    |
 | `harflar.top.e.mp3`                  | E harfini top!                                          | aniq, harf nomini urğu bilan           | 🤖    |
 | `harflar.soz.e.mp3`                  | E — eşik!                                               | quvnoq, söz boşini çözib               | 🤖    |
-| `harflar.top.f.mp3`                  | Fe harfini top!                                         | aniq, harf nomini urğu bilan           | ⬜    |
-| `harflar.soz.f.mp3`                  | Fe — fil!                                               | quvnoq, söz boşini çözib               | ⬜    |
-| `harflar.top.g.mp3`                  | Ge harfini top!                                         | aniq, harf nomini urğu bilan           | ⬜    |
-| `harflar.soz.g.mp3`                  | Ge — gul!                                               | quvnoq, söz boşini çözib               | ⬜    |
-| `harflar.top.h.mp3`                  | He harfini top!                                         | aniq, harf nomini urğu bilan           | ⬜    |
-| `harflar.soz.h.mp3`                  | He — hovli!                                             | quvnoq, söz boşini çözib               | ⬜    |
-| `harflar.top.i.mp3`                  | I harfini top!                                          | aniq, harf nomini urğu bilan           | ⬜    |
-| `harflar.soz.i.mp3`                  | I — it!                                                 | quvnoq, söz boşini çözib               | ⬜    |
-| `harflar.top.j.mp3`                  | Je harfini top!                                         | aniq, harf nomini urğu bilan           | ⬜    |
-| `harflar.soz.j.mp3`                  | Je — jöja!                                              | quvnoq, söz boşini çözib               | ⬜    |
-| `harflar.top.k.mp3`                  | Ke harfini top!                                         | aniq, harf nomini urğu bilan           | ⬜    |
-| `harflar.soz.k.mp3`                  | Ke — kitob!                                             | quvnoq, söz boşini çözib               | ⬜    |
-| `harflar.top.l.mp3`                  | Le harfini top!                                         | aniq, harf nomini urğu bilan           | ⬜    |
-| `harflar.soz.l.mp3`                  | Le — lola!                                              | quvnoq, söz boşini çözib               | ⬜    |
-| `harflar.top.m.mp3`                  | Me harfini top!                                         | aniq, harf nomini urğu bilan           | ⬜    |
-| `harflar.soz.m.mp3`                  | Me — muşuk!                                             | quvnoq, söz boşini çözib               | ⬜    |
-| `harflar.top.n.mp3`                  | Ne harfini top!                                         | aniq, harf nomini urğu bilan           | ⬜    |
-| `harflar.soz.n.mp3`                  | Ne — non!                                               | quvnoq, söz boşini çözib               | ⬜    |
-| `harflar.top.o.mp3`                  | O harfini top!                                          | aniq, harf nomini urğu bilan           | ⬜    |
-| `harflar.soz.o.mp3`                  | O — olma!                                               | quvnoq, söz boşini çözib               | ⬜    |
-| `harflar.top.p.mp3`                  | Pe harfini top!                                         | aniq, harf nomini urğu bilan           | ⬜    |
-| `harflar.soz.p.mp3`                  | Pe — paxta!                                             | quvnoq, söz boşini çözib               | ⬜    |
-| `harflar.top.q.mp3`                  | Qe harfini top!                                         | aniq, harf nomini urğu bilan           | ⬜    |
-| `harflar.soz.q.mp3`                  | Qe — quyoş!                                             | quvnoq, söz boşini çözib               | ⬜    |
-| `harflar.top.r.mp3`                  | Re harfini top!                                         | aniq, harf nomini urğu bilan           | ⬜    |
-| `harflar.soz.r.mp3`                  | Re — rasm!                                              | quvnoq, söz boşini çözib               | ⬜    |
-| `harflar.top.s.mp3`                  | Se harfini top!                                         | aniq, harf nomini urğu bilan           | ⬜    |
-| `harflar.soz.s.mp3`                  | Se — sigir!                                             | quvnoq, söz boşini çözib               | ⬜    |
-| `harflar.top.t.mp3`                  | Te harfini top!                                         | aniq, harf nomini urğu bilan           | ⬜    |
-| `harflar.soz.t.mp3`                  | Te — tovuq!                                             | quvnoq, söz boşini çözib               | ⬜    |
-| `harflar.top.u.mp3`                  | U harfini top!                                          | aniq, harf nomini urğu bilan           | ⬜    |
-| `harflar.soz.u.mp3`                  | U — uy!                                                 | quvnoq, söz boşini çözib               | ⬜    |
-| `harflar.top.v.mp3`                  | Ve harfini top!                                         | aniq, harf nomini urğu bilan           | ⬜    |
-| `harflar.soz.v.mp3`                  | Ve — varrak!                                            | quvnoq, söz boşini çözib               | ⬜    |
-| `harflar.top.x.mp3`                  | Xe harfini top!                                         | aniq, harf nomini urğu bilan           | ⬜    |
-| `harflar.soz.x.mp3`                  | Xe — xöroz!                                             | quvnoq, söz boşini çözib               | ⬜    |
-| `harflar.top.y.mp3`                  | Ye harfini top!                                         | aniq, harf nomini urğu bilan           | ⬜    |
-| `harflar.soz.y.mp3`                  | Ye — yulduz!                                            | quvnoq, söz boşini çözib               | ⬜    |
-| `harflar.top.z.mp3`                  | Ze harfini top!                                         | aniq, harf nomini urğu bilan           | ⬜    |
-| `harflar.soz.z.mp3`                  | Ze — zinapoya!                                          | quvnoq, söz boşini çözib               | ⬜    |
-| `harflar.top.oo.mp3`                 | Ö harfini top!                                          | aniq, harf nomini urğu bilan           | ⬜    |
-| `harflar.soz.oo.mp3`                 | Ö — ördak!                                              | quvnoq, söz boşini çözib               | ⬜    |
-| `harflar.top.gg.mp3`                 | Ğe harfini top!                                         | aniq, harf nomini urğu bilan           | ⬜    |
-| `harflar.soz.gg.mp3`                 | Ğe — ğildirak!                                          | quvnoq, söz boşini çözib               | ⬜    |
-| `harflar.top.sh.mp3`                 | Şe harfini top!                                         | aniq, harf nomini urğu bilan           | ⬜    |
-| `harflar.soz.sh.mp3`                 | Şe — şar!                                               | quvnoq, söz boşini çözib               | ⬜    |
-| `harflar.top.ch.mp3`                 | Çe harfini top!                                         | aniq, harf nomini urğu bilan           | ⬜    |
-| `harflar.soz.ch.mp3`                 | Çe — çumoli!                                            | quvnoq, söz boşini çözib               | ⬜    |
+| `harflar.top.f.mp3`                  | Fe harfini top!                                         | aniq, harf nomini urğu bilan           | 🤖    |
+| `harflar.soz.f.mp3`                  | Fe — fil!                                               | quvnoq, söz boşini çözib               | 🤖    |
+| `harflar.top.g.mp3`                  | Ge harfini top!                                         | aniq, harf nomini urğu bilan           | 🤖    |
+| `harflar.soz.g.mp3`                  | Ge — gul!                                               | quvnoq, söz boşini çözib               | 🤖    |
+| `harflar.top.h.mp3`                  | He harfini top!                                         | aniq, harf nomini urğu bilan           | 🤖    |
+| `harflar.soz.h.mp3`                  | He — hovli!                                             | quvnoq, söz boşini çözib               | 🤖    |
+| `harflar.top.i.mp3`                  | I harfini top!                                          | aniq, harf nomini urğu bilan           | 🤖    |
+| `harflar.soz.i.mp3`                  | I — it!                                                 | quvnoq, söz boşini çözib               | 🤖    |
+| `harflar.top.j.mp3`                  | Je harfini top!                                         | aniq, harf nomini urğu bilan           | 🤖    |
+| `harflar.soz.j.mp3`                  | Je — jöja!                                              | quvnoq, söz boşini çözib               | 🤖    |
+| `harflar.top.k.mp3`                  | Ke harfini top!                                         | aniq, harf nomini urğu bilan           | 🤖    |
+| `harflar.soz.k.mp3`                  | Ke — kitob!                                             | quvnoq, söz boşini çözib               | 🤖    |
+| `harflar.top.l.mp3`                  | Le harfini top!                                         | aniq, harf nomini urğu bilan           | 🤖    |
+| `harflar.soz.l.mp3`                  | Le — lola!                                              | quvnoq, söz boşini çözib               | 🤖    |
+| `harflar.top.m.mp3`                  | Me harfini top!                                         | aniq, harf nomini urğu bilan           | 🤖    |
+| `harflar.soz.m.mp3`                  | Me — muşuk!                                             | quvnoq, söz boşini çözib               | 🤖    |
+| `harflar.top.n.mp3`                  | Ne harfini top!                                         | aniq, harf nomini urğu bilan           | 🤖    |
+| `harflar.soz.n.mp3`                  | Ne — non!                                               | quvnoq, söz boşini çözib               | 🤖    |
+| `harflar.top.o.mp3`                  | O harfini top!                                          | aniq, harf nomini urğu bilan           | 🤖    |
+| `harflar.soz.o.mp3`                  | O — olma!                                               | quvnoq, söz boşini çözib               | 🤖    |
+| `harflar.top.p.mp3`                  | Pe harfini top!                                         | aniq, harf nomini urğu bilan           | 🤖    |
+| `harflar.soz.p.mp3`                  | Pe — paxta!                                             | quvnoq, söz boşini çözib               | 🤖    |
+| `harflar.top.q.mp3`                  | Qe harfini top!                                         | aniq, harf nomini urğu bilan           | 🤖    |
+| `harflar.soz.q.mp3`                  | Qe — quyoş!                                             | quvnoq, söz boşini çözib               | 🤖    |
+| `harflar.top.r.mp3`                  | Re harfini top!                                         | aniq, harf nomini urğu bilan           | 🤖    |
+| `harflar.soz.r.mp3`                  | Re — rasm!                                              | quvnoq, söz boşini çözib               | 🤖    |
+| `harflar.top.s.mp3`                  | Se harfini top!                                         | aniq, harf nomini urğu bilan           | 🤖    |
+| `harflar.soz.s.mp3`                  | Se — sigir!                                             | quvnoq, söz boşini çözib               | 🤖    |
+| `harflar.top.t.mp3`                  | Te harfini top!                                         | aniq, harf nomini urğu bilan           | 🤖    |
+| `harflar.soz.t.mp3`                  | Te — tovuq!                                             | quvnoq, söz boşini çözib               | 🤖    |
+| `harflar.top.u.mp3`                  | U harfini top!                                          | aniq, harf nomini urğu bilan           | 🤖    |
+| `harflar.soz.u.mp3`                  | U — uy!                                                 | quvnoq, söz boşini çözib               | 🤖    |
+| `harflar.top.v.mp3`                  | Ve harfini top!                                         | aniq, harf nomini urğu bilan           | 🤖    |
+| `harflar.soz.v.mp3`                  | Ve — varrak!                                            | quvnoq, söz boşini çözib               | 🤖    |
+| `harflar.top.x.mp3`                  | Xe harfini top!                                         | aniq, harf nomini urğu bilan           | 🤖    |
+| `harflar.soz.x.mp3`                  | Xe — xöroz!                                             | quvnoq, söz boşini çözib               | 🤖    |
+| `harflar.top.y.mp3`                  | Ye harfini top!                                         | aniq, harf nomini urğu bilan           | 🤖    |
+| `harflar.soz.y.mp3`                  | Ye — yulduz!                                            | quvnoq, söz boşini çözib               | 🤖    |
+| `harflar.top.z.mp3`                  | Ze harfini top!                                         | aniq, harf nomini urğu bilan           | 🤖    |
+| `harflar.soz.z.mp3`                  | Ze — zinapoya!                                          | quvnoq, söz boşini çözib               | 🤖    |
+| `harflar.top.oo.mp3`                 | Ö harfini top!                                          | aniq, harf nomini urğu bilan           | 🤖    |
+| `harflar.soz.oo.mp3`                 | Ö — ördak!                                              | quvnoq, söz boşini çözib               | 🤖    |
+| `harflar.top.gg.mp3`                 | Ğe harfini top!                                         | aniq, harf nomini urğu bilan           | 🤖    |
+| `harflar.soz.gg.mp3`                 | Ğe — ğildirak!                                          | quvnoq, söz boşini çözib               | 🤖    |
+| `harflar.top.sh.mp3`                 | Şe harfini top!                                         | aniq, harf nomini urğu bilan           | 🤖    |
+| `harflar.soz.sh.mp3`                 | Şe — şar!                                               | quvnoq, söz boşini çözib               | 🤖    |
+| `harflar.top.ch.mp3`                 | Çe harfini top!                                         | aniq, harf nomini urğu bilan           | 🤖    |
+| `harflar.soz.ch.mp3`                 | Çe — çumoli!                                            | quvnoq, söz boşini çözib               | 🤖    |
 | **raqamlar**                         |                                                         |                                        |       |
-| `raqamlar.intro.mp3`                 | Kel, raqamlarni topamiz!                                | quvnoq                                 | ⬜    |
-| `raqamlar.daraja-ochildi.mp3`        | Yangi daraja oçildi! Endi kattaroq sonlar!              | bayramona                              | ⬜    |
-| `raqamlar.top.n1.mp3`                | Bir raqamini top!                                       | aniq                                   | ⬜    |
-| `raqamlar.bu.n1.mp3`                 | Ha, bu — bir!                                           | xursand                                | ⬜    |
-| `raqamlar.top.n2.mp3`                | Ikki raqamini top!                                      | aniq                                   | ⬜    |
-| `raqamlar.bu.n2.mp3`                 | Ha, bu — ikki!                                          | xursand                                | ⬜    |
-| `raqamlar.top.n3.mp3`                | Uç raqamini top!                                        | aniq                                   | ⬜    |
-| `raqamlar.bu.n3.mp3`                 | Ha, bu — uç!                                            | xursand                                | ⬜    |
-| `raqamlar.top.n4.mp3`                | Tört raqamini top!                                      | aniq                                   | ⬜    |
-| `raqamlar.bu.n4.mp3`                 | Ha, bu — tört!                                          | xursand                                | ⬜    |
-| `raqamlar.top.n5.mp3`                | Beş raqamini top!                                       | aniq                                   | ⬜    |
-| `raqamlar.bu.n5.mp3`                 | Ha, bu — beş!                                           | xursand                                | ⬜    |
-| `raqamlar.top.n6.mp3`                | Olti raqamini top!                                      | aniq                                   | ⬜    |
-| `raqamlar.bu.n6.mp3`                 | Ha, bu — olti!                                          | xursand                                | ⬜    |
-| `raqamlar.top.n7.mp3`                | Yetti raqamini top!                                     | aniq                                   | ⬜    |
-| `raqamlar.bu.n7.mp3`                 | Ha, bu — yetti!                                         | xursand                                | ⬜    |
-| `raqamlar.top.n8.mp3`                | Sakkiz raqamini top!                                    | aniq                                   | ⬜    |
-| `raqamlar.bu.n8.mp3`                 | Ha, bu — sakkiz!                                        | xursand                                | ⬜    |
-| `raqamlar.top.n9.mp3`                | Toqqiz raqamini top!                                    | aniq                                   | ⬜    |
-| `raqamlar.bu.n9.mp3`                 | Ha, bu — toqqiz!                                        | xursand                                | ⬜    |
-| `raqamlar.top.n10.mp3`               | Ön raqamini top!                                        | aniq                                   | ⬜    |
-| `raqamlar.bu.n10.mp3`                | Ha, bu — ön!                                            | xursand                                | ⬜    |
+| `raqamlar.intro.mp3`                 | Kel, raqamlarni topamiz!                                | quvnoq                                 | 🤖    |
+| `raqamlar.daraja-ochildi.mp3`        | Yangi daraja oçildi! Endi kattaroq sonlar!              | bayramona                              | 🤖    |
+| `raqamlar.top.n1.mp3`                | Bir raqamini top!                                       | aniq                                   | 🤖    |
+| `raqamlar.bu.n1.mp3`                 | Ha, bu — bir!                                           | xursand                                | 🤖    |
+| `raqamlar.top.n2.mp3`                | Ikki raqamini top!                                      | aniq                                   | 🤖    |
+| `raqamlar.bu.n2.mp3`                 | Ha, bu — ikki!                                          | xursand                                | 🤖    |
+| `raqamlar.top.n3.mp3`                | Uç raqamini top!                                        | aniq                                   | 🤖    |
+| `raqamlar.bu.n3.mp3`                 | Ha, bu — uç!                                            | xursand                                | 🤖    |
+| `raqamlar.top.n4.mp3`                | Tört raqamini top!                                      | aniq                                   | 🤖    |
+| `raqamlar.bu.n4.mp3`                 | Ha, bu — tört!                                          | xursand                                | 🤖    |
+| `raqamlar.top.n5.mp3`                | Beş raqamini top!                                       | aniq                                   | 🤖    |
+| `raqamlar.bu.n5.mp3`                 | Ha, bu — beş!                                           | xursand                                | 🤖    |
+| `raqamlar.top.n6.mp3`                | Olti raqamini top!                                      | aniq                                   | 🤖    |
+| `raqamlar.bu.n6.mp3`                 | Ha, bu — olti!                                          | xursand                                | 🤖    |
+| `raqamlar.top.n7.mp3`                | Yetti raqamini top!                                     | aniq                                   | 🤖    |
+| `raqamlar.bu.n7.mp3`                 | Ha, bu — yetti!                                         | xursand                                | 🤖    |
+| `raqamlar.top.n8.mp3`                | Sakkiz raqamini top!                                    | aniq                                   | 🤖    |
+| `raqamlar.bu.n8.mp3`                 | Ha, bu — sakkiz!                                        | xursand                                | 🤖    |
+| `raqamlar.top.n9.mp3`                | Toqqiz raqamini top!                                    | aniq                                   | 🤖    |
+| `raqamlar.bu.n9.mp3`                 | Ha, bu — toqqiz!                                        | xursand                                | 🤖    |
+| `raqamlar.top.n10.mp3`               | Ön raqamini top!                                        | aniq                                   | 🤖    |
+| `raqamlar.bu.n10.mp3`                | Ha, bu — ön!                                            | xursand                                | 🤖    |
 | **juft**                             |                                                         |                                        |       |
-| `juft.intro.mp3`                     | Bir xil ikkita rasmni top!                              | qiziqtiruvçi                           | ⬜    |
-| `juft.topding.mp3`                   | Juftini topding!                                        | xursand                                | ⬜    |
-| `juft.daraja-ochildi.mp3`            | Yangi daraja oçildi! Endi kartalar köproq!              | bayramona                              | ⬜    |
+| `juft.intro.mp3`                     | Bir xil ikkita rasmni top!                              | qiziqtiruvçi                           | 🤖    |
+| `juft.topding.mp3`                   | Juftini topding!                                        | xursand                                | 🤖    |
+| `juft.daraja-ochildi.mp3`            | Yangi daraja oçildi! Endi kartalar köproq!              | bayramona                              | 🤖    |
 | **qator**                            |                                                         |                                        |       |
-| `qator.intro.mp3`                    | Qatorga qara! Keyingisi qaysi?                          | qiziqtiruvçi                           | ⬜    |
-| `qator.keyingisi.mp3`                | Keyingisi qaysi?                                        | qiziqtiruvçi                           | ⬜    |
-| `qator.togri.mp3`                    | Ha, qator davom etdi!                                   | xursand                                | ⬜    |
-| `qator.daraja-ochildi.mp3`           | Yangi daraja oçildi! Endi qatorlar uzunroq!             | bayramona                              | ⬜    |
+| `qator.intro.mp3`                    | Qatorga qara! Keyingisi qaysi?                          | qiziqtiruvçi                           | 🤖    |
+| `qator.keyingisi.mp3`                | Keyingisi qaysi?                                        | qiziqtiruvçi                           | 🤖    |
+| `qator.togri.mp3`                    | Ha, qator davom etdi!                                   | xursand                                | 🤖    |
+| `qator.daraja-ochildi.mp3`           | Yangi daraja oçildi! Endi qatorlar uzunroq!             | bayramona                              | 🤖    |
 | **tafakkur**                         |                                                         |                                        |       |
 | `tafakkur.olma.mp3`                  | Qara, olma qanday çiroyli qizil!                        | hayratli                               | 🤖    |
 | `tafakkur.qulupnay.mp3`              | Qulupnay qizil va şirin!                                | iliq                                   | 🤖    |

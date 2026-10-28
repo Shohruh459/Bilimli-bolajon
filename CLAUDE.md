@@ -315,4 +315,5 @@ Pipe (`| grep`, `| tail`) ishlatilsa, exit kodi pipe'ning oxirgi buyrug'iniki bo
     TTS'ga eski yozuv yuboriladi → 139 ta ovoz qayta yaratilmadi (`tts:reja` "faqat-yozuv" — manifest yangilanadi).
   - 5 yosh: Harflar (28 harf, 4 daraja + Alifbo), Raqamlar 1–10 (3 daraja), Juftini top (3 daraja),
     Ketma-ketlik (3 daraja). `engine/level-game.ts`.
-  - 87 ta yangi ibora (jami 226).
+  - 87 ta yangi ibora (jami 226). Sozlamalardagi TTS manifesti alohida chunk (bosh JS 20.3 KB).
+  - 173 unit, 47×2 e2e test. Precache ~2.95 MB — ovozlarni yosh bo'yicha keshlash rejasi vaqti yaqin.

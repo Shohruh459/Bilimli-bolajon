@@ -38,9 +38,9 @@ test.describe('Start va audio unlock', () => {
 });
 
 test.describe('Yoş guruhlari', () => {
-  test('5 yoş va diniy — "Tez orada"', async ({ page }, info) => {
+  test('6–7 yoş va diniy — "Tez orada"', async ({ page }, info) => {
     await start(page);
-    await page.getByTestId('age-5').click();
+    await page.getByTestId('age-6-7').click();
     await expect(page.getByTestId('soon')).toBeVisible();
     await page.getByRole('button', { name: 'Boş sahifa' }).click();
     await page.getByTestId('age-diniy').click();
