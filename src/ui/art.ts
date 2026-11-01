@@ -108,6 +108,12 @@ export const ART = {
      <circle cx="88" cy="60" r="13" fill="#E53935" stroke="${NAVY}" stroke-width="3"/>
      <text x="112" y="70" text-anchor="middle" font-size="30" font-weight="1000" fill="#FF6B6B" font-family="Nunito, sans-serif">?</text>`,
   ),
+  /** "Chiziqlar" kartasi: nuqtali to'lqin, yarmi yashil bilan chizilgan */
+  chiziqlar: svg(
+    `<path d="M14 66q12-30 24 0t24 0 24 0 24 0" fill="none" stroke="#9AA6BD" stroke-width="7" stroke-linecap="round" stroke-dasharray="0 12"/>
+     <path d="M14 66q12-30 24 0t24 0" fill="none" stroke="${GREEN}" stroke-width="9" stroke-linecap="round"/>
+     <circle cx="62" cy="66" r="9" fill="${GREEN}" stroke="#fff" stroke-width="3"/>`,
+  ),
   /** Diniy bo'lim — oltin yarim oy va yulduzlar (tungi osmon, tafakkur) */
   tun: svg(
     `<path d="M74 16a46 46 0 1 0 30 70A38 38 0 1 1 74 16z" fill="#C9A227" stroke="#fff" stroke-width="6" stroke-linejoin="round"/>

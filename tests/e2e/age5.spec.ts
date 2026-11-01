@@ -10,12 +10,12 @@ import {
 } from './helpers';
 
 test.describe('5 yosh menyusi', () => {
-  test('4 ta oʻyin, ekranga sigʻadi; yangi alifbo harflari shriftda bor', async ({
+  test('5 ta oʻyin, ekranga sigʻadi; yangi alifbo harflari shriftda bor', async ({
     page,
   }, info) => {
     await start(page);
     await page.getByTestId('age-5').click();
-    for (const id of ['harflar', 'raqamlar', 'juftini-top', 'ketma-ketlik']) {
+    for (const id of ['harflar', 'raqamlar', 'juftini-top', 'ketma-ketlik', 'chiziqlar']) {
       await expect(page.getByTestId(`game-${id}`)).toBeVisible();
     }
     await expectBigButtons(page);
@@ -218,5 +218,95 @@ test.describe('Ketma-ketlik', () => {
     await expect(page.locator('.sq-option')).toHaveCount(4);
     await expectNoOverflow(page);
     await shot(page, info, '50-sequence-level3');
+  });
+});
+
+/** Shakl yo'li bo'ylab "barmoq" yurgizadi (sichqoncha → pointer hodisalari). */
+async function trace(page: Page, opts: { to?: number; dy?: number } = {}): Promise<void> {
+  const svgEl = page.locator('.tp-svg');
+  // Paydo bo'lish animatsiyasi (scale) tugasin — aks holda o'lchamlar noto'g'ri
+  await page
+    .getByTestId('trace-pad')
+    .evaluate((el) => Promise.all(el.getAnimations().map((a) => a.finished.catch(() => null))));
+  const box = (await svgEl.boundingBox())!;
+  const pts = (await svgEl.getAttribute('data-path'))!
+    .split(' ')
+    .map((p) => p.split(',').map(Number) as [number, number]);
+  const k = box.width / 300;
+  const at = ([x, y]: [number, number]) =>
+    [box.x + x * k, box.y + (y + (opts.dy ?? 0)) * k] as const;
+  const from = Number((await svgEl.getAttribute('data-progress')) ?? 0);
+  const to = opts.to ?? pts.length - 1;
+  await page.mouse.move(...at(pts[from]!));
+  await page.mouse.down();
+  for (let i = from + 1; i <= to; i += 2) await page.mouse.move(...at(pts[i]!));
+  await page.mouse.move(...at(pts[to]!));
+  await page.mouse.up();
+}
+
+test.describe('Chiziqlar', () => {
+  test('1-daraja: nuqtali chiziq ustidan yuriladi; chetga chiqsa urishmaydi; 5 mashq; yulduz', async ({
+    page,
+  }, info) => {
+    test.setTimeout(120_000);
+    await start(page, '#/oyin/chiziqlar');
+    await expect(page.getByTestId('lines-levels')).toBeVisible();
+    await expect(page.locator('.lp-level')).toHaveCount(3);
+    await expectBigButtons(page);
+    await expectNoOverflow(page);
+    await shot(page, info, '51-lines-levels');
+
+    await page.getByTestId('level-1').click();
+    const game = page.getByTestId('lines-game');
+    await expect(game).toHaveAttribute('data-figure', 'tik', { timeout: 10_000 });
+    await expect(page.getByTestId('trace-pad')).toBeVisible();
+    await expectNoOverflow(page);
+    await expectTopbarFits(page);
+    await shot(page, info, '52-lines-tik');
+
+    // Boshlanish nuqtasidan uzoqda tegish — chizilmaydi
+    const svgEl = page.locator('.tp-svg');
+    await page
+      .getByTestId('trace-pad')
+      .evaluate((el) => Promise.all(el.getAnimations().map((a) => a.finished.catch(() => null))));
+    const box = (await svgEl.boundingBox())!;
+    await page.mouse.click(box.x + box.width - 10, box.y + box.height - 10);
+    await expect(svgEl).toHaveAttribute('data-progress', '0');
+
+    // Yarmigacha chizib, chetga chiqib ketish — progress saqlanadi, keyin davom etadi
+    await trace(page, { to: 18 });
+    const pts = (await svgEl.getAttribute('data-path'))!.split(' ');
+    const half = pts[18]!.split(',').map(Number);
+    const k = box.width / 300;
+    await page.mouse.move(box.x + half[0]! * k, box.y + half[1]! * k);
+    await page.mouse.down();
+    await page.mouse.move(box.x + 10, box.y + half[1]! * k, { steps: 4 });
+    await page.mouse.up();
+    expect(Number(await svgEl.getAttribute('data-progress'))).toBeGreaterThanOrEqual(16);
+    await shot(page, info, '53-lines-half');
+    await trace(page, { dy: 12 });
+
+    for (const id of ['yotiq', 'qiya', 'tepalik', 'arra']) {
+      await expect(game).toHaveAttribute('data-figure', id, { timeout: 15_000 });
+      await expect(svgEl).toHaveAttribute('data-progress', '0');
+      await trace(page);
+    }
+    await expect(page.getByTestId('finish')).toBeVisible({ timeout: 15_000 });
+  });
+
+  test('3-daraja: doira, ilmoq va spiral chiziladi', async ({ page }, info) => {
+    test.setTimeout(120_000);
+    await seedStars(page, { 'chiziqlar.1': 3, 'chiziqlar.2': 3 });
+    await start(page, '#/oyin/chiziqlar');
+    await page.getByTestId('level-3').click();
+    const game = page.getByTestId('lines-game');
+    for (const id of ['doira', 'oval', 'tolqin', 'ilmoq', 'spiral']) {
+      await expect(game).toHaveAttribute('data-figure', id, { timeout: 15_000 });
+      const n = (await page.locator('.tp-svg').getAttribute('data-path'))!.split(' ').length;
+      await trace(page, { to: Math.floor(n * 0.6) });
+      await shot(page, info, `54-lines-${id}`);
+      await trace(page);
+    }
+    await expect(page.getByTestId('finish')).toBeVisible({ timeout: 15_000 });
   });
 });

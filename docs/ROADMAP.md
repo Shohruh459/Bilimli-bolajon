@@ -37,9 +37,12 @@
 - [x] Juftini top (xotira): 3 / 4 / 6 juft
 - [x] Ketma-ketlikni davom ettir: AB → AAB/ABB → ABC
 - [x] Butun ilova yangi alifboda (Ö Ğ Ş Ç)
+- [x] Chiziqlar (yozuvga tayyorgarlik): barmoq bilan nuqtali chiziq ustidan, 3 daraja
+- [ ] Chiziqlar iboralari uchun ovoz (TTS)
 
 ## 3-bosqich — 6–7 yosh
 
+- [ ] Husnixat: yozma harflar (yozilish tartibi bilan), Ö Ğ ham; Ş Ç — rasmiy shakli chiqqach
 - [ ] Bo'g'inlab o'qish
 - [ ] Qo'shish / ayirish (10 gacha)
 - [ ] Mantiqiy topishmoqlar
