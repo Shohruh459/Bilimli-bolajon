@@ -65,6 +65,13 @@ export const GAMES: readonly GameMeta[] = [
     art: 'ketmaKetlik',
     load: () => import('./sequence/index'),
   },
+  {
+    id: 'chiziqlar',
+    age: '5',
+    title: 'Çiziqlar',
+    art: 'chiziqlar',
+    load: () => import('./lines/index'),
+  },
 ];
 
 export function gamesFor(age: AgeId): GameMeta[] {

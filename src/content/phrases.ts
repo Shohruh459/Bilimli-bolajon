@@ -306,6 +306,27 @@ export const PHRASES = {
     tone: 'bayramona',
   },
 
+  // --- Öyin: Çiziqlar (5 yoş, yozuvga tayyorgarlik) ---
+  'chiziq.intro': { text: 'Barmoğing bilan nuqtalar ustidan yur!', tone: 'qiziqtiruvçi' },
+  'chiziq.boshla': { text: 'Yaşil nuqtadan boşla!', tone: 'mayin' },
+  'chiziq.tik': { text: 'Tik çiziq çiz — yuqoridan pastga!', tone: 'aniq' },
+  'chiziq.yotiq': { text: 'Yotiq çiziq çiz — çapdan öngga!', tone: 'aniq' },
+  'chiziq.qiya': { text: 'Qiya çiziq çiz!', tone: 'aniq' },
+  'chiziq.tepalik': { text: 'Tepalik çiz — yuqoriga, keyin pastga!', tone: 'quvnoq' },
+  'chiziq.arra': { text: 'Arra tişlarini çiz!', tone: 'quvnoq' },
+  'chiziq.kosa': { text: 'Kosa çiz!', tone: 'quvnoq' },
+  'chiziq.koprik': { text: 'Köprik çiz!', tone: 'quvnoq' },
+  'chiziq.tolqin': { text: 'Dengiz tölqinini çiz!', tone: 'mayin' },
+  'chiziq.ilgak': { text: 'Ilgak çiz — pastga, keyin qayril!', tone: 'aniq' },
+  'chiziq.doira': { text: 'Doira çiz — tepadan boşla!', tone: 'aniq' },
+  'chiziq.oval': { text: 'Oval çiz — xuddi tuxumdek!', tone: 'quvnoq' },
+  'chiziq.ilmoq': { text: 'Ilmoqlar çiz!', tone: 'quvnoq' },
+  'chiziq.spiral': { text: 'Şilliqqurtning uyini çiz!', tone: 'öyinqaroq' },
+  'chiziq.daraja-ochildi': {
+    text: 'Yangi daraja oçildi! Endi çiziqlar qiyinroq!',
+    tone: 'bayramona',
+  },
+
   // --- Tafakkur (yumshoq kuzatuv iboralari) ---
   'tafakkur.olma': { text: 'Qara, olma qanday çiroyli qizil!', tone: 'hayratli' },
   'tafakkur.qulupnay': { text: 'Qulupnay qizil va şirin!', tone: 'iliq' },

@@ -3,7 +3,7 @@
 > Bu fayl avtomatik yaratiladi: `npm run ovozlar` (manba — `src/content/phrases.ts`).
 > Qo'lda tahrirlamang — matnni phrases.ts da o'zgartiring.
 
-**Holat:** 0 / 226 qoʻlda yozilgan, 226 ta vaqtinchalik sunʼiy ovoz (🤖 TTS).
+**Holat:** 0 / 242 qoʻlda yozilgan, 226 ta vaqtinchalik sunʼiy ovoz (🤖 TTS).
 
 🤖 — sunʼiy ovoz (`docs/TTS.md`). Qoʻlda yozilgan fayl qoʻyilsa, uni manifestdan
 (`src/assets/audio/uz/tts.json`) olib tashlang — keyin TTS unga hech qachon tegmaydi.
@@ -227,6 +227,23 @@
 | `qator.keyingisi.mp3`                | Keyingisi qaysi?                                        | qiziqtiruvçi                           | 🤖    |
 | `qator.togri.mp3`                    | Ha, qator davom etdi!                                   | xursand                                | 🤖    |
 | `qator.daraja-ochildi.mp3`           | Yangi daraja oçildi! Endi qatorlar uzunroq!             | bayramona                              | 🤖    |
+| **chiziq**                           |                                                         |                                        |       |
+| `chiziq.intro.mp3`                   | Barmoğing bilan nuqtalar ustidan yur!                   | qiziqtiruvçi                           | ⬜    |
+| `chiziq.boshla.mp3`                  | Yaşil nuqtadan boşla!                                   | mayin                                  | ⬜    |
+| `chiziq.tik.mp3`                     | Tik çiziq çiz — yuqoridan pastga!                       | aniq                                   | ⬜    |
+| `chiziq.yotiq.mp3`                   | Yotiq çiziq çiz — çapdan öngga!                         | aniq                                   | ⬜    |
+| `chiziq.qiya.mp3`                    | Qiya çiziq çiz!                                         | aniq                                   | ⬜    |
+| `chiziq.tepalik.mp3`                 | Tepalik çiz — yuqoriga, keyin pastga!                   | quvnoq                                 | ⬜    |
+| `chiziq.arra.mp3`                    | Arra tişlarini çiz!                                     | quvnoq                                 | ⬜    |
+| `chiziq.kosa.mp3`                    | Kosa çiz!                                               | quvnoq                                 | ⬜    |
+| `chiziq.koprik.mp3`                  | Köprik çiz!                                             | quvnoq                                 | ⬜    |
+| `chiziq.tolqin.mp3`                  | Dengiz tölqinini çiz!                                   | mayin                                  | ⬜    |
+| `chiziq.ilgak.mp3`                   | Ilgak çiz — pastga, keyin qayril!                       | aniq                                   | ⬜    |
+| `chiziq.doira.mp3`                   | Doira çiz — tepadan boşla!                              | aniq                                   | ⬜    |
+| `chiziq.oval.mp3`                    | Oval çiz — xuddi tuxumdek!                              | quvnoq                                 | ⬜    |
+| `chiziq.ilmoq.mp3`                   | Ilmoqlar çiz!                                           | quvnoq                                 | ⬜    |
+| `chiziq.spiral.mp3`                  | Şilliqqurtning uyini çiz!                               | öyinqaroq                              | ⬜    |
+| `chiziq.daraja-ochildi.mp3`          | Yangi daraja oçildi! Endi çiziqlar qiyinroq!            | bayramona                              | ⬜    |
 | **tafakkur**                         |                                                         |                                        |       |
 | `tafakkur.olma.mp3`                  | Qara, olma qanday çiroyli qizil!                        | hayratli                               | 🤖    |
 | `tafakkur.qulupnay.mp3`              | Qulupnay qizil va şirin!                                | iliq                                   | 🤖    |

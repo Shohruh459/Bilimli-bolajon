@@ -1,0 +1,27 @@
+/* "Chiziqlar" — o'yin chunk'i bilan yuklanadi */
+.ln-field {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  align-content: center;
+}
+
+.ln-dots {
+  display: flex;
+  gap: 5px;
+}
+
+.ln-dots .dot {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--c-line);
+}
+
+.ln-dots .dot.is-done {
+  background: var(--c-sun);
+}
+
+.ln-dots .dot.is-now {
+  background: var(--c-coral);
+}

@@ -73,7 +73,8 @@ src/
   app/screens/          # start, home, age, game (lazy host + yakun), settings
   engine/               # audio, voice, sfx, animate, confetti, feedback, scope, storage, random, guard, pwa, game
                         #   levels (daraja ochilishi), find-logic + find-game (umumiy "topish" o'yini),
-                        #   level-game (topishga tushmaydigan darajali o'yinlar qobig'i)
+                        #   level-game (topishga tushmaydigan darajali o'yinlar qobig'i),
+                        #   trace-logic (sof) + trace-pad (UI) — barmoq bilan chizish (Chiziqlar, Husnixat)
   games/<id>/           # har o'yin — alohida lazy chunk; logic.ts (sof, test qilinadi) + index.ts (UI)
                         #   + art.ts (o'yinga xos SVG'lar — bosh bundle'ga kirmaydi)
   games/registry.ts     # o'yinlar ro'yxati (meta + lazy import)
@@ -172,6 +173,17 @@ docs/                   # ROADMAP, DINIY-MATNLAR, OVOZLAR, TTS, ATTRIBUTIONS
   o'nlik ramka nuqtalari + nom, kartada raqam), "Juftini top" (xotira, 3/4/6 juft, 3 ustun; mos kelmasa
   1 s ko'rsatib yopiladi, jarima yo'q), "Ketma-ketlik" (AB → AAB/ABB → ABC, 8 element = shakl+rang).
   Oxirgi ikkitasi `engine/level-game.ts` (`createLevelGame`) — daraja ekrani, qulf, yulduz, "N-daraja oçildi".
+- **Barmoq bilan chizish** (`engine/trace-logic.ts` sof, `engine/trace-pad.ts` UI): yo'l — teng oraliqli
+  nuqtalar (viewBox 300). Faqat OLDINGA yuriladi (navbatdagi `AHEAD` nuqta ichida) — yo'nalish o'rgatiladi;
+  boshlanish nuqtasidan uzoqda tegish — "Yaşil nuqtadan boşla!"; chiziqdan chiqish (`OFF`) — dalda,
+  progress saqlanadi, 2 martadan keyin "arvoh barmoq" yo'lni ko'rsatadi. Yashil chiziq barmoq izidan emas,
+  yo'lning o'zidan chiziladi. `data-path`/`data-progress` — e2e uchun.
+- **5 yosh "Chiziqlar"** — yozuvga tayyorgarlik: 1) tik, yotiq, qiya, tepalik, arra 2) kosa, köprik,
+  tölqin, ilgak 3) doira, oval, ilmoq, spiral. Element turlari va yo'nalishi — 1-sinf "Yozuv daftari"
+  (M. Gʻulomov, 2018, ZiyoNET; tayyorlov betlari). Daftardan rasm/chizma ko'chirilmaydi — faqat namuna.
+- **Husnixat (6–7 yosh, rejada)** — yozma harflar shakli va yozilish tartibi: G'ulomov 2018 (barcha
+  harflar, strelkalar bilan) + Azizova/Uvarova "Yozuv daftari II qism" 2024 (infoedu.uz). Ö, Ğ yozma
+  shakli daftarlarda bor; **Ş, Ç rasmiy yozma shakli 2027/28 darsliklari bilan chiqadi** — ungacha qo'shilmaydi.
 - **Uzun sarlavha** (> 8 harf) daraja ekranida kichikroq (`.screen-title.is-long`) — 360px ga sig'adi.
 - **Dizayn sayqali** alohida bosqich (ROADMAP). Hozircha funksional o'zgarishlarda dizaynni katta o'zgartirmaymiz.
 
@@ -309,6 +321,10 @@ Pipe (`| grep`, `| tail`) ishlatilsa, exit kodi pipe'ning oxirgi buyrug'iniki bo
     keyin "Bir. Ikki. Ikkita!" (har son ~1 s).
   - Engine: `FindItem.group`, `minTargets`; TTS: ko'p qatorli `say`, generatsiyada qayta urinish.
   - 18 ta yangi ibora (jami 139), 147 unit, 37×2 e2e test.
+
+- **0.8.0 — 5 yosh "Chiziqlar", 2026-11-01**
+  - Barmoq bilan chizish engine'i (`trace-logic` + `trace-pad`), 3 daraja × 5 mashq, 13 ta shakl.
+  - 16 ta yangi ibora (jami 242) — hali ovozsiz (TTS backend bu sessiyada o'rnatilmadi).
 
 - **0.7.0 — Yangi alifbo + 5 yosh, 2026-10-28**
   - Butun ilova yangi o'zbek alifbosida (O'RQ-1184): Ö Ğ Ş Ç; Ğ/Ş uchun 3 KB qo'shimcha shrift.
