@@ -173,3 +173,41 @@
 .lp-extra--top .lp-extra__title {
   font-size: 0.85rem;
 }
+
+/* 5+ daraja (Husnixat): ikki ustun, karta ichida tik joylashuv — 360×640 ga sig'adi */
+.lp--grid .lp-levels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-content: center;
+}
+
+.lp--grid .lp-level {
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  min-height: 0;
+  padding: 8px 6px;
+}
+
+.lp--grid .lp-level__num {
+  width: 48px;
+  height: 48px;
+  font-size: 1.6rem;
+}
+
+.lp--grid .lp-level__preview {
+  flex: none;
+}
+
+.lp--grid .lp-level__stars,
+.lp--grid .lp-level__lock {
+  flex-direction: row;
+  gap: 4px;
+  min-width: 0;
+}
+
+.lp--grid .lp-level__stars svg,
+.lp--grid .lp-level__lock > svg {
+  width: 26px;
+  height: 26px;
+}

@@ -103,3 +103,26 @@ export async function expectTopbarFits(page: Page): Promise<void> {
   expect(r.a).toBeGreaterThanOrEqual(r.l);
   expect(r.b).toBeLessThanOrEqual(r.r);
 }
+
+/** Shakl yo'li bo'ylab "barmoq" yurgizadi (sichqoncha → pointer hodisalari). */
+export async function trace(page: Page, opts: { to?: number; dy?: number } = {}): Promise<void> {
+  const svgEl = page.locator('.tp-svg');
+  // Paydo bo'lish animatsiyasi (scale) tugasin — aks holda o'lchamlar noto'g'ri
+  await page
+    .getByTestId('trace-pad')
+    .evaluate((el) => Promise.all(el.getAnimations().map((a) => a.finished.catch(() => null))));
+  const box = (await svgEl.boundingBox())!;
+  const pts = (await svgEl.getAttribute('data-path'))!
+    .split(' ')
+    .map((p) => p.split(',').map(Number) as [number, number]);
+  const k = box.width / 300;
+  const at = ([x, y]: [number, number]) =>
+    [box.x + x * k, box.y + (y + (opts.dy ?? 0)) * k] as const;
+  const from = Number((await svgEl.getAttribute('data-progress')) ?? 0);
+  const to = opts.to ?? pts.length - 1;
+  await page.mouse.move(...at(pts[from]!));
+  await page.mouse.down();
+  for (let i = from + 1; i <= to; i += 2) await page.mouse.move(...at(pts[i]!));
+  await page.mouse.move(...at(pts[to]!));
+  await page.mouse.up();
+}

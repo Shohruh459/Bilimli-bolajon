@@ -42,7 +42,10 @@
 
 ## 3-bosqich — 6–7 yosh
 
-- [ ] Husnixat: yozma harflar (yozilish tartibi bilan), Ö Ğ ham; Ş Ç — rasmiy shakli chiqqach
+- [x] Husnixat: 26 ta kichik yozma harf (yozilish tartibi bilan, Ö Ğ ham), 5 daraja
+- [ ] Husnixat: bosh (katta) yozma harflar
+- [ ] Husnixat: Ş Ç — rasmiy yozma shakli chiqqach (2027/28 darsliklari)
+- [ ] Husnixat: harf shakllarini egasi daftar bilan solishtirib tasdiqlaydi
 - [ ] Bo'g'inlab o'qish
 - [ ] Qo'shish / ayirish (10 gacha)
 - [ ] Mantiqiy topishmoqlar

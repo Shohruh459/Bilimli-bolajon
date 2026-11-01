@@ -17,7 +17,7 @@ import { h } from '../../ui/dom';
 import { topBar } from '../../ui/topbar';
 import { FIGURES, GAME_ID, LINES_LEVELS, SIZE, type FigureId } from './logic';
 
-const preview = (id: FigureId) => tracePreview(FIGURES[id].path, SIZE, '#6BCB77');
+const preview = (id: FigureId) => tracePreview([FIGURES[id].path], SIZE, '#6BCB77');
 
 export default createLevelGame({
   gameId: GAME_ID,
@@ -66,9 +66,9 @@ export default createLevelGame({
       let busy = false;
       const pad = createTracePad(scope, {
         size: SIZE,
-        path: figure.path,
+        strokes: [figure.path],
         onEvent(e) {
-          if (e === 'start') return sfx.tap();
+          if (e === 'start' || e === 'stroke') return sfx.tap();
           if (e === 'done') return void finish();
           if (busy) return;
           if (e === 'miss') {

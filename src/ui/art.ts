@@ -114,6 +114,12 @@ export const ART = {
      <path d="M14 66q12-30 24 0t24 0" fill="none" stroke="${GREEN}" stroke-width="9" stroke-linecap="round"/>
      <circle cx="62" cy="66" r="9" fill="${GREEN}" stroke="#fff" stroke-width="3"/>`,
   ),
+  /** "Husnixat" kartasi: daftar chiziqlari orasida yozma harf */
+  husnixat: svg(
+    `<path d="M8 46H112M8 82H112" stroke="#4FB0E8" stroke-width="3"/>
+     <path d="M56 50c-6-6-22-6-28 8-6 14-2 26 8 26 12 0 18-14 22-34l-6 34c0 4 6 6 14 0" fill="none" stroke="${NAVY}" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+     <path d="M84 84l20-46 8 4-20 46-9 4z" fill="${YELLOW}" stroke="${NAVY}" stroke-width="3" stroke-linejoin="round"/>`,
+  ),
   /** Diniy bo'lim — oltin yarim oy va yulduzlar (tungi osmon, tafakkur) */
   tun: svg(
     `<path d="M74 16a46 46 0 1 0 30 70A38 38 0 1 1 74 16z" fill="#C9A227" stroke="#fff" stroke-width="6" stroke-linejoin="round"/>

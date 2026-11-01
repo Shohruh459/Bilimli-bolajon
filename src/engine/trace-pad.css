@@ -34,6 +34,10 @@
   stroke-dasharray: 0 15;
 }
 
+.tp-dots.is-next {
+  stroke: #ccd3e0;
+}
+
 .tp-ink {
   stroke: var(--c-grass);
   stroke-width: 16;
