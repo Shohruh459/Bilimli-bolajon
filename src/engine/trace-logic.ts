@@ -17,6 +17,8 @@ export const HIT = 30;
 export const START = 40;
 /** Chiziqdan shuncha uzoqlashsa — toyish */
 export const OFF = 58;
+/** Shuncha yoki kamroq nuqtali yo'l — "nuqta": tegishning o'zi yetarli */
+export const DOT = 4;
 /** Bir harakatda oldinga eng ko'pi bilan nechta nuqta (yo'l o'zi bilan kesishganda sakrab ketmasin) */
 export const AHEAD = 10;
 
@@ -50,6 +52,40 @@ export function curve(f: (t: number) => Pt, n = 240): Pt[] {
   return Array.from({ length: n + 1 }, (_, i) => f(i / n));
 }
 
+/**
+ * Oddiy SVG yo'l satri → zich nuqtalar (keyin resample). Faqat mutlaq M, L, C buyruqlari —
+ * harf shakllarini qo'lda yozish uchun yetarli. Bitta satr = bitta chiziq (qalam ko'tarilmaydi).
+ */
+export function pathPoints(d: string): Pt[] {
+  const tokens = d.match(/[MLC]|-?\d*\.?\d+/g) ?? [];
+  const out: Pt[] = [];
+  let cmd = '';
+  let i = 0;
+  const num = () => Number(tokens[i++]);
+  while (i < tokens.length) {
+    if (/[MLC]/.test(tokens[i]!)) cmd = tokens[i++]!;
+    if (cmd === 'M' || cmd === 'L') {
+      out.push([num(), num()]);
+    } else if (cmd === 'C') {
+      const p0 = out[out.length - 1]!;
+      const p1: Pt = [num(), num()];
+      const p2: Pt = [num(), num()];
+      const p3: Pt = [num(), num()];
+      const n = 24;
+      for (let k = 1; k <= n; k++) {
+        const t = k / n;
+        const u = 1 - t;
+        const f = (a: number, b: number, c: number, e: number) =>
+          u * u * u * a + 3 * u * u * t * b + 3 * u * t * t * c + t * t * t * e;
+        out.push([f(p0[0], p1[0], p2[0], p3[0]), f(p0[1], p1[1], p2[1], p3[1])]);
+      }
+    } else {
+      throw new Error(`pathPoints: noma'lum buyruq ${cmd}`);
+    }
+  }
+  return out;
+}
+
 export interface TraceState {
   /** Yetib kelingan oxirgi nuqta indeksi */
   readonly idx: number;
@@ -70,7 +106,12 @@ export interface TraceStep {
 /** Barmoq tegdi: joriy nuqta yonida bo'lsa — chizish boshlanadi, aks holda "miss" (yordam ko'rsatiladi). */
 export function traceDown(path: readonly Pt[], s: TraceState, p: Pt): TraceStep {
   if (s.done) return { state: s, event: 'none' };
-  if (dist(p, path[s.idx]!) <= START) return { state: { ...s, active: true }, event: 'start' };
+  if (dist(p, path[s.idx]!) <= START) {
+    // Nuqta (i, j ustidagi) — bitta tegish kifoya
+    if (path.length <= DOT)
+      return { state: { idx: path.length - 1, active: false, done: true }, event: 'done' };
+    return { state: { ...s, active: true }, event: 'start' };
+  }
   return { state: { ...s, active: false }, event: 'miss' };
 }
 
@@ -79,12 +120,15 @@ export function traceMove(path: readonly Pt[], s: TraceState, p: Pt): TraceStep 
   if (!s.active || s.done) return { state: s, event: 'none' };
   const last = path.length - 1;
   const to = Math.min(last, s.idx + AHEAD);
+  const d = (j: number) => dist(p, path[j]!);
+  let near = d(s.idx);
   let reached = s.idx;
-  let near = Infinity;
-  for (let j = s.idx; j <= to; j++) {
-    const d = dist(p, path[j]!);
-    near = Math.min(near, d);
-    if (d <= HIT) reached = j;
+  // Birinchi yetib kelingan nuqtadan boshlab yo'l bo'ylab barmoqqa yaqinlashguncha yuramiz.
+  // Eng uzoq emas, aynan shu: chiziq o'z ustidan qaytganda (a, n, m) qaytish qismiga sakrab ketmaydi.
+  for (let j = s.idx + 1; j <= to; j++) {
+    near = Math.min(near, d(j));
+    if (reached === s.idx && d(j) <= HIT) reached = j;
+    else if (reached > s.idx && reached === j - 1 && d(j) <= d(reached)) reached = j;
   }
   if (reached > s.idx) {
     const done = reached === last;

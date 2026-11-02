@@ -3,7 +3,7 @@
 > Bu fayl avtomatik yaratiladi: `npm run ovozlar` (manba — `src/content/phrases.ts`).
 > Qo'lda tahrirlamang — matnni phrases.ts da o'zgartiring.
 
-**Holat:** 0 / 242 qoʻlda yozilgan, 226 ta vaqtinchalik sunʼiy ovoz (🤖 TTS).
+**Holat:** 0 / 271 qoʻlda yozilgan, 226 ta vaqtinchalik sunʼiy ovoz (🤖 TTS).
 
 🤖 — sunʼiy ovoz (`docs/TTS.md`). Qoʻlda yozilgan fayl qoʻyilsa, uni manifestdan
 (`src/assets/audio/uz/tts.json`) olib tashlang — keyin TTS unga hech qachon tegmaydi.
@@ -244,6 +244,36 @@
 | `chiziq.ilmoq.mp3`                   | Ilmoqlar çiz!                                           | quvnoq                                 | ⬜    |
 | `chiziq.spiral.mp3`                  | Şilliqqurtning uyini çiz!                               | öyinqaroq                              | ⬜    |
 | `chiziq.daraja-ochildi.mp3`          | Yangi daraja oçildi! Endi çiziqlar qiyinroq!            | bayramona                              | ⬜    |
+| **husnixat**                         |                                                         |                                        |       |
+| `husnixat.intro.mp3`                 | Kel, harflarni çiroyli qilib yozamiz!                   | quvnoq                                 | ⬜    |
+| `husnixat.keyingi.mp3`               | Endi keyingi çiziqni yoz!                               | mayin                                  | ⬜    |
+| `husnixat.yoz.a.mp3`                 | A harfini yoz!                                          | aniq, harf nomini urğu bilan           | ⬜    |
+| `husnixat.yoz.b.mp3`                 | Be harfini yoz!                                         | aniq, harf nomini urğu bilan           | ⬜    |
+| `husnixat.yoz.d.mp3`                 | De harfini yoz!                                         | aniq, harf nomini urğu bilan           | ⬜    |
+| `husnixat.yoz.e.mp3`                 | E harfini yoz!                                          | aniq, harf nomini urğu bilan           | ⬜    |
+| `husnixat.yoz.f.mp3`                 | Fe harfini yoz!                                         | aniq, harf nomini urğu bilan           | ⬜    |
+| `husnixat.yoz.g.mp3`                 | Ge harfini yoz!                                         | aniq, harf nomini urğu bilan           | ⬜    |
+| `husnixat.yoz.h.mp3`                 | He harfini yoz!                                         | aniq, harf nomini urğu bilan           | ⬜    |
+| `husnixat.yoz.i.mp3`                 | I harfini yoz!                                          | aniq, harf nomini urğu bilan           | ⬜    |
+| `husnixat.yoz.j.mp3`                 | Je harfini yoz!                                         | aniq, harf nomini urğu bilan           | ⬜    |
+| `husnixat.yoz.k.mp3`                 | Ke harfini yoz!                                         | aniq, harf nomini urğu bilan           | ⬜    |
+| `husnixat.yoz.l.mp3`                 | Le harfini yoz!                                         | aniq, harf nomini urğu bilan           | ⬜    |
+| `husnixat.yoz.m.mp3`                 | Me harfini yoz!                                         | aniq, harf nomini urğu bilan           | ⬜    |
+| `husnixat.yoz.n.mp3`                 | Ne harfini yoz!                                         | aniq, harf nomini urğu bilan           | ⬜    |
+| `husnixat.yoz.o.mp3`                 | O harfini yoz!                                          | aniq, harf nomini urğu bilan           | ⬜    |
+| `husnixat.yoz.p.mp3`                 | Pe harfini yoz!                                         | aniq, harf nomini urğu bilan           | ⬜    |
+| `husnixat.yoz.q.mp3`                 | Qe harfini yoz!                                         | aniq, harf nomini urğu bilan           | ⬜    |
+| `husnixat.yoz.r.mp3`                 | Re harfini yoz!                                         | aniq, harf nomini urğu bilan           | ⬜    |
+| `husnixat.yoz.s.mp3`                 | Se harfini yoz!                                         | aniq, harf nomini urğu bilan           | ⬜    |
+| `husnixat.yoz.t.mp3`                 | Te harfini yoz!                                         | aniq, harf nomini urğu bilan           | ⬜    |
+| `husnixat.yoz.u.mp3`                 | U harfini yoz!                                          | aniq, harf nomini urğu bilan           | ⬜    |
+| `husnixat.yoz.v.mp3`                 | Ve harfini yoz!                                         | aniq, harf nomini urğu bilan           | ⬜    |
+| `husnixat.yoz.x.mp3`                 | Xe harfini yoz!                                         | aniq, harf nomini urğu bilan           | ⬜    |
+| `husnixat.yoz.y.mp3`                 | Ye harfini yoz!                                         | aniq, harf nomini urğu bilan           | ⬜    |
+| `husnixat.yoz.z.mp3`                 | Ze harfini yoz!                                         | aniq, harf nomini urğu bilan           | ⬜    |
+| `husnixat.yoz.oo.mp3`                | Ö harfini yoz!                                          | aniq, harf nomini urğu bilan           | ⬜    |
+| `husnixat.yoz.gg.mp3`                | Ğe harfini yoz!                                         | aniq, harf nomini urğu bilan           | ⬜    |
+| `husnixat.daraja-ochildi.mp3`        | Yangi daraja oçildi! Endi yangi harflar!                | bayramona                              | ⬜    |
 | **tafakkur**                         |                                                         |                                        |       |
 | `tafakkur.olma.mp3`                  | Qara, olma qanday çiroyli qizil!                        | hayratli                               | 🤖    |
 | `tafakkur.qulupnay.mp3`              | Qulupnay qizil va şirin!                                | iliq                                   | 🤖    |

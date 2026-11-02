@@ -2,6 +2,7 @@
  * Barmoq bilan chizish maydoni (UI). Mantiq — trace-logic.ts (sof).
  * Nuqtali yo'l + bajarilgan qism (yashil) + "shu yerdan davom et" belgisi strelka bilan.
  * Chizilgan chiziq barmoq izidan emas, yo'lning o'zidan chiziladi — natija har doim chiroyli.
+ * Bir nechta chiziq (stroke) — tartib bilan: masalan "i" — avval tayoqcha, keyin nuqta.
  * Faqat o'yin chunk'lari import qiladi (bosh bundle'ga kirmaydi).
  */
 import './trace-pad.css';
@@ -28,37 +29,47 @@ export interface TracePad {
   hint(): Promise<void>;
 }
 
+/** 'stroke' — bitta chiziq tugadi, keyingisi bor; 'done' — hammasi tugadi */
+export type PadEvent = Exclude<TraceEvent, 'none' | 'move'> | 'stroke';
+
 export interface TracePadOptions {
   readonly size: number;
-  readonly path: readonly Pt[];
-  readonly onEvent: (e: Exclude<TraceEvent, 'none' | 'move'>) => void;
+  readonly strokes: readonly (readonly Pt[])[];
+  /** Yo'l ostidagi qo'shimcha SVG (yozuv chiziqlari, namuna harf) — o'zimiz yozgan markup */
+  readonly under?: string;
+  readonly onEvent: (e: PadEvent) => void;
 }
 
 const NS = 'http://www.w3.org/2000/svg';
+const pointsAttr = (path: readonly Pt[]) =>
+  path.map(([x, y]) => `${x.toFixed(1)},${y.toFixed(1)}`).join(' ');
 
 export function createTracePad(scope: Scope, o: TracePadOptions): TracePad {
-  const { path, size } = o;
-  const full = pathD(path);
-  const [sx, sy] = path[0]!;
+  const { strokes, size } = o;
+  const roads = strokes.map((p) => `<path class="tp-road" d="${pathD(p)}"/>`).join('');
+  const dots = strokes
+    .map((p, i) => `<path class="tp-dots" data-stroke="${i}" d="${pathD(p)}"/>`)
+    .join('');
+  const inks = strokes.map(() => `<path class="tp-ink" d=""/>`).join('');
   const pad = svg(
     `<svg viewBox="0 0 ${size} ${size}" class="tp-svg">
-       <path class="tp-road" d="${full}"/>
-       <path class="tp-dots" d="${full}"/>
-       <path class="tp-ink" d=""/>
-       <g class="tp-pos" transform="translate(${sx} ${sy})"><g class="tp-marker">
+       ${o.under ?? ''}${roads}${dots}${inks}
+       <g class="tp-pos"><g class="tp-marker">
          <circle r="17"/><path class="tp-arrow" d="M24 -11 L40 0 L24 11 Z"/>
        </g></g>
        <circle class="tp-ghost" r="14" cx="0" cy="0" opacity="0"/>
      </svg>`,
   );
-  pad.dataset.path = path.map(([x, y]) => `${x.toFixed(1)},${y.toFixed(1)}`).join(' ');
-  const ink = pad.querySelector('.tp-ink')!;
+  const inkEls = [...pad.querySelectorAll('.tp-ink')];
+  const dotEls = [...pad.querySelectorAll('.tp-dots')];
   const pos = pad.querySelector('.tp-pos')!;
   const marker = pad.querySelector('.tp-marker')!;
   const arrow = pad.querySelector('.tp-arrow')!;
   const ghost = pad.querySelector('.tp-ghost')!;
   const el = h('div', { class: 'tp art', 'data-testid': 'trace-pad' }, pad);
 
+  let k = 0;
+  let path = strokes[0]!;
   let s = initialTrace();
 
   const toLocal = (e: PointerEvent): Pt => {
@@ -69,16 +80,30 @@ export function createTracePad(scope: Scope, o: TracePadOptions): TracePad {
   };
 
   const render = () => {
-    ink.setAttribute('d', s.idx > 0 ? pathD(path, s.idx) : '');
+    inkEls[k]!.setAttribute('d', s.idx > 0 ? pathD(path, s.idx) : '');
     const [x, y] = path[s.idx]!;
     pos.setAttribute('transform', `translate(${x.toFixed(1)} ${y.toFixed(1)})`);
     arrow.setAttribute('transform', `rotate(${angleAt(path, s.idx).toFixed(0)})`);
+    dotEls.forEach((d, i) => d.classList.toggle('is-next', i > k));
+    pad.dataset.stroke = String(k);
+    pad.dataset.path = pointsAttr(path);
     pad.dataset.progress = String(s.idx);
-    if (s.done) pad.classList.add('is-done');
   };
 
   const emit = (event: TraceEvent) => {
-    if (event !== 'none' && event !== 'move') o.onEvent(event);
+    if (event === 'none' || event === 'move') return;
+    if (event !== 'done') return o.onEvent(event);
+    inkEls[k]!.setAttribute('d', pathD(path));
+    if (k + 1 < strokes.length) {
+      k++;
+      path = strokes[k]!;
+      s = initialTrace();
+      render();
+      o.onEvent('stroke');
+      return;
+    }
+    pad.classList.add('is-done');
+    o.onEvent('done');
   };
 
   scope.on(el, 'pointerdown', (e) => {
@@ -135,7 +160,13 @@ export function createTracePad(scope: Scope, o: TracePadOptions): TracePad {
   };
 }
 
-/** Daraja kartasi va menyu uchun kichik rasm: shakl yo'li qalin chiziq bilan */
-export function tracePreview(path: readonly Pt[], size: number, color: string): string {
-  return `<svg viewBox="0 0 ${size} ${size}" xmlns="${NS}"><path d="${pathD(path)}" fill="none" stroke="${color}" stroke-width="${(size / 10).toFixed(0)}" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+/** Daraja kartasi va menyu uchun kichik rasm: yo'llar qalin chiziq bilan */
+export function tracePreview(
+  strokes: readonly (readonly Pt[])[],
+  size: number,
+  color: string,
+  width = size / 10,
+): string {
+  const d = strokes.map((p) => pathD(p)).join('');
+  return `<svg viewBox="0 0 ${size} ${size}" xmlns="${NS}"><path d="${d}" fill="none" stroke="${color}" stroke-width="${width.toFixed(0)}" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 }

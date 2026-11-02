@@ -181,10 +181,11 @@ docs/                   # ROADMAP, DINIY-MATNLAR, OVOZLAR, TTS, ATTRIBUTIONS
 - **5 yosh "Chiziqlar"** — yozuvga tayyorgarlik: 1) tik, yotiq, qiya, tepalik, arra 2) kosa, köprik,
   tölqin, ilgak 3) doira, oval, ilmoq, spiral. Element turlari va yo'nalishi — 1-sinf "Yozuv daftari"
   (M. Gʻulomov, 2018, ZiyoNET; tayyorlov betlari). Daftardan rasm/chizma ko'chirilmaydi — faqat namuna.
-- **Husnixat (6–7 yosh, rejada)** — yozma harflar shakli va yozilish tartibi: G'ulomov 2018 (barcha
+- **Husnixat (6–7 yosh)** — kichik yozma harflar (`games/handwriting/glyphs.ts`: tik harf, asos y=0,
+  kichik harf balandligi 100; `layout()` qiyalik (`SLANT`) + masshtab). Shakl va yozilish tartibi: G'ulomov 2018 (barcha
   harflar, strelkalar bilan) + Azizova/Uvarova "Yozuv daftari II qism" 2024 (infoedu.uz). Ö, Ğ yozma
   shakli daftarlarda bor; **Ş, Ç rasmiy yozma shakli 2027/28 darsliklari bilan chiqadi** — ungacha qo'shilmaydi.
-- **Uzun sarlavha** (> 8 harf) daraja ekranida kichikroq (`.screen-title.is-long`) — 360px ga sig'adi.
+- **Uzun sarlavha** (≥ 8 harf) daraja ekranida kichikroq (`.screen-title.is-long`) — 360px ga sig'adi.
 - **Dizayn sayqali** alohida bosqich (ROADMAP). Hozircha funksional o'zgarishlarda dizaynni katta o'zgartirmaymiz.
 
 ## Ovozlarni keshlash rejasi (keyinroq)
@@ -322,10 +323,6 @@ Pipe (`| grep`, `| tail`) ishlatilsa, exit kodi pipe'ning oxirgi buyrug'iniki bo
   - Engine: `FindItem.group`, `minTargets`; TTS: ko'p qatorli `say`, generatsiyada qayta urinish.
   - 18 ta yangi ibora (jami 139), 147 unit, 37×2 e2e test.
 
-- **0.8.0 — 5 yosh "Chiziqlar", 2026-11-01**
-  - Barmoq bilan chizish engine'i (`trace-logic` + `trace-pad`), 3 daraja × 5 mashq, 13 ta shakl.
-  - 16 ta yangi ibora (jami 242) — hali ovozsiz (TTS backend bu sessiyada o'rnatilmadi).
-
 - **0.7.0 — Yangi alifbo + 5 yosh, 2026-10-28**
   - Butun ilova yangi o'zbek alifbosida (O'RQ-1184): Ö Ğ Ş Ç; Ğ/Ş uchun 3 KB qo'shimcha shrift.
     TTS'ga eski yozuv yuboriladi → 139 ta ovoz qayta yaratilmadi (`tts:reja` "faqat-yozuv" — manifest yangilanadi).
@@ -333,3 +330,16 @@ Pipe (`| grep`, `| tail`) ishlatilsa, exit kodi pipe'ning oxirgi buyrug'iniki bo
     Ketma-ketlik (3 daraja). `engine/level-game.ts`.
   - 87 ta yangi ibora (jami 226). Sozlamalardagi TTS manifesti alohida chunk (bosh JS 20.3 KB).
   - 173 unit, 47×2 e2e test. Precache ~2.95 MB — ovozlarni yosh bo'yicha keshlash rejasi vaqti yaqin.
+
+- **0.8.0 — 5 yosh "Chiziqlar", 2026-11-01**
+  - Barmoq bilan chizish engine'i (`trace-logic` + `trace-pad`), 3 daraja × 5 mashq, 13 ta shakl.
+  - 16 ta yangi ibora (jami 242) — hali ovozsiz (TTS backend bu sessiyada o'rnatilmadi).
+
+- **0.9.0 — 6–7 yosh "Husnixat" (kichik yozma harflar), 2026-11-01**
+  - 26 ta kichik yozma harf (Ş, Ç dan tashqari), 5 daraja daftar tartibida; o'zimiz chizgan yo'llar
+    (`games/handwriting/glyphs.ts`), qiyalik + daftar chiziqlari, burchakda bosma harf.
+  - `trace-pad`: bir nechta chiziq (i, j nuqtasi, t ko'ndalangi, x, ö, ğ), "nuqta" — bitta tegish.
+  - `traceMove`: eng uzoq emas, yo'l bo'ylab barmoqqa yaqinlashguncha yuradi — o'z ustidan
+    qaytadigan chiziqlarda (a, n, m, u, p) sakrab ketmaydi (unit test: titrab yurish bilan).
+  - Daraja ekrani 5+ darajada ikki ustun (`lp--grid`); 6–7 yosh endi "Tez orada" emas.
+  - 29 ta yangi ibora (jami 271) — hali ovozsiz.

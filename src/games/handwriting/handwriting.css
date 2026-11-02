@@ -1,0 +1,39 @@
+/* "Husnixat" — o'yin chunk'i bilan yuklanadi */
+.hx-field {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  align-content: center;
+}
+
+.hx-line {
+  stroke: var(--c-sky);
+  stroke-width: 2.5;
+}
+
+.hx-print {
+  font-family: Nunito, sans-serif;
+  font-size: 44px;
+  font-weight: 900;
+  fill: var(--c-sky);
+}
+
+.hx-dots {
+  display: flex;
+  gap: 5px;
+}
+
+.hx-dots .dot {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--c-line);
+}
+
+.hx-dots .dot.is-done {
+  background: var(--c-sun);
+}
+
+.hx-dots .dot.is-now {
+  background: var(--c-coral);
+}

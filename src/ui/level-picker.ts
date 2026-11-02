@@ -120,11 +120,15 @@ export function showLevelPicker(root: HTMLElement, scope: Scope, o: PickerOption
   root.append(
     h(
       'section',
-      { class: `screen lp${many ? ' lp--many' : ''}`, 'data-testid': o.testId },
+      {
+        // 5+ daraja (Husnixat): ikki ustunli to'r
+        class: `screen lp${many ? ' lp--many' : ''}${o.levels.length >= 5 ? ' lp--grid' : ''}`,
+        'data-testid': o.testId,
+      },
       topBar(
         back,
         // Uzun nom ("Hayvonlar") 360px ekranda tugmalar orasiga sig'sin.
-        h('h1', { class: `screen-title${o.title.length > 8 ? ' is-long' : ''}` }, o.title),
+        h('h1', { class: `screen-title${o.title.length >= 8 ? ' is-long' : ''}` }, o.title),
         many ? extra : null,
       ),
       list,
